@@ -1,0 +1,440 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    title Livig Draw
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description' content='')
+    meta(name='author' content='')
+    link(rel='icon' href='favicon.ico')
+    link(rel='stylesheet' href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/theme/style.css')
+    link(rel='stylesheet' href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css')
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+    script(src='./js/hooni.js')
+    // Plugins
+style(type='text/css').
+    .navbar{
+        border-bottom:2px solid #e7e7e7;
+    }
+    .bg-light {
+        background-color: #ffffff !important;
+    }
+    a{
+        color: #343a40;
+    }
+    .card-header:first-child {
+        border-radius: 0;
+    }
+    .bg-primary {
+        background-color: #e7e7e7 !important;
+    }
+    .card:after{
+        background-color:#343a40;
+    }
+    h4{
+        color:#343a40;
+    }
+    .card-body{
+        min-height: 300px;
+    }
+    .more{
+        width: 100%;
+        text-align: center;
+        background: #e7e7e7;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .more a{
+        margin:0;
+    }
+    .more a:hover{
+        text-decoration: none !important
+    }
+    img{
+        margin-right: 10px;
+    }
+    .morebox{
+        width: 100%;
+        /*    border: 1px solid #000;*/
+        height: 65px;
+    }
+    .morebox > .more_left{
+        width: 49%;
+        float: left;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: #e7e7e7;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    .morebox > .more_right{
+        width: 49%;
+        float: right;
+        box-sizing: border-box;
+        text-align: center;
+        background-color: #e7e7e7;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    .mt-3, .my-3 {
+        margin-top: 1.5em !important;
+    }
+    @media (min-width: 1200px){
+        .col-xl-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+    @media (min-width: 992px){
+        .col-lg-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+    @media (min-width: 768px){
+        .col-lg-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+    .text-center {
+        text-align: left !important;
+    }
+    .text-primary {
+        color: black !important;
+    }
+    @media(min-width: 1200px){
+        p.lead {
+            font-size: 17px;
+        }
+    }
+    @media (max-width: 1200px){
+        p.lead {
+            font-size: calc(11px + 0.53333vw);
+        }
+    }
+    p.lead{
+        margin-top: 1em;
+        font-weight: 450;
+    }
+    #paintdetail{
+        margin-left: 0;
+        margin-right: 0;
+        border: 1px solid #e7e7e7;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        display: none;
+    }
+    #categories{
+        margin-top: 200px;
+    }
+header.target-hover
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+        a.navbar-brand(href='#') Navbar
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='#')
+                        | Home
+                        span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='#') Link
+                li.nav-item
+                    a.nav-link.disabled(href='#') Disabled
+            form.form-inline.my-2.my-lg-0
+                input.form-control.mr-sm-2(type='search' placeholder='Search' aria-label='Search')
+                button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+section.pt-5.pb-5
+    .container
+        .row
+            // LEFT SIDE CATEGORIES
+            .col-12.col-md-12.col-lg-9.col-xl-9
+                // SLIDER
+                .row
+                    .col-md-12.col-xl-12
+                        #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+                            .carousel-inner
+                                .carousel-item.active
+                                    img.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide' alt='First slide [800x400]' src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=' data-holder-rendered='true')
+                // / SLIDER
+                hr
+                // MARKETING LINE
+                //
+                  <div class="row">
+                  <div class="col-md-12 col-xl-12">
+                  <div class="bg-light mb-5 mt-5">
+                  <div class="card-body">
+                  <div class="row">
+                  <div class="col-md-8 col-xl-8">
+                  <p class="lead text-center ">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                  </div>
+                  <div class="col-md-4 col-xl-4"> <a class="btn   btn-round btn-danger mdl-shadow--32dp mt-3 btn-lg btn-block" href="#">SHOP  NOW!</a>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                // /MARKETING LINE
+                // FEATURED PRODUCTS
+                button#paintstory.btn.btn-secondary.btn-lg(type='button' value='hide/show') Button
+                #paintdetail.articles-grid.row
+                    // ITEM
+                    .col-12.col-md-6.col-lg-6.col-xl-6
+                        p.lead.text-center.text-primary(style='margin-bottom: 0;') It&apos;s Your Painting!
+                        hr
+                        p.lead.text-center.text-primary YOUR RECENT MARKETING SLOGAN OR OFFER!
+                    // END ITEM
+                // / FEATURED PRODUCTS
+                // MARKETING LINE
+                //
+                  <div class="row">
+                  <div class="col-md-12 col-xl-12">
+                  <div class="bg-white mdl-shadow--32dp mb-5 mt-5">
+                  <div class="card-body">
+                  <div class="row">
+                  <div class="col-md-8 col-xl-8">
+                  <p class="lead text-center text-primary">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                  </div>
+                  <div class="col-md-4 col-xl-4"> <a class="btn btn-dark mt-4 btn-lg btn-block" href="#">ADD CART!</a>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                // /MARKETING LINE
+                // MAIN PRODUCTS GRID
+                #categories.container-folio.row
+                    //
+                      PROD GRID============================================================-
+                      ->
+                      <!-- PROD. ITEM
+                    .col-6.col-md-6.col-lg-4.col-xl-4
+                        .thumbnail
+                            // IMAGE CONTAINER
+                            img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=' alt='post image')
+                            // END IMAGE CONTAINER
+                            // CAPTION
+                            .caption
+                                h4.mt-3 Product title
+                                p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
+                                .row
+                            // END CAPTION
+                        // END: THUMBNAIL
+                    // PROD. ITEM
+                    // PROD. ITEM
+                    .col-6.col-md-6.col-lg-4.col-xl-4
+                        .thumbnail
+                            // IMAGE CONTAINER
+                            img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=' alt='post image')
+                            // END IMAGE CONTAINER
+                            // CAPTION
+                            .caption
+                                h4.mt-3 Product title
+                                p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
+                                .row
+                            // END CAPTION
+                        // END: THUMBNAIL
+                    // PROD. ITEM
+                    // PROD. ITEM
+                    .col-6.col-md-6.col-lg-4.col-xl-4
+                        .thumbnail
+                            // IMAGE CONTAINER
+                            img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=' alt='post image')
+                            // END IMAGE CONTAINER
+                            // CAPTION
+                            .caption
+                                h4.mt-3 Product title
+                                p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
+                                .row
+                            // END CAPTION
+                        // END: THUMBNAIL
+                    // PROD. ITEM
+                    // PROD. ITEM
+                    .col-6.col-md-6.col-lg-4.col-xl-4
+                        .thumbnail
+                            // IMAGE CONTAINER
+                            img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=' alt='post image')
+                            // END IMAGE CONTAINER
+                            // CAPTION
+                            .caption
+                                h4.mt-3 Product title
+                                p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
+                                .row
+                            // END CAPTION
+                        // END: THUMBNAIL
+                    // PROD. ITEM
+                    // PROD. ITEM
+                    .col-6.col-md-6.col-lg-4.col-xl-4
+                        .thumbnail
+                            // IMAGE CONTAINER
+                            img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=' alt='post image')
+                            // END IMAGE CONTAINER
+                            // CAPTION
+                            .caption
+                                h4.mt-3 Product title
+                                p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
+                                .row
+                            // END CAPTION
+                        // END: THUMBNAIL
+                    // PROD. ITEM
+                    // PROD. ITEM
+                    .col-6.col-md-6.col-lg-4.col-xl-4
+                        .thumbnail
+                            // IMAGE CONTAINER
+                            img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=' alt='post image')
+                            // END IMAGE CONTAINER
+                            // CAPTION
+                            .caption
+                                h4.mt-3 Product title
+                                p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
+                                .row
+                            // END CAPTION
+                        // END: THUMBNAIL
+                    // PROD. ITEM
+                    // / PROD GRID=======================================
+                // /INNER ROW
+                hr
+                // PAGINATION
+                //
+                  <ul class="pagination float-right">
+                  <li class="page-item"><a href="#" class="page-link">«</a>
+                  </li>
+                  <li class="page-item"><a href="#" class="page-link">1</a>
+                  </li>
+                  <li class="page-item"><a href="#" class="page-link">2</a>
+                  </li>
+                  <li class="page-item"><a href="#" class="page-link">3</a>
+                  </li>
+                  <li class="page-item"><a href="#" class="page-link">4</a>
+                  </li>
+                  <li class="page-item"><a href="#" class="page-link">5</a>
+                  </li>
+                  <li class="page-item"><a href="#" class="page-link">»</a>
+                  </li>
+                  </ul>
+                // /PAGINATION
+            .col-12.col-md-12.col-lg-3.col-xl-3
+                .card.bg-light
+                    .card-header.bg-primary
+                        h4.display-4 CART 033
+                    .card-body
+                        a
+                            | Hi i&apos;m EunzI
+                            br
+                            br
+                            br
+                            br
+                            | Hello
+                        .more
+                            a(href='index.html')
+                                img(src='images/binoculars2.png' style='width: 28px; height: 28px;')
+                                | See More
+                        .morebox
+                            .more_left
+                                a Hey
+                            .more_right
+                                a Hello
+                        a.btn.btn-round.btn-danger.mdl-shadow--32dp.mt-3.btn-lg.btn-block(href='#') CART ADD!
+            // /left SIDE
+            // CONTENT SIDE
+            // /CONTENT SIDE
+    // /.content
+section.mb-0.mt-0.pt-0
+    .footer.text-light
+        .bg-dark.pt-5.pb-5
+            .container
+                .row
+                    .col-xs-6.col-sm-3
+                        a(href='#')
+                            svg.d-block.mb-4(width='36' height='36' viewbox='0 0 612 612' xmlns='http://www.w3.org/2000/svg' focusable='false')
+                                title Bootstrap
+                                path(fill='currentColor' d='M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z')
+                                path(fill='currentColor' d='M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z')
+                        address.color-light-20
+                            | 1600 Amphitheatre Parkway
+                            br
+                            |                     Mountain View, CA 94043
+                        ul.list-unstyled.list-light
+                            li
+                                a(href='#') Disclaimer
+                    // /.col
+                    .col-xs-6.col-sm-3
+                        h4.my-2 Product
+                        ul.list-unstyled.list-light
+                            li
+                                a(href='#') Pricing
+                            li
+                                a(href='#') Features
+                            li
+                                a(href='#') Customers
+                            li
+                                a(href='#') Store
+                    // /.col
+                    br.hidden-sm-up(style='clear:both')
+                    .col-xs-6.col-sm-3
+                        h4.my-2 Company
+                        ul.list-unstyled.list-light
+                            li
+                                a(href='#') About Us
+                            li
+                                a(href='#') Blog
+                            li
+                                a(href='#') Careers
+                            li
+                                a(href='#') Press
+                            li
+                                a(href='#') Events
+                            li
+                                a(href='#') Contact
+                    // /.col
+                    .col-xs-6.col-sm-3
+                        h4.my-2 Connect
+                        ul.list-unstyled.list-light
+                            li
+                                a(href='#') Support
+                            li
+                                a(href='#') Social
+                            li
+                                a(href='#') Community
+                        p.color-light.mt-2 Stay up-to-date!
+                        form
+                            .form-group
+                                .input-group
+                                    input.form-control.form-control-sm(type='email' name='email' placeholder='Your Email')
+                                    span.input-group-btn
+                                        button.btn.btn-info.btn-sm(type='submit') OK
+                    // /.col
+                hr
+                .row.f-flex.justify-content-between(style='\
+        justify-content: space-between;\
+        ')
+                    .col-md-8.text-xs-center.text-left.text-secondary.my-1
+                        p.mt-2.text-light
+                            | &copy; Copyright 2017 &bull; All Rights Reserved |
+                            a(href='#') Disclaimer
+|  |
+a(href='#') Contact
+.col-md-4.text-xs-center.text-lg-right.text-secondary.my-1
+    .btn-container.mt-1.text-md-right.text-sm-center
+        .mb-1.mr-3.align-self-right.pt-0.d-inline-block
+            a.text-light.p-2.m-2.btn.btn-round.btn-rised.btn-icon.btn-primary(href='#' role='button')
+                i.fa.fa-twitter.fa-lg.color-light(aria-hidden='true')
+            a.text-light.p-2.m-2.btn.btn-round.btn-rised.btn-icon.btn-primary(href='#' role='button')
+                i.fa.fa-facebook.fa-lg(aria-hidden='true')
+            a.text-light.p-2.m-2.btn.btn-round.btn-rised.btn-icon.btn-primary(href='#' role='button')
+                i.fa.fa-linkedin.fa-lg(aria-hidden='true')
+            a.text-light.p-2.m-2.btn.btn-rised.btn-round.btn-icon.btn-primary(href='#' role='button')
+                i.fa.fa-google-plus.fa-lg(aria-hidden='true')
+// /.row
+// /.row
+// /.container
+// /.footer-overlay
+// /.footer
