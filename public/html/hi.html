@@ -161,6 +161,7 @@
     display: none;
   }
 }
+
 @media (max-width: 991px){
   #total_card {
     display: none;
@@ -173,16 +174,86 @@
     padding-top: 20px !important;
     padding-bottom: 20px !important;
   }
-  @media (max-width: 339px){
-   #mobile_buymode{
-    height: 110px;
-  }
-  #mobile_padding_height{
-    padding-top: 25px !important;
-    padding-bottom: 25px !important;
+}
+
+@media (max-width: 339px){
+ #mobile_buymode{
+  height: 110px;
+}
+#mobile_padding_height{
+  padding-top: 25px !important;
+  padding-bottom: 25px !important;
+}
+}
+
+#leftside{
+  float: left;
+  margin-right: 0px;
+  width: 62px !important;
+}
+
+#leftside .leftside_detail{
+  margin-right: 0px; margin-bottom: 5px; border: 2px solid rgb(153, 153, 153); padding: 2px;
+}
+
+#leftside .leftside_normal{
+  margin-right: 0px; margin-bottom: 5px; border: 1px solid rgb(153, 153, 153); padding: 3px;
+}
+
+#leftside > div > img{
+  width: 54px; height: 54px; margin-right: 0px;
+}
+
+#leftside .leftside_detail img{
+  width: 54px; height: 54px; margin-right: 0px;
+}
+
+@media(max-width: 768px){
+  #leftside{
+    display: none;
   }
 }
 
+@media (min-width: 1200px){
+   .carousel-inner{
+    height: 708px;
+  }
+}
+
+@media (max-width: 1199px){
+    .carousel-inner{
+    height: 600px;
+  }
+  }
+
+@media (max-width: 991px){
+  .carousel-inner{
+    height: 550px;
+  }
+}
+
+@media (max-width: 768px){
+  .carousel-inner{
+    height: 500px;
+  }
+}
+
+@media (max-width: 575px){
+  .carousel-inner{
+    height: auto;
+  }
+  #row_bottom{
+    margin-bottom: 20px;
+  }
+}
+
+
+
+/*@media (max-width: 600px){
+  .carousel-inner{
+    height: 300px;
+  }
+}*/
 </style>
 
 <header class="target-hover">
@@ -191,39 +262,47 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Paints</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link" href="#">Intro</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
-    </div>
-  </nav>
-</header>
 
-<section class="pt-5 pb-5  ">
-  <div class="container">
-    <div class="row">
+    </nav>
+  </header>
+
+  <section class="pt-5 pb-5  ">
+    <div class="container">
+      <div id="leftside">
+        <div id="leftside_detail_1" class="leftside_detail"  >
+          <img id ="select_image_1" src="http://via.placeholder.com/800x700/3F51B5/fff">
+        </div>
+        <div id="leftside_detail_2" class="leftside_normal">
+         <img  id ="select_image_2" src="http://via.placeholder.com/700x500/3F51B5/fff">
+       </div>
+     </div>
+
+     <div class="row">
       <!-- LEFT SIDE CATEGORIES-->
       <div class="col-12 col-md-12 col-lg-9 col-xl-9">
         <!-- SLIDER -->
         <div class="row">
-          <div class="col-md-12 col-xl-12">
+          <div id ="row_bottom" class="col-md-12 col-xl-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=982&amp;q=80&amp;cs=tinysrgb&amp;crop="
+                  <img id ="select_image" class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="http://via.placeholder.com/700x400/3F51B5/fff"
                   data-holder-rendered="true">
                 </div>
               </div>
@@ -425,7 +504,7 @@
                 <div class="card-body">
                   <a>Hi i'm EunzI<br><br><br><br>Hello</a>
                   <div class="more">
-                    <a href="index.html"><img src="images/binoculars2.png" style="width: 28px; height: 28px;">See More</a>
+                    <a href="index.html"><img src="../images/binoculars2.png" style="width: 28px; height: 28px;">See More</a>
                   </div>
                   <div class="morebox">
                     <div class="more_left">
