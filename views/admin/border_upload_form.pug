@@ -1,0 +1,263 @@
+doctype html
+html(lang='en')
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        // Meta, title, CSS, favicons, etc.
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title Gentelella Alela!
+        // Bootstrap
+        link(href='../../../vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+        // Font Awesome
+        link(href='../../../vendors/font-awesome/css/font-awesome.min.css', rel='stylesheet')
+        // NProgress
+        link(href='../../../vendors/nprogress/nprogress.css', rel='stylesheet')
+        // Dropzone.js
+        link(href='../../../vendors/dropzone/dist/min/dropzone.min.css', rel='stylesheet')
+        // Custom Theme Style
+        link(href='../../../build/css/custom.min.css', rel='stylesheet')
+    body.nav-md
+        .container.body
+            .main_container
+                include components/admin_side_nav_bar
+                    // page content
+                .right_col(role='main')
+                    div
+                        .page-title
+                            .title_left
+                                h3 Form Upload
+                            .title_right
+                                .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
+                                    .input-group
+                                        input.form-control(type='text', placeholder='Search for...')
+                                        span.input-group-btn
+                                            button.btn.btn-default(type='button') Go!
+                        .clearfix
+                        .row
+                            .col-md-12.col-xs-12
+                                .x_panel
+                                    .x_title
+                                        h2
+                                            | Form Basic Elements
+                                            small different form elements
+                                        ul.nav.navbar-right.panel_toolbox
+                                            li
+                                                a.collapse-link
+                                                    i.fa.fa-chevron-up
+                                            li.dropdown
+                                                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                                    i.fa.fa-wrench
+                                                ul.dropdown-menu(role='menu')
+                                                    li
+                                                        a(href='#') Settings 1
+                                                    li
+                                                        a(href='#') Settings 2
+                                            li
+                                                a.close-link
+                                                    i.fa.fa-close
+                                        .clearfix
+                                    .x_content
+                                        form.form-group(action='./upload', method="post", enctype="multipart/form-data")
+                                            .form-horizontal.form-label-left.input_mask
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='file', placeholder='사진 1', name="pic")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='file', placeholder='사진 2', name="pic")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='file', placeholder='사진 3', name="pic")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='file', placeholder='사진 4', name="pic")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='file', placeholder='사진 5', name="pic")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='file', placeholder='사진 6', name="pic")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 성씨
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input#firstname.form-control(type='text', placeholder='First name', name="firstName")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 이름
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input#lastname.form-control(type='text', placeholder='Last name', name="lastName")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 명
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='text', placeholder='Title', name="title")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 종류
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        select.select.select2_single.form-control(name="category")
+                                                            option(value="Pa") 회화
+                                                            //Painting
+                                                            option(value="Ph") 사진
+                                                            //Photo
+                                                            option(value="Dr") 드로잉
+                                                            //Drawing
+                                                            option(value="Sc") 조각
+                                                            //Sculpture
+                                                            option(value="Pr") 프린트
+                                                            //Printing
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 주제
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        select.select.select2_single.form-control(tabindex='-1', name='subject')
+                                                            option(value="Ab") 추상
+                                                            //Abstract
+                                                            option(value="La") 풍경
+                                                            //Landscape
+                                                            option(value="Pe") 인물
+                                                            //People
+                                                            option(value="Po") 초상
+                                                            //Portrait
+                                                            option(value="Vi") 상상
+                                                            //Virtualization
+                                                            option(value="An") 동물
+                                                            //Animal
+                                                            option(value="St") 정물
+                                                            //Still life
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 스타일
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        select.select.select2_single.form-control(tabindex='-1', name='style')
+                                                            option(value="Im") 인상주의
+                                                            //Impressionism
+                                                            option(value="Fi") 순수미술
+                                                            //Fine Art
+                                                            option(value="Ex") 표현주의
+                                                            //Expressionism
+                                                            option(value="Ab") 추상주의
+                                                            //Abstract
+                                                            option(value="Mo") 모더니즘
+                                                            //Modern
+                                                            option(value="Re") 현실주의
+                                                            //Realism
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 재료
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        select.select2_multiple.form-control(multiple='multiple', name='medium')
+                                                            option(value="Oi") 유화
+                                                            //Oil
+                                                            option(value="Ac") 아크릴
+                                                            //Acrylic
+                                                            option(value="Wa") 수채화
+                                                            //Watercolor
+                                                            option(value="In") 잉크
+                                                            //Ink
+                                                            option(value="Pa") 페인트
+                                                            //Paint
+                                                            option(value="Ge") 석고
+                                                            //Gesso
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 판
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        select.select2_multiple.form-control(multiple='multiple', name='material')
+                                                            option(value="Ca") 캔버스
+                                                            //Canvas
+                                                            option(value="Pa") 종이
+                                                            //Paper
+                                                            option(value="Wo") 나무
+                                                            //Wood
+                                                            option(value="Cd") 카드보드
+                                                            //Cardboard
+                                                            option(value="Ot") 기타
+                                                            //Other
+                                                            option(value="So") 부드러운 재질(뜨개실, 면, 옷감)
+                                                            //Soft (Yarn, Cotton, Fabric)
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 크기(cm)
+                                                    .col-md-1.col-sm-1.col-xs-4.text-right
+                                                        label.control-label.text-right 세로
+                                                    .col-md-2.col-sm-2.col-xs-12
+                                                        input.form-control(type='text', placeholder='Height', name="height")
+                                                    .col-md-1.col-sm-1.col-xs-4.text-right
+                                                        label.control-label.text-right 가로
+                                                    .col-md-2.col-sm-2.col-xs-12
+                                                        input.form-control(type='text', placeholder='Width', name="width")
+                                                    .col-md-1.col-sm-1.col-xs-4.text-right
+                                                        label.control-label.float-right 두께
+                                                    .col-md-2.col-sm-2.col-xs-8
+                                                        input.form-control(type='text', placeholder='Depth', name="depth")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 가격
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='text', placeholder='Price', name='price')
+                                                .control-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 키워드
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input#tags_1.tags.form-control(type='text', name='keywords')
+                                                        #suggestions-container(style='position: relative; float: left; width: 250px; margin: 10px;')
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작가 노트&작품 설명
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        textarea.resizable_textarea.form-control(placeholder='Description', name='description')
+                                                .ln_solid
+                                                .form-group
+                                                    .col-md-9.col-sm-9.col-xs-12.col-md-offset-9
+                                                        button.btn.btn-primary(type='reset') Reset
+                                                        button#submit-all.btn.btn-success(type='submit') Submit
+                                                .ln_solid
+                                        br
+                                        br
+                                        br
+                                        br
+
+                // /page content
+                // footer content
+                footer
+                    .pull-right
+                        | Gentelella - Bootstrap Admin Template by
+                        a(href='https://colorlib.com') Colorlib
+                    .clearfix
+                // /footer content
+                // jQuery
+                script(src='../../../vendors/jquery/dist/jquery.min.js')
+                // Bootstrap
+                script(src='../../../vendors/bootstrap/dist/js/bootstrap.min.js')
+                // FastClick
+                script(src='../../../vendors/fastclick/lib/fastclick.js')
+                // NProgress
+                script(src='../../../vendors/nprogress/nprogress.js')
+                // Dropzone.js
+                script(src='../../../vendors/dropzone/dist/min/dropzone.min.js')
+                // Custom Theme Scripts
+                script(src='../../../build/js/custom.min.js')
+                // bootstrap-progressbar
+                script(src='../../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')
+                // iCheck
+                script(src='../../../vendors/iCheck/icheck.min.js')
+                // bootstrap-daterangepicker
+                script(src='../../../vendors/moment/min/moment.min.js')
+                script(src='../../../vendors/bootstrap-daterangepicker/daterangepicker.js')
+                // bootstrap-wysiwyg
+                script(src='../../../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')
+                script(src='../../../vendors/jquery.hotkeys/jquery.hotkeys.js')
+                script(src='../../../vendors/google-code-prettify/src/prettify.js')
+                // jQuery Tags Input
+                script(src='../../../vendors/jquery.tagsinput/src/jquery.tagsinput.js')
+                // Switchery
+                script(src='../../../vendors/switchery/dist/switchery.min.js')
+                // Select2
+                script(src='../../../vendors/select2/dist/js/select2.full.min.js')
+                // Parsley
+                script(src='../../../vendors/parsleyjs/dist/parsley.min.js')
+                // Autosize
+                script(src='../../../vendors/autosize/dist/autosize.min.js')
+                // jQuery autocomplete
+                script(src='../../../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')
+                // starrr
+                script(src='../../../vendors/starrr/dist/starrr.js')
+                // Custom Theme Scripts
+                script(src='../../../build/js/custom.min.js')

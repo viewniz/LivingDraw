@@ -10,29 +10,34 @@ let Schema = mongoose.Schema;
 
 let BorderSchema = new Schema({
     image:[{
-        image_name:{type:String,required: true},
-        image_url:{type:String,required: true},   //서버상 url
-        image_size:{type:String,required:true},   //사이즈 byte 단위
-        image_width:{type:String,required:true},  //너비 픽셀
-        image_height:{type:String,required:true}  //높이 픽셀
+        picOriginalName:{type:String,required: true}, //파일 기존 이름
+        picEncoding:{type:String,required: true},     //인코딩방법
+        picMimetype:{type:String,required:true},      //파일 형식
+        picDestination:{type:String,required:true},  //파일 경로
+        picFilename:{type:String,required:true},      //파일 이름
+        picPath:{type:String,required:true},          //파일 위치
+        picSize:{type:String,required:true}           //파일 크기 byte 단위
     }],
-    artist_first:String,
-    artist_last:String,
-    paintName:String,
+    firstName:String,
+    lastName:String,
+    title:String,
     category:String,
-    width:Number,
-    height:Number,
-    depth:Number,
+    subject:String,
+    style:String,
+    medium:[{type:String,required: true}],
+    material:[{type:String,required: true}],
+    height:{type:Number,required: true},
+    width:{type:Number,required: true},
+    depth:{type:Number,required: true},
     price:{type:Number,required: true},
+    keyWords:[{type:String}],
+    description:String,
     deliveryHow:String,
     submit_date:{ type: Date, default: Date.now()},
     view:{ type: Number, default: 0},
     like:{type: Number, default: 0},
-    description:String,
-    keyWord:[{
-        tag:String
-    }],
-    is_selling:{type:Boolean, default: false}
+    is_selling:{type:Boolean, default: false},
+    uploadId:String
 });
 
 module.exports = mongoose.model('border', BorderSchema);
