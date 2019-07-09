@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Livig Draw</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://demo.bootstraptor.com/starter-kit-pro/assets/css/theme/style.css">
+  <link rel="stylesheet" href="https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="../js/hooni.js"></script>
+  <link rel="stylesheet" href="../css/product_style.css"/>
+  <!-- Plugins -->
+</head>
+<body>
+
+<header class="target-hover">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Paints</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Intro</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+    </nav>
+  </header>
+
+  <section class="pt-5 pb-5  ">
+    <div class="container">
+      <div id="leftside">
+        <div id="leftside_detail_1" class="leftside_detail"  >
+          <img id ="select_image_1" src="http://via.placeholder.com/800x700/3F51B5/fff">
+        </div>
+        <div id="leftside_detail_2" class="leftside_normal">
+         <img  id ="select_image_2" src="http://via.placeholder.com/700x500/3F51B5/fff">
+       </div>
+     </div>
+
+     <div class="row">
+      <!-- LEFT SIDE CATEGORIES-->
+      <div class="col-12 col-md-12 col-lg-9 col-xl-9">
+        <!-- SLIDER -->
+        <div class="row">
+          <div id ="row_bottom" class="col-md-12 col-xl-12">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img id ="select_image" class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="http://via.placeholder.com/700x400/3F51B5/fff"
+                  data-holder-rendered="true">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / SLIDER -->
+        <hr>
+        <!-- MARKETING LINE-->
+<!--         <div class="row">
+          <div class="col-md-12 col-xl-12">
+            <div class="bg-light mb-5 mt-5">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8 col-xl-8">
+                    <p class="lead text-center ">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                  </div>
+                  <div class="col-md-4 col-xl-4"> <a class="btn   btn-round btn-danger mdl-shadow--32dp mt-3 btn-lg btn-block" href="#">SHOP  NOW!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- /MARKETING LINE-->
+        <!-- FEATURED PRODUCTS -->
+        <button id="paintstory" type="button" class="btn btn-secondary btn-lg"  value='hide/show' style="display: block; width: 100%; background-color: rgb(52, 152, 219); border: none;">
+          작품 상세 설명
+        </button>
+        <div id="paintdetail" class="articles-grid row">
+          <!-- ITEM -->
+          <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+            <p class="lead text-center text-primary" style="margin-bottom: 0;">It's Your Painting!</p>
+            <hr>
+            <p class="lead text-center text-primary">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+          </div>
+          <!-- END ITEM -->
+        </div>
+        <!-- / FEATURED PRODUCTS -->
+        <!-- MARKETING LINE-->
+<!--         <div class="row">
+          <div class="col-md-12 col-xl-12">
+            <div class="bg-white mdl-shadow--32dp mb-5 mt-5">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8 col-xl-8">
+                    <p class="lead text-center text-primary">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                  </div>
+                  <div class="col-md-4 col-xl-4"> <a class="btn btn-dark mt-4 btn-lg btn-block" href="#">ADD CART!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- /MARKETING LINE-->
+        <!-- MAIN PRODUCTS GRID-->
+        <div id="categories"class="container-folio row">
+              <!-- PROD GRID============================================================-
+                ->
+                <!-- PROD. ITEM -->
+                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+                  <div class="thumbnail">
+                    <!-- IMAGE CONTAINER-->
+                    <img src="https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=982&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="post image">
+                    <!--END IMAGE CONTAINER-->
+                    <!-- CAPTION -->
+                    <div class="caption">
+                      <h4 class="mt-3">Product title</h4>
+                      <p class="lead text-center text-primary" style="font-size: 14px;">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                      <div class="row">
+                      </div>
+                    </div>
+                    <!--END CAPTION -->
+                  </div>
+                  <!-- END: THUMBNAIL -->
+                </div>
+                <!-- PROD. ITEM -->
+                <!-- PROD. ITEM -->
+                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+                  <div class="thumbnail">
+                    <!-- IMAGE CONTAINER-->
+                    <img src="https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=982&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="post image">
+                    <!--END IMAGE CONTAINER-->
+                    <!-- CAPTION -->
+                    <div class="caption">
+                      <h4 class="mt-3">Product title</h4>
+                      <p class="lead text-center text-primary" style="font-size: 14px;">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                      <div class="row">
+                      </div>
+                    </div>
+                    <!--END CAPTION -->
+                  </div>
+                  <!-- END: THUMBNAIL -->
+                </div>
+                <!-- PROD. ITEM -->
+                <!-- PROD. ITEM -->
+                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+                  <div class="thumbnail">
+                    <!-- IMAGE CONTAINER-->
+                    <img src="https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=982&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="post image">
+                    <!--END IMAGE CONTAINER-->
+                    <!-- CAPTION -->
+                    <div class="caption">
+                      <h4 class="mt-3">Product title</h4>
+                      <p class="lead text-center text-primary" style="font-size: 14px;">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                      <div class="row">
+                      </div>
+                    </div>
+                    <!--END CAPTION -->
+                  </div>
+                  <!-- END: THUMBNAIL -->
+                </div>
+                <!-- PROD. ITEM -->
+                <!-- PROD. ITEM -->
+                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+                  <div class="thumbnail">
+                    <!-- IMAGE CONTAINER-->
+                    <img src="https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=982&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="post image">
+                    <!--END IMAGE CONTAINER-->
+                    <!-- CAPTION -->
+                    <div class="caption">
+                      <h4 class="mt-3">Product title</h4>
+                      <p class="lead text-center text-primary" style="font-size: 14px;">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                      <div class="row">
+                      </div>
+                    </div>
+                    <!--END CAPTION -->
+                  </div>
+                  <!-- END: THUMBNAIL -->
+                </div>
+                <!-- PROD. ITEM -->
+                <!-- PROD. ITEM -->
+                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+                  <div class="thumbnail">
+                    <!-- IMAGE CONTAINER-->
+                    <img src="https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=982&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="post image">
+                    <!--END IMAGE CONTAINER-->
+                    <!-- CAPTION -->
+                    <div class="caption">
+                      <h4 class="mt-3">Product title</h4>
+                      <p class="lead text-center text-primary" style="font-size: 14px;">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                      <div class="row">
+                      </div>
+                    </div>
+                    <!--END CAPTION -->
+                  </div>
+                  <!-- END: THUMBNAIL -->
+                </div>
+                <!-- PROD. ITEM -->
+                <!-- PROD. ITEM -->
+                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+                  <div class="thumbnail">
+                    <!-- IMAGE CONTAINER-->
+                    <img src="https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=982&amp;q=80&amp;cs=tinysrgb&amp;crop=" alt="post image">
+                    <!--END IMAGE CONTAINER-->
+                    <!-- CAPTION -->
+                    <div class="caption">
+                      <h4 class="mt-3">Product title</h4>
+                      <p class="lead text-center text-primary" style="font-size: 14px;">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
+                      <div class="row">
+                      </div>
+                    </div>
+                    <!--END CAPTION -->
+                  </div>
+                  <!-- END: THUMBNAIL -->
+                </div>
+                <!-- PROD. ITEM -->
+                <!-- / PROD GRID=======================================-->
+
+              </div>
+
+              <!-- /INNER ROW-->
+              <hr>
+              <!-- PAGINATION-->
+<!--               <ul class="pagination float-right">
+                <li class="page-item"><a href="#" class="page-link">«</a>
+                </li>
+                <li class="page-item"><a href="#" class="page-link">1</a>
+                </li>
+                <li class="page-item"><a href="#" class="page-link">2</a>
+                </li>
+                <li class="page-item"><a href="#" class="page-link">3</a>
+                </li>
+                <li class="page-item"><a href="#" class="page-link">4</a>
+                </li>
+                <li class="page-item"><a href="#" class="page-link">5</a>
+                </li>
+                <li class="page-item"><a href="#" class="page-link">»</a>
+                </li>
+              </ul> -->
+              <!-- /PAGINATION-->
+            </div>
+            <div id ="total_card" class="col-12 col-md-12 col-lg-3 col-xl-3">
+              <div class="card bg-light">
+                <div class="card-header bg-primary">
+                  <h4 class="display-4">CART 033</h4>
+                </div>
+                <div class="card-body">
+                  <a>Hi i'm EunzI<br><br><br><br>Hello</a>
+                  <div class="more">
+                    <a href="index.html"><img src="../images/binoculars2.png" style="width: 28px; height: 28px;">See More</a>
+                  </div>
+                  <div class="morebox">
+                    <div class="more_left">
+                      <a>Hey</a>
+                    </div>
+                    <div class="more_right">
+                      <a>Hello</a>
+                    </div>
+                  </div>
+                  <a id ="addcart" class="btn btn-round btn-danger mdl-shadow--32dp mt-3 btn-lg btn-block" data-target="#my80sizeCenterModal" data-toggle="modal" >ADD CART!</a>
+                </div>
+              </div>
+            </div>
+            <!-- /left SIDE-->
+            <!-- CONTENT SIDE-->
+
+            <!-- /CONTENT SIDE-->
+          </div>
+        </div>
+
+        <!-- /.content -->
+      </section>
+
+      <div id="mobile_buymode" style=" border-top: 2px solid #e7e7e7; bottom:0;  width: 100%; position: fixed; background-color: white;">
+        <div id="mobile_padding_height">
+          <div style="display: table; padding-right: 24px !important; padding-left: 24px !important; width: 100%;">
+            <div style="margin-top:0; margin-bottom:0; margin-left:0; margin-right:0; box-sizing: border-box;">
+              <div style="display: table-cell !important; width:100%; vertical-align: middle;">
+                <div style="word-wrap: break-word !important; box-sizing: border-box; word-break: break-all; border-spacing: 0px !important; font-size: 14px;">
+                  Hellasdfasdfsdafdasfdsfasdfdaso
+                </div>
+              </div>
+              <div style="display: table-cell !important; vertical-align: middle !important; word-break: keep-all;">
+                <div style="margin-left: 8px !important;">
+                  <button type="button" class="btn btn-danger" data-target="#my80sizeCenterModal" data-toggle="modal" style="height: 46px; width: 160px !important;">ADD CART!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!--       <div class="row">
+        <div class="modal modal-center fade" id="modal" tabindex="-1" aria-labelledby="my80sizeCenterModalLabel">
+          <div class="modal-dialog modal-80size modal-center" role="document">
+            <div class="modal-content modal-80size">
+              <div class="modal-header">
+                Test
+                <button class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body" style="text-align: center;">
+                Test.<br>
+                Test.<br>
+                Test.<br>
+                Test.<br>
+                Test.<br>
+                Test.<br>
+                Test.<br>
+                Test.<br>
+                Test.<br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="modal modal-center fade" id="my80sizeCenterModal" tabindex="-1" role="dialog" aria-labelledby="my80sizeCenterModalLabel">
+        <div class="modal-dialog modal-80size modal-center" role="document">
+          <div class="modal-content modal-80size">
+            <div class="modal-header">
+             <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           </div>
+           <div class="modal-body">
+            Modal 내용
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  </html>

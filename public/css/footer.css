@@ -249,7 +249,7 @@ dl dd {
 	margin: 25px 0 2em 0;
 	padding: 0;
 	text-align: center;
-		color:#333;
+	color:#333;
 }
 
 /*#footer .copyright p{
@@ -270,4 +270,41 @@ dl dd {
 		padding: 3em 0 1em 0;
 	}
 
+}
+
+a{
+	color: #343a40;
+}
+h2 {
+	display: block;
+	font-size: 1.5em;
+	margin-block-start: 0.83em;
+	margin-block-end: 0.83em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+ul.icons li {
+	display: inline-block;
+	text-align: center;
+	padding-left: 0;
+	padding-right: 1em;
+}
+.inner{
+	font-size: 0.8em;
+}
+ul.icons li a {
+	display: block;
+	border-radius: 100%;
+	margin: 0;
+	padding: 0.5em;
+	border: 1px solid #6c757d;
+	color: #6c757d;
 }

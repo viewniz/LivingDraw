@@ -1,0 +1,284 @@
+    .navbar{
+     border-bottom:2px solid #e7e7e7;
+   }
+
+   .bg-light {
+    background-color: #ffffff !important;
+  }
+
+  a{
+    color: #343a40;
+  }
+
+  .card-header:first-child {
+    border-radius: 0;
+  }
+
+  .bg-primary {
+    background-color: #e7e7e7 !important;
+  }
+  .card:after{
+    background-color:#343a40;
+  }
+  h4{
+    color:#343a40;
+  }
+  .card-body{
+    min-height: 300px;
+  }
+
+  .more{
+    width: 100%;
+    text-align: center;
+    background: #e7e7e7;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .more a{
+    margin:0;
+  }
+
+  .more a:hover{
+    text-decoration: none !important
+  }
+
+  img{
+    margin-right: 10px;
+  }
+
+  .morebox{
+
+    width: 100%;
+    
+    height: 65px;
+  }
+  .morebox > .more_left{
+    width: 49%;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #e7e7e7; 
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+  .morebox > .more_right{
+    width: 49%;
+    float: right;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #e7e7e7;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .mt-3, .my-3 {
+    margin-top: 1.5em !important;
+  }
+
+  @media (min-width: 1200px){
+    .col-xl-6 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media (min-width: 992px){
+    .col-lg-6 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  @media (min-width: 768px){
+    .col-lg-6 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  .text-center {
+    text-align: left !important;
+  }
+
+  .text-primary {
+    color: black !important;
+  }
+
+  @media(min-width: 1200px){
+    p.lead {
+      font-size: 17px;
+    }
+  }
+  @media (max-width: 1200px){
+    p.lead {
+      font-size: calc(11px + 0.53333vw);
+    }
+  }
+
+  p.lead{
+    margin-top: 1em;
+    font-weight: 450;
+  }
+
+  #paintdetail{
+    margin-left: 0;
+    margin-right: 0;
+    border: 1px solid #e7e7e7;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: none;
+  }
+
+  #categories{
+    margin-top: 200px;
+  }
+
+  @media(min-width: 992px){
+   #mobile_buymode{
+    display: none;
+  }
+}
+
+@media (max-width: 991px){
+  #total_card {
+    display: none;
+  }
+  #mobile_buymode{
+    display: block;
+    height: 90px;
+  }
+  #mobile_padding_height{
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 339px){
+ #mobile_buymode{
+  height: 110px;
+}
+#mobile_padding_height{
+  padding-top: 25px !important;
+  padding-bottom: 25px !important;
+}
+}
+
+#leftside{
+  float: left;
+  margin-right: 0px;
+  width: 62px !important;
+}
+
+#leftside .leftside_detail{
+  margin-right: 0px; margin-bottom: 5px; border: 2px solid rgb(153, 153, 153); padding: 2px;
+}
+
+#leftside .leftside_normal{
+  margin-right: 0px; margin-bottom: 5px; border: 1px solid rgb(153, 153, 153); padding: 3px;
+}
+
+#leftside > div > img{
+  width: 54px; height: 54px; margin-right: 0px;
+}
+
+#leftside .leftside_detail img{
+  width: 54px; height: 54px; margin-right: 0px;
+}
+
+@media(max-width: 768px){
+  #leftside{
+    display: none;
+  }
+}
+
+@media (min-width: 1200px){
+ .carousel-inner{
+  height: 708px;
+}
+}
+
+@media (max-width: 1199px){
+  .carousel-inner{
+    height: 600px;
+  }
+}
+
+@media (max-width: 991px){
+  .carousel-inner{
+    height: 550px;
+  }
+}
+
+@media (max-width: 768px){
+  .carousel-inner{
+    height: 500px;
+  }
+}
+
+@media (max-width: 575px){
+  .carousel-inner{
+    height: auto;
+  }
+  #row_bottom{
+    margin-bottom: 20px;
+  }
+}
+
+#addcart{
+  color: #ffffff;
+}
+.modal {
+  text-align: center;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-dialog.modal-80size {
+  width: 80%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content.modal-80size {
+  height: auto;
+  min-height: 80%;
+}
+
+@media (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+@media(max-width: 765px){
+
+  .modal-dialog.modal-80size {
+    width: 70%;
+    height: 70%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal-content.modal-80size {
+    height: auto;
+    min-height: 70%;
+  }
+
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
