@@ -1,4 +1,7 @@
 
+/.idea/workspace.xml
+/.idea/
+
 # Created by https://www.gitignore.io/api/node,webstorm
 # Edit at https://www.gitignore.io/?templates=node,webstorm
 
@@ -174,3 +177,5 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/node,webstorm
+
+.idea/workspace.xml
