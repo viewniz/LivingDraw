@@ -1,10 +1,17 @@
-var express = require('express');
-var router = express.Router();
-var controller=require('./controller');
+let express = require('express');
+let router = express.Router();
+let controller=require('./controller');
+let multer=require('multer');
 
-
-
-
+let Picture_storage=multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null,'./uploads/'+file.fieldname);
+    },
+    filename: function (req, file, cb) {
+        cb(null,Date.now()+"!"+file.originalname);
+    }
+});
+let uploadPicture=multer({storage:Picture_storage});
 
 
 /* GET users listing. */

@@ -57,7 +57,7 @@ html
             .container
                 #leftside
                     #leftside_detail_1.leftside_detail
-                        img#select_image_1(src='http://via.placeholder.com/800x700/3F51B5/fff')
+                        img#select_image_1(src='../../../pic/'+border.image[0].picFilename)
                     |
                     #leftside_detail_2.leftside_normal
                         img#select_image_2(src='http://via.placeholder.com/700x500/3F51B5/fff')
@@ -71,7 +71,7 @@ html
                                 #carouselExampleIndicators.carousel.slide(data-ride='carousel')
                                     .carousel-inner
                                         .carousel-item.active
-                                            img#select_image.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide', alt='First slide [800x400]', src='http://via.placeholder.com/700x400/3F51B5/fff', data-holder-rendered='true')
+                                            img#select_image.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide', alt='First slide [800x400]', src='../../../pic/'+border.image[0].picFilename, data-holder-rendered='true')
                         // / SLIDER
                         hr
                         // MARKETING LINE
@@ -251,28 +251,27 @@ html
                     #total_card.col-12.col-md-12.col-lg-3.col-xl-3
                         .card.bg-light
                             .card-header.bg-primary
-                                h4.display-4 CART 033
+                                h4.display-4= border.title
                             |
                             .card-body
-                                a
-                                    | Hi i&apos;m EunzI
-                                    br
-                                    br
-                                    br
-                                    br
-                                    | Hello
+                                a= border.description
                                 |
                                 .more
                                     a(href='index.html')
-                                        img(src='../images/binoculars2.png', style='width: 28px; height: 28px;')
+                                        img(src='../../../images/binoculars2.png', style='width: 28px; height: 28px;')
                                         | See More
                                 |
                                 .morebox
                                     .more_left
-                                        a Hey
+                                        a View
+                                        |
+                                        br
+                                        a= border.view
                                     |
                                     .more_right
-                                        a Hello
+                                        a Like
+                                        br
+                                        a= border.like
                                 |
                                 a#addcart.btn.btn-round.btn-danger.mdl-shadow--32dp.mt-3.btn-lg.btn-block(data-target='#my80sizeCenterModal', data-toggle='modal') ADD CART!
                     // /left SIDE
