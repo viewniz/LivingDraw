@@ -63,7 +63,9 @@ html(lang='en')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='file', placeholder='사진 1', name="pic", value=border.pic)
+                                                        if(border.image[0])
+                                                            span.form-control
+                                                                a(href='javascript:'+border.image[0].picPath+'') {파일이름}
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
@@ -87,122 +89,123 @@ html(lang='en')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 성씨
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input#firstname.form-control(type='text', placeholder='First name', name="firstName")
+                                                        input#firstname.form-control(type='text', placeholder='First name', name="firstName", value=border.firstName)
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 이름
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input#lastname.form-control(type='text', placeholder='Last name', name="lastName")
+                                                        input#lastname.form-control(type='text', placeholder='Last name', name="lastName", value=border.lastName)
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 명
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='text', placeholder='Title', name="title")
+                                                        input.form-control(type='text', placeholder='Title', name="title", value=border.title)
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 종류
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select.select2_single.form-control(name="category")
-                                                            option(value="Pa") 회화
+                                                            option(value="Pa", selected=(border.category === "Pa")) 회화
                                                             //Painting
-                                                            option(value="Ph") 사진
+                                                            option(value="Ph", selected=(border.category === "Ph")) 사진
                                                             //Photo
-                                                            option(value="Dr") 드로잉
+                                                            option(value="Dr", selected=(border.category === "Dr")) 드로잉
                                                             //Drawing
-                                                            option(value="Sc") 조각
+                                                            option(value="Sc", selected=(border.category === "Sc")) 조각
                                                             //Sculpture
-                                                            option(value="Pr") 프린트
+                                                            option(value="Pr", selected=(border.category === "Pr")) 프린트
                                                             //Printing
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 주제
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select.select2_single.form-control(tabindex='-1', name='subject')
-                                                            option(value="Ab") 추상
+                                                            option(value="Ab", selected=(border.subject === "Ab")) 추상
                                                             //Abstract
-                                                            option(value="La") 풍경
+                                                            option(value="La", selected=(border.subject === "La")) 풍경
                                                             //Landscape
-                                                            option(value="Pe") 인물
+                                                            option(value="Pe", selected=(border.subject === "Pe")) 인물
                                                             //People
-                                                            option(value="Po") 초상
+                                                            option(value="Po", selected=(border.subject === "Po")) 초상
                                                             //Portrait
-                                                            option(value="Vi") 상상
+                                                            option(value="Vi", selected=(border.subject === "Vi")) 상상
                                                             //Virtualization
-                                                            option(value="An") 동물
+                                                            option(value="An", selected=(border.subject === "An")) 동물
                                                             //Animal
-                                                            option(value="St") 정물
+                                                            option(value="St", selected=(border.subject === "St")) 정물
                                                             //Still life
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 스타일
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select.select2_single.form-control(tabindex='-1', name='style')
-                                                            option(value="Im") 인상주의
+                                                            option(value="Im", selected=(border.style === "Im")) 인상주의
                                                             //Impressionism
-                                                            option(value="Fi") 순수미술
+                                                            option(value="Fi", selected=(border.style === "Fi")) 순수미술
                                                             //Fine Art
-                                                            option(value="Ex") 표현주의
+                                                            option(value="Ex", selected=(border.style === "Ex")) 표현주의
                                                             //Expressionism
-                                                            option(value="Ab") 추상주의
+                                                            option(value="Ab", selected=(border.style === "Ab")) 추상주의
                                                             //Abstract
-                                                            option(value="Mo") 모더니즘
+                                                            option(value="Mo", selected=(border.style === "Mo")) 모더니즘
                                                             //Modern
-                                                            option(value="Re") 현실주의
+                                                            option(value="Re", selected=(border.style === "Re")) 현실주의
                                                             //Realism
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 재료
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select2_multiple.form-control(multiple='multiple', name='medium')
-                                                            option(value="Oi") 유채
+                                                            option(value="Oi", selected=(border.medium.indexOf("Oi")!==-1)) 유채
                                                             //Oil
-                                                            option(value="Ac") 아크릴
+                                                            option(value="Ac", selected=(border.medium.indexOf("Ac")!==-1)) 아크릴
                                                             //Acrylic
-                                                            option(value="Wa") 수채
+                                                            option(value="Wa", selected=(border.medium.indexOf("Wa")!==-1)) 수채
                                                             //Watercolor
-                                                            option(value="In") 잉크
+                                                            option(value="In", selected=(border.medium.indexOf("In")!==-1)) 잉크
                                                             //Ink
-                                                            option(value="Pa") 페인트
+                                                            option(value="Pa", selected=(border.medium.indexOf("Pa")!==-1)) 페인트
                                                             //Paint
-                                                            option(value="Ge") 석고
+                                                            option(value="Ge", selected=(border.medium.indexOf("Ge")!==-1)) 석고
                                                             //Gesso
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 판
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select2_multiple.form-control(multiple='multiple', name='material')
-                                                            option(value="Ca") 캔버스
+                                                            option(value="Ca", selected=(border.material.indexOf("Ca")!==-1)) 캔버스
                                                             //Canvas
-                                                            option(value="Pa") 종이
+                                                            option(value="Pa", selected=(border.material.indexOf("Pa")!==-1)) 종이
                                                             //Paper
-                                                            option(value="Wo") 나무
+                                                            option(value="Wo", selected=(border.material.indexOf("Wo")!==-1)) 나무
                                                             //Wood
-                                                            option(value="Cd") 카드보드
+                                                            option(value="Cd", selected=(border.material.indexOf("Cd")!==-1)) 카드보드
                                                             //Cardboard
-                                                            option(value="Ot") 기타
+                                                            option(value="Ot", selected=(border.material.indexOf("Ot")!==-1)) 기타
                                                             //Other
-                                                            option(value="So") 부드러운 재질(뜨개실, 면, 옷감)
+                                                            option(value="So", selected=(border.material.indexOf("So")!==-1)) 부드러운 재질(뜨개실, 면, 옷감)
                                                             //Soft (Yarn, Cotton, Fabric)
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 크기(cm)
                                                     .col-md-1.col-sm-1.col-xs-4.text-right
                                                         label.control-label.text-right 세로
                                                     .col-md-2.col-sm-2.col-xs-12
-                                                        input.form-control(type='text', placeholder='Height', name="height")
+                                                        input.form-control(type='text', placeholder='Height', name="height", value=border.height)
                                                     .col-md-1.col-sm-1.col-xs-4.text-right
                                                         label.control-label.text-right 가로
                                                     .col-md-2.col-sm-2.col-xs-12
-                                                        input.form-control(type='text', placeholder='Width', name="width")
+                                                        input.form-control(type='text', placeholder='Width', name="width", value=border.width)
                                                     .col-md-1.col-sm-1.col-xs-4.text-right
                                                         label.control-label.float-right 두께
                                                     .col-md-2.col-sm-2.col-xs-8
-                                                        input.form-control(type='text', placeholder='Depth', name="depth")
+                                                        input.form-control(type='text', placeholder='Depth', name="depth", value=border.depth)
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 가격
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='text', placeholder='Price', name='price')
+                                                        input.form-control(type='text', placeholder='Price', name='price', value=border.price)
                                                 .control-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 키워드
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input#tags_1.tags.form-control(type='text', name='keywords')
+                                                        input#tags_1.tags.form-control(type='text', name='keywords', value=border.keyWord)
                                                         #suggestions-container(style='position: relative; float: left; width: 250px; margin: 10px;')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가 노트&작품 설명
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         textarea.resizable_textarea.form-control(placeholder='Description', name='description')
+                                                            =border.description
                                                 .ln_solid
                                                 .form-group
                                                     .col-md-9.col-sm-9.col-xs-12.col-md-offset-9

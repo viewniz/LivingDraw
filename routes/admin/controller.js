@@ -38,6 +38,13 @@ exports.admin_border_update= function(req, res, next) {
     let borderNum=req.params.id;
     Border.findOne({_id:borderNum},function (err, border) {
         if(err) console.log(err);
+        border.keyWord="";
+        for(let i=0;i<border.keyWords.length;i++)
+        {
+            border.keyWord+=border.keyWords[i]+",";
+        }
+        console.log(border.keyWord);
+        console.log(border.keyWords);
         res.render('admin/border_update_form',{border:border});
     });
 
@@ -107,30 +114,23 @@ exports.admin_border_delete_post= function(req, res, next) {
 exports.admin_border_is_selling_change= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
-        console.log(req.body.id);
         if(!result.is_selling)
         {
-            console.log("sex");
             Border.updateOne({ _id: req.body.id }, { $set: { is_selling: true } }, function (err, result) {
                 if (err) {
                     console.error('UpdateOne Error ', err);
-                    return;
+                    res.send('clear');
                 }
-                console.log('UpdateOne 성공 ', result);
             });
         }
         else
         {
-            console.log("sex");
             Border.updateOne({ _id: req.body.id }, { $set: { is_selling: false } }, function (err, result) {
                 if (err) {
                     console.error('UpdateOne Error ', err);
-                    return;
+                    res.send('clear');
                 }
-                console.log('UpdateOne 성공 ', result);
             });
         }
-
-        res.send('clear');
     });
 };
