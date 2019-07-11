@@ -8,15 +8,16 @@ html(lang='en')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         title Gentelella Alela!
         // Bootstrap
-        link(href='../../../vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+        link(href='/vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
         // Font Awesome
-        link(href='../../../vendors/font-awesome/css/font-awesome.min.css', rel='stylesheet')
+        link(href='/vendors/font-awesome/css/font-awesome.min.css', rel='stylesheet')
         // NProgress
-        link(href='../../../vendors/nprogress/nprogress.css', rel='stylesheet')
+        link(href='/vendors/nprogress/nprogress.css', rel='stylesheet')
         // Dropzone.js
-        link(href='../../../vendors/dropzone/dist/min/dropzone.min.css', rel='stylesheet')
+        link(href='/vendors/dropzone/dist/min/dropzone.min.css', rel='stylesheet')
         // Custom Theme Style
-        link(href='../../../build/css/custom.min.css', rel='stylesheet')
+        link(href='/build/css/custom.min.css', rel='stylesheet')
+        link(href='/css/adminBorderUpdate.css', rel='stylesheet')
     body.nav-md
         .container.body
             .main_container
@@ -26,7 +27,7 @@ html(lang='en')
                     div
                         .page-title
                             .title_left
-                                h3 Form Upload
+                                h3 Upload Form
                             .title_right
                                 .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
                                     .input-group
@@ -39,8 +40,7 @@ html(lang='en')
                                 .x_panel
                                     .x_title
                                         h2
-                                            | Form Basic Elements
-                                            small different form elements
+                                            | 작품 등록
                                         ul.nav.navbar-right.panel_toolbox
                                             li
                                                 a.collapse-link
@@ -64,28 +64,38 @@ html(lang='en')
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         input.form-control.imgInput(type='file', placeholder='사진 1', name="pic")
-                                                        .img_wrap
-                                                            img#image_section(src='#', alt='your image')
+                                                        .img_wrap(style='display:none;')
+                                                            img(src='#', alt='your image')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         input.form-control(type='file', placeholder='사진 2', name="pic")
+                                                        .img_wrap(style='display:none;')
+                                                            img(src='#', alt='your image')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         input.form-control(type='file', placeholder='사진 3', name="pic")
+                                                        .img_wrap(style='display:none;')
+                                                            img(src='#', alt='your image')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         input.form-control(type='file', placeholder='사진 4', name="pic")
+                                                        .img_wrap(style='display:none;')
+                                                            img(src='#', alt='your image')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         input.form-control(type='file', placeholder='사진 5', name="pic")
+                                                        .img_wrap(style='display:none;')
+                                                            img(src='#', alt='your image')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         input.form-control(type='file', placeholder='사진 6', name="pic")
+                                                        .img_wrap(style='display:none;')
+                                                            img(src='#', alt='your image')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 성씨
                                                     .col-md-9.col-sm-9.col-xs-12
@@ -208,6 +218,7 @@ html(lang='en')
                                                 .ln_solid
                                                 .form-group
                                                     .col-md-9.col-sm-9.col-xs-12.col-md-offset-9
+                                                        button.btn.btn-primary(type='button', onclick='location.href = "../"') Back
                                                         button.btn.btn-primary(type='reset') Reset
                                                         button#submit-all.btn.btn-success(type='submit') Submit
                                                 .ln_solid
@@ -225,42 +236,22 @@ html(lang='en')
                     .clearfix
                 // /footer content
                 // jQuery
-                script(src='../../../js/adminBorderUpdate.js')
-                script(src='../../../vendors/jquery/dist/jquery.min.js')
+
+                script(src='/vendors/jquery/dist/jquery.min.js')
                 // Bootstrap
-                script(src='../../../vendors/bootstrap/dist/js/bootstrap.min.js')
+                script(src='/vendors/bootstrap/dist/js/bootstrap.min.js')
                 // FastClick
-                script(src='../../../vendors/fastclick/lib/fastclick.js')
-                // NProgress
-                script(src='../../../vendors/nprogress/nprogress.js')
-                // Dropzone.js
-                script(src='../../../vendors/dropzone/dist/min/dropzone.min.js')
-                // Custom Theme Scripts
-                script(src='../../../build/js/custom.min.js')
-                // bootstrap-progressbar
-                script(src='../../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')
-                // iCheck
-                script(src='../../../vendors/iCheck/icheck.min.js')
-                // bootstrap-daterangepicker
-                script(src='../../../vendors/moment/min/moment.min.js')
-                script(src='../../../vendors/bootstrap-daterangepicker/daterangepicker.js')
-                // bootstrap-wysiwyg
-                script(src='../../../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')
-                script(src='../../../vendors/jquery.hotkeys/jquery.hotkeys.js')
-                script(src='../../../vendors/google-code-prettify/src/prettify.js')
+                script(src='/vendors/fastclick/lib/fastclick.js')
                 // jQuery Tags Input
-                script(src='../../../vendors/jquery.tagsinput/src/jquery.tagsinput.js')
+                script(src='/vendors/jquery.tagsinput/src/jquery.tagsinput.js')
                 // Switchery
-                script(src='../../../vendors/switchery/dist/switchery.min.js')
+                script(src='/vendors/switchery/dist/switchery.min.js')
                 // Select2
-                script(src='../../../vendors/select2/dist/js/select2.full.min.js')
-                // Parsley
-                script(src='../../../vendors/parsleyjs/dist/parsley.min.js')
+                script(src='/vendors/select2/dist/js/select2.full.min.js')
                 // Autosize
-                script(src='../../../vendors/autosize/dist/autosize.min.js')
+                script(src='/vendors/autosize/dist/autosize.min.js')
                 // jQuery autocomplete
-                script(src='../../../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')
-                // starrr
-                script(src='../../../vendors/starrr/dist/starrr.js')
+                script(src='/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')
                 // Custom Theme Scripts
-                script(src='../../../build/js/custom.min.js')
+                script(src='/build/js/custom.min.js')
+                script(src='/js/adminBorderUpdate.js')
