@@ -5,7 +5,10 @@
  * Created by Sehyeon on 2017-07-20.
  */
 let mongoose = require('mongoose');
+let moment = require('moment');
+require('moment-timezone');
 
+moment.tz.setDefault("Asia/Seoul");
 let Schema = mongoose.Schema;
 
 let BorderSchema = new Schema({
@@ -33,7 +36,7 @@ let BorderSchema = new Schema({
     keyWords:[{type:String}],
     description:String,
     deliveryHow:String,
-    submit_date:{ type: Date, default: Date.now()},
+    submit_date:{ type: Date, default: moment().format('YYYY-MM-DD HH:mm:ss')},
     view:{ type: Number, default: 0},
     like:{type: Number, default: 0},
     is_selling:{type:Boolean, default: false},

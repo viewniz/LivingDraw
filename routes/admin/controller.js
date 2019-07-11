@@ -1,7 +1,8 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let multer=require('multer');
-var fs = require('fs');
+let fs = require('fs');
+let passport = require('passport');
 
 let app = express();
 
@@ -21,6 +22,9 @@ let Picture_storage=multer.diskStorage({
 
 exports.admin_main= function(req, res, next) {
     res.render('admin/index');
+};
+exports.admin_submit= function(req, res, next) {
+    res.render('admin/submit');
 };
 exports.admin_login= function(req, res, next) {
     res.render('admin/login');
@@ -202,4 +206,11 @@ exports.admin_border_update_post= function(req, res, next) {
             res.send('clear');
         });
     });
+};
+
+exports.admin_submit_post= function(req, res, next) {
+    passport.authenticate('adminSignUp', function(err, user, info) {
+        if (err) { console.log(err); return next(err); }
+        res.redirect('/admin/login');
+    })(req, res, next);
 };

@@ -5,6 +5,9 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let mongoose    = require('mongoose');
 let bodyParser = require('body-parser');
+var session=require('express-session');
+var flash = require('connect-flash');
+var passport = require('passport');
 
 let indexRouter = require('./routes/index/index');
 let usersRouter = require('./routes/users');
@@ -14,6 +17,8 @@ let adminRouter = require('./routes/admin/index');
 
 let app = express();
 
+require('./config/passportAdmin')(passport);
+
 mongoose.connect('mongodb://localhost/LivingDraw');
 mongoose.Promise = global.Promise;
 
@@ -21,13 +26,26 @@ mongoose.Promise = global.Promise;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(session({
+  secret: '비밀코드',
+  resave: true,
+  saveUninitialized: true
+})); // 세션 활성화
+
+// flash는 세션을 필요로합니다. session 아래에 선언해주셔야합니다.
+app.use(flash());
+
+// passport 초기화
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'uploads/pic')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', indexRouter);
 app.use('/goods', goodsRouter);
