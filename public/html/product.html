@@ -15,9 +15,45 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="../js/hooni.js"></script>
   <link rel="stylesheet" href="../css/product_style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300"/>
   <!-- Plugins -->
+
+
+
 </head>
 <body>
+ <style type="text/css">
+
+  .card:after {
+    background-color: #e7e7e7; 
+  }
+  .card-header:first-child {
+    border-radius: 0px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .card-body {
+   border-radius: 0px;
+   border-top-right-radius: 0;
+   border-top-left-radius: 0;
+   padding: 0;
+ }
+ .card_author{
+  padding: 10px;
+  text-align: center;
+}
+.display-4 {
+  font-size: 27px;
+  text-transform: none;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+
+
+</style>
+<script>
+</script>
 
 <header class="target-hover">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,7 +82,7 @@
   </header>
 
   <section class="pt-5 pb-5  ">
-    <div class="container">
+    <div class="container" style="padding:0;">
       <div id="leftside">
         <div id="leftside_detail_1" class="leftside_detail"  >
           <img id ="select_image_1" src="http://via.placeholder.com/800x700/3F51B5/fff">
@@ -64,9 +100,15 @@
           <div id ="row_bottom" class="col-md-12 col-xl-12">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img id ="select_image" class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="http://via.placeholder.com/700x400/3F51B5/fff"
+                <div id="select_image_div" class="carousel-item active">
+                  <img id ="select_image" class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="../images/그소.jpg"
                   data-holder-rendered="true">
+                  <div class="middle">
+                    <div class="text">Full Screen</div>
+                  </div>
+                  <div class="middle2">
+                    <div class="text">Add to Like<img id="add_like" src="../images/like4.png" style=" margin-left:5px; width: 20px; height: 20px; margin-right: 0;"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,24 +147,7 @@
           <!-- END ITEM -->
         </div>
         <!-- / FEATURED PRODUCTS -->
-        <!-- MARKETING LINE-->
-<!--         <div class="row">
-          <div class="col-md-12 col-xl-12">
-            <div class="bg-white mdl-shadow--32dp mb-5 mt-5">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-8 col-xl-8">
-                    <p class="lead text-center text-primary">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
-                  </div>
-                  <div class="col-md-4 col-xl-4"> <a class="btn btn-dark mt-4 btn-lg btn-block" href="#">ADD CART!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        <!-- /MARKETING LINE-->
-        <!-- MAIN PRODUCTS GRID-->
+
         <div id="categories"class="container-folio row">
               <!-- PROD GRID============================================================-
                 ->
@@ -259,25 +284,46 @@
               </ul> -->
               <!-- /PAGINATION-->
             </div>
-            <div id ="total_card" class="col-12 col-md-12 col-lg-3 col-xl-3">
+            <div id ="total_card" class="col-12 col-md-12 col-lg-3 col-xl-3" style="padding: 5px;">
               <div class="card bg-light">
-                <div class="card-header bg-primary">
-                  <h4 class="display-4">CART 033</h4>
+                <div id="card_head" class="card-header bg-primary">
+                  <h4 class="display-4">그 곳<br><a style="font-size: 18px;">There</a></h4>
                 </div>
-                <div class="card-body">
-                  <a>Hi i'm EunzI<br><br><br><br>Hello</a>
-                  <div class="more">
+                <div class="card-body" style="border-bottom: solid 2px #e7e7e7; border-left: solid 1px #e7e7e7; border-right :solid 1px #e7e7e7;">
+                  <div class="card_author">
+                    <div style="height: 20px;">
+                     <a style="font-size: 18px;">김은지</a>
+                     <!--         <a><img src="../images/user.png" style="width: 23px; height: 23px; margin-left: 5px; margin-right:0; padding-bottom: 5px;"></a> -->
+                   </div>
+                   <div>
+                    <a  style="font-size: 15px;">Kim eun ji</a>
+                  </div>
+                </div>
+                <div class="morebox">
+                  <div class="more_left" style="background-color: white; border-right: 2px solid #e7e7e7;">
+                    <a>View</a><br>
+                    <a>0</a>
+                  </div>
+                  <div class="more_right" style="background-color: white;">
+                    <a>Like</a><br>
+                    <a>0</a>
+                  </div>
+                </div>
+                <div class="more" style="height: 124px;">
+                  <div>
+                    <a style="width: 28px; height: 100%;">100,000￦</a>
+                  </div>
+                  <div style="height: 79px; padding-top: 33px;">
+                   <button id="addcart_left" type="button" class="btn btn-danger" data-target="#my80sizeCenterModal" data-toggle="modal" style="height: 46px; padding: 4px;">CART</button>
+                   <button id="addcart_right" type="button" class="btn btn-danger" data-target="#my80sizeCenterModal" data-toggle="modal" style="height: 46px; padding: 4px;">BUY NOW</button>
+                 </div>
+               </div>
+
+    <!--               <div class="more">
                     <a href="index.html"><img src="../images/binoculars2.png" style="width: 28px; height: 28px;">See More</a>
-                  </div>
-                  <div class="morebox">
-                    <div class="more_left">
-                      <a>Hey</a>
-                    </div>
-                    <div class="more_right">
-                      <a>Hello</a>
-                    </div>
-                  </div>
-                  <a id ="addcart" class="btn btn-round btn-danger mdl-shadow--32dp mt-3 btn-lg btn-block" data-target="#my80sizeCenterModal" data-toggle="modal" >ADD CART!</a>
+                  </div> -->
+
+                  <!-- <a id ="addcart" class="btn btn-round btn-danger mdl-shadow--32dp mt-3 btn-lg btn-block" data-target="#my80sizeCenterModal" data-toggle="modal" >ADD CART!</a> -->
                 </div>
               </div>
             </div>

@@ -1,3 +1,7 @@
+    @charset "UTF-8";
+    @import url(font-awesome.min.css);
+    @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400|Passion+One:400");
+
     .navbar{
      border-bottom:2px solid #e7e7e7;
    }
@@ -19,6 +23,7 @@
   }
   .card:after{
     background-color:#343a40;
+    height: 0;
   }
   h4{
     color:#343a40;
@@ -27,14 +32,16 @@
     min-height: 300px;
   }
 
+  .card{
+    border-radius: 0;
+  }
+
   .more{
     width: 100%;
     text-align: center;
     background: #e7e7e7;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
     margin-bottom: 10px;
-    margin-top: 10px;
   }
 
   .more a{
@@ -53,6 +60,7 @@
 
     width: 100%;
     height: 90px;
+    margin-bottom: 10px;
   }
   .morebox > .more_left{
     width: 49%;
@@ -281,3 +289,116 @@
     height: 100%;
   }
 }
+
+#addcart_left{
+  background: #ffff;
+  height: 20px;
+  border-color: #8a8787;
+  width: 58% !important;
+  float: left;
+  bottom:0;
+  color: #222;
+}
+
+#addcart_right{
+  background: #222;
+  height: 20px;
+  border-color: #8a8787;
+  width: 40% !important;
+  float: right;
+  bottom:0;
+  font-size: .65em;
+}
+
+#addcart_right:hover{
+  border-color: #8a8787;
+/*  background: #ffff;
+color: #222;*/
+}
+
+.btn{
+  border-radius: 0;
+
+}
+
+.btn-danger:focus, .btn-danger.focus {
+  box-shadow: 0 0 0 0;
+}
+
+#card_head{
+  background-color: white !important; border-top: solid 1px #e7e7e7; border-left: solid 1px #e7e7e7; border-right :solid 1px #e7e7e7;
+}
+
+#select_image {
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0.8;
+  position: absolute;
+  top: 7%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: -1;
+}
+
+#select_image_div:hover .middle {
+  z-index: 1;
+}
+
+
+.middle:hover{
+  opacity: 1.0;
+  /*transition: opacity 0.3s ease-in-out 0s;*/
+}
+
+.middle2 {
+  transition: 0.5s ease;
+  opacity: 0.8;
+  position: absolute;
+  top: 7%;
+  right: 30%;
+  transform: translate(50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: -1;
+}
+
+#select_image_div:hover .middle2 {
+  z-index: 1;
+}
+
+
+.middle2:hover{
+  opacity: 1.0;
+  /*transition: opacity 0.3s ease-in-out 0s;*/
+}
+
+/*.middle2:hover .text img{
+  content:src("../images/like.png");
+}
+*/
+.text {
+  background-color: rgb(51, 51, 51);
+  color: white;
+  font-size: 16px;
+  padding: 10px 10px;
+  cursor: pointer;
+  width: 180px;
+}
+/*.add_like{
+  background-color: rgb(51, 51, 51);
+  color: white;
+  font-size: 16px;
+  padding: 10px 10px;
+  cursor: pointer;
+  width: 180px;
+
+}*/
+
+
