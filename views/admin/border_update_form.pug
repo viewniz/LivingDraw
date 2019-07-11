@@ -17,6 +17,7 @@ html(lang='en')
         link(href='../../../vendors/dropzone/dist/min/dropzone.min.css', rel='stylesheet')
         // Custom Theme Style
         link(href='../../../build/css/custom.min.css', rel='stylesheet')
+        link(href='../../../css/adminBorderUpdate.css', rel='stylesheet')
     body.nav-md
         .container.body
             .main_container
@@ -65,28 +66,61 @@ html(lang='en')
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         if(border.image[0])
                                                             span.form-control
-                                                                a(href='javascript:'+border.image[0].picPath)=border.image[0].picOriginalName
-                                                            img(src="../../../pic"+border.image[0].picFilename)
+                                                                a(href='../../../'+border.image[0].picFilename)=border.image[0].picOriginalName
+                                                            .img_wrap
+                                                                img(src="../../../"+border.image[0].picFilename)
+                                                        else
+                                                            input.form-control(type='file', placeholder='사진 1', name="pic")
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='file', placeholder='사진 2', name="pic")
+                                                        if(border.image[1])
+                                                            span.form-control
+                                                                a(href='../../../' + border.image[1].picFilename)=border.image[1].picOriginalName
+                                                            .img_wrap
+                                                                img(src="../../../" + border.image[1].picFilename)
+                                                        else
+                                                            input.form-control(type='file', placeholder='사진 2', name="pic")
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='file', placeholder='사진 3', name="pic")
+                                                        if(border.image[2])
+                                                            span.form-control
+                                                                a(href='../../../' + border.image[2].picFilename)=border.image[2].picOriginalName
+                                                            .img_wrap
+                                                                img(src="../../../" + border.image[2].picFilename)
+                                                        else
+                                                            input.form-control(type='file', placeholder='사진 3', name="pic")
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='file', placeholder='사진 4', name="pic")
+                                                        if(border.image[3])
+                                                            span.form-control
+                                                                a(href='../../../' + border.image[3].picFilename)=border.image[3].picOriginalName
+                                                            .img_wrap
+                                                                img(src="../../../" + border.image[3].picFilename)
+                                                        else
+                                                            input.form-control(type='file', placeholder='사진 4', name="pic")
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='file', placeholder='사진 5', name="pic")
+                                                        if(border.image[4])
+                                                            span.form-control
+                                                                a(href='../../../' + border.image[4].picFilename)=border.image[4].picOriginalName
+                                                            .img_wrap
+                                                                img(src="../../../" + border.image[4].picFilename)
+                                                        else
+                                                            input.form-control(type='file', placeholder='사진 5', name="pic")
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='file', placeholder='사진 6', name="pic")
+                                                        if(border.image[5])
+                                                            span.form-control
+                                                                a(href='../../../' + border.image[5].picFilename)=border.image[5].picOriginalName
+                                                            .img_wrap
+                                                                img(src="../../../" + border.image[5].picFilename)
+                                                        else
+                                                            input.form-control(type='file', placeholder='사진 6', name="pic")
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 성씨
                                                     .col-md-9.col-sm-9.col-xs-12
@@ -265,3 +299,4 @@ html(lang='en')
                 script(src='../../../vendors/starrr/dist/starrr.js')
                 // Custom Theme Scripts
                 script(src='../../../build/js/custom.min.js')
+                script(src='../../../js/adminBorderUpdate.js')

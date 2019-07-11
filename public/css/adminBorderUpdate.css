@@ -1,0 +1,7 @@
+.img_wrap {
+    width: 500px;
+    height: 200px;
+}
+.img_wrap img {
+    height: 100%;
+}
