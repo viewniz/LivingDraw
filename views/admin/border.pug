@@ -6,7 +6,7 @@ html(lang='en')
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        title DataTables | Gentelella
+        title 작품 목록
         // Bootstrap
         link(href='/vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
         // Font Awesome
@@ -85,7 +85,7 @@ html(lang='en')
                                             tr
                                                 td
                                                 th
-                                                    button.btn.btn-default(type='button', onclick="location.href='./update/"+border[i]._id+"' ") 수정
+                                                    button.btn.btn-default(type='button', onclick="location.href='/admin/border/update/"+border[i]._id+"' ") 수정
                                                     button.btn.btn-default(type='button', onclick='deleteBorder("'+border[i]._id+'")') 삭제
                                                 td= border[i].firstName + " " + border[i].lastName
                                                 td= border[i].title
@@ -198,7 +198,7 @@ html(lang='en')
                                                     else
                                                         p OFF
                                                         p(style='display:none;') ON
-                                button.btn.btn-default(type='button', onclick="location.href='./upload/'") 추가
+                                button.btn.btn-default(type='button', onclick="location.href='/admin/border/upload/'") 추가
             // /page content
             // footer content
             footer

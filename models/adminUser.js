@@ -16,6 +16,7 @@ let AdminUserSchema = new Schema({
     submit_date:{type: Date, default: moment().format('YYYY-MM-DD HH:mm:ss')},
     last_login:Date,
     last_login_ip:String,
+    isAdmin:{type: Boolean, default:true},
     imageFace:{
         picOriginalName:{type:String,required: true}, //파일 기존 이름
         picEncoding:{type:String,required: true},     //인코딩방법

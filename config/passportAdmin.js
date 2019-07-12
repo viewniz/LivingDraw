@@ -6,12 +6,13 @@ var LocalStrategy = require('passport-local').Strategy;
 var AdminUser = require('../models/adminUser');
 
 module.exports = function(passport) {
-    passport.serializeUser(function (user, done) {
-        done(null, {email: user.email, seller_check: user.seller_check, mid: user._id});
+    passport.serializeUser(function (admin, done) {
+        done(null, admin._id);
     });
-    passport.deserializeUser(function (user, done) {
-
-        done(null, user);
+    passport.deserializeUser(function (id, done) {
+        AdminUser.findById(id, (err, admin) => {
+            done(null, admin); // 여기의 user가 req.user가 됨
+        });
     });
 
     passport.use('adminSignUp', new LocalStrategy({
@@ -20,9 +21,7 @@ module.exports = function(passport) {
             passReqToCallback: true
         },
         function (req, id, password, done) {
-            console.log("디비 전");
             AdminUser.findOne({id: id}, function (err, adminAlready) {
-                console.log("디비 후");
                 if (err) return done(err);
                 if (adminAlready) {
                     return done(null, false, {error: '존재하는 아이디입니다.'});
@@ -70,4 +69,25 @@ module.exports = function(passport) {
             });
         }
     ));
+    passport.use('adminLogin', new LocalStrategy({
+            usernameField: 'id',
+            passwordField: 'password',
+            session: true, // 세션에 저장 여부
+            passReqToCallback: true
+        },
+        function (req, id, password, done) {
+            AdminUser.findOne({id: id}, function (err, admin) {
+                if (err)
+                    return done(err);
+                if (!admin)
+                    return done(null, false, {error: '아이디 에러'});
+                crypto.pbkdf2(password, admin.key, 130495, 64, 'sha512', (err, hashed) => {
+                    if(!(hashed.toString('base64') === admin.password))
+                        return done(null, false, {error: '패스워드 에러'});
+                    else
+                        return done(null, admin);
+                });
+            });
+        })
+    );
 };

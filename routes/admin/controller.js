@@ -20,23 +20,43 @@ let Picture_storage=multer.diskStorage({
     }
 });
 
+exports.admin_login_check_yes=function(req,res,next) {         //구매자 등록페이지 들어갈 때 검사
+    if(!req.user)
+    {
+        res.redirect('/admin/login');
+    }
+    else if(!req.user.isAdmin)
+    {
+        res.redirect('/admin/login');
+    }
+    else
+    {
+        return next();
+    }
+};
+
 exports.admin_main= function(req, res, next) {
-    res.render('admin/index');
+    res.render('admin/index',{user:req.user});
 };
 exports.admin_submit= function(req, res, next) {
-    res.render('admin/submit');
+    res.render('admin/submit',{user:req.user});
 };
 exports.admin_login= function(req, res, next) {
     res.render('admin/login');
 };
+exports.admin_logout= function(req, res){
+    req.logout();
+    res.redirect('/admin/login');
+};
 exports.admin_border= function(req, res, next) {
     Border.find(function (err, border) {
         if (err) console.log(err);
-        res.render('admin/border', {border: border});
+        console.log(req.user._id);
+        res.render('admin/border', {border: border,user:req.user});
     });
 };
 exports.admin_border_upload= function(req, res, next) {
-    res.render('admin/border_upload_form');
+    res.render('admin/border_upload_form',{user:req.user});
 };
 exports.admin_border_update= function(req, res, next) {
     let borderNum=req.params.id;
@@ -47,7 +67,7 @@ exports.admin_border_update= function(req, res, next) {
         {
             border.keyWord+=border.keyWords[i]+",";
         }
-        res.render('admin/border_update_form',{border:border});
+        res.render('admin/border_update_form',{border:border,user:req.user});
     });
 
 };
@@ -203,7 +223,7 @@ exports.admin_border_update_post= function(req, res, next) {
             if (err) {
                 console.error('UpdateOne Error ', err);
             }
-            res.send('clear');
+            res.redirect('/admin/border');
         });
     });
 };
@@ -212,5 +232,18 @@ exports.admin_submit_post= function(req, res, next) {
     passport.authenticate('adminSignUp', function(err, user, info) {
         if (err) { console.log(err); return next(err); }
         res.redirect('/admin/login');
+    })(req, res, next);
+};
+
+exports.admin_login_post= function(req, res, next) {
+    passport.authenticate('adminLogin', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) {res.send(info.error); }
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            console.log(req.user);
+            console.log(req.session);
+            return res.redirect("/admin/border");
+        });
     })(req, res, next);
 };
