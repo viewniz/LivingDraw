@@ -1,6 +1,18 @@
 jQuery(document).ready(function(){
-	jQuery('#paintstory').on('click', function(event) {        
-		jQuery('#paintdetail').toggle('show');
+
+	var vareiety_icon_attr= true;
+
+	jQuery('#paintstory').on('click', function(event) {    
+		if( vareiety_icon_attr === true){    
+			jQuery('#paintdetail').toggle('show');
+			$('#vareiety_icon').attr('class','icono-caretUp');
+			vareiety_icon_attr=false;
+		}
+		else{
+			jQuery('#paintdetail').toggle('show');
+			$('#vareiety_icon').attr('class','icono-caretDown');
+			vareiety_icon_attr=true;
+		}
 	});
 
 	$('#leftside_detail_1').on({
@@ -34,13 +46,23 @@ jQuery(document).ready(function(){
 	});
 
 	$(document).ready(function () {
-    $('.middle2')
-        .mouseover(function () {
-        $('#add_like').attr("src", "../images/like.png");
-    })
-        .mouseout(function () {
-        $('#add_like').attr("src", "../images/like4.png");
-    });
-});
+		$('.middle2')
+		.mouseover(function () {
+			$('#add_like').attr("src", "../images/like.png");
+		})
+		.mouseout(function () {
+			$('#add_like').attr("src", "../images/like4.png");
+		});
+	});
+
+	$(document).ready(function () {
+		$('#paintstory')
+		.mouseover(function () {
+			$('#shadow').attr("style", "box-shadow: 10px 13px 30px rgba(0, 0, 0, 0.5);");
+		})
+		.mouseout(function () {
+			$('#shadow').attr("style", "none");
+		});
+	});
 
 });

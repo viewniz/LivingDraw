@@ -9,13 +9,19 @@
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="https://demo.bootstraptor.com/starter-kit-pro/assets/css/theme/style.css">
-  <link rel="stylesheet" href="https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css"> -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="../js/hooni.js"></script>
-  <link rel="stylesheet" href="../css/product_style.css"/>
+
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300"/>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/product_style.css"/>
+  <link rel="stylesheet" href="https://icono-49d6.kxcdn.com/icono.min.css">
+  <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text|Ubuntu&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text|Notable|Russo+One|Ubuntu&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin|DM+Serif+Text|Notable|Russo+One|Ubuntu&display=swap" rel="stylesheet">
   <!-- Plugins -->
 
 
@@ -27,21 +33,24 @@
   .card:after {
     background-color: #e7e7e7; 
   }
+
   .card-header:first-child {
     border-radius: 0px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
+
   .card-body {
    border-radius: 0px;
    border-top-right-radius: 0;
    border-top-left-radius: 0;
-   padding: 0;
  }
+
  .card_author{
   padding: 10px;
   text-align: center;
 }
+
 .display-4 {
   font-size: 27px;
   text-transform: none;
@@ -49,15 +58,42 @@
   margin-bottom: 15px;
 }
 
+p{
+  font-family: 'Noto Sans KR', sans-serif;
+  margin-bottom: 0;
+  color: #222;
+}
+
+*:focus {
+  border-color: #ef8d16;
+}
+
+
+.target-hover .nav-link{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.navbar .nav-item > a {
+  font-size: 1.0em;
+  font-weight: 400;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+input[type=search]:focus {border-color: #efb04e;}
+
+
+
 
 
 </style>
 <script>
 </script>
 
-<header class="target-hover">
+<header class="target-hover" style="font-family: 'Cabin', sans-serif;">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><img src="../images/logo.png" style="height: 70px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -81,42 +117,49 @@
     </nav>
   </header>
 
-  <section class="pt-5 pb-5  ">
-    <div class="container" style="padding:0;">
-      <div id="leftside">
-        <div id="leftside_detail_1" class="leftside_detail"  >
-          <img id ="select_image_1" src="http://via.placeholder.com/800x700/3F51B5/fff">
-        </div>
-        <div id="leftside_detail_2" class="leftside_normal">
-         <img  id ="select_image_2" src="http://via.placeholder.com/700x500/3F51B5/fff">
-       </div>
-     </div>
+<!--   <div class="container">
+    <div class="row">
+      <div id="paint_name" class="col-12 col-md-12 col-lg-9 col-xl-9">
+        <p style="font-size: 30px;">그 곳</p>
+      </div>
+    </div> -->
 
-     <div class="row">
-      <!-- LEFT SIDE CATEGORIES-->
-      <div class="col-12 col-md-12 col-lg-9 col-xl-9">
-        <!-- SLIDER -->
-        <div class="row">
-          <div id ="row_bottom" class="col-md-12 col-xl-12">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div id="select_image_div" class="carousel-item active">
-                  <img id ="select_image" class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="../images/그소.jpg"
-                  data-holder-rendered="true">
-                  <div class="middle">
-                    <div class="text">Full Screen</div>
-                  </div>
-                  <div class="middle2">
-                    <div class="text">Add to Like<img id="add_like" src="../images/like4.png" style=" margin-left:5px; width: 20px; height: 20px; margin-right: 0;"></div>
+    <section class="pt-5 pb-5  ">
+      <div class="container" style="padding:5; ">
+        <div id="leftside">
+          <div id="leftside_detail_1" class="leftside_detail"  >
+            <img id ="select_image_1" src="../images/그소.jpg">
+          </div>
+<!--           <div id="leftside_detail_2" class="leftside_normal">
+           <img  id ="select_image_2" src="http://via.placeholder.com/700x500/3F51B5/fff">
+         </div> -->
+       </div>
+
+       <div class="row">
+        <!-- LEFT SIDE CATEGORIES-->
+        <div class="col-12 col-md-12 col-lg-9 col-xl-9">
+          <!-- SLIDER -->
+          <div class="row">
+            <div id ="row_bottom" class="col-md-12 col-xl-12" style="margin-right: 10px;">
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div id="select_image_div" class="carousel-item active">
+                    <img id ="select_image" class="d-block w-100" data-src="holder.js/800x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide" alt="First slide [800x400]" src="../images/그소.jpg"
+                    data-holder-rendered="true">
+                    <div class="middle">
+                      <div class="text">Full Screen</div>
+                    </div>
+                    <div class="middle2">
+                      <div class="text">Add to Like<img id="add_like" src="../images/like4.png" style=" margin-left:5px; width: 20px; height: 20px;"></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- / SLIDER -->
-        <hr>
-        <!-- MARKETING LINE-->
+          <!-- / SLIDER -->
+          <hr id="shadow">
+          <!-- MARKETING LINE-->
 <!--         <div class="row">
           <div class="col-md-12 col-xl-12">
             <div class="bg-light mb-5 mt-5">
@@ -134,9 +177,9 @@
         </div> -->
         <!-- /MARKETING LINE-->
         <!-- FEATURED PRODUCTS -->
-        <button id="paintstory" type="button" class="btn btn-secondary btn-lg"  value='hide/show' style="display: block; width: 100%; background-color: rgb(52, 152, 219); border: none;">
-          작품 상세 설명
-        </button>
+        <div style="text-align: center; z-index: -1;">
+          <p id="paintstory" type="button" style="display: inline-block; border:none;">작품 상세 설명<a id="vareiety_icon" class="icono-caretDown" style=" height: 30px;"></a></p>
+        </div>
         <div id="paintdetail" class="articles-grid row">
           <!-- ITEM -->
           <div class="col-12 col-md-6 col-lg-6 col-xl-6">
@@ -145,9 +188,8 @@
             <p class="lead text-center text-primary">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
           </div>
           <!-- END ITEM -->
+          <!-- / FEATURED PRODUCTS -->
         </div>
-        <!-- / FEATURED PRODUCTS -->
-
         <div id="categories"class="container-folio row">
               <!-- PROD GRID============================================================-
                 ->
@@ -284,15 +326,16 @@
               </ul> -->
               <!-- /PAGINATION-->
             </div>
-            <div id ="total_card" class="col-12 col-md-12 col-lg-3 col-xl-3" style="padding: 5px;">
+            <div id ="total_card" class="col-12 col-md-12 col-lg-3 col-xl-3" style="">
               <div class="card bg-light">
                 <div id="card_head" class="card-header bg-primary">
-                  <h4 class="display-4">그 곳<br><a style="font-size: 18px;">There</a></h4>
+                  <p style="font-size:30px; color: #222;">그 곳</p>
+                  <p style="color: #222;">There</p>
                 </div>
-                <div class="card-body" style="border-bottom: solid 2px #e7e7e7; border-left: solid 1px #e7e7e7; border-right :solid 1px #e7e7e7;">
+                <div class="card-body">
                   <div class="card_author">
-                    <div style="height: 20px;">
-                     <a style="font-size: 18px;">김은지</a>
+                    <div style="height: auto;">
+                     <a style="font-size: 22px;">김은지</a>
                      <!--         <a><img src="../images/user.png" style="width: 23px; height: 23px; margin-left: 5px; margin-right:0; padding-bottom: 5px;"></a> -->
                    </div>
                    <div>
@@ -300,7 +343,7 @@
                   </div>
                 </div>
                 <div class="morebox">
-                  <div class="more_left" style="background-color: white; border-right: 2px solid #e7e7e7;">
+                  <div class="more_left" style="background-color: white; border-right: 1px solid #e7e7e7;">
                     <a>View</a><br>
                     <a>0</a>
                   </div>
@@ -309,52 +352,46 @@
                     <a>0</a>
                   </div>
                 </div>
-                <div class="more" style="height: 124px;">
+                <div class="more" style="height: 134px; background-color: #3a3e42;">
                   <div>
-                    <a style="width: 28px; height: 100%;">100,000￦</a>
+                    <a style="width: 28px; height: 100%; font-size: 1.5em; color: white;">1,000,000￦</a>
                   </div>
-                  <div style="height: 79px; padding-top: 33px;">
+                  <div style="height: 76px; padding-top: 20px;">
                    <button id="addcart_left" type="button" class="btn btn-danger" data-target="#my80sizeCenterModal" data-toggle="modal" style="height: 46px; padding: 4px;">CART</button>
                    <button id="addcart_right" type="button" class="btn btn-danger" data-target="#my80sizeCenterModal" data-toggle="modal" style="height: 46px; padding: 4px;">BUY NOW</button>
                  </div>
                </div>
+             </div>
+           </div>
+         </div>
+         <!-- /left SIDE-->
+         <!-- CONTENT SIDE-->
 
-    <!--               <div class="more">
-                    <a href="index.html"><img src="../images/binoculars2.png" style="width: 28px; height: 28px;">See More</a>
-                  </div> -->
+         <!-- /CONTENT SIDE-->
+       </div>
+     </div>
 
-                  <!-- <a id ="addcart" class="btn btn-round btn-danger mdl-shadow--32dp mt-3 btn-lg btn-block" data-target="#my80sizeCenterModal" data-toggle="modal" >ADD CART!</a> -->
-                </div>
-              </div>
+     <!-- /.content -->
+   </section>
+
+   <div id="mobile_buymode" style=" border-top: 2px solid #e7e7e7; bottom:0;  width: 100%; position: fixed; background-color: white;">
+    <div id="mobile_padding_height">
+      <div style="display: table; padding-right: 24px !important; padding-left: 24px !important; width: 100%;">
+        <div style="margin-top:0; margin-bottom:0; margin-left:0; margin-right:0; box-sizing: border-box;">
+          <div style="display: table-cell !important; width:100%; vertical-align: middle;">
+            <div style="word-wrap: break-word !important; box-sizing: border-box; word-break: break-all; border-spacing: 0px !important; font-size: 14px;">
+              Hellasdfasdfsdafdasfdsfasdfdaso
             </div>
-            <!-- /left SIDE-->
-            <!-- CONTENT SIDE-->
-
-            <!-- /CONTENT SIDE-->
           </div>
-        </div>
-
-        <!-- /.content -->
-      </section>
-
-      <div id="mobile_buymode" style=" border-top: 2px solid #e7e7e7; bottom:0;  width: 100%; position: fixed; background-color: white;">
-        <div id="mobile_padding_height">
-          <div style="display: table; padding-right: 24px !important; padding-left: 24px !important; width: 100%;">
-            <div style="margin-top:0; margin-bottom:0; margin-left:0; margin-right:0; box-sizing: border-box;">
-              <div style="display: table-cell !important; width:100%; vertical-align: middle;">
-                <div style="word-wrap: break-word !important; box-sizing: border-box; word-break: break-all; border-spacing: 0px !important; font-size: 14px;">
-                  Hellasdfasdfsdafdasfdsfasdfdaso
-                </div>
-              </div>
-              <div style="display: table-cell !important; vertical-align: middle !important; word-break: keep-all;">
-                <div style="margin-left: 8px !important;">
-                  <button type="button" class="btn btn-danger" data-target="#my80sizeCenterModal" data-toggle="modal" style="height: 46px; width: 160px !important;">ADD CART!</button>
-                </div>
-              </div>
+          <div style="display: table-cell !important; vertical-align: middle !important; word-break: keep-all;">
+            <div style="margin-left: 8px !important;">
+              <button type="button" class="btn btn-danger" data-target="#my80sizeCenterModal" data-toggle="modal" style="height: 46px; width: 160px !important;">ADD CART!</button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
 <!--       <div class="row">
         <div class="modal modal-center fade" id="modal" tabindex="-1" aria-labelledby="my80sizeCenterModalLabel">
