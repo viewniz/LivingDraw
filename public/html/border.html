@@ -14,69 +14,58 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="./js/hooni.js"></script>
-	 <link rel="stylesheet" href="../css/border_style.css"/>
+	<link rel="stylesheet" href="../css/border_style.css"/>
+	<link rel="stylesheet" href="../css/nav_style.css"/>
 
 	<!-- Plugins -->
 </head>
 
 <body>
 
-	<header class="target-hover">
+	<header class="target-hover" style="font-family: 'Cabin', sans-serif;">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">Navbar</a>
+			<a class="navbar-brand" href="#"><img src="../images/logo.png" style="height: 70px;"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="#">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Link</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Dropdown
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
+						<a class="nav-link" href="#">Paints</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Disabled</a>
+						<a class="nav-link" href="#">Intro</a>
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
-			</div>
-		</nav>
-	</header>
 
-	
+			</nav>
+		</header>
 
-	<header class="container_header" style="height: 70px; border-bottom: 2px solid rgba(0, 0, 0, 0.1); padding: 16px;">
-		<div>
-			<p class="lead text-center text-primary" style="margin: 0; font-weight: 700; float: left;">세상을 바꿀 위대한 작가의 작품을 팝니다!</p>
-			<div id ="dropdown_sort" class="dropdown" style="float: right;">
-				<button type="button" class="btn btn-outline-primary">적용</button>
-				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-					정렬 기준
-				</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Link 1</a>
-					<a class="dropdown-item" href="#">Link 2</a>
-					<a class="dropdown-item" href="#">Link 3</a>
+
+
+		<header class="container_header" style="height: 70px; border-bottom: 2px solid rgba(0, 0, 0, 0.1); padding: 16px;">
+			<div>
+				<p class="lead text-center text-primary" style="margin: 0; font-weight: 700; float: left;">세상을 바꿀 위대한 작가의 작품을 팝니다!</p>
+				<div id ="dropdown_sort" class="dropdown" style="float: right;">
+					<button type="button" class="btn btn-outline-primary">적용</button>
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						정렬 기준
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">Link 1</a>
+						<a class="dropdown-item" href="#">Link 2</a>
+						<a class="dropdown-item" href="#">Link 3</a>
+					</div>
 				</div>
 			</div>
-		</div>
-	</header>
+		</header>
 
 		<div id ="dropdown_sort2" class="dropdown" style=" margin-top: 50px; height: 40px;">
 			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="float: right;">
@@ -90,14 +79,14 @@
 			</div>
 		</div>
 
-	<div class="container">
-		<div id="columns">
-			<figure>
-				<img src="http://via.placeholder.com/320x450/3F51B5/fff">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a>그 곳</a>
-					</div>
+		<div class="container">
+			<div id="columns">
+				<figure>
+					<img src="../images/그소.jpg">
+					<div class="figure_detail" style="margin-top: 10px;">
+						<div class="figure_title">
+							<a>그 곳</a>
+						</div>
 	<!-- 				<div class="figure_kind">
 						<a style="padding-right: 0px;">동양화</a><a style="padding: 0;">,</a><a>400x200</a>
 					</div>
@@ -108,7 +97,7 @@
 			</figure>
 
 			<figure>
-				<img src="http://via.placeholder.com/320x700/3F51B5/fff">
+				<img src="../images/그소.jpg">
 				<div class="figure_detail" style="text-align: right;">
 					<div class="figure_title" style="right: 0;">
 						<a>그 곳</a>
@@ -123,7 +112,7 @@
 			</figure>
 
 			<figure>
-				<img src="http://via.placeholder.com/320x200/3F51B5/fff">
+				<img src="../images/음.jpg">
 				<div class="figure_detail" style="margin-top: 10px;">
 					<div class="figure_title">
 						<a>그 곳</a>
@@ -138,7 +127,7 @@
 			</figure>
 
 			<figure>
-				<img src="http://via.placeholder.com/320x100/3F51B5/fff">
+				<img src="../images/어항.jpg">
 				<div class="figure_detail" style="margin-top: 10px;">
 					<div class="figure_title">
 						<a>그 곳</a>
