@@ -26,7 +26,8 @@
 			display: inline-block;
 			margin:0;
 			margin-bottom: 10px;
-			padding:10px;
+			padding:30px;
+			padding-bottom: 10px;
 		}
 		#columns figure img{
 			width:100%;
@@ -161,6 +162,13 @@
 			border-color: #f2672e;
 		}
 
+
+		.figure_kind{
+			color:rgb(153, 153, 153);
+			    font-weight: 400;
+		}
+
+
 		a{
 			    font-family: 'Noto Sans KR', sans-serif;
 			    font-size: 15px;
@@ -168,7 +176,13 @@
 
 		}
 
-		.figure_kind{
-			color:rgb(153, 153, 153);
-			    font-weight: 400;
+		.figure_artist a{
+			text-transform: capitalize;
+
 		}
+/*
+		@media (min-width:1200px){
+			.container{
+
+			}
+		}*/

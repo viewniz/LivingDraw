@@ -64,6 +64,19 @@ input[type=search]:focus {border-color: #efb04e;}
 
 }
 
+@media(min-width: 992px){
+  .navbar-brand img{
+    height: 80px;
+    margin-top: 10px;
+  }
+}
+
+@media(max-width: 991px){
+  .navbar-brand img{
+    height:70px;
+  }
+}
+
 .navbar{
   min-height: 80px;
 }
@@ -71,4 +84,106 @@ input[type=search]:focus {border-color: #efb04e;}
 .navbar:active{
   border-bottom: 2px solid #e7e7e7;
 }
+
+@media(max-width: 991px){
+  .navbar-collapse {
+    margin-top: 20px;
+  }
+}
+
+.right-menu li{
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.right-menu li .fa{
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.form-control{
+  border-radius: 0;
+}
+
+* {
+  transition: none;
+}
+
+.input-group > .input-group-append > .btn, .input-group > .input-group-append > .input-group-text, .input-group > .input-group-prepend:not(:first-child) > .btn, .input-group > .input-group-prepend:not(:first-child) > .input-group-text, .input-group > .input-group-prepend:first-child > .btn:not(:first-child), .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+  border-radius: 0;
+  background-color: #e7e7e7;
+  cursor: pointer;
+}
+.ml-auto, .mx-auto{
+  margin-bottom: 0;
+}
+
+
+
+
+@media(min-width: 992px){
+  #searchbar_2{
+    display: none;
+  }
+  #searchbar_1{
+    display: block;
+  }
+  .search_icon .fa{
+    display: none;
+    position: absolute;
+  }
+  .search_icon{
+    position: absolute;
+  }
+}
+
+@media(max-width: 991px){
+  .ml-auto, .mx-auto {
+    margin-left: auto !important;
+    top: -10.5px;
+    position: absolute;
+    right: 0;
+    padding-right: 16px;
+  }
+  #searchbar_2{
+    display: block;
+    opacity: 0;
+    /*width: 80%;*/
+  }
+  
+  .input-group{
+    width: 250px;
+  }
+
+  #searchbar_1{
+    display: none;
+  }
+  .search_icon{
+   margin-left: auto !important;
+   top: 0px;
+   position: absolute;
+   right: 0;
+   margin-right: 16px;
+   margin-top: 20px;
+   padding-top: 5px;
+ }
+ .search_icon .fa{
+  /*  display: inline-block;*/
+  font-size: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+}
+#navbarSupportedContent{
+  margin-top: 35px;
+}
+
+#navbarSupportedContent ul li{
+  padding-top: 10px;
+}
+
+
+
+
 

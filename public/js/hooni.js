@@ -65,4 +65,24 @@ jQuery(document).ready(function(){
 		});
 	});
 
+	$(document).ready(function () {
+		$('#paintstory')
+		.mouseover(function () {
+			$('#shadow').attr("style", "box-shadow: 10px 13px 30px rgba(0, 0, 0, 0.5);");
+		})
+		.mouseout(function () {
+			$('#shadow').attr("style", "none");
+		});
+	});
+
+	
+	$('#mobile_searchbutton').on({
+		'click': function(){
+			$('.fa').attr("style", "opacity:0;");
+			$('#searchbar_2').attr("style","opacity:1;");
+			$('.navbar-brand').attr("style","display:none;");
+			$('#search_icon_close').attr("attr","opacity:1");
+		}
+	});
+	
 });
