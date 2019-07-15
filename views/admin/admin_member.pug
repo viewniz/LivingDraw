@@ -66,6 +66,7 @@ html(lang='en')
                                     thead
                                         tr
                                             th
+                                            th
                                             th 아이디
                                             th 이름
                                             th 가입날짜
@@ -77,11 +78,12 @@ html(lang='en')
                                                 td
                                                 th
                                                     button.btn.btn-default(type='button', onclick='deleteAdmin("'+admin[i]._id+'")') 삭제
-                                                td= admin[i].firstName + " " + admin[i].lastName
-                                                td= admin[i].
-                                                td= admin[i].firstName + " " + admin[i].lastName
-                                                td= admin[i].firstName + " " + admin[i].lastName
-                                button.btn.btn-default(type='button', onclick="location.href='/admin/border/upload/'") 추가
+                                                td= admin[i].id
+                                                td= admin[i].lastName + " " + admin[i].firstName
+                                                td= admin[i].submit_date
+                                                td= admin[i].last_login
+                                                td= admin[i].last_login_ip
+                                button.btn.btn-default(type='button', onclick="location.href='/admin/member/submit/'") 추가
             // /page content
             // footer content
             footer
@@ -112,6 +114,6 @@ html(lang='en')
             script(src='/vendors/jszip/dist/jszip.min.js')
             script(src='vendors/pdfmake/build/pdfmake.min.js')
             script(src='/vendors/pdfmake/build/vfs_fonts.js')
-            script(src='/js/adminBorder.js')
+            script(src='/js/adminMember.js')
             // Custom Theme Scripts
             script(src='/build/js/custom.min.js')

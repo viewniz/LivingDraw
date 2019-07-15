@@ -87,7 +87,7 @@ html(lang='en')
                                                 th
                                                     button.btn.btn-default(type='button', onclick="location.href='/admin/border/update/"+border[i]._id+"' ") 수정
                                                     button.btn.btn-default(type='button', onclick='deleteBorder("'+border[i]._id+'")') 삭제
-                                                td= border[i].firstName + " " + border[i].lastName
+                                                td= border[i].lastName + " " + border[i].firstName
                                                 td= border[i].title
                                                 case border[i].category
                                                     when 'Pa'

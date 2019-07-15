@@ -6,7 +6,7 @@ html(lang='en')
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        title 관리자 등록
+        title 배너 등록
         // Bootstrap
         link(href='/vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
         // Font Awesome
@@ -27,7 +27,7 @@ html(lang='en')
                     div
                         .page-title
                             .title_left
-                                h3 Submit Form
+                                h3 Banner
                             .title_right
                                 .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
                                     .input-group
@@ -40,7 +40,7 @@ html(lang='en')
                                 .x_panel
                                     .x_title
                                         h2
-                                            | 관리자 등록
+                                            | 배너
                                         ul.nav.navbar-right.panel_toolbox
                                             li
                                                 a.collapse-link
@@ -58,35 +58,18 @@ html(lang='en')
                                                     i.fa.fa-close
                                         .clearfix
                                     .x_content
-                                        form.form-group(action='/admin/member/submit', method="post", enctype="multipart/form-data")
+                                        form.form-group(action='/admin/site/banner', method="post", enctype="multipart/form-data")
                                             .form-horizontal.form-label-left.input_mask
                                                 .form-group
-                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 얼굴 사진
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 배너 사진
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control.imgInput(type='file', placeholder='사진 1', name="adminFace")
+                                                        input.form-control(type='file', placeholder='사진 1', name="banner")
                                                         .img_wrap(style='display:none;')
                                                             img(src='#', alt='your image')
-                                                .form-group
-                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 성
-                                                    .col-md-9.col-sm-9.col-xs-12
-                                                        input#firstname.form-control(type='text', placeholder='Last name', name="lastName")
-                                                .form-group
-                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 이름
-                                                    .col-md-9.col-sm-9.col-xs-12
-                                                        input#lastname.form-control(type='text', placeholder='First name', name="firstName")
-                                                .form-group
-                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 아이디
-                                                    .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='text', placeholder='ID', name="id")
-                                                .form-group
-                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 비밀번호
-                                                    .col-md-9.col-sm-9.col-xs-12
-                                                        input.form-control(type='password', placeholder='Password', name="password")
                                                 .ln_solid
                                                 .form-group
                                                     .col-md-9.col-sm-9.col-xs-12.col-md-offset-9
-                                                        button.btn.btn-primary(type='button', onclick='location.href = "./login"') Back
-                                                        button.btn.btn-primary(type='reset') Reset
+                                                        button.btn.btn-primary(type='button', onclick='location.href = "../"') Back
                                                         button#submit-all.btn.btn-success(type='submit') Submit
                                                 .ln_solid
                                         br
@@ -103,12 +86,13 @@ html(lang='en')
                     .clearfix
                 // /footer content
                 // jQuery
-
                 script(src='/vendors/jquery/dist/jquery.min.js')
                 // Bootstrap
                 script(src='/vendors/bootstrap/dist/js/bootstrap.min.js')
                 // FastClick
                 script(src='/vendors/fastclick/lib/fastclick.js')
+                // Nprogress
+                script(src='/vendors/nprogress/nprogress.js')
                 // jQuery Tags Input
                 script(src='/vendors/jquery.tagsinput/src/jquery.tagsinput.js')
                 // Switchery
@@ -117,8 +101,6 @@ html(lang='en')
                 script(src='/vendors/select2/dist/js/select2.full.min.js')
                 // Autosize
                 script(src='/vendors/autosize/dist/autosize.min.js')
-                // jQuery autocomplete
-                script(src='/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js')
                 // Custom Theme Scripts
                 script(src='/build/js/custom.min.js')
                 script(src='/js/adminBorderUpdate.js')

@@ -7,7 +7,9 @@ let passport = require('passport');
 let app = express();
 
 let Border = require('../../models/border');
-
+let Admin = require('../../models/adminUser');
+let Banner = require('../../models/banner');
+let Box = require('../../models/box');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -44,6 +46,13 @@ exports.admin_submit= function(req, res, next) {
 exports.admin_login= function(req, res, next) {
     res.render('admin/login');
 };
+exports.admin_member= function(req, res, next) {
+    Admin.find(function (err, admin){
+        if (err) console.log(err);
+        res.render('admin/admin_member',{user:req.user,admin:admin});
+    });
+
+};
 exports.admin_logout= function(req, res){
     req.logout();
     res.redirect('/admin/login');
@@ -71,6 +80,14 @@ exports.admin_border_update= function(req, res, next) {
     });
 
 };
+
+exports.admin_site_banner= function(req, res, next) {
+    res.render('admin/site_manage_banner',{user:req.user});
+};
+exports.admin_site_box= function(req, res, next) {
+    res.render('admin/site_manage_box',{user:req.user});
+};
+
 exports.admin_border_upload_post= function(req, res, next) {
     let newBorder=new Border();
     newBorder.firstName=req.body.firstName;
@@ -231,7 +248,7 @@ exports.admin_border_update_post= function(req, res, next) {
 exports.admin_submit_post= function(req, res, next) {
     passport.authenticate('adminSignUp', function(err, user, info) {
         if (err) { console.log(err); return next(err); }
-        res.redirect('/admin/login');
+        res.redirect('/admin/member');
     })(req, res, next);
 };
 
@@ -241,9 +258,103 @@ exports.admin_login_post= function(req, res, next) {
         if (!user) {res.send(info.error); }
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            console.log(req.user);
-            console.log(req.session);
             return res.redirect("/admin/border");
         });
     })(req, res, next);
+};
+
+exports.admin_delete_post= function(req, res, next) {
+    Admin.findOne({_id:req.body.id},function (err,result) {
+        if (err) console.log(err);
+        fs.unlink(result.imageFace.picDestination+'/'+result.imageFace.picFilename, function(err) {
+            if (err) throw err;
+            console.log('file deleted');
+        });
+        Admin.remove({_id:req.body.id},function (err, result) {
+            if (err) return done(err);
+            res.send('clear');
+        });
+    });
+};
+exports.admin_site_banner_post= function(req, res, next) {
+    Banner.findOne({},function(err, result){
+        if(result)
+        {
+            Banner.remove({},function (err, result) {
+                if (err) throw err;
+                let newBanner=new Banner();
+                newBanner.uploadId=req.user.id;
+                newBanner.image.picOriginalName = req.file.originalname;
+                newBanner.image.picEncoding = req.file.encoding;
+                newBanner.image.picMimetype = req.file.mimetype;
+                newBanner.image.picDestination = req.file.destination;
+                newBanner.image.picFilename = req.file.filename;
+                newBanner.image.picPath = req.file.path;
+                newBanner.image.picSize = req.file.size;
+                newBanner.save(function (err) {
+                    if (err)
+                        throw err;
+                    res.redirect("/admin/site/banner");
+                });
+            });
+        }
+        else
+        {
+            let newBanner=new Banner();
+            newBanner.uploadId=req.user.id;
+            newBanner.image.picOriginalName = req.file.originalname;
+            newBanner.image.picEncoding = req.file.encoding;
+            newBanner.image.picMimetype = req.file.mimetype;
+            newBanner.image.picDestination = req.file.destination;
+            newBanner.image.picFilename = req.file.filename;
+            newBanner.image.picPath = req.file.path;
+            newBanner.image.picSize = req.file.size;
+            newBanner.save(function (err) {
+                if (err)
+                    throw err;
+                res.redirect("/admin/site/banner");
+            });
+        }
+    });
+};
+exports.admin_site_box_post= function(req, res, next) {
+    Box.findOne({},function(err, result){
+        if(result)
+        {
+            Box.remove({},function (err, result) {
+                if (err) throw err;
+                let newBox=new Box();
+                newBox.uploadId=req.user.id;
+                newBox.image.picOriginalName = req.file.originalname;
+                newBox.image.picEncoding = req.file.encoding;
+                newBox.image.picMimetype = req.file.mimetype;
+                newBox.image.picDestination = req.file.destination;
+                newBox.image.picFilename = req.file.filename;
+                newBox.image.picPath = req.file.path;
+                newBox.image.picSize = req.file.size;
+                newBox.save(function (err) {
+                    if (err)
+                        throw err;
+                    res.redirect("/admin/site/box");
+                });
+            });
+        }
+        else
+        {
+            let newBox=new Box();
+            newBox.uploadId=req.user.id;
+            newBox.image.picOriginalName = req.file.originalname;
+            newBox.image.picEncoding = req.file.encoding;
+            newBox.image.picMimetype = req.file.mimetype;
+            newBox.image.picDestination = req.file.destination;
+            newBox.image.picFilename = req.file.filename;
+            newBox.image.picPath = req.file.path;
+            newBox.image.picSize = req.file.size;
+            newBox.save(function (err) {
+                if (err)
+                    throw err;
+                res.redirect("/admin/site/box");
+            });
+        }
+    });
 };

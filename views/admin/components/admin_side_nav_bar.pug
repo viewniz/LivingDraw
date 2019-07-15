@@ -11,7 +11,7 @@
                 img.img-circle.profile_img(src='/adminFace/'+user.imageFace.picFilename, alt='...')
             .profile_info
                 span Welcome,
-                h2=user.firstName+" "+user.lastName
+                h2=user.lastName+" "+user.firstName
         // /menu profile quick info
         br
         // sidebar menu
@@ -40,6 +40,18 @@
                                 a(href='/admin/border') 작품 목록
                             li
                                 a(href='/admin/border/upload') 작품 등록
+                            //li
+                                a(href='form_buttons.html') Form Buttons
+                    li
+                        a
+                            i.fa.fa-edit
+                            |  Site Management
+                            span.fa.fa-chevron-down
+                        ul.nav.child_menu
+                            li
+                                a(href='/admin/site/banner') 배너 관리
+                            li
+                                a(href='/admin/site/box') 박스 글 관리
                             //li
                                 a(href='form_buttons.html') Form Buttons
                     li
@@ -174,7 +186,7 @@
                 li
                     a.user-profile.dropdown-toggle(href='javascript:;', data-toggle='dropdown', aria-expanded='false')
                         img(src='/adminFace/'+user.imageFace.picFilename, alt='')
-                        =user.firstName+" "+user.lastName
+                        =user.lastName+" "+user.firstName
                         span.fa.fa-angle-down
                     ul.dropdown-menu.dropdown-usermenu.pull-right
                         //li

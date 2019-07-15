@@ -13,8 +13,8 @@ let AdminUserSchema = new Schema({
     key:{type:String},
     firstName:{type:String},
     lastName:{type:String},
-    submit_date:{type: Date, default: moment().format('YYYY-MM-DD HH:mm:ss')},
-    last_login:Date,
+    submit_date:{type: String, default: moment().format('YYYY-MM-DD HH:mm:ss')},
+    last_login:String,
     last_login_ip:String,
     isAdmin:{type: Boolean, default:true},
     imageFace:{

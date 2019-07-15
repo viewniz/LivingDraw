@@ -4,6 +4,7 @@ let crypto = require('crypto');
 var LocalStrategy = require('passport-local').Strategy;
 
 var AdminUser = require('../models/adminUser');
+const moment = require("moment");
 
 module.exports = function(passport) {
     passport.serializeUser(function (admin, done) {
@@ -85,7 +86,11 @@ module.exports = function(passport) {
                     if(!(hashed.toString('base64') === admin.password))
                         return done(null, false, {error: '패스워드 에러'});
                     else
+                    {
+                        const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
+                        AdminUser.update({id:id},{$set:{last_login:moment().format('YYYY-MM-DD HH:mm:ss'),last_login_ip:ip}},function(){});
                         return done(null, admin);
+                    }
                 });
             });
         })
