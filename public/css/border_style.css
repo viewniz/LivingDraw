@@ -82,6 +82,15 @@
 			height: 100%;
 			margin-top: 10px;
 			height: 40px;
+
+		}
+
+		#dropdown_sort button{
+			border-radius: 0;
+		}
+
+		#dropdown_sort2 button{
+			border-radius: 0;
 		}
 
 		@media (min-width: 510px){
@@ -165,14 +174,14 @@
 
 		.figure_kind{
 			color:rgb(153, 153, 153);
-			    font-weight: 400;
+			font-weight: 400;
 		}
 
 
 		a{
-			    font-family: 'Noto Sans KR', sans-serif;
-			    font-size: 15px;
-			    font-weight: 500;
+			font-family: 'Noto Sans KR', sans-serif;
+			font-size: 15px;
+			font-weight: 500;
 
 		}
 
@@ -185,4 +194,5 @@
 			.container{
 
 			}
-		}*/
+			}*/
+

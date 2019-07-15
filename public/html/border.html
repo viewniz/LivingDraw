@@ -23,10 +23,10 @@
 
 <body>
 
-	<header class="target-hover" style="font-family: 'Cabin', sans-serif;">
+	<header  class="target-hover" style="font-family: 'Cabin', sans-serif;">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="#"><img src="../images/logo.png" style=""></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<button id="mobile_toggle_icon" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -56,7 +56,7 @@
 				</ul>
 			</div>
 			<ul id="searchbar_2" class="right-menu ml-auto">
-				<li><i id="search_icon_close"class="fa fa-times-circle-o"></i></li>
+
 				<li>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
@@ -65,174 +65,177 @@
 						</div>
 					</div>
 				</li>
-			</ul>
-			<ul class="search_icon">
-				<i id ="mobile_searchbutton" class="fa fa-search"></i>
-				<i id = "mobile_heartbutton" class="fa fa-heart"></i>
-			</ul>
-		</nav>
-	</header>
+
+			<li><i class="fa fa-times"></i><li>
+
+		</ul>
+		<ul class="search_icon">
+			<i id ="mobile_searchbutton" class="fa fa-search"></i>
+			<i id ="mobile_heartbutton" class="fa fa-heart"></i>
+		</ul>
+	</nav>
+</header>
 
 
 
-	<header class="container_header" style="">
-		<div class="header_second" style="">
-			<p style="">Great Artist's Works!</p>
-			<div id ="dropdown_sort" class="dropdown" style="float: right; padding-top: 11px;">
-				<button type="button" class="btn btn-outline-primary">적용</button>
-				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-					정렬 기준
-				</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Link 1</a>
-					<a class="dropdown-item" href="#">Link 2</a>
-					<a class="dropdown-item" href="#">Link 3</a>
-				</div>
+<header class="container_header" style="">
+	<div class="header_second" style="">
+		<p style="">Great Artist's Works!</p>
+		<div id ="dropdown_sort" class="dropdown" style="float: right; padding-top: 11px;">
+			<button type="button" class="btn btn-outline-primary">적용</button>
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				정렬 기준
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Link 1</a>
+				<a class="dropdown-item" href="#">Link 2</a>
+				<a class="dropdown-item" href="#">Link 3</a>
 			</div>
 		</div>
-	</header>
-
-	<div id ="dropdown_sort2" class="dropdown" style="">
-		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="float: right;">
-			정렬 기준
-		</button>
-		<button type="button" class="btn btn-outline-primary" style="float: right;">적용</button>
-		<div class="dropdown-menu">
-			<a class="dropdown-item" href="#">Link 1</a>
-			<a class="dropdown-item" href="#">Link 2</a>
-			<a class="dropdown-item" href="#">Link 3</a>
-		</div>
 	</div>
+</header>
 
-	<div class="container">
-		<div style="min-height: 40px;"></div>
-		<div id="columns">
-			<figure>
-				<img src="../images/그소.jpg">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a style="font-size: 17px;">그 곳</a>
-					</div>
-					<div class="figure_kind">
-						<a style="padding: 0; padding-left: 0;"></a><a>400x200x300(mm)</a>
-					</div>
-					<div class="figure_artist">
-						<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
-					</div>
-				</div>
-			</figure>
-
-			<figure>
-				<img src="../images/그소.jpg">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a style="font-size: 17px;">그 곳</a>
-					</div>
-					<div class="figure_kind">
-						<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
-					</div>
-					<div class="figure_artist">
-						<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
-					</div>
-				</div>
-			</figure>
-
-			<figure>
-				<img src="../images/음.jpg">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a style="font-size: 17px;">그 곳</a>
-					</div>
-					<div class="figure_kind">
-						<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
-					</div>
-					<div class="figure_artist">
-						<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
-					</div>
-				</div>
-			</figure>
-
-			<figure>
-				<img src="../images/어항.jpg">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a style="font-size: 17px;">그 곳</a>
-					</div>
-					<div class="figure_kind">
-						<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
-					</div>
-					<div class="figure_artist">
-						<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
-					</div>
-				</div>
-			</figure>
-
-			<figure>
-				<img src="http://via.placeholder.com/320x600/3F51B5/fff">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a style="font-size: 17px;">그 곳</a>
-					</div>
-					<div class="figure_kind">
-						<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
-					</div>
-					<div class="figure_artist">
-						<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
-					</div>
-				</div>
-			</figure>
-
-			<figure>
-				<img src="http://via.placeholder.com/320x450/3F51B5/fff">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a style="font-size: 17px;">그 곳</a>
-					</div>
-					<div class="figure_kind">
-						<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
-					</div>
-					<div class="figure_artist">
-						<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
-					</div>
-				</div>
-			</figure>
-
-			<figure>
-				<img src="http://via.placeholder.com/320x450/3F51B5/fff">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a style="font-size: 17px;">그 곳</a>
-					</div>
-					<div class="figure_kind">
-						<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
-					</div>
-					<div class="figure_artist">
-						<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
-					</div>
-				</div>
-			</figure>    
-
-			<figure>
-				<img src="http://via.placeholder.com/320x450/3F51B5/fff">
-				<div class="figure_detail" style="margin-top: 10px;">
-					<div class="figure_title">
-						<a style="font-size: 17px;">그 곳</a>
-					</div>
-					<div class="figure_kind">
-						<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
-					</div>
-					<div class="figure_artist">
-						<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
-					</div>
-				</div>
-			</figure>
-
-			<figure>
-				<img src="http://via.placeholder.com/320x450/3F51B5/fff">
-				<figcaption>Tiana wearing the <i>robe de style</i> of the 1920’s</figcaption>
-			</figure>   
-		</div>
+<div id ="dropdown_sort2" class="dropdown" style="">
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="float: right;">
+		정렬 기준
+	</button>
+	<button type="button" class="btn btn-outline-primary" style="float: right;">적용</button>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" href="#">Link 1</a>
+		<a class="dropdown-item" href="#">Link 2</a>
+		<a class="dropdown-item" href="#">Link 3</a>
 	</div>
+</div>
+
+<div class="container">
+	<div style="min-height: 40px;"></div>
+	<div id="columns">
+		<figure>
+			<img src="../images/그소.jpg">
+			<div class="figure_detail" style="margin-top: 10px;">
+				<div class="figure_title">
+					<a style="font-size: 17px;">그 곳</a>
+				</div>
+				<div class="figure_kind">
+					<a style="padding: 0; padding-left: 0;"></a><a>400x200x300(mm)</a>
+				</div>
+				<div class="figure_artist">
+					<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
+				</div>
+			</div>
+		</figure>
+
+		<figure>
+			<img src="../images/그소.jpg">
+			<div class="figure_detail" style="margin-top: 10px;">
+				<div class="figure_title">
+					<a style="font-size: 17px;">그 곳</a>
+				</div>
+				<div class="figure_kind">
+					<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
+				</div>
+				<div class="figure_artist">
+					<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
+				</div>
+			</div>
+		</figure>
+
+		<figure>
+			<img src="../images/음.jpg">
+			<div class="figure_detail" style="margin-top: 10px;">
+				<div class="figure_title">
+					<a style="font-size: 17px;">그 곳</a>
+				</div>
+				<div class="figure_kind">
+					<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
+				</div>
+				<div class="figure_artist">
+					<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
+				</div>
+			</div>
+		</figure>
+
+		<figure>
+			<img src="../images/어항.jpg">
+			<div class="figure_detail" style="margin-top: 10px;">
+				<div class="figure_title">
+					<a style="font-size: 17px;">그 곳</a>
+				</div>
+				<div class="figure_kind">
+					<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
+				</div>
+				<div class="figure_artist">
+					<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
+				</div>
+			</div>
+		</figure>
+
+		<figure>
+			<img src="http://via.placeholder.com/320x600/3F51B5/fff">
+			<div class="figure_detail" style="margin-top: 10px;">
+				<div class="figure_title">
+					<a style="font-size: 17px;">그 곳</a>
+				</div>
+				<div class="figure_kind">
+					<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
+				</div>
+				<div class="figure_artist">
+					<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
+				</div>
+			</div>
+		</figure>
+
+		<figure>
+			<img src="http://via.placeholder.com/320x450/3F51B5/fff">
+			<div class="figure_detail" style="margin-top: 10px;">
+				<div class="figure_title">
+					<a style="font-size: 17px;">그 곳</a>
+				</div>
+				<div class="figure_kind">
+					<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
+				</div>
+				<div class="figure_artist">
+					<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
+				</div>
+			</div>
+		</figure>
+
+		<figure>
+			<img src="http://via.placeholder.com/320x450/3F51B5/fff">
+			<div class="figure_detail" style="margin-top: 10px;">
+				<div class="figure_title">
+					<a style="font-size: 17px;">그 곳</a>
+				</div>
+				<div class="figure_kind">
+					<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
+				</div>
+				<div class="figure_artist">
+					<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
+				</div>
+			</div>
+		</figure>    
+
+		<figure>
+			<img src="http://via.placeholder.com/320x450/3F51B5/fff">
+			<div class="figure_detail" style="margin-top: 10px;">
+				<div class="figure_title">
+					<a style="font-size: 17px;">그 곳</a>
+				</div>
+				<div class="figure_kind">
+					<a style="padding: 0; padding-left: 0;"></a><a>100호, <400x200x300(mm)></a>
+				</div>
+				<div class="figure_artist">
+					<a style="padding-right: 0px;">김은지</a><a style="padding-right: 0px;">kim eunji</a><a style="float: right;">1,000,000₩</a>
+				</div>
+			</div>
+		</figure>
+
+		<figure>
+			<img src="http://via.placeholder.com/320x450/3F51B5/fff">
+			<figcaption>Tiana wearing the <i>robe de style</i> of the 1920’s</figcaption>
+		</figure>   
+	</div>
+</div>
 </div>
 
 </body>

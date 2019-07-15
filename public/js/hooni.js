@@ -1,6 +1,8 @@
 jQuery(document).ready(function(){
 
 	var vareiety_icon_attr= true;
+	var click_action = true;
+	var click_toggle = true;
 
 	jQuery('#paintstory').on('click', function(event) {    
 		if( vareiety_icon_attr === true){    
@@ -75,14 +77,61 @@ jQuery(document).ready(function(){
 		});
 	});
 
+
+
 	
 	$('#mobile_searchbutton').on({
 		'click': function(){
-			$('.fa').attr("style", "opacity:0;");
-			$('#searchbar_2').attr("style","opacity:1;");
-			$('.navbar-brand').attr("style","display:none;");
-			$('#search_icon_close').attr("attr","opacity:1");
+			// if(click_action === true){
+			// 	$('#mobile_toggle_icon').css('margin-top','-1px');
+			// }
+			// else{
+			// 	$('#mobile_toggle_icon').css('margin-top','7px');
+			// }
+			$('.search_icon').css("display", "none"); //  숨기기
+			$('#searchbar_2').css("opacity",1); //검색창 나타내기
+			$('#searchbar_2').css("padding",0); //
+			$('#searchbar_2').css("padding-right",20);
+			$('.navbar-brand').css("display","none");
+			$('#search_icon_close').css("opacity",1);
+			
 		}
 	});
-	
+
+	$('.fa-times').on({
+		'click': function(){
+			$('.search_icon').css("display", "block"); // 나타내기
+			$('#searchbar_2').css("opacity",0); //검색창 숨기기
+			$('#searchbar_2').css("padding-right",16); //
+			$('.navbar-brand').css("display","block");
+			$('#search_icon_close').css("opacity",0);
+			$('#mobile_toggle_icon').css('display','block');
+
+		}
+	});
+
+
+	// $('#mobile_toggle_icon').on({
+	// 	'click': function(){
+	// 		if(click_action===true && click_toggle===true){
+	// 			$('#mobile_toggle_icon').css('margin-top','-1px');
+	// 			click_toggle = false;
+	// 		}
+	// 		else if(click_action===false && click_toggle===true){
+	// 			$('#mobile_toggle_icon').css('margin-top','-1px');
+	// 			click_toggle = true;
+	// 		}
+	// 		else{
+	// 				$('#mobile_toggle_icon').css('margin-top','7px');
+	// 			click_toggle = true;
+	// 		}
+	// 	}
+	// });
+
+
+
+
+
+
+
 });
