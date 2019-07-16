@@ -60,3 +60,7 @@ p.lead {
 .figure_detail * a{
 	padding: 10px;
 }
+
+.banner img{
+	height: 80%;
+}
