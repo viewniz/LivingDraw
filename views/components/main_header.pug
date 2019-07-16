@@ -1,0 +1,36 @@
+header.target-hover(style="font-family: 'Cabin', sans-serif;")
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+        a.navbar-brand(href='#')
+            img(src='/images/logo.png', style='')
+        button#mobile_toggle_icon.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='#') Home
+                li.nav-item
+                    a.nav-link(href='#') Paints
+                li.nav-item
+                    a.nav-link(href='#') Intro
+            ul#searchbar_1.right-menu.ml-auto
+                //
+                  <li><i class="fa fa-facebook"></i></li>
+                  <li><i class="fa fa-instagram"></i></li>
+                  <li><i class="fa fa-pinterest"></i></li>
+                li
+                    .input-group.mb-3
+                        input.form-control(type='text', placeholder='', aria-label='', aria-describedby='basic-addon2')
+                        .input-group-append
+                            span#basic-addon2.input-group-text Search
+        ul#searchbar_2.right-menu.ml-auto
+            li
+                .input-group.mb-3
+                    input.form-control(type='text', placeholder='', aria-label='', aria-describedby='basic-addon2')
+                    .input-group-append
+                        span#basic-addon2.input-group-text Search
+            li
+                i.fa.fa-times
+            li
+        ul.search_icon
+            i#mobile_searchbutton.fa.fa-search
+            i#mobile_heartbutton.fa.fa-heart
