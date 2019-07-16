@@ -2,78 +2,101 @@ doctype html
 html
     head
         meta(charset='UTF-8')
-        |
         title Livig Draw
-        |
         meta(charset='utf-8')
-        |
         meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-        |
         meta(name='description', content='')
-        |
         meta(name='author', content='')
-        |
         link(rel='icon', href='favicon.ico')
-        |
         link(rel='stylesheet', href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/theme/style.css')
-        |
-        link(rel='stylesheet', href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css')
-        |
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
-        |
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
-        |
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
-        |
-        script(src='../../../js/hooni.js')
-        |
-        link(rel='stylesheet', href='../../../css/product_style.css')
+        script(src='/js/hooni.js')
+        link(href='https://fonts.googleapis.com/css?family=Work+Sans:300')
+        link(href='https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap', rel='stylesheet')
+        link(rel='stylesheet', href='/css/product_style.css')
+        link(rel='stylesheet', href='https://icono-49d6.kxcdn.com/icono.min.css')
+        link(rel='stylesheet', href='/css/nav_style.css')
+        link(href='https://fonts.googleapis.com/css?family=DM+Serif+Text|Ubuntu&display=swap', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=DM+Serif+Text|Notable|Russo+One|Ubuntu&display=swap', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Cabin|DM+Serif+Text|Notable|Russo+One|Ubuntu&display=swap', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display|Raleway&display=swap', rel='stylesheet')
         // Plugins
     body
-        header.target-hover
+        style(type='text/css').
+        script.
+        header.target-hover(style="font-family: 'Cabin', sans-serif;")
             nav.navbar.navbar-expand-lg.navbar-light.bg-light
-                a.navbar-brand(href='#') Navbar
-                |
-                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                a.navbar-brand(href='#')
+                    img(src='/images/logo.png', style='')
+                button#mobile_toggle_icon.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
-                |
                 #navbarSupportedContent.collapse.navbar-collapse
                     ul.navbar-nav.mr-auto
                         li.nav-item.active
                             a.nav-link(href='#') Home
-                        |
                         li.nav-item
                             a.nav-link(href='#') Paints
-                        |
                         li.nav-item
                             a.nav-link(href='#') Intro
-                    |
-                    form.form-inline.my-2.my-lg-0
-                        input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
-                        |
-                        button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
-        |
+                    ul#searchbar_1.right-menu.ml-auto
+                        //
+                          <li><i class="fa fa-facebook"></i></li>
+                          <li><i class="fa fa-instagram"></i></li>
+                          <li><i class="fa fa-pinterest"></i></li>
+                        li
+                            .input-group.mb-3
+                                input.form-control(type='text', placeholder='', aria-label='', aria-describedby='basic-addon2')
+                                .input-group-append
+                                    span#basic-addon2.input-group-text Search
+                ul#searchbar_2.right-menu.ml-auto
+                    li
+                        .input-group.mb-3
+                            input.form-control(type='text', placeholder='', aria-label='', aria-describedby='basic-addon2')
+                            .input-group-append
+                                span#basic-addon2.input-group-text Search
+                    li
+                        i.fa.fa-times
+                    li
+                ul.search_icon
+                    i#mobile_searchbutton.fa.fa-search
+                    i#mobile_heartbutton.fa.fa-heart
+        //
+          <div class="container">
+          <div class="row">
+          <div id="paint_name" class="col-12 col-md-12 col-lg-9 col-xl-9">
+          <p style="font-size: 30px;">그 곳</p>
+          </div>
+          </div>
         section.pt-5.pb-5
-            .container
+            .container(style='padding:5; ')
                 #leftside
                     #leftside_detail_1.leftside_detail
-                        img#select_image_1(src='../../../pic/'+border.image[0].picFilename)
-                    |
-                    #leftside_detail_2.leftside_normal
-                        img#select_image_2(src='http://via.placeholder.com/700x500/3F51B5/fff')
-                |
+                        img#select_image_1(src='/images/그소.jpg')
+                    //
+                      <div id="leftside_detail_2" class="leftside_normal">
+                      <img  id ="select_image_2" src="http://via.placeholder.com/700x500/3F51B5/fff">
+                      </div>
                 .row
                     // LEFT SIDE CATEGORIES
                     .col-12.col-md-12.col-lg-9.col-xl-9
                         // SLIDER
                         .row
-                            #row_bottom.col-md-12.col-xl-12
+                            #row_bottom.col-md-12.col-xl-12(style='')
                                 #carouselExampleIndicators.carousel.slide(data-ride='carousel')
                                     .carousel-inner
-                                        .carousel-item.active
-                                            img#select_image.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide', alt='First slide [800x400]', src='../../../pic/'+border.image[0].picFilename, data-holder-rendered='true')
+                                        #select_image_div.carousel-item.active
+                                            img#select_image.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide', alt='First slide [800x400]', src='/images/그소.jpg', data-holder-rendered='true')
+                                            .middle
+                                                .text Full Screen
+                                            .middle2
+                                                .text
+                                                    | Add to Like
+                                                    img#add_like(src='/images/like4.png', style=' margin-left:5px; width: 20px; height: 20px;')
                         // / SLIDER
-                        hr
+                        hr#shadow
                         // MARKETING LINE
                         //
                           <div class="row">
@@ -93,238 +116,90 @@ html
                           </div>
                         // /MARKETING LINE
                         // FEATURED PRODUCTS
-                        button#paintstory.btn.btn-secondary.btn-lg(type='button', value='hide/show', style='display: block; width: 100%; background-color: rgb(52, 152, 219); border: none;')
-                            | &#xC791;&#xD488; &#xC0C1;&#xC138; &#xC124;&#xBA85;
-                        |
+                        div(style='text-align: center; z-index: -1;')
+                            p#paintstory(type='button', style='display: inline-block; border:none;')
+                                | 작품 상세 설명
+                                a#vareiety_icon.icono-caretDown(style=' height: 30px;')
                         #paintdetail.articles-grid.row
                             // ITEM
                             .col-12.col-md-6.col-lg-6.col-xl-6
-                                p.lead.text-center.text-primary(style='margin-bottom: 0;') It&apos;s Your Painting!
-                                |
+                                p.lead.text-center.text-primary(style='margin-bottom: 0;') 그 곳
                                 hr
-                                |
-                                p.lead.text-center.text-primary YOUR RECENT MARKETING SLOGAN OR OFFER!
+                                p
+                                    | Keywords:
+                                    a(style='color: #6c757d;') black,white
+                                p
+                                p
+                                    | Subjects:
+                                    a(style='color: #6c757d;') Abstract
+                                p
+                                    | Styles:
+                                    a(style='color: #6c757d;') Abstract
+                                p
+                                    | Mediums:
+                                    a(style='color: #6c757d;') Acrylic
+                                p
+                                    | Materials:
+                                    a(style='color: #6c757d;') Canvas
                             // END ITEM
-                        // / FEATURED PRODUCTS
-                        // MARKETING LINE
-                        //
-                          <div class="row">
-                          <div class="col-md-12 col-xl-12">
-                          <div class="bg-white mdl-shadow--32dp mb-5 mt-5">
-                          <div class="card-body">
-                          <div class="row">
-                          <div class="col-md-8 col-xl-8">
-                          <p class="lead text-center text-primary">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
-                          </div>
-                          <div class="col-md-4 col-xl-4"> <a class="btn btn-dark mt-4 btn-lg btn-block" href="#">ADD CART!</a>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                        // /MARKETING LINE
-                        // MAIN PRODUCTS GRID
+                            // / FEATURED PRODUCTS
                         #categories.container-folio.row
                             //
                               PROD GRID============================================================-
                               ->
                               <!-- PROD. ITEM
-                            .col-6.col-md-6.col-lg-4.col-xl-4
-                                .thumbnail
-                                    // IMAGE CONTAINER
-                                    img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=', alt='post image')
-                                    // END IMAGE CONTAINER
-                                    // CAPTION
-                                    .caption
-                                        h4.mt-3 Product title
-                                        |
-                                        p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
-                                        |
-                                        .row
-                                    // END CAPTION
-                                // END: THUMBNAIL
-                            // PROD. ITEM
-                            // PROD. ITEM
-                            .col-6.col-md-6.col-lg-4.col-xl-4
-                                .thumbnail
-                                    // IMAGE CONTAINER
-                                    img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=', alt='post image')
-                                    // END IMAGE CONTAINER
-                                    // CAPTION
-                                    .caption
-                                        h4.mt-3 Product title
-                                        |
-                                        p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
-                                        |
-                                        .row
-                                    // END CAPTION
-                                // END: THUMBNAIL
-                            // PROD. ITEM
-                            // PROD. ITEM
-                            .col-6.col-md-6.col-lg-4.col-xl-4
-                                .thumbnail
-                                    // IMAGE CONTAINER
-                                    img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=', alt='post image')
-                                    // END IMAGE CONTAINER
-                                    // CAPTION
-                                    .caption
-                                        h4.mt-3 Product title
-                                        |
-                                        p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
-                                        |
-                                        .row
-                                    // END CAPTION
-                                // END: THUMBNAIL
-                            // PROD. ITEM
-                            // PROD. ITEM
-                            .col-6.col-md-6.col-lg-4.col-xl-4
-                                .thumbnail
-                                    // IMAGE CONTAINER
-                                    img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=', alt='post image')
-                                    // END IMAGE CONTAINER
-                                    // CAPTION
-                                    .caption
-                                        h4.mt-3 Product title
-                                        |
-                                        p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
-                                        |
-                                        .row
-                                    // END CAPTION
-                                // END: THUMBNAIL
-                            // PROD. ITEM
-                            // PROD. ITEM
-                            .col-6.col-md-6.col-lg-4.col-xl-4
-                                .thumbnail
-                                    // IMAGE CONTAINER
-                                    img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=', alt='post image')
-                                    // END IMAGE CONTAINER
-                                    // CAPTION
-                                    .caption
-                                        h4.mt-3 Product title
-                                        |
-                                        p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
-                                        |
-                                        .row
-                                    // END CAPTION
-                                // END: THUMBNAIL
-                            // PROD. ITEM
-                            // PROD. ITEM
-                            .col-6.col-md-6.col-lg-4.col-xl-4
-                                .thumbnail
-                                    // IMAGE CONTAINER
-                                    img(src='https://images.unsplash.com/photo-1454328911520-ccf83f1ef41d?dpr=1&auto=format&fit=crop&w=1500&h=982&q=80&cs=tinysrgb&crop=', alt='post image')
-                                    // END IMAGE CONTAINER
-                                    // CAPTION
-                                    .caption
-                                        h4.mt-3 Product title
-                                        |
-                                        p.lead.text-center.text-primary(style='font-size: 14px;') YOUR RECENT MARKETING SLOGAN OR OFFER!
-                                        |
-                                        .row
-                                    // END CAPTION
-                                // END: THUMBNAIL
-                            // PROD. ITEM
-                            // / PROD GRID=======================================
-                        // /INNER ROW
-                        hr
-                        // PAGINATION
-                        //
-                          <ul class="pagination float-right">
-                          <li class="page-item"><a href="#" class="page-link">«</a>
-                          </li>
-                          <li class="page-item"><a href="#" class="page-link">1</a>
-                          </li>
-                          <li class="page-item"><a href="#" class="page-link">2</a>
-                          </li>
-                          <li class="page-item"><a href="#" class="page-link">3</a>
-                          </li>
-                          <li class="page-item"><a href="#" class="page-link">4</a>
-                          </li>
-                          <li class="page-item"><a href="#" class="page-link">5</a>
-                          </li>
-                          <li class="page-item"><a href="#" class="page-link">»</a>
-                          </li>
-                          </ul>
-                        // /PAGINATION
-                    |
-                    #total_card.col-12.col-md-12.col-lg-3.col-xl-3
+                    #total_card.col-12.col-md-12.col-lg-3.col-xl-3(style='')
                         .card.bg-light
-                            .card-header.bg-primary
-                                h4.display-4= border.title
-                            |
+                            #card_head.card-header.bg-primary
+                                p(style='font-size:30px; color: #222;')=border.title
+                                p(style='color: #222;') There
                             .card-body
-                                a= border.description
-                                |
-                                .more
-                                    a(href='index.html')
-                                        img(src='../../../images/binoculars2.png', style='width: 28px; height: 28px;')
-                                        | See More
-                                |
+                                .card_author
+                                    div(style='height: auto;')
+                                        a(style='font-size: 22px;')=border.firstname
+                                        // <a><img src="../images/user.png" style="width: 23px; height: 23px; margin-left: 5px; margin-right:0; padding-bottom: 5px;"></a>
+                                    div
+                                        a(style='font-size: 15px;') Kim eun ji
                                 .morebox
-                                    .more_left
+                                    .more_left(style='background-color: white; border-right: 1px solid #e7e7e7;')
                                         a View
-                                        |
                                         br
-                                        a= border.view
-                                    |
-                                    .more_right
+                                        a 0
+                                    .more_right(style='background-color: white;')
                                         a Like
                                         br
-                                        a= border.like
-                                |
-                                a#addcart.btn.btn-round.btn-danger.mdl-shadow--32dp.mt-3.btn-lg.btn-block(data-target='#my80sizeCenterModal', data-toggle='modal') ADD CART!
+                                        a 0
+                                .more(style='height: 134px; background-color: #3a3e42;')
+                                    div
+                                        a(style='width: 28px; height: 100%; font-size: 1.5em; color: white;') 1,000,000￦
+                                    div(style='height: 76px; padding-top: 20px;')
+                                        button#addcart_left.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; padding: 4px;') CART
+                                        button#addcart_right.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; padding: 4px;') BUY NOW
                     // /left SIDE
                     // CONTENT SIDE
                     // /CONTENT SIDE
-            // /.content
-        |
+                    // /.content
         #mobile_buymode(style=' border-top: 2px solid #e7e7e7; bottom:0;  width: 100%; position: fixed; background-color: white;')
             #mobile_padding_height
                 div(style='display: table; padding-right: 24px !important; padding-left: 24px !important; width: 100%;')
                     div(style='margin-top:0; margin-bottom:0; margin-left:0; margin-right:0; box-sizing: border-box;')
                         div(style='display: table-cell !important; width:100%; vertical-align: middle;')
                             div(style='word-wrap: break-word !important; box-sizing: border-box; word-break: break-all; border-spacing: 0px !important; font-size: 14px;')
-                                | Hellasdfasdfsdafdasfdsfasdfdaso
-                        |
-                        div(style='display: table-cell !important; vertical-align: middle !important; word-break: keep-all;')
+                                | 그 곳
+                        #mobile_left(style='display: table-cell !important; vertical-align: middle !important; word-break: keep-all;')
                             div(style='margin-left: 8px !important;')
-                                button.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; width: 160px !important;') ADD CART!
-        //
-          <div class="row">
-          <div class="modal modal-center fade" id="modal" tabindex="-1" aria-labelledby="my80sizeCenterModalLabel">
-          <div class="modal-dialog modal-80size modal-center" role="document">
-          <div class="modal-content modal-80size">
-          <div class="modal-header">
-          Test
-          <button class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body" style="text-align: center;">
-          Test.<br>
-          Test.<br>
-          Test.<br>
-          Test.<br>
-          Test.<br>
-          Test.<br>
-          Test.<br>
-          Test.<br>
-          Test.<br>
-          </div>
-          </div>
-          </div>
-          </div>
-          </div>
+                                button#mobile_button_left.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; width: 160px !important;') CART
+                        #mobile_right(style='display: table-cell !important; vertical-align: middle !important; word-break: keep-all;')
+                            div(style='margin-left: 8px !important;')
+                                button#mobile_button_right.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; width: 80px !important;') BUYNOW
         #my80sizeCenterModal.modal.modal-center.fade(tabindex='-1', role='dialog', aria-labelledby='my80sizeCenterModalLabel')
             .modal-dialog.modal-80size.modal-center(role='document')
                 .modal-content.modal-80size
                     .modal-header
-                        h4#myModalLabel.modal-title Modal &#xC81C;&#xBAA9;
-                        |
+                        h4#myModalLabel.modal-title Modal 제목
                         button.close(type='button', data-dismiss='modal', aria-label='Close')
-                            span(aria-hidden='true') &times;
-                    |
+                            span(aria-hidden='true') ×
                     .modal-body
-                        | Modal &#xB0B4;&#xC6A9;
-                    |
+                        | Modal 내용
                     .modal-footer
-                        button.btn.btn-default(type='button', data-dismiss='modal') &#xB2EB;&#xAE30;
+                        button.btn.btn-default(type='button', data-dismiss='modal') 닫기

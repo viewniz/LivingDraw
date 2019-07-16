@@ -50,10 +50,10 @@ jQuery(document).ready(function(){
 	$(document).ready(function () {
 		$('.middle2')
 		.mouseover(function () {
-			$('#add_like').attr("src", "../images/like.png");
+			$('#add_like').attr("src", "/images/like.png");
 		})
 		.mouseout(function () {
-			$('#add_like').attr("src", "../images/like4.png");
+			$('#add_like').attr("src", "/images/like4.png");
 		});
 	});
 

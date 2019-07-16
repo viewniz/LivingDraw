@@ -13,7 +13,7 @@ p{
 
 
 .target-hover .nav-link{
-  padding-top: 0px;
+  padding-top: 10px;
   padding-bottom: 0px;
 }
 
@@ -103,6 +103,7 @@ input[type=search]:focus {border-color: #efb04e;}
   font-size: 18px;
   margin-right: 10px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .form-control{
@@ -201,6 +202,16 @@ input[type=search]:focus {border-color: #efb04e;}
  }
 }
 
+@media (max-width: 365px){
+  .input-group{
+    width:  180px;
+  }
+  #basic-addon2{
+    width: 60px;
+    padding: 0px 8px 0px 8px;
+  }
+}
+
 /*#mobile_toggle_icon:active{
   margin-top: -1px;
 }*/
@@ -210,10 +221,6 @@ input[type=search]:focus {border-color: #efb04e;}
   margin-top: 6px;
 }
 
-
-*:active{
-  border: none;
-}
 
 
 
