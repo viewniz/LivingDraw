@@ -2,7 +2,7 @@ let express = require('express');
 let router = express.Router();
 let controller=require('./controller');
 let multer=require('multer');
-
+let fs=require('fs');
 let Picture_storage=multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null,'./uploads/'+file.fieldname);
