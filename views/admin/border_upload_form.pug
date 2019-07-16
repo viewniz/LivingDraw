@@ -58,7 +58,7 @@ html(lang='en')
                                                     i.fa.fa-close
                                         .clearfix
                                     .x_content
-                                        form.form-group(action='./upload', method="post", enctype="multipart/form-data")
+                                        form.form-group(action='/admin/border/upload', method="post", enctype="multipart/form-data")
                                             .form-horizontal.form-label-left.input_mask
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
@@ -99,11 +99,19 @@ html(lang='en')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 성씨
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input#firstname.form-control(type='text', placeholder='Last name', name="lastName")
+                                                        input#lastname.form-control(type='text', placeholder='Last name', name="lastName")
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 이름
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input#lastname.form-control(type='text', placeholder='First name', name="firstName")
+                                                        input#firstname.form-control(type='text', placeholder='First name', name="firstName")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 성씨, 영문
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='text', placeholder='English Last name', name="lastNameE")
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 이름, 영문
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='text', placeholder='English First name', name="firstNameE")
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 명
                                                     .col-md-9.col-sm-9.col-xs-12

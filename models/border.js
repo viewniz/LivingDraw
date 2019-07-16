@@ -23,6 +23,8 @@ let BorderSchema = new Schema({
     }],
     firstName:String,
     lastName:String,
+    firstNameE:String,
+    lastNameE:String,
     title:String,
     category:String,
     subject:String,

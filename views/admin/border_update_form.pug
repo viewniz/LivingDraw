@@ -141,11 +141,19 @@ html(lang='en')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 성씨
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input#firstname.form-control(type='text', placeholder='Last name', name="lastName", value=border.firstName)
+                                                        input#lastname.form-control(type='text', placeholder='Last name', name="lastName", value=border.firstName)
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 이름
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input#lastname.form-control(type='text', placeholder='Frist name', name="firstName", value=border.lastName)
+                                                        input#firstname.form-control(type='text', placeholder='Frist name', name="firstName", value=border.lastName)
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 성씨, 영문
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='text', placeholder='English Last name', name="lastNameE", value=border.lastNameE)
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작가의 이름, 영문
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='text', placeholder='English First name', name="firstNameE", value=border.firstNameE)
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 명
                                                     .col-md-9.col-sm-9.col-xs-12

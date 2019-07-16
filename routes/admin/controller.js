@@ -92,6 +92,8 @@ exports.admin_border_upload_post= function(req, res, next) {
     let newBorder=new Border();
     newBorder.firstName=req.body.firstName;
     newBorder.lastName=req.body.lastName;
+    newBorder.firstNameE=req.body.firstNameE;
+    newBorder.lastNameE=req.body.lastNameE;
     newBorder.title=req.body.title;
     newBorder.category=req.body.category;
     newBorder.subject=req.body.subject;
@@ -128,6 +130,7 @@ exports.admin_border_upload_post= function(req, res, next) {
         newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
             picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size});
     }
+    newBorder.uploadId=req.user.lastName+" "+req.user.firstName;
     newBorder.save(function (err) {
         if (err)
             throw err;
@@ -196,6 +199,8 @@ exports.admin_border_update_post= function(req, res, next) {
         newBorder._id=req.body.id;
         newBorder.firstName=req.body.firstName;
         newBorder.lastName=req.body.lastName;
+        newBorder.firstNameE=req.body.firstNameE;
+        newBorder.lastNameE=req.body.lastNameE;
         newBorder.title=req.body.title;
         newBorder.category=req.body.category;
         newBorder.subject=req.body.subject;
@@ -236,6 +241,7 @@ exports.admin_border_update_post= function(req, res, next) {
             newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
                 picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size});
         }
+        newBorder.uploadId=req.user.lastName+" "+req.user.firstName;
         Border.findOneAndUpdate({_id:req.body.id}, newBorder, function (err, result) {
             if (err) {
                 console.error('UpdateOne Error ', err);

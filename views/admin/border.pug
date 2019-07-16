@@ -68,6 +68,7 @@ html(lang='en')
                                             th
                                             th CheckBox
                                             th 작가
+                                            th 영문
                                             th 제목
                                             th 카테고리
                                             th 크기(가로, 세로, 두께)
@@ -79,6 +80,7 @@ html(lang='en')
                                             th 키워드
                                             th 조회수
                                             th 좋아요
+                                            th 등록자
                                             th 판매 여부
                                     tbody
                                         - for(var i=0;i<border.length;i++)
@@ -88,6 +90,7 @@ html(lang='en')
                                                     button.btn.btn-default(type='button', onclick="location.href='/admin/border/update/"+border[i]._id+"' ") 수정
                                                     button.btn.btn-default(type='button', onclick='deleteBorder("'+border[i]._id+'")') 삭제
                                                 td= border[i].lastName + " " + border[i].firstName
+                                                td= border[i].lastNameE + " " + border[i].firstNameE
                                                 td= border[i].title
                                                 case border[i].category
                                                     when 'Pa'
@@ -184,6 +187,7 @@ html(lang='en')
                                                             br
                                                 td= border[i].view
                                                 td= border[i].like
+                                                td= border[i].uploadId
                                                 td
                                                     label.switch
                                                         if(border[i].is_selling)
