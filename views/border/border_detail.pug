@@ -43,11 +43,10 @@ html
                 a.dropdown-item(href='#') Link 2
                 a.dropdown-item(href='#') Link 3
         .container
-            div(style='min-height: 40px;')
-            #columns
-
-                figure
-                    img(src='../images/그소.jpg')
+             #columns
+                - for(var i=0;i<border.length;i++)
+                  figure
+                    img(src="/pic/" + border[i].image[0].picFilename)
                     .figure_detail(style='margin-top: 10px;')
                         .figure_title
                             a(style='font-size: 17px;') 그 곳
@@ -58,93 +57,3 @@ html
                             a(style='padding-right: 0px;') 김은지
                             a(style='padding-right: 0px;') kim eunji
                             a(style='float: right;') 1,000,000₩
-                //figure
-                //    img(src='../images/그소.jpg')
-                //    .figure_detail(style='margin-top: 10px;')
-                //        .figure_title
-                //            a(style='font-size: 17px;') 그 곳
-                //        .figure_kind
-                //            a(style='padding: 0; padding-left: 0;')
-                //            a 100호, <400x200x300(mm)>
-                //        .figure_artist
-                //            a(style='padding-right: 0px;') 김은지
-                //            a(style='padding-right: 0px;') kim eunji
-                //            a(style='float: right;') 1,000,000₩
-                //figure
-                //    img(src='../images/음.jpg')
-                //    .figure_detail(style='margin-top: 10px;')
-                //        .figure_title
-                //            a(style='font-size: 17px;') 그 곳
-                //        .figure_kind
-                //            a(style='padding: 0; padding-left: 0;')
-                //            a 100호, <400x200x300(mm)>
-                //        .figure_artist
-                //            a(style='padding-right: 0px;') 김은지
-                //            a(style='padding-right: 0px;') kim eunji
-                //            a(style='float: right;') 1,000,000₩
-                //figure
-                //    img(src='../images/어항.jpg')
-                //    .figure_detail(style='margin-top: 10px;')
-                //        .figure_title
-                //            a(style='font-size: 17px;') 그 곳
-                //        .figure_kind
-                //            a(style='padding: 0; padding-left: 0;')
-                //            a 100호, <400x200x300(mm)>
-                //        .figure_artist
-                //            a(style='padding-right: 0px;') 김은지
-                //            a(style='padding-right: 0px;') kim eunji
-                //            a(style='float: right;') 1,000,000₩
-                //figure
-                //    img(src='http://via.placeholder.com/320x600/3F51B5/fff')
-                //    .figure_detail(style='margin-top: 10px;')
-                //        .figure_title
-                //            a(style='font-size: 17px;') 그 곳
-                //        .figure_kind
-                //            a(style='padding: 0; padding-left: 0;')
-                //            a 100호, <400x200x300(mm)>
-                //        .figure_artist
-                //            a(style='padding-right: 0px;') 김은지
-                //            a(style='padding-right: 0px;') kim eunji
-                //            a(style='float: right;') 1,000,000₩
-                //figure
-                //    img(src='http://via.placeholder.com/320x450/3F51B5/fff')
-                //    .figure_detail(style='margin-top: 10px;')
-                //        .figure_title
-                //            a(style='font-size: 17px;') 그 곳
-                //        .figure_kind
-                //            a(style='padding: 0; padding-left: 0;')
-                //            a 100호, <400x200x300(mm)>
-                //        .figure_artist
-                //            a(style='padding-right: 0px;') 김은지
-                //            a(style='padding-right: 0px;') kim eunji
-                //            a(style='float: right;') 1,000,000₩
-                //figure
-                //    img(src='http://via.placeholder.com/320x450/3F51B5/fff')
-                //    .figure_detail(style='margin-top: 10px;')
-                //        .figure_title
-                //            a(style='font-size: 17px;') 그 곳
-                //        .figure_kind
-                //            a(style='padding: 0; padding-left: 0;')
-                //            a 100호, <400x200x300(mm)>
-                //        .figure_artist
-                //            a(style='padding-right: 0px;') 김은지
-                //            a(style='padding-right: 0px;') kim eunji
-                //            a(style='float: right;') 1,000,000₩
-                //figure
-                //    img(src='http://via.placeholder.com/320x450/3F51B5/fff')
-                //    .figure_detail(style='margin-top: 10px;')
-                //        .figure_title
-                //            a(style='font-size: 17px;') 그 곳
-                //        .figure_kind
-                //            a(style='padding: 0; padding-left: 0;')
-                //            a 100호, <400x200x300(mm)>
-                //        .figure_artist
-                //            a(style='padding-right: 0px;') 김은지
-                //            a(style='padding-right: 0px;') kim eunji
-                //            a(style='float: right;') 1,000,000₩
-                //figure
-                //    img(src='http://via.placeholder.com/320x450/3F51B5/fff')
-                //    figcaption
-                //        | Tiana wearing the
-                //        i robe de style
-                //        |  of the 1920’s

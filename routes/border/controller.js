@@ -10,7 +10,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 exports.border_main= function(req, res, next) {
-    res.render('border/border_detail');
+    Border.find(function (err, border) {
+        res.render('border/border_detail',{border:border});
+    });
 };
 
 exports.product_detail= function(req, res, next) {
