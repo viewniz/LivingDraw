@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="https://demo.bootstraptor.com/starter-kit-pro/assets/css/theme/style.css">
-  <!-- <link rel="stylesheet" href="https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -24,6 +24,7 @@
   <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text|Ubuntu&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text|Notable|Russo+One|Ubuntu&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Cabin|DM+Serif+Text|Notable|Russo+One|Ubuntu&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display|Raleway&display=swap" rel="stylesheet">
   <!-- Plugins -->
 
 
@@ -36,31 +37,58 @@
  <script>
  </script>
 
- <header class="target-hover" style="font-family: 'Cabin', sans-serif;">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img src="../images/logo.png" style="height: 70px;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Paints</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Intro</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+ <header  class="target-hover" style="font-family: 'Cabin', sans-serif;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"><img src="../images/logo.png" style=""></a>
+      <button id="mobile_toggle_icon" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Paints</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Intro</a>
+          </li>
+        </ul>
+        <ul id="searchbar_1" class="right-menu ml-auto">
+<!--          <li><i class="fa fa-facebook"></i></li>
+          <li><i class="fa fa-instagram"></i></li>
+          <li><i class="fa fa-pinterest"></i></li> -->
+          <li>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">Search</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <ul id="searchbar_2" class="right-menu ml-auto">
 
-    </nav>
-  </header>
+        <li>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">Search</span>
+            </div>
+          </div>
+        </li>
+
+      <li><i class="fa fa-times"></i><li>
+
+    </ul>
+    <ul class="search_icon">
+      <i id ="mobile_searchbutton" class="fa fa-search"></i>
+      <i id ="mobile_heartbutton" class="fa fa-heart"></i>
+    </ul>
+  </nav>
+</header>
 
 <!--   <div class="container">
     <div class="row">
@@ -131,15 +159,15 @@
             <p class="lead text-center text-primary" style="margin-bottom: 0;">그 곳</p>
             <hr>
             <p>Keywords: <a style="color: #6c757d;">black,white</a><p>
-            <p>Subjects: <a style="color: #6c757d;">Abstract</a></p>
-            <p>Styles: <a style="color: #6c757d;">Abstract</a></p>
-            <p>Mediums: <a style="color: #6c757d;">Acrylic</a></p>
-            <p>Materials: <a style="color: #6c757d;">Canvas</a></p>
+              <p>Subjects: <a style="color: #6c757d;">Abstract</a></p>
+              <p>Styles: <a style="color: #6c757d;">Abstract</a></p>
+              <p>Mediums: <a style="color: #6c757d;">Acrylic</a></p>
+              <p>Materials: <a style="color: #6c757d;">Canvas</a></p>
+            </div>
+            <!-- END ITEM -->
+            <!-- / FEATURED PRODUCTS -->
           </div>
-          <!-- END ITEM -->
-          <!-- / FEATURED PRODUCTS -->
-        </div>
-        <div id="categories"class="container-folio row">
+          <div id="categories"class="container-folio row">
               <!-- PROD GRID============================================================-
                 ->
                 <!-- PROD. ITEM -->

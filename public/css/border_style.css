@@ -78,6 +78,10 @@
 			box-shadow: 0 0 0 0.01rem #e3e3e3;
 		}
 
+		#dropdown_sort{
+
+		}
+
 		#dropdown_sort2{
 			height: 100%;
 			margin-top: 10px;
@@ -195,4 +199,26 @@
 
 			}
 			}*/
+			.jbFixed {
+				width: 100%;
+				top: 0;
+				z-index: 10;
+			}
 
+			.dropdown-menu{
+				z-index: 2;
+			}
+
+			@media(min-width: 1025px){
+				.jbFixed{
+					position: none;
+				}
+			}
+
+			@media(max-width: 1024px){
+				.jbFixed{
+					position: fixed;
+				}
+			}
+
+			

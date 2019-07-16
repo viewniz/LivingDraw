@@ -16,6 +16,8 @@
 	<!-- Plugins -->
 	<link rel="stylesheet" href="../css/index_style.css"/>
 	<link rel="stylesheet" href="../css/footer.css"/>
+	<link rel="stylesheet" href="../css/nav_style.css"/>
+	<script src="../js/hooni.js"></script>
 </head>
 
 <body>
@@ -23,10 +25,10 @@
 
 	</style>
 
-	<header class="target-hover">
+	<header  class="target-hover" style="font-family: 'Cabin', sans-serif;">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">Navbar</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand" href="#"><img src="../images/logo.png" style=""></a>
+			<button id="mobile_toggle_icon" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -41,13 +43,40 @@
 						<a class="nav-link" href="#">Intro</a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form>
+				<ul id="searchbar_1" class="right-menu ml-auto">
+<!-- 					<li><i class="fa fa-facebook"></i></li>
+					<li><i class="fa fa-instagram"></i></li>
+					<li><i class="fa fa-pinterest"></i></li> -->
+					<li>
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<span class="input-group-text" id="basic-addon2">Search</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<ul id="searchbar_2" class="right-menu ml-auto">
 
-			</nav>
-		</header>
+				<li>
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+						<div class="input-group-append">
+							<span class="input-group-text" id="basic-addon2">Search</span>
+						</div>
+					</div>
+				</li>
+
+			<li><i class="fa fa-times"></i><li>
+
+		</ul>
+		<ul class="search_icon">
+			<i id ="mobile_searchbutton" class="fa fa-search"></i>
+			<i id ="mobile_heartbutton" class="fa fa-heart"></i>
+		</ul>
+	</nav>
+</header>
 
 		<div class="banner">
 			<a><img src="images/image01.jpg" style="width: 100%;"></a>
@@ -99,11 +128,11 @@
 				<h2>Etiam veroeros lorem</h2>
 				<p>Pellentesque eleifend malesuada efficitur. Curabitur volutpat dui mi, ac imperdiet dolor tincidunt nec. Ut erat lectus, dictum sit amet lectus a, aliquet rutrum mauris. Etiam nec lectus hendrerit, consectetur risus viverra, iaculis orci. Phasellus eu nibh ut mi luctus auctor. Donec sit amet dolor in diam feugiat venenatis. </p>
 
-				<ul class="icons">
+<!-- 				<ul class="icons">
 					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 					<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
 					<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-				</ul>
+				</ul> -->
 				<p class="copyright">&copy; Untitled. Design: ViewNeeds</a>.</p>
 			</div>
 		</footer>

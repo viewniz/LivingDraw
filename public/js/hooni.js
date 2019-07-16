@@ -91,7 +91,7 @@ jQuery(document).ready(function(){
 			$('.search_icon').css("display", "none"); //  숨기기
 			$('#searchbar_2').css("opacity",1); //검색창 나타내기
 			$('#searchbar_2').css("padding",0); //
-			$('#searchbar_2').css("padding-right",20);
+			$('#searchbar_2').css("padding-right",10);
 			$('.navbar-brand').css("display","none");
 			$('#search_icon_close').css("opacity",1);
 			
@@ -109,29 +109,5 @@ jQuery(document).ready(function(){
 
 		}
 	});
-
-
-	// $('#mobile_toggle_icon').on({
-	// 	'click': function(){
-	// 		if(click_action===true && click_toggle===true){
-	// 			$('#mobile_toggle_icon').css('margin-top','-1px');
-	// 			click_toggle = false;
-	// 		}
-	// 		else if(click_action===false && click_toggle===true){
-	// 			$('#mobile_toggle_icon').css('margin-top','-1px');
-	// 			click_toggle = true;
-	// 		}
-	// 		else{
-	// 				$('#mobile_toggle_icon').css('margin-top','7px');
-	// 			click_toggle = true;
-	// 		}
-	// 	}
-	// });
-
-
-
-
-
-
 
 });
