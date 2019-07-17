@@ -137,6 +137,7 @@ exports.admin_border_upload_post= function(req, res, next) {
         res.redirect('./upload');
     });
 };
+
 exports.admin_border_delete_post= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
@@ -153,6 +154,7 @@ exports.admin_border_delete_post= function(req, res, next) {
         });
     });
 };
+
 exports.admin_border_is_selling_change= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
@@ -176,6 +178,7 @@ exports.admin_border_is_selling_change= function(req, res, next) {
         }
     });
 };
+
 exports.admin_border_update_remove_image= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
@@ -192,6 +195,7 @@ exports.admin_border_update_remove_image= function(req, res, next) {
         });
     });
 };
+
 exports.admin_border_update_post= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
@@ -282,6 +286,7 @@ exports.admin_delete_post= function(req, res, next) {
         });
     });
 };
+
 exports.admin_site_banner_post= function(req, res, next) {
     Banner.findOne({},function(err, result){
         if(result)
@@ -323,6 +328,7 @@ exports.admin_site_banner_post= function(req, res, next) {
         }
     });
 };
+
 exports.admin_site_box_post= function(req, res, next) {
     Box.findOne({},function(err, result){
         if(result)
