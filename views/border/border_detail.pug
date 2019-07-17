@@ -49,11 +49,11 @@ html
                     img(src="/pic/" + border[i].image[0].picFilename)
                     .figure_detail(style='margin-top: 10px;')
                         .figure_title
-                            a(style='font-size: 17px;') 그 곳
+                            a(style='font-size: 17px;')=border[i].title
                         .figure_kind
                             a(style='padding: 0; padding-left: 0;')
-                            a 400x200x300(mm)
+                            a=border[i].width+'W * '+border[i].height+'H * '+border[i].depth+' cm'
                         .figure_artist
-                            a(style='padding-right: 0px;') 김은지
-                            a(style='padding-right: 0px;') kim eunji
-                            a(style='float: right;') 1,000,000₩
+                            a(style='padding-right: 0px;')=border[i].lastName+border[i].firstName
+                            a(style='padding-right: 0px;')=border[i].lastNameE+' '+border[i].firstNameE
+                            a(style='float: right;')=border[i].price+"￦"
