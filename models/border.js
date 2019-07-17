@@ -26,6 +26,7 @@ let BorderSchema = new Schema({
     firstNameE:String,
     lastNameE:String,
     title:String,
+    titleSub:String,
     category:String,
     subject:String,
     style:String,

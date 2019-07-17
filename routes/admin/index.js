@@ -35,7 +35,7 @@ let uploadBox=multer({storage:Box_storage});
 /* GET users listing. */
 
 router.get('/', controller.admin_login_check_yes, controller.admin_main);
-router.get('/member/submit', /*controller.admin_login_check_yes,*/ controller.admin_submit);
+router.get('/member/submit', controller.admin_login_check_yes, controller.admin_submit);
 router.get('/member', controller.admin_login_check_yes, controller.admin_member);
 router.get('/login', controller.admin_login);
 router.get('/border', controller.admin_login_check_yes, controller.admin_border);
@@ -50,7 +50,7 @@ router.post('/border/delete', controller.admin_login_check_yes, controller.admin
 router.post('/border/isSellingChange', controller.admin_login_check_yes, controller.admin_border_is_selling_change);
 router.post('/border/update/removeImage', controller.admin_login_check_yes, controller.admin_border_update_remove_image);
 router.post('/border/update', controller.admin_login_check_yes, uploadPicture.array('pic'), controller.admin_border_update_post);
-router.post('/member/submit', /*controller.admin_login_check_yes,*/ uploadPicture.single('adminFace'), controller.admin_submit_post);
+router.post('/member/submit', controller.admin_login_check_yes, uploadPicture.single('adminFace'), controller.admin_submit_post);
 router.post('/member/delete', controller.admin_login_check_yes, controller.admin_delete_post);
 router.post('/site/banner', controller.admin_login_check_yes,uploadBanner.single('banner'), controller.admin_site_banner_post);
 router.post('/site/box', controller.admin_login_check_yes,uploadBox.single('box'), controller.admin_site_box_post);
