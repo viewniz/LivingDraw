@@ -1,7 +1,10 @@
 
 /.idea/workspace.xml
 /.idea/
-/uploads/
+/uploads/adminFace/
+/uploads/pic/
+/uploads/banner/
+/uploads/box/
 /bin/www
 # Created by https://www.gitignore.io/api/node,webstorm
 # Edit at https://www.gitignore.io/?templates=node,webstorm
