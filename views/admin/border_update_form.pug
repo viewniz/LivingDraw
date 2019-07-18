@@ -226,6 +226,10 @@ html(lang='en')
                                                             //Paint
                                                             option(value="Ge", selected=(border.medium.indexOf("Ge")!==-1)) 석고
                                                             //Gesso
+                                                            option(value="Co", selected=(border.material.indexOf("Co") !== -1)) 채색
+                                                            //Coloring
+                                                            option(value="Ti", selected=(border.material.indexOf("Ti") !== -1)) 수묵담채
+                                                            //Tin
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 판
                                                     .col-md-9.col-sm-9.col-xs-12
@@ -242,6 +246,12 @@ html(lang='en')
                                                             //Other
                                                             option(value="So", selected=(border.material.indexOf("So")!==-1)) 부드러운 재질(뜨개실, 면, 옷감)
                                                             //Soft (Yarn, Cotton, Fabric)
+                                                            option(value="Hw", selected=(border.material.indexOf("Hw")!==-1)) 화선지
+                                                            //Hwaseonji
+                                                            option(value="Su", selected=(border.material.indexOf("Su")!==-1)) 순지
+                                                            //Sunji
+                                                            option(value="Ja", selected=(border.material.indexOf("Ja")!==-1)) 장지
+                                                            //Jangji
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 크기(cm)
                                                     .col-md-1.col-sm-1.col-xs-4.text-right
