@@ -216,7 +216,10 @@ html
                                         a=border.like
                                 .more(style='height: 134px; background-color: #3a3e42;')
                                     div
-                                        a(style='width: 28px; height: 100%; font-size: 1.5em; color: white;')=border.price+"￦"
+                                        if(border.is_selling)
+                                            a(style='width: 28px; height: 100%; font-size: 1.5em; color: white;')=border.price+"￦"
+                                        else
+                                            a(style='width: 28px; height: 100%; font-size: 1.5em; color: white;') 미판매
                                     div(style='height: 76px; padding-top: 20px;')
                                         button#addcart_left.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; padding: 4px;') CART
                                         button#addcart_right.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; padding: 4px;') BUY NOW
