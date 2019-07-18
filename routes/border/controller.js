@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 exports.border_main = function (req, res, next) {
-    let countlist_out = 25; //한 페이지에 출력될 게시물 수
+    let countlist_out = 3; //한 페이지에 출력될 게시물 수
     let pre_page = 1;
     let skip_num = 0;
 
@@ -57,7 +57,7 @@ exports.border_main = function (req, res, next) {
 };
 
 exports.border_main_second = function (req, res, next) {
-    let countlist_out = 25; //한 페이지에 출력될 게시물 수
+    let countlist_out = 3; //한 페이지에 출력될 게시물 수
     let pre_page = parseInt(req.params.id);
     let skip_num = (pre_page - 1) * countlist_out;
 

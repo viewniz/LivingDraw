@@ -46,8 +46,9 @@ html
              #columns
                 - for(var i=0; i<border.length; i++)
                   figure
-                    img(src="/pic/" + border[i].image[0].picFilename)
-                    .figure_detail(style='margin-top: 10px;')
+                      a(href="/border/product/"+border[i]._id)
+                        img(src="/pic/" + border[i].image[0].picFilename)
+                      .figure_detail(style='margin-top: 10px;')
                         .figure_title
                             a(style='font-size: 17px;')=border[i].title
                         .figure_kind
@@ -69,7 +70,7 @@ html
 
                                 - for(var i = startpage; i <= endpage; i++)
                                   li.page-item
-                                    a.page-link(href=i)=i
+                                    a.page-link(href="/border/"+i)=i
                                   //if(i>1)
                                   //else
                                   //    a.page-link(href=)=i
