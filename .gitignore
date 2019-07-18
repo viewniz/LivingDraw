@@ -5,6 +5,7 @@
 /uploads/pic/
 /uploads/banner/
 /uploads/box/
+/uploads/logo/
 /bin/www
 # Created by https://www.gitignore.io/api/node,webstorm
 # Edit at https://www.gitignore.io/?templates=node,webstorm
