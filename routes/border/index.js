@@ -11,11 +11,12 @@ let Picture_storage=multer.diskStorage({
         cb(null,Date.now()+"!"+file.originalname);
     }
 });
-let uploadPicture=multer({storage:Picture_storage});
 
+let uploadPicture=multer({storage:Picture_storage});
 
 /* GET users listing. */
 
 router.get('/', controller.border_main);
+router.get('/:id',controller.border_main_second);
 router.get('/product/:id', controller.product_detail);
 module.exports = router;

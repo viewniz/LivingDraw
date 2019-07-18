@@ -44,7 +44,7 @@ html
                 a.dropdown-item(href='#') Link 3
         .container
              #columns
-                - for(var i=0;i<border.length;i++)
+                - for(var i=0; i<border.length; i++)
                   figure
                     img(src="/pic/" + border[i].image[0].picFilename)
                     .figure_detail(style='margin-top: 10px;')
@@ -64,13 +64,16 @@ html
                     span.pull-right
                         ul.pagination
                             li.page-item
-                                a.page-link(href='#')
+                                a.page-link(href=pre_page-1)
                                     i.fa.fa-angle-left(aria-hidden='true')
 
-                                - for(var j = startpage; j <= endpage; j++)
+                                - for(var i = startpage; i <= endpage; i++)
                                   li.page-item
-                                    a.page-link(href='#')=j
+                                    a.page-link(href=i)=i
+                                  //if(i>1)
+                                  //else
+                                  //    a.page-link(href=)=i
                             li.page-item
-                                a.page-link(href='#')
+                                a.page-link(href=pre_page+1)
                                     i.fa.fa-angle-right(aria-hidden='true')
 
