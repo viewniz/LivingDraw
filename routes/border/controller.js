@@ -12,34 +12,31 @@ app.use(bodyParser.urlencoded({ extended: false }));
 exports.border_main= function(req, res, next) {
     // var total = Border.find({});
 
-    Border.find(function (err, border) {
+    Border.find.skip(function (err, border) {
+        //req로 pre_pagenum 받기
+        var pre_page = 1; //현재 페이지 수
+
         var totalcount = border.length;
         console.log(totalcount);
-        var countlist = 3;
-        var totalpage = parseInt(totalcount / countlist);
+        var countlist = 25; //한 페이지에 출력될 게시물 수
+        var totalpage = parseInt(totalcount / countlist); //총 페이지 수
 
         console.log(totalpage);
         if (totalcount % countlist > 0) {
             totalpage++;
         }
-        // console.log(totalpage);
-        // if (totalpage < page) {
-        //     page = totalPage; //현재페이지 == total페이지 만들기
-        // }
 
-        var pre_page = 1;
-        var countpage =3;
-
-        var startpage = parseInt(((pre_page - 1) / 10) * 10 + 1);
+        var countpage =3; //한 화면에 출력될 페이지 수
+        var startpage = parseInt((parseInt(pre_page - 1) / countpage) * countpage + 1); //start page 구하기
         var endpage = parseInt(startpage + countpage - 1);
 
-        //  여기서 마지막 페이지를 보정해줍니다.
-
+        //  페이지보정
         if (endpage > totalpage) {
             endpage = totalpage;
         }
-
-        res.render('border/border_detail',{border:border});
+        console.log(startpage);
+        console.log(endpage);
+        res.render('border/border_detail',{border:border,startpage:startpage,endpage:endpage});
     });
 };
 

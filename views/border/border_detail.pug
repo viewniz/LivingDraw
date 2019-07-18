@@ -57,6 +57,7 @@ html
                             a(style='padding-right: 0px;')=border[i].lastName + border[i].firstName
                             a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE
                             a(style='float: right;')=border[i].price + "￦"
+
         .container
             .row
                 .col-md-12
@@ -65,12 +66,10 @@ html
                             li.page-item
                                 a.page-link(href='#')
                                     i.fa.fa-angle-left(aria-hidden='true')
-                            li.page-item
-                                a.page-link(href='#') 1
-                            li.page-item
-                                a.page-link(href='#') 2
-                            li.page-item
-                                a.page-link(href='#') 3
+
+                                - for(var j = startpage; j <= endpage; j++)
+                                  li.page-item
+                                    a.page-link(href='#')=j
                             li.page-item
                                 a.page-link(href='#')
                                     i.fa.fa-angle-right(aria-hidden='true')
