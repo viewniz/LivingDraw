@@ -156,6 +156,10 @@ html(lang='en')
                                                                 | 페인트
                                                             when 'Ge'
                                                                 | 석고
+                                                            when 'Co'
+                                                                | 채색
+                                                            when 'Ti'
+                                                                | 수묵담채
                                                             default
                                                                 | error
                                                         if(border[i].medium.length != j + 1)
@@ -176,6 +180,12 @@ html(lang='en')
                                                                  |기타
                                                             when 'So'
                                                                  |부드러운 재질(뜨개실, 면, 옷감)
+                                                            when 'Hw'
+                                                                | 화선지
+                                                            when 'Su'
+                                                                | 순지
+                                                            when 'Ja'
+                                                                | 장지
                                                             default
                                                                  |error
                                                         if(border[i].material.length!=j+1)

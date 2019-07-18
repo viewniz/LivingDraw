@@ -10,17 +10,9 @@ let Border = require('../../models/border');
 let Admin = require('../../models/adminUser');
 let Banner = require('../../models/banner');
 let Box = require('../../models/box');
+let Logo = require('../../models/logo');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-let Picture_storage=multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null,'./public/img/'+file.fieldname);
-    },
-    filename: function (req, file, cb) {
-        cb(null,Date.now()+"!"+file.originalname);
-    }
-});
 
 exports.admin_login_check_yes=function(req,res,next) {         //구매자 등록페이지 들어갈 때 검사
     if(!req.user)
@@ -87,7 +79,9 @@ exports.admin_site_banner= function(req, res, next) {
 exports.admin_site_box= function(req, res, next) {
     res.render('admin/site_manage_box',{user:req.user});
 };
-
+exports.admin_site_logo= function(req, res, next) {
+    res.render('admin/site_manage_logo',{user:req.user});
+};
 exports.admin_border_upload_post= function(req, res, next) {
     let newBorder=new Border();
     newBorder.firstName=req.body.firstName;
@@ -368,6 +362,48 @@ exports.admin_site_box_post= function(req, res, next) {
                 if (err)
                     throw err;
                 res.redirect("/admin/site/box");
+            });
+        }
+    });
+};
+
+exports.admin_site_logo_post= function(req, res, next) {
+    Logo.findOne({},function(err, result){
+        if(result)
+        {
+            Logo.remove({},function (err, result) {
+                if (err) throw err;
+                let newLogo=new Logo();
+                newLogo.uploadId=req.user.id;
+                newLogo.image.picOriginalName = req.file.originalname;
+                newLogo.image.picEncoding = req.file.encoding;
+                newLogo.image.picMimetype = req.file.mimetype;
+                newLogo.image.picDestination = req.file.destination;
+                newLogo.image.picFilename = req.file.filename;
+                newLogo.image.picPath = req.file.path;
+                newLogo.image.picSize = req.file.size;
+                newLogo.save(function (err) {
+                    if (err)
+                        throw err;
+                    res.redirect("/admin/site/logo");
+                });
+            });
+        }
+        else
+        {
+            let newLogo=new Logo();
+            newLogo.uploadId=req.user.id;
+            newLogo.image.picOriginalName = req.file.originalname;
+            newLogo.image.picEncoding = req.file.encoding;
+            newLogo.image.picMimetype = req.file.mimetype;
+            newLogo.image.picDestination = req.file.destination;
+            newLogo.image.picFilename = req.file.filename;
+            newLogo.image.picPath = req.file.path;
+            newLogo.image.picSize = req.file.size;
+            newLogo.save(function (err) {
+                if (err)
+                    throw err;
+                res.redirect("/admin/site/logo");
             });
         }
     });
