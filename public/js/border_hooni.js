@@ -34,4 +34,24 @@ $( document ).ready( function() {
       $( '.target-hover' ).removeClass( 'jbFixed' );
     }
   });
+
+  var curPage = document.URL;
+  curPage = curPage.substr(curPage.lastIndexOf("/")+1) ;
+  var str_page = String(curPage);
+  var str_pagename = "pagenum"+str_page;
+
+  if(str_page!="")
+  {
+    $('#'+str_pagename).addClass('clickcolor'); // 나타내기
+  }
+  else{
+    $('#pagenum1').addClass('clickcolor'); // 나타내기
+    $('#pageleft').addClass('displaynone'); // 없애기
+  }
+  if(str_page=='1'){
+    $('#pageleft').addClass('displaynone'); // 없애기
+  }
+
+
 });
+
