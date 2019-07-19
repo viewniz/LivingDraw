@@ -13,11 +13,12 @@ html
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
-        script(src='../js/hooni.js')
+
         link(rel='stylesheet', href='../css/border_style.css')
         link(rel='stylesheet', href='../css/nav_style.css')
         link(href='https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display|Raleway&display=swap', rel='stylesheet')
         script(src='../js/border_hooni.js')
+        script(src='../js/hooni.js')
         // Plugins
     body
         script.
@@ -57,24 +58,29 @@ html
                         .figure_artist
                             a(style='padding-right: 0px;')=border[i].lastName + border[i].firstName
                             a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE
-                            a(style='float: right;')=border[i].price + "￦"
+                            if(border[i].is_selling)
+                                a(style='float: right;')=border[i].price + "￦"
+                            else
+                                | 미판매
 
         .container
+            hr
             .row
                 .col-md-12
                     span.pull-right
                         ul.pagination
                             li.page-item
-                                a.page-link(href=pre_page-1)
+                                a(id='pageleft').page-link(href=pre_page-1)
                                     i.fa.fa-angle-left(aria-hidden='true')
 
                                 - for(var i = startpage; i <= endpage; i++)
                                   li.page-item
-                                    a.page-link(href="/border/"+i)=i
-                                  //if(i>1)
-                                  //else
-                                  //    a.page-link(href=)=i
-                            li.page-item
-                                a.page-link(href=pre_page+1)
-                                    i.fa.fa-angle-right(aria-hidden='true')
+                                    a(id='pagenum'+i).page-link(href="/border/"+i)=i
+
+                            li(id='pageright'+totalpage).page-item
+                                if(pre_page !== totalpage)
+                                    a.page-link(href=pre_page+1)
+                                        i.fa.fa-angle-right(aria-hidden='true')
+                                else
+                                    a.page-link.displaynone
 
