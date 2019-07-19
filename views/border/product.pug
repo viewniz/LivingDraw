@@ -29,7 +29,9 @@ html
         script.
         include ../components/main_header
 
+        .modal_full
         section.pt-5.pb-5
+
             .container(style='padding:5; ')
                 #leftside
                     -for(var i=0;i<border.image.length;i++)
@@ -50,7 +52,7 @@ html
                                     .carousel-inner
                                         #select_image_div.carousel-item.active
                                             img#select_image.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide', alt='First slide [800x400]', src="/pic/" + border.image[0].picFilename, data-holder-rendered='true')
-                                            .middle
+                                            .middle(id='modal_button')
                                                 .text Full Screen
                                             .middle2
                                                 .text
@@ -59,23 +61,7 @@ html
                         // / SLIDER
                         hr#shadow
                         // MARKETING LINE
-                        //
-                          <div class="row">
-                          <div class="col-md-12 col-xl-12">
-                          <div class="bg-light mb-5 mt-5">
-                          <div class="card-body">
-                          <div class="row">
-                          <div class="col-md-8 col-xl-8">
-                          <p class="lead text-center ">YOUR RECENT MARKETING SLOGAN OR OFFER!</p>
-                          </div>
-                          <div class="col-md-4 col-xl-4"> <a class="btn   btn-round btn-danger mdl-shadow--32dp mt-3 btn-lg btn-block" href="#">SHOP  NOW!</a>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                          </div>
-                        // /MARKETING LINE
+
                         // FEATURED PRODUCTS
                         div(style='text-align: center; z-index: -1;')
                             p#paintstory(type='button', style='display: inline-block; border:none;')

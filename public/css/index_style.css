@@ -69,15 +69,23 @@ p.lead {
 .figure_detail * a {
     padding: 10px;
 }
-
-.container img {
-    height: 85%;
-    margin:0;
+.container img{
+    margin-right: 0;
 }
 
+
+
+
 @media (min-width: 1200px) {
+
     .container {
         padding: 0 65px 0px 65px;
+        text-align: center;
+
+    }
+    .container img {
+        height: 85%;
+        width: 85%;
     }
 }
 

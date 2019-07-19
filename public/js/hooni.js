@@ -47,6 +47,18 @@ jQuery(document).ready(function(){
 		}
 	});
 
+	$('#modal_button').click(function(e) {
+		var selectfunction = $('#select_image').attr('src');
+		$('.modal_full').addClass('active');
+		$('.modal_full').css('background-color',selectfunction);
+		// e.preventDefault();
+	});
+
+	$('.modal').click(function(e) {
+		$('.modal').removeClass('active');
+		// e.preventDefault();
+	});
+
 	$(document).ready(function () {
 		$('.middle2')
 		.mouseover(function () {
