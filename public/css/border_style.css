@@ -294,6 +294,19 @@ a {
     display: none;
 }
 
+.btn-outline-primary {
+    color: #efb04e;
+    background-color: transparent;
+    background-image: none;
+    border-color: #efb04e;
+}
 
+.dropdown-menu a:hover{
 
-			
+    background-color: #eee;
+}
+
+.dropdown-menu a:active{
+    background-color: #eee;
+    color: black;
+}

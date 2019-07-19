@@ -1,0 +1,29 @@
+/*footer*/
+
+.page-footer *{
+    font-family: 'Cabin', sans-serif;
+}
+
+.contact {
+    font-size: 90%;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.contact a{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.page-footer{
+    border-top: 1px #eee solid;
+}
+
+.copyright{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 75%;
+}
+
+@media(max-width: 767px){
+.footerhead{
+    padding-top: 0px !important;
+}
+}
