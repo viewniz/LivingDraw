@@ -598,14 +598,15 @@ body, html {
 
 .modal_full {
     position: absolute;
-    top:0;
-    left:0;
+    /*top:0;*/
+    /*bottom:0;*/
     height:100%;
     width: 100%;
+
+
 }
 
 .modal_full {
-    background-image: src("/pic/1563366493744!1.jpg");
     z-index:200;
     visibility: hidden;
     opacity: 0;
@@ -616,4 +617,23 @@ body, html {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.5s;
+    display: block;
+    padding: 5px;
+    background-size: cover;
+}
+
+/modal/
+
+#full_modal{
+    margin:0;
+}
+
+#full_size{
+    max-width: none;
+    margin: 0;
+}
+
+#myFullsizeModal{
+    padding: 0px;
+    padding-right: 0px !important;
 }
