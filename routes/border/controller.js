@@ -14,7 +14,7 @@ exports.border_main = function (req, res, next) {
 };
 
 exports.border_main_second = function (req, res, next) {
-    let countlist_out = 3; //한 페이지에 출력될 게시물 수
+    let countlist_out = 10; //한 페이지에 출력될 게시물 수
     let pre_page = parseInt(req.params.id);
     if (pre_page < 1) {
         res.redirect('/border/1');
