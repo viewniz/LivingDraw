@@ -63,10 +63,10 @@ html
                             a(style='font-size: 17px;')=border[i].title
                         .figure_kind
                             a(style='padding: 0; padding-left: 0;')
-                            a=border[i].width+'W * '+border[i].height+'H * '+border[i].depth+' cm'
+                            a=border[i].width+' W * '+border[i].height+' H * '+border[i].depth+' cm'
                         .figure_artist
                             a(style='padding-right: 0px;')=border[i].lastName + border[i].firstName
-                            a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE
+                            a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE+' '
                             if(border[i].is_selling)
                                 a(style='float: right;')=border[i].price + "￦"
                             else
