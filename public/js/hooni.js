@@ -50,20 +50,17 @@ jQuery(document).ready(function(){
 	//풀스크린//
 
 	$('#modal_button').click(function(e) {
-		var selectfunction = "('"+"http://localhost:3000/"+$('#select_image').attr('src')+"')"; ///로컬일때
+		var selectfunction = $('#select_image').attr('src'); ///로컬일때
 		// var selectfunction = "('"+"https://livingdraw.co.kr/"+$('#select_image').attr('src')+"')"; /// livingdraw
-		// alert(selectfunction);
-        let are = '';
 
-		$('.modal_full').addClass('active');
-		$('.modal_full').css('background-image','url'+selectfunction);
+		$('.change_fullscreen_img').attr("src",selectfunction);
 		e.preventDefault();
 	});
 
-	$('#modal_button').click(function(e) {
-		$('.modal').removeClass('active');
-		e.preventDefault();
-	});
+	// $('#modal_button').click(function(e) {
+	// 	$('.modal').removeClass('active');
+	// 	e.preventDefault();
+	// });
 
 	//end//
 

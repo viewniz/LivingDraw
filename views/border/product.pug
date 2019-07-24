@@ -28,11 +28,7 @@ html
         style(type='text/css').
         script.
         include ../components/main_header
-        .container
-            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myFullsizeModal')
-                | Fullsize Modal
-            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#my80sizeModal')
-                | 80%size Modal
+        //.container
         section.pt-5.pb-5
 
             .container(style='padding:5; ')
@@ -56,7 +52,7 @@ html
                                     .carousel-inner
                                         #select_image_div.carousel-item.active
                                             img#select_image.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide', alt='First slide [800x400]', src="/pic/" + border.image[0].picFilename, data-holder-rendered='true')
-                                            .middle(id='modal_button')
+                                            .middle(id='modal_button', data-toggle='modal', data-target='#myFullsizeModal')
                                                 .text Full Screen
                                             .middle2
                                                 .text
@@ -243,13 +239,13 @@ html
                         button.btn.btn-default(type='button', data-dismiss='modal') 닫기
 
 
-        #myFullsizeModal.modal.fade
+        #myFullsizeModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myFullsizeModalLabel')
             #full_size.modal-dialog.modal-fullsize(role='document')
                 #full_modal.modal-content.modal-fullsize
                     .modal-header
                         button.close(type='button', data-dismiss='modal', aria-label='Close')
                             span(aria-hidden='true') ×
                         h4#myModalLabel.modal-title
-                    .modal-body
-                        img(src='/pic/1563531598137!12F9D1E1편집.jpeg', style='width: 100%; height:100%;')
+                    .modal-body(id='fullscreen_img')
+                        img.change_fullscreen_img()
 
