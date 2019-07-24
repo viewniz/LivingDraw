@@ -25,6 +25,7 @@ p.lead {
 #columns {
     column-width: 350px;
     column-gap: 15px;
+    width: 100%;
 }
 
 #columns figure {

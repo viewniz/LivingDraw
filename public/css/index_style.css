@@ -73,10 +73,7 @@ p.lead {
     margin-right: 0;
 }
 
-
-
-
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
 
     .container {
         padding: 0 65px 0px 65px;
@@ -84,8 +81,8 @@ p.lead {
 
     }
     .container img {
-        height: 85%;
-        width: 85%;
+        height: 60%;
+        width: 60%;
     }
 }
 
