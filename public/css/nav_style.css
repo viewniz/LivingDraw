@@ -96,7 +96,7 @@ input[type=search]:focus {border-color: #efb04e;}
 
 .right-menu li{
   display: inline-block;
-  margin-top: 30px;
+  margin-top: 3%;
 }
 
 .right-menu li .fa{
@@ -146,9 +146,7 @@ input[type=search]:focus {border-color: #efb04e;}
   .ml-auto, .mx-auto {
     margin-left: auto !important;
     top: -8px;
-    position: absolute;
     right: 0;
-    padding-right: 16px;
   }
   #searchbar_2{
     display: block;
@@ -195,6 +193,8 @@ input[type=search]:focus {border-color: #efb04e;}
   width: 20px;
   text-align: center;
   cursor: pointer;
+  margin-top: 20%;
+  margin-bottom: 24%;
 }
 @media (max-width: 455px){
   .input-group{
@@ -226,6 +226,11 @@ input[type=search]:focus {border-color: #efb04e;}
   #searchbar_2{
     padding-left: 0;
   }
+}
+
+#searchbar_2{
+
+  padding: 0px 0px 0px 0px !important;
 }
 
 
