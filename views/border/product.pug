@@ -1,6 +1,13 @@
 doctype html
 html
     head
+        // Global site tag (gtag.js) - Google Analytics
+        script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-144472686-1')
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-144472686-1');
         meta(charset='UTF-8')
         title Livig Draw
         meta(charset='utf-8')
@@ -10,15 +17,15 @@ html
         link(rel='icon', href='favicon.ico')
         link(rel='stylesheet', href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/theme/style.css')
         link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+        link(rel='stylesheet', href='/css/product_style.css')
+        link(rel='stylesheet', href='https://icono-49d6.kxcdn.com/icono.min.css')
+        link(rel='stylesheet', href='/css/nav_style.css')
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
         script(src='/js/hooni.js')
         link(href='https://fonts.googleapis.com/css?family=Work+Sans:300')
         link(href='https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap', rel='stylesheet')
-        link(rel='stylesheet', href='/css/product_style.css')
-        link(rel='stylesheet', href='https://icono-49d6.kxcdn.com/icono.min.css')
-        link(rel='stylesheet', href='/css/nav_style.css')
         link(href='https://fonts.googleapis.com/css?family=DM+Serif+Text|Ubuntu&display=swap', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=DM+Serif+Text|Notable|Russo+One|Ubuntu&display=swap', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Cabin|DM+Serif+Text|Notable|Russo+One|Ubuntu&display=swap', rel='stylesheet')
@@ -28,11 +35,11 @@ html
         style(type='text/css').
         script.
         include ../components/main_header
-
-        .modal_full
+        //.container
         section.pt-5.pb-5
 
             .container(style='padding:5; ')
+
                 #leftside
                     -for(var i=0;i<border.image.length;i++)
                         div.leftside_detail(id="leftside_detail_"+(i+1))
@@ -52,7 +59,7 @@ html
                                     .carousel-inner
                                         #select_image_div.carousel-item.active
                                             img#select_image.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide', alt='First slide [800x400]', src="/pic/" + border.image[0].picFilename, data-holder-rendered='true')
-                                            .middle(id='modal_button')
+                                            .middle(id='modal_button', data-toggle='modal', data-target='#myFullsizeModal')
                                                 .text Full Screen
                                             .middle2
                                                 .text
@@ -238,3 +245,14 @@ html
                     .modal-footer
                         button.btn.btn-default(type='button', data-dismiss='modal') 닫기
         include ../components/footer
+
+
+        #myFullsizeModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myFullsizeModalLabel')
+            #full_size.modal-dialog.modal-fullsize(role='document')
+                #full_modal.modal-content.modal-fullsize
+                    .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                        h4#myModalLabel.modal-title
+                    .modal-body(id='fullscreen_img')
+                        img.change_fullscreen_img()

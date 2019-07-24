@@ -47,17 +47,22 @@ jQuery(document).ready(function(){
 		}
 	});
 
+	//풀스크린//
+
 	$('#modal_button').click(function(e) {
-		var selectfunction = $('#select_image').attr('src');
-		$('.modal_full').addClass('active');
-		$('.modal_full').css('background-color',selectfunction);
-		// e.preventDefault();
+		var selectfunction = $('#select_image').attr('src'); ///로컬일때
+		// var selectfunction = "('"+"https://livingdraw.co.kr/"+$('#select_image').attr('src')+"')"; /// livingdraw
+
+		$('.change_fullscreen_img').attr("src",selectfunction);
+		e.preventDefault();
 	});
 
-	$('.modal').click(function(e) {
-		$('.modal').removeClass('active');
-		// e.preventDefault();
-	});
+	// $('#modal_button').click(function(e) {
+	// 	$('.modal').removeClass('active');
+	// 	e.preventDefault();
+	// });
+
+	//end//
 
 	$(document).ready(function () {
 		$('.middle2')
