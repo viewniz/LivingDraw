@@ -1,6 +1,13 @@
 doctype html
 html
     head
+        // Global site tag (gtag.js) - Google Analytics
+        script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-144472686-1')
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-144472686-1');
         meta(charset='UTF-8')
         title Livig Draw
         meta(charset='utf-8')
@@ -237,6 +244,7 @@ html
                         | Modal 내용
                     .modal-footer
                         button.btn.btn-default(type='button', data-dismiss='modal') 닫기
+        include ../components/footer
 
 
         #myFullsizeModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myFullsizeModalLabel')
@@ -248,4 +256,3 @@ html
                         h4#myModalLabel.modal-title
                     .modal-body(id='fullscreen_img')
                         img.change_fullscreen_img()
-
