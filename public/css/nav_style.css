@@ -76,6 +76,7 @@ input[type=search]:focus {border-color: #efb04e;}
 @media(max-width: 991px){
   .navbar-brand img{
     max-height: 55px;
+    margin-top: 10%;
   }
 }
 
