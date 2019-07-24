@@ -1,7 +1,7 @@
 header.target-hover(style="font-family: 'Cabin', sans-serif;")
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
         a.navbar-brand(href='#')
-            img(src='/logo/logoImage.png', style='')
+            img(src='/logo/logo.png', style='')
         button#mobile_toggle_icon.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
             span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
@@ -23,7 +23,7 @@ header.target-hover(style="font-family: 'Cabin', sans-serif;")
                         .input-group-append
                             span#basic-addon2.input-group-text
                                 i.fa.fa-search
-        ul#searchbar_2.right-menu.ml-auto
+        ul#searchbar_2.right-menu.ml-auto(style='display: none;')
             li
                 .input-group.mb-3
                     input.form-control(type='text', placeholder='', aria-label='', aria-describedby='basic-addon2')

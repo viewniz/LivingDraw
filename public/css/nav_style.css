@@ -64,8 +64,8 @@ input[type=search]:focus {border-color: #efb04e;}
 
 @media(min-width: 992px){
   .navbar-brand img{
-    height: 80px;
-    margin-top: 10px;
+    max-height: 55px;
+    margin-top: 10%;
   }
   #mobile_toggle_icon{
     opacity: 0;
@@ -75,7 +75,7 @@ input[type=search]:focus {border-color: #efb04e;}
 
 @media(max-width: 991px){
   .navbar-brand img{
-    height:70px;
+    max-height: 55px;
   }
 }
 
