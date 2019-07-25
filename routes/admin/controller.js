@@ -3,6 +3,7 @@ let bodyParser = require('body-parser');
 let multer=require('multer');
 let fs = require('fs');
 let passport = require('passport');
+const sharp = require('sharp');
 
 let app = express();
 
@@ -32,8 +33,7 @@ exports.admin_login_check_yes=function(req,res,next) {         //구매자 등�
 exports.admin_main= function(req, res, next) {
     res.render('admin/index',{user:req.user});
 };
-exports.admin_submit= function(req, res, next) {
-    res.render('admin/submit',{user:req.user});
+exports.admin_submit= function(req, res, next) {sha
 };
 exports.admin_login= function(req, res, next) {
     res.render('admin/login');
@@ -124,6 +124,12 @@ exports.admin_border_upload_post= function(req, res, next) {
     for(let i=0;i<req.files.length;i++) {
         newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
             picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size});
+        sharp('./uploads/pic/'+req.files[i].filename).resize(630).toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
+            if(err)
+                console.log(err);
+            else
+                console.log(info);
+        });
     }
     newBorder.uploadId=req.user.lastName+" "+req.user.firstName;
     newBorder.save(function (err) {
@@ -139,6 +145,10 @@ exports.admin_border_delete_post= function(req, res, next) {
         for(let i=0;i<result.image.length;i++)
         {
             fs.unlink(result.image[i].picDestination+'/'+result.image[i].picFilename, function(err) {
+                if (err) throw err;
+                console.log('file deleted');
+            });
+            fs.unlink(result.image[i].picDestination+'_300/'+result.image[i].picFilename, function(err) {
                 if (err) throw err;
                 console.log('file deleted');
             });
@@ -182,6 +192,10 @@ exports.admin_border_update_remove_image= function(req, res, next) {
             if (err) throw err;
             console.log('file deleted');
         });
+        fs.unlink(spliceResult[0].picDestination+'_300/'+spliceResult[0].picFilename, function(err) {
+            if (err) throw err;
+            console.log('file deleted');
+        });
         Border.updateOne({ _id: req.body.id }, { $set: { image: result.image } }, function (err, result) {
             if (err) {
                 console.error('UpdateOne Error ', err);
@@ -196,6 +210,7 @@ exports.admin_border_update_post= function(req, res, next) {
         if (err) console.log(err);
         let newBorder=new Border();
         newBorder._id=req.body.id;
+        newBorder.is_selling=result.is_selling;
         newBorder.firstName=req.body.firstName;
         newBorder.lastName=req.body.lastName;
         newBorder.firstNameE=req.body.firstNameE;
@@ -240,6 +255,12 @@ exports.admin_border_update_post= function(req, res, next) {
         for(let i=0;i<req.files.length;i++) {
             newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
                 picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size});
+            sharp('./uploads/pic/'+req.files[i].filename).resize(630).toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
+                if(err)
+                    console.log(err);
+                else
+                    console.log(info);
+            });
         }
         newBorder.uploadId=req.user.lastName+" "+req.user.firstName;
         Border.findOneAndUpdate({_id:req.body.id}, newBorder, function (err, result) {
