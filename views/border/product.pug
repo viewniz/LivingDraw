@@ -78,10 +78,10 @@ html
                                     ="Keywords : "
                                     a(style='color: #6c757d;')
                                         -for(var i=0;i<border.keyWords.length;i++)
-                                        if(!(i===(border.keyWords.length-1)))
-                                            =border.keyWords[i]+', '
-                                        else
-                                            =border.keyWords[i]
+                                            if(!(i===(border.keyWords.length-1)))
+                                                =border.keyWords[i]+', '
+                                            else
+                                                =border.keyWords[i]
                                 p
                                 p
                                     ="Subject : "
@@ -142,6 +142,8 @@ html
                                                     | 채색
                                                 when 'Ti'
                                                     | 수묵담채
+                                                when 'Mu'
+                                                    | 먹
                                                 default
                                                     | error
                                             if(border.medium.length != j + 1)
@@ -169,6 +171,8 @@ html
                                                     | 순지
                                                 when 'Ja'
                                                     | 장지
+                                                when 'Ha'
+                                                    | 한지
                                                 default
                                                     | error
                                             if(border.material.length != j + 1)
