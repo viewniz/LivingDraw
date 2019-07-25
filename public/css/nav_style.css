@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Catamaran|Noto+Sans+KR&display=swap');
+
+.target-hover a{
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 700;
+  font-size: 1.1em;
+}
 
 p{
   font-family: 'Noto Sans KR', sans-serif;
@@ -5,10 +12,15 @@ p{
   color: #222;
 }
 
+
+
 *:focus {
   border-color: #ef8d16;
 }
 
+.target-hover{
+  min-height: 80px;
+}
 
 
 
@@ -18,8 +30,7 @@ p{
 }
 
 .navbar .nav-item > a {
-  font-size: 1.0em;
-  font-weight: 400;
+
   letter-spacing: .11em;
   text-transform: uppercase;
 }
@@ -54,6 +65,10 @@ input[type=search]:focus {border-color: #efb04e;}
   top: 5px;
   padding: 0;
   margin:0;
+}
+
+.navbar-nav {
+  margin-bottom: 10px;
 }
 
 .navbar-brand img{

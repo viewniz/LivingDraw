@@ -528,7 +528,7 @@ h4, h3, h2 {
     }
 }
 
-body {
+#total_card p, a, button{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -570,6 +570,7 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     border-radius: 0px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    border-bottom: none;
 }
 
 .card-body {

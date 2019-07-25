@@ -149,7 +149,7 @@ p.lead {
     font-weight: 400;
     color: #222;
     float: left;
-
+    padding-top: 11px;
 }
 
 @media (max-width: 510px) {
@@ -201,7 +201,7 @@ p.lead {
 }
 
 
-a {
+#columns a, p{
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 15px;
     font-weight: 500;
