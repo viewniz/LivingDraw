@@ -144,13 +144,25 @@ exports.admin_border_delete_post= function(req, res, next) {
         if (err) console.log(err);
         for(let i=0;i<result.image.length;i++)
         {
-            fs.unlink(result.image[i].picDestination+'/'+result.image[i].picFilename, function(err) {
-                if (err) throw err;
-                console.log('file deleted');
+            fs.stat(result.image[i].picDestination+'/'+result.image[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(result.image[i].picDestination+'/'+result.image[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
             });
-            fs.unlink(result.image[i].picDestination+'_300/'+result.image[i].picFilename, function(err) {
-                if (err) throw err;
-                console.log('file deleted');
+            fs.stat(result.image[i].picDestination+'_300/'+result.image[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(result.image[i].picDestination+'_300/'+result.image[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
             });
         }
         Border.remove({_id:req.body.id},function (err, result) {
@@ -188,13 +200,25 @@ exports.admin_border_update_remove_image= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
         let spliceResult = result.image.splice(req.body.num, 1);
-        fs.unlink(spliceResult[0].picDestination+'/'+spliceResult[0].picFilename, function(err) {
-            if (err) throw err;
-            console.log('file deleted');
+        fs.stat(spliceResult[0].picDestination+'/'+spliceResult[0].picFilename, function(err, stat) {
+            if(err == null) {
+                fs.unlink(spliceResult[0].picDestination+'/'+spliceResult[0].picFilename, function(err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+            } else {
+                console.log('Some other error: ', err.code);
+            }
         });
-        fs.unlink(spliceResult[0].picDestination+'_300/'+spliceResult[0].picFilename, function(err) {
-            if (err) throw err;
-            console.log('file deleted');
+        fs.stat(spliceResult[0].picDestination+'_300/'+spliceResult[0].picFilename, function(err, stat) {
+            if(err == null) {
+                fs.unlink(spliceResult[0].picDestination+'_300/'+spliceResult[0].picFilename, function(err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+            } else {
+                console.log('Some other error: ', err.code);
+            }
         });
         Border.updateOne({ _id: req.body.id }, { $set: { image: result.image } }, function (err, result) {
             if (err) {
