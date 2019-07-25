@@ -65,7 +65,8 @@ exports.border_main_second = function (req, res, next) {
                                 endpage: endpage,
                                 totalcount: totalcount,
                                 pre_page: pre_page,
-                                totalpage: totalpage
+                                totalpage: totalpage,
+                                sort: '?'+req.query.sort
                             });
                         });
                     });
@@ -99,7 +100,8 @@ exports.border_main_second = function (req, res, next) {
                                 endpage: endpage,
                                 totalcount: totalcount,
                                 pre_page: pre_page,
-                                totalpage: totalpage
+                                totalpage: totalpage,
+                                sort: '?'+req.query.sort
                             });
                         });
                     });
@@ -133,7 +135,8 @@ exports.border_main_second = function (req, res, next) {
                                 endpage: endpage,
                                 totalcount: totalcount,
                                 pre_page: pre_page,
-                                totalpage: totalpage
+                                totalpage: totalpage,
+                                sort: '?'+req.query.sort
                             });
                         });
                     });
@@ -167,7 +170,8 @@ exports.border_main_second = function (req, res, next) {
                                 endpage: endpage,
                                 totalcount: totalcount,
                                 pre_page: pre_page,
-                                totalpage: totalpage
+                                totalpage: totalpage,
+                                sort: '?'+req.query.sort
                             });
                         });
                     });
