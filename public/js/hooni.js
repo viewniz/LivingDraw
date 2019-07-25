@@ -94,37 +94,48 @@ jQuery(document).ready(function(){
 		});
 	});
 
-
-
 	
 	$('#mobile_searchbutton').on({
 		'click': function(){
-			// if(click_action === true){
-			// 	$('#mobile_toggle_icon').css('margin-top','-1px');
-			// }
-			// else{
-			// 	$('#mobile_toggle_icon').css('margin-top','7px');
-			// }
-			$('.search_icon').css("display", "none"); //  숨기기
+			$('#searchbar_2').removeClass('non_display'); //  숨기기
+			$('.search_icon').addClass('non_display');
+			$('#searchbar_2').css("opacity",1);
 			$('#searchbar_2').css("opacity",1); //검색창 나타내기
 			$('#searchbar_2').css("padding",0); //
 			$('#searchbar_2').css("padding-right",10);
-			$('.navbar-brand').css("display","none");
+			$('.navbar-brand').addClass('non_display');
 			$('#search_icon_close').css("opacity",1);
-			
 		}
 	});
 
 	$('.fa-times').on({
 		'click': function(){
-			$('.search_icon').css("display", "block"); // 나타내기
+			$('#searchbar_2').addClass('non_display'); //  숨기기
+			$('.search_icon').removeClass('non_display'); // 나타내기
 			$('#searchbar_2').css("opacity",0); //검색창 숨기기
 			$('#searchbar_2').css("padding-right",16); //
-			$('.navbar-brand').css("display","block");
+			$('.navbar-brand').removeClass('non_display');
 			$('#search_icon_close').css("opacity",0);
 			$('#mobile_toggle_icon').css('display','block');
-
 		}
+	});
+
+	let mobile_toggle_icon = false;
+
+	$('#mobile_toggle_icon').on({
+		'click': function(){
+			if(mobile_toggle_icon === false){
+				$('#searchbar_2').addClass('non_display'); //  숨기기
+				$('.search_icon').addClass('non_display'); // 숨기기
+				$('.navbar-brand').removeClass('non_display');// 나타내기
+				mobile_toggle_icon = true;
+			}
+			else{
+				$('.search_icon').removeClass('non_display'); // 나타내기
+				mobile_toggle_icon = false;
+			}
+		}
+
 	});
 
 
