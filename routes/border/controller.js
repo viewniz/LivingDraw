@@ -66,7 +66,7 @@ exports.border_main_second = function (req, res, next) {
                                 totalcount: totalcount,
                                 pre_page: pre_page,
                                 totalpage: totalpage,
-                                sort: '?'+req.query.sort
+                                sort: '?sort='+req.query.sort
                             });
                         });
                     });
@@ -101,7 +101,7 @@ exports.border_main_second = function (req, res, next) {
                                 totalcount: totalcount,
                                 pre_page: pre_page,
                                 totalpage: totalpage,
-                                sort: '?'+req.query.sort
+                                sort: '?sort='+req.query.sort
                             });
                         });
                     });
@@ -136,7 +136,7 @@ exports.border_main_second = function (req, res, next) {
                                 totalcount: totalcount,
                                 pre_page: pre_page,
                                 totalpage: totalpage,
-                                sort: '?'+req.query.sort
+                                sort: '?sort='+req.query.sort
                             });
                         });
                     });
@@ -171,7 +171,7 @@ exports.border_main_second = function (req, res, next) {
                                 totalcount: totalcount,
                                 pre_page: pre_page,
                                 totalpage: totalpage,
-                                sort: '?'+req.query.sort
+                                sort: '?sort='+req.query.sort
                             });
                         });
                     });
