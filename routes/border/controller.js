@@ -19,7 +19,6 @@ exports.border_main_second = function (req, res, next) {
     if (pre_page < 1) {
         res.redirect('/border/1');
     }
-
     Border.count(function (err, remove) {
         let removetotal = remove; //db총개수
         // console.log(removetotal);
@@ -33,43 +32,185 @@ exports.border_main_second = function (req, res, next) {
         if (pre_page > totalremovelist) {
             res.redirect('/border/' + totalremovelist);
         }
-
         else {
             // console.log("pre" + pre_page);
             let skip_num = (pre_page - 1) * countlist_out;
+            switch (req.query.sort) {
+                case 'old':
+                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "submit_date": 1 } ).exec(function (err, border) {
+                        Border.count(function (err, totalcount_please) {
 
-            Border.find({}).skip(skip_num).limit(countlist_out).exec(function (err, border) {
-                Border.count(function (err, totalcount_please) {
+                            var totalcount = totalcount_please; //db총 개수
+                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
+                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
+                            if (totalcount % countlist > 0) {
+                                totalpage++;
+                            }
 
-                    var totalcount = totalcount_please; //db총 개수
-                    var countlist = countlist_out; //한 페이지에 출력될 게시물 수
-                    var totalpage = parseInt(totalcount / countlist); //총 페이지 수
-                    if (totalcount % countlist > 0) {
-                        totalpage++;
-                    }
+                            var countpage = 3; //한 화면에 출력될 페이지 수
+                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
 
-                    var countpage = 3; //한 화면에 출력될 페이지 수
-                    var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
+                            var endpage = parseInt(startpage + countpage - 1);
 
-                    var endpage = parseInt(startpage + countpage - 1);
-
-                    //  페이지보정
-                    if (endpage > totalpage) {
-                        endpage = totalpage;
-                    }
-                    // console.log(totalpage);
-                    // pre_page = parseInt(pre_page);
-                    // console.log(pre_page);
-                    res.render('border/border_detail', {
-                        border: border,
-                        startpage: startpage,
-                        endpage: endpage,
-                        totalcount: totalcount,
-                        pre_page: pre_page,
-                        totalpage: totalpage
+                            //  페이지보정
+                            if (endpage > totalpage) {
+                                endpage = totalpage;
+                            }
+                            // console.log(totalpage);
+                            // pre_page = parseInt(pre_page);
+                            // console.log(pre_page);
+                            res.render('border/border_detail', {
+                                border: border,
+                                startpage: startpage,
+                                endpage: endpage,
+                                totalcount: totalcount,
+                                pre_page: pre_page,
+                                totalpage: totalpage,
+                                sort: '?sort='+req.query.sort
+                            });
+                        });
                     });
-                });
-            });
+                    break;
+                case 'new':
+                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "submit_date": -1 } ).exec(function (err, border) {
+                        Border.count(function (err, totalcount_please) {
+
+                            var totalcount = totalcount_please; //db총 개수
+                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
+                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
+                            if (totalcount % countlist > 0) {
+                                totalpage++;
+                            }
+
+                            var countpage = 3; //한 화면에 출력될 페이지 수
+                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
+
+                            var endpage = parseInt(startpage + countpage - 1);
+
+                            //  페이지보정
+                            if (endpage > totalpage) {
+                                endpage = totalpage;
+                            }
+                            // console.log(totalpage);
+                            // pre_page = parseInt(pre_page);
+                            // console.log(pre_page);
+                            res.render('border/border_detail', {
+                                border: border,
+                                startpage: startpage,
+                                endpage: endpage,
+                                totalcount: totalcount,
+                                pre_page: pre_page,
+                                totalpage: totalpage,
+                                sort: '?sort='+req.query.sort
+                            });
+                        });
+                    });
+                    break;
+                case 'high':
+                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "price": -1 } ).exec(function (err, border) {
+                        Border.count(function (err, totalcount_please) {
+
+                            var totalcount = totalcount_please; //db총 개수
+                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
+                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
+                            if (totalcount % countlist > 0) {
+                                totalpage++;
+                            }
+
+                            var countpage = 3; //한 화면에 출력될 페이지 수
+                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
+
+                            var endpage = parseInt(startpage + countpage - 1);
+
+                            //  페이지보정
+                            if (endpage > totalpage) {
+                                endpage = totalpage;
+                            }
+                            // console.log(totalpage);
+                            // pre_page = parseInt(pre_page);
+                            // console.log(pre_page);
+                            res.render('border/border_detail', {
+                                border: border,
+                                startpage: startpage,
+                                endpage: endpage,
+                                totalcount: totalcount,
+                                pre_page: pre_page,
+                                totalpage: totalpage,
+                                sort: '?sort='+req.query.sort
+                            });
+                        });
+                    });
+                    break;
+                case 'low':
+                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "price": 1 } ).exec(function (err, border) {
+                        Border.count(function (err, totalcount_please) {
+
+                            var totalcount = totalcount_please; //db총 개수
+                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
+                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
+                            if (totalcount % countlist > 0) {
+                                totalpage++;
+                            }
+
+                            var countpage = 3; //한 화면에 출력될 페이지 수
+                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
+
+                            var endpage = parseInt(startpage + countpage - 1);
+
+                            //  페이지보정
+                            if (endpage > totalpage) {
+                                endpage = totalpage;
+                            }
+                            // console.log(totalpage);
+                            // pre_page = parseInt(pre_page);
+                            // console.log(pre_page);
+                            res.render('border/border_detail', {
+                                border: border,
+                                startpage: startpage,
+                                endpage: endpage,
+                                totalcount: totalcount,
+                                pre_page: pre_page,
+                                totalpage: totalpage,
+                                sort: '?sort='+req.query.sort
+                            });
+                        });
+                    });
+                    break;
+                default:
+                    Border.find({}).skip(skip_num).limit(countlist_out).exec(function (err, border) {
+                        Border.count(function (err, totalcount_please) {
+
+                            var totalcount = totalcount_please; //db총 개수
+                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
+                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
+                            if (totalcount % countlist > 0) {
+                                totalpage++;
+                            }
+
+                            var countpage = 3; //한 화면에 출력될 페이지 수
+                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
+
+                            var endpage = parseInt(startpage + countpage - 1);
+
+                            //  페이지보정
+                            if (endpage > totalpage) {
+                                endpage = totalpage;
+                            }
+                            // console.log(totalpage);
+                            // pre_page = parseInt(pre_page);
+                            // console.log(pre_page);
+                            res.render('border/border_detail', {
+                                border: border,
+                                startpage: startpage,
+                                endpage: endpage,
+                                totalcount: totalcount,
+                                pre_page: pre_page,
+                                totalpage: totalpage
+                            });
+                        });
+                    });
+                    break;
+            }
         }
     });
 };
