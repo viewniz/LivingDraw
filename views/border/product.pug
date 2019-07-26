@@ -25,6 +25,7 @@ html
         script(src='/js/hooni.js')
         link(href='https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display|Raleway&display=swap', rel='stylesheet')
+        <link href="https://fonts.googleapis.com/css?family=Lora|Nanum+Gothic+Coding|Nanum+Myeongjo&display=swap" rel="stylesheet">
 
         // Plugins
     body
@@ -219,19 +220,20 @@ html
                     // CONTENT SIDE
                     // /CONTENT SIDE
                     // /.content
-        #mobile_buymode(style=' border-top: 2px solid #e7e7e7; bottom:0;  width: 100%; position: fixed; background-color: white;')
+        #mobile_buymode(style=' border-top: 1px solid #e7e7e7; bottom:0;  width: 100%; position: fixed; background-color: white;')
             #mobile_padding_height
-                div(style='display: table; padding-right: 24px !important; padding-left: 24px !important; width: 100%;')
+                div.mobile_padding_LR(style='display: table;  width: 100%;')
                     div(style='margin-top:0; margin-bottom:0; margin-left:0; margin-right:0; box-sizing: border-box;')
                         div(style='display: table-cell !important; width:100%; vertical-align: middle;')
                             div(style='word-wrap: break-word !important; box-sizing: border-box; word-break: break-all; border-spacing: 0px !important; font-size: 14px;')
-                                | 그 곳
+                                a.buy_title 1,000,000 ￦
+                                //a.buy_price 1,000,000 ￦
                         #mobile_left(style='display: table-cell !important; vertical-align: middle !important; word-break: keep-all;')
-                            div(style='margin-left: 8px !important;')
-                                button#mobile_button_left.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; width: 160px !important;') CART
+                            div(style='margin-left: 3px !important;')
+                                button#mobile_button_left.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='') CART
                         #mobile_right(style='display: table-cell !important; vertical-align: middle !important; word-break: keep-all;')
-                            div(style='margin-left: 8px !important;')
-                                button#mobile_button_right.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; width: 80px !important;') BUYNOW
+                            div(style='margin-left: 3px !important;')
+                                button#mobile_button_right.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='') BUYNOW
         #my80sizeCenterModal.modal.modal-center.fade(tabindex='-1', role='dialog', aria-labelledby='my80sizeCenterModalLabel')
             .modal-dialog.modal-80size.modal-center(role='document')
                 .modal-content.modal-80size

@@ -37,27 +37,6 @@ p{
 
 input[type=search]:focus {border-color: #efb04e;}
 
-#mobile_button_left{
-
-  background-color: #fff;
-  border: #eee 1px solid;
-  color: #222;
-  font-size: 0.65em;
-}
-
-#mobile_button_right{
-
-  background-color: #ef8d16;
-  border: #eee7 1px solid;
-  font-size: 0.65em;
-}
-
-#mobile_button_right:hover{
-
-  border: #eee 1px solid;
-}
-
-
 .navbar-brand{
   left: 50%;
   transform: translate(-50%, 35%);
@@ -239,11 +218,6 @@ input[type=search]:focus {border-color: #efb04e;}
 /*#mobile_toggle_icon:active{
   margin-top: -1px;
 }*/
-
-#mobile_toggle_icon{
-
-}
-
 
 @media (max-width: 416px){
   #searchbar_2{
