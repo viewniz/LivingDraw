@@ -9,7 +9,7 @@ html
             gtag('js', new Date());
             gtag('config', 'UA-144472686-1');
         meta(charset='UTF-8')
-        title Livig Draw
+        title 리빙드로우
         meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
         meta(name='description', content='')
         meta(name='author', content='')
@@ -115,93 +115,94 @@ html
                         //                    default
                         //                        td error
                         //        p
-                        //            ="Mediums : "
-                        //            a(style='color: #6c757d;')
-                        //                - for(var j=0;j<border.medium.length;j++)
-                        //                    case border.medium[j]
-                        //                        when 'Oi'
-                        //                            | 유채
-                        //                        when 'Ac'
-                        //                            | 아크릴
-                        //                        when 'Wa'
-                        //                            | 수채
-                        //                        when 'In'
-                        //                            | 잉크
-                        //                        when 'Pa'
-                        //                            | 페인트
-                        //                        when 'Ge'
-                        //                            | 석고
-                        //                        when 'Co'
-                        //                            | 채색
-                        //                        when 'Ti'
-                        //                            | 수묵담채
-                        //                        when 'Mu'
-                        //                            | 먹
-                        //                        default
-                        //                            | error
-                        //                    if(border.medium.length != j + 1)
-                        //                        =", "
-                        //        p
-                        //            ="Materials : "
-                        //            a(style='color: #6c757d;')
-                        //                - for(var j=0;j<border.material.length;j++)
-                        //                    case border.material[j]
-                        //                        when 'Ca'
-                        //                            | 캔버스
-                        //                        when 'Pa'
-                        //                            | 종이
-                        //                        when 'Wo'
-                        //                            | 나무
-                        //                        when 'Cd'
-                        //                            | 카드보드
-                        //                        when 'Ot'
-                        //                            | 기타
-                        //                        when 'So'
-                        //                            | 부드러운 재질(뜨개실, 면, 옷감)
-                        //                        when 'Hw'
-                        //                            | 화선지
-                        //                        when 'Su'
-                        //                            | 순지
-                        //                        when 'Ja'
-                        //                            | 장지
-                        //                        when 'Ha'
-                        //                            | 한지
-                        //                        default
-                        //                            | error
-                        //                    if(border.material.length != j + 1)
-                        //                        =", "
+
 
                         #author_note.articles-grid.row
                             .col-12.col-md-6.col-lg-6.col-xl-6
                                 .author_note_header
-                                    p.note_title 그 곳
-                                    p.lead.text-center.text-primary.note_title_sub(style='margin: 0;') There
+                                    p.note_title=border.title
+                                    p.lead.text-center.text-primary.note_title_sub(style='margin: 0;')=border.titleSub
                                 .author_note_body
                                     .note_author_name
-                                        a="김은지 "
-                                        a kim eun ji
+                                        a=border.lastName + border.firstName+" "
+                                        a=border.lastNameE + ' ' + border.firstNameE
                                     .note_product_detail
-                                        a 73
-                                        a="cm x "
-                                        a 55cm
+                                        a=border.width
+                                        a=" W x "
+                                        a=border.height +" H x "
+                                        a=border.depth+" cm"
+                                        a
                                         br
                                         a (
-                                        a 천
+                                        a
+                                            - for(var j=0;j<border.material.length;j++)
+                                                case border.material[j]
+                                                    when 'Ca'
+                                                        | 캔버스
+                                                    when 'Pa'
+                                                        | 종이
+                                                    when 'Wo'
+                                                        | 나무
+                                                    when 'Cd'
+                                                        | 카드보드
+                                                    when 'Ot'
+                                                        | 기타
+                                                    when 'So'
+                                                        | 부드러운 재질(뜨개실, 면, 옷감)
+                                                    when 'Hw'
+                                                        | 화선지
+                                                    when 'Su'
+                                                        | 순지
+                                                    when 'Ja'
+                                                        | 장지
+                                                    when 'Ha'
+                                                        | 한지
+                                                    default
+                                                        | error
+                                                if(border.material.length != j + 1)
+                                                    =", "
                                         a=" 에 "
-                                        a 한지
+                                        a
+                                            - for(var j=0;j<border.medium.length;j++)
+                                                case border.medium[j]
+                                                    when 'Oi'
+                                                        | 유채
+                                                    when 'Ac'
+                                                        | 아크릴
+                                                    when 'Wa'
+                                                        | 수채
+                                                    when 'In'
+                                                        | 잉크
+                                                    when 'Pa'
+                                                        | 페인트
+                                                    when 'Ge'
+                                                        | 석고
+                                                    when 'Co'
+                                                        | 채색
+                                                    when 'Ti'
+                                                        | 수묵담채
+                                                    when 'Mu'
+                                                        | 먹
+                                                    default
+                                                        | error
+                                                if(border.medium.length != j + 1)
+                                                    =", "
                                         a )
                                         br
-                                        a handmade korean paper
-                                        a=" on "
-                                        a fabric
-                                        br
+                                        //a handmade korean paper
+                                        //a=" on "
+                                        //a fabric
+                                        //br
                                         a 2019
                                 .note_footer
                                     hr
                                     a="키워드 : "
-                                    a.note_author_keword black, white
-
-
+                                    a.note_author_keword
+                                        -for(var i=0;i<border.keyWords.length;i++)
+                                            if(!(i===(border.keyWords.length-1)))
+                                                =border.keyWords[i]+', '
+                                            else
+                                                =border.keyWords[i]
                     #total_card.col-12.col-md-12.col-lg-3.col-xl-3(style='')
                         .card.bg-light
                             #card_head.card-header.bg-primary
