@@ -35,7 +35,7 @@ let BorderSchema = new Schema({
     height:{type:Number,required: true},
     width:{type:Number,required: true},
     depth:{type:Number,required: true},
-    price:{type:String,required: true},
+    price:{type:Number,required: true},
     keyWords:[{type:String}],
     description:String,
     deliveryHow:String,

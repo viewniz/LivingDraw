@@ -4,6 +4,8 @@ let multer=require('multer');
 let fs = require('fs');
 let passport = require('passport');
 const sharp = require('sharp');
+let moment = require('moment');
+require('moment-timezone');
 
 let app = express();
 
@@ -84,6 +86,7 @@ exports.admin_site_logo= function(req, res, next) {
 };
 exports.admin_border_upload_post= function(req, res, next) {
     let newBorder=new Border();
+    newBorder.submit_date=moment().format('YYYY-MM-DD HH:mm:ss');
     newBorder.firstName=req.body.firstName;
     newBorder.lastName=req.body.lastName;
     newBorder.firstNameE=req.body.firstNameE;
@@ -233,6 +236,7 @@ exports.admin_border_update_post= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
         let newBorder=new Border();
+        newBorder.submit_date=moment().format('YYYY-MM-DD HH:mm:ss');
         newBorder._id=req.body.id;
         newBorder.is_selling=result.is_selling;
         newBorder.firstName=req.body.firstName;
