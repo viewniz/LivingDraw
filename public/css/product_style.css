@@ -664,3 +664,72 @@ button, html [type="button"], [type="reset"], [type="submit"] {
         padding-left: 20px;
     }
 }
+
+/*author_note*/
+
+#author_note{
+    border: 1px  solid #eee;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 1rem;
+}
+
+.author_note_header{
+
+    border-bottom: 1px solid #eee;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.note_title{
+    padding-left: 15px;
+    font-size: 1.5em;
+}
+
+.note_title_sub{
+    padding-left: 15px;
+}
+
+.note_author_name{
+    padding: 10px 15px 10px 15px;
+}
+
+.note_author_name a{
+    font-size: 1.2em;
+    text-transform: capitalize;
+}
+
+.note_product_detail{
+    padding: 0px 15px 10px 15px;
+    font-size: 1.0em;
+}
+
+.author_note_body{
+    background-color: #fafafa;
+    margin-left: -15px;
+    margin-right: -15px;
+
+}
+
+.note_footer{
+    padding: 0px 15px 10px 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    background-color: #fafafa;
+    font-size: 1.0em;
+}
+
+.note_footer hr{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: #eee;
+}
+
+.note_footer .note_author_keword{
+    font-size: 13px;
+    color: #989898 !important;
+}
+
+/*---author_note----*/
