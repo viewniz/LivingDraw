@@ -120,10 +120,16 @@ jQuery(document).ready(function(){
 		}
 	});
 
+	// 시작과 동시에 선언될 익명 선언식 함수를 사용한다.
+	// 익명 선언식 함수를 사용한 이유는
+	// doubleFlag 변수를 전역으로 사용하는것을 피하기 위해서다.
+
 	let mobile_toggle_icon = false;
 
-	$('#mobile_toggle_icon').on({
-		'click': function(){
+
+		$('#mobile_toggle_icon').on({
+		'click': function() {
+
 			if(mobile_toggle_icon === false){
 				$('#searchbar_2').addClass('non_display'); //  숨기기
 				$('.search_icon').addClass('non_display'); // 숨기기

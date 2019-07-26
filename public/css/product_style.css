@@ -1,7 +1,3 @@
-@charset "UTF-8";
-@import url(font-awesome.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400|Passion+One:400");
-
 body, html {
     height: 100%;
 }
@@ -170,7 +166,7 @@ img {
 
 p.lead {
     margin-top: 1em;
-    font-weight: 450;
+    font-weight: 400;
 }
 
 #paintdetail {
@@ -199,7 +195,7 @@ p.lead {
 
     #mobile_buymode {
         display: block;
-        height: 90px;
+        height: 80px;
     }
 
     #mobile_padding_height {
@@ -208,34 +204,12 @@ p.lead {
     }
 }
 
-@media (max-width: 429px) {
-    #mobile_padding_height {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-}
-
-@media (max-width: 396px) {
-    #mobile_buymode {
-        height: 110px;
-    }
-
-    #mobile_padding_height {
-        padding-top: 13px;
-        padding-bottom: 13px;
-    }
-}
-
-@media (max-width: 375px) {
-    #mobile_buymode {
-        height: 120px;
-    }
-
-    #mobile_padding_height {
-        padding-top: 13px;
-        padding-bottom: 13px;
-    }
-}
+/*@media (max-width: 429px) {*/
+/*    #mobile_padding_height {*/
+/*        padding-top: 15px;*/
+/*        padding-bottom: 15px;*/
+/*    }*/
+/*}*/
 
 #leftside {
     float: left;
@@ -597,7 +571,10 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 
 
 
-/modal/
+
+
+
+/*modal*/
 
 #full_modal{
     margin:0;
@@ -641,4 +618,49 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     border:none;
 }
 
-/modal/
+/*modal*/
+
+/*mobile*/
+
+.buy_title{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.5em;
+}
+.buy_price{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.3em;
+    margin-left: 40%;
+}
+
+#mobile_button_left{
+    height: 40px; width: 100px !important;
+    font-weight: 600;
+    background-color: #fff;
+    border: #eee 1px solid;
+    color: #222;
+    font-size: 0.65em;
+}
+
+#mobile_button_right{
+    font-weight: 600;
+    height: 40px; width: 60px !important;
+    padding: 5px;
+    background-color: #f8b62b;
+    font-size: 0.65em;
+    border: none;
+}
+
+.mobile_padding_LR{
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+@media (max-width: 320px) {
+    .buy_title{
+        font-size: 1.35em;
+    }
+    .mobile_padding_LR{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
