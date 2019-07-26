@@ -29,7 +29,7 @@ function removeImage(val,val2){
     });
 }
 
-$(function() {
+/*$(function() {
     var $input = $("#price");
     $input.on('keyup', function() {
         // 입력 값 알아내기
@@ -53,4 +53,4 @@ function uncomma(str) {
 
 function numberFormat(obj) {
     obj.value = comma(uncomma(obj.value));
-}
+}*/

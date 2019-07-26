@@ -38,7 +38,7 @@ html
             .header_second(style='')
                 p(style='') Great Artist's Works!
                 #dropdown_sort.dropdown(style='float: right; padding-top: 11px;')
-                    button#left_button.btn.btn-outline-primary(type='button') 적용
+                    //button#left_button.btn.btn-outline-primary(type='button') 적용
                     button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
                         | 정렬 기준
                     .dropdown-menu
@@ -49,11 +49,12 @@ html
         #dropdown_sort2.dropdown(style='')
             button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', style='float: right;')
                 | 정렬 기준
-            button.btn.btn-outline-primary(type='button', style='float: right;') 적용
+            //button.btn.btn-outline-primary(type='button', style='float: right;') 적용
             .dropdown-menu
-                a.dropdown-item(href='#') 높은 가격 순
-                a.dropdown-item(href='#') Link 2
-                a.dropdown-item(href='#') Link 3
+                a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=high'") 가격 높은 순
+                a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=low'") 가격 낮은 순
+                a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=new'") 최신 순
+                a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=old'") 오래 된 순
         .container
              #columns
                 - for(var i=0; i<border.length; i++)
