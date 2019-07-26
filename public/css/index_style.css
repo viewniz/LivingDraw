@@ -75,3 +75,36 @@ p.lead {
         height: 60%;
     }
 }
+
+/*headerfix*/
+.jbFixed {
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.dropdown-menu {
+    z-index: 2;
+}
+
+@media (min-width: 1025px) {
+    .jbFixed {
+        position: unset;
+    }
+}
+
+@media (max-width: 1024px) {
+    .jbFixed {
+        position: fixed;
+    }
+}
+
+@media (max-width: 767px) {
+    #columns figure {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+
+/*headerfix*/
