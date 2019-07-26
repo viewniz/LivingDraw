@@ -38,9 +38,7 @@ $( document ).ready( function() {
   var curPage = document.URL;
   curPage = curPage.substr(curPage.lastIndexOf("/")+1) ;
   var curPage_sort = curPage.split('?');
-  console.log(curPage);
   var str_page = String(curPage_sort[0]);
-  console.log(str_page);
   // var num_page = parseInt(curPage); //맥시멈구하기
   var str_pagename = "pagenum"+str_page;
 

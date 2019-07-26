@@ -17,9 +17,6 @@ exports.border_main_second = function (req, res, next) {
     let countlist_out = 10; //한 페이지에 출력될 게시물 수
     let pa=req.params.id.split("?");
     let pre_page = parseInt(pa[0]);
-    console.log(req.params.id);
-    console.log(pa[0]);
-    console.log(pre_page);
     if (pre_page < 1) {
         res.redirect('/border/1');
     }
@@ -220,7 +217,9 @@ exports.border_main_second = function (req, res, next) {
 
 exports.product_detail = function (req, res, next) {
     let borderNum = req.params.id;
+    console.log(borderNum);
     Border.findOne({_id: borderNum}, function (err, border) {
+        Border.updateOne({_id:borderNum}, { $inc: { view: 1} }, function (err, result) {});
         res.render('border/product', {border: border});
     });
 };
