@@ -14,8 +14,12 @@ exports.border_main = function (req, res, next) {
 };
 
 exports.border_main_second = function (req, res, next) {
-    let countlist_out = 10; //한 페이지에 출력될 게시물 수
-    let pre_page = parseInt(req.params.id);
+    let countlist_out = 3; //한 페이지에 출력될 게시물 수
+    let pa=req.params.id.split("?");
+    let pre_page = parseInt(pa[0]);
+    console.log(req.params.id);
+    console.log(pa[0]);
+    console.log(pre_page);
     if (pre_page < 1) {
         res.redirect('/border/1');
     }
@@ -28,7 +32,6 @@ exports.border_main_second = function (req, res, next) {
             // console.log('please');
             ++totalremovelist;
         }
-        console.log(totalremovelist);
         if (pre_page > totalremovelist) {
             res.redirect('/border/' + totalremovelist);
         }
