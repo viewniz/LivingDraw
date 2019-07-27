@@ -672,6 +672,7 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 1rem;
+    margin-bottom: 55px;
 }
 
 .author_note_header{
