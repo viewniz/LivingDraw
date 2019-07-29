@@ -180,18 +180,52 @@ input[type=search]:focus {border-color: #efb04e;}
   padding-top: 10px;
 }*/
 
+
+
+.form-control{
+  border-right: none;
+  /*margin-right: -10px;*/
+}
+
 .fa-times{
-  box-sizing: border-box;
-  border: 1px solid #eee;
-  background-color: #eee;
-  border-radius: 50%;
-  font-size: 18px;
-  width: 20px;
+  /*box-sizing: border-box;*/
+  /*border: 1px solid #eee;*/
+  /*background-color: #eee;*/
+  /*border-radius: 50%;*/
+  font-size: 20px;
+  padding-top: 8px;
+  /*width: 20px;*/
   text-align: center;
   cursor: pointer;
-  margin-top: 20%;
-  margin-bottom: 24%;
+  vertical-align: center;
+  border-top: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  /*margin-right: 15px;*/
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
 }
+
+.input-group-append{
+  /*margin-left: -15px;*/
+}
+
+#searchbar_1 .form-control{
+  border-right: unset;
+  margin-right: unset;
+
+}
+
+#searchbar_1 .input-group-append{
+  margin-left: unset;
+
+}
+
+#searchbar_2 #basic-addon2{
+  padding: 6px !important;
+}
+
 @media (max-width: 455px){
   .input-group{
    width:  230px;
