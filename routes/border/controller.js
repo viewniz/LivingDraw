@@ -177,7 +177,7 @@ exports.border_main_second = function (req, res, next) {
                     });
                     break;
                 default:
-                    Border.find({}).skip(skip_num).limit(countlist_out).exec(function (err, border) {
+                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "submit_date": -1 } ).exec(function (err, border) {
                         Border.count(function (err, totalcount_please) {
 
                             var totalcount = totalcount_please; //db총 개수

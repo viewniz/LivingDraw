@@ -157,11 +157,15 @@ html
                                                         | 장지
                                                     when 'Ha'
                                                         | 한지
+                                                    when 'Th'
+                                                        | 3합지
+                                                    when 'To'
+                                                        | 2합지
                                                     default
                                                         | error
                                                 if(border.material.length != j + 1)
                                                     =", "
-                                        a=" 에 "
+                                        a="에 "
                                         a
                                             - for(var j=0;j<border.medium.length;j++)
                                                 case border.medium[j]
@@ -186,7 +190,7 @@ html
                                                     default
                                                         | error
                                                 if(border.medium.length != j + 1)
-                                                    =", "
+                                                    =" 그리고 "
                                         a )
                                         br
                                         //a handmade korean paper
