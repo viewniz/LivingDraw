@@ -70,7 +70,7 @@ html
                             a(style='padding-right: 0px;')=border[i].lastName + border[i].firstName
                             a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE+' '
                             if(border[i].is_selling)
-                                a(style='float: right;')=border[i].price + "￦"
+                                a.buy_title(id="buy_title"+i)(style='float: right;')=border[i].price + "￦"
                             else
                                 a(style='float: right;') 미판매
 

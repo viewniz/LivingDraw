@@ -22,6 +22,7 @@ html
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
         script(src='/js/hooni.js')
+        script(src='/js/product_hooni.js')
         link(href='https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display|Raleway&display=swap', rel='stylesheet')
         <link href="https://fonts.googleapis.com/css?family=Lora|Nanum+Gothic+Coding|Nanum+Myeongjo&display=swap" rel="stylesheet">
@@ -232,10 +233,10 @@ html
                                 .more(style='height: 134px; background-color: #3a3e42;')
                                     div
                                         if(border.is_selling)
-                                            a(style='width: 28px; height: 100%; font-size: 1.5em; color: white;')=border.price + "￦"
+                                            a.buy_title(style='width: 28px; font-size: 1.7em; color: white;')=border.price + "￦"
                                         else
                                             a(style='width: 28px; height: 100%; font-size: 1.5em; color: white;') 미판매
-                                    div(style='height: 76px; padding-top: 20px;')
+                                    div(style='margin-top:10px;')
                                         button#addcart_left.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; padding: 4px;') CART
                                         button#addcart_right.btn.btn-danger(type='button', data-target='#my80sizeCenterModal', data-toggle='modal', style='height: 46px; padding: 4px;') BUY NOW
 

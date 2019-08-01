@@ -16,6 +16,11 @@ jQuery(document).ready(function(){
 		$('.borderpage').addClass('pre_nav_color')
 	}
 
+
+
+
+
+
 	jQuery('#paintstory').on('click', function(event) {    
 		if( vareiety_icon_attr === true){    
 			jQuery('#paintdetail').toggle('show');
