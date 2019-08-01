@@ -68,6 +68,8 @@ jQuery(document).ready(function(){
 
 	$('#modal_button').click(function(e) {
 		var selectfunction = $('#select_image').attr('src'); ///로컬일때
+		selectfunction = selectfunction.split("pic");
+		selectfunction = "/pic_watermark/"+selectfunction[1];
 		$('.change_fullscreen_img').attr("src",selectfunction);
 		e.preventDefault();
 	});

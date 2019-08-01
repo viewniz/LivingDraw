@@ -127,11 +127,26 @@ exports.admin_border_upload_post= function(req, res, next) {
     for(let i=0;i<req.files.length;i++) {
         newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
             picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size});
-        sharp('./uploads/pic/'+req.files[i].filename).resize(630).toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
-            if(err)
-                console.log(err);
-            else
-                console.log(info);
+        sharp('./uploads/pic/'+req.files[i].filename).metadata().then(function(metadata){
+            return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
+        }).then(function(data){
+            sharp('./uploads/pic/'+req.files[i].filename).resize(630).toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
+                if(err)
+                    console.log(err);
+                else
+                {
+                    console.log(info);
+                    sharp('./uploads/pic/'+req.files[i].filename)
+                        .composite([{ input:data, gravity: 'center'}])
+                        .toFile('./uploads/pic_watermark/'+req.files[i].filename,(err, info) => {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                console.log('COMPOSITE written');
+                            }
+                        });
+                }
+            });
         });
     }
     newBorder.uploadId=req.user.lastName+" "+req.user.firstName;
@@ -160,6 +175,16 @@ exports.admin_border_delete_post= function(req, res, next) {
             fs.stat(result.image[i].picDestination+'_300/'+result.image[i].picFilename, function(err, stat) {
                 if(err == null) {
                     fs.unlink(result.image[i].picDestination+'_300/'+result.image[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+            fs.stat(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, function(err) {
                         if (err) throw err;
                         console.log('file deleted');
                     });
@@ -216,6 +241,16 @@ exports.admin_border_update_remove_image= function(req, res, next) {
         fs.stat(spliceResult[0].picDestination+'_300/'+spliceResult[0].picFilename, function(err, stat) {
             if(err == null) {
                 fs.unlink(spliceResult[0].picDestination+'_300/'+spliceResult[0].picFilename, function(err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+            } else {
+                console.log('Some other error: ', err.code);
+            }
+        });
+        fs.stat(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, function(err, stat) {
+            if(err == null) {
+                fs.unlink(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, function(err) {
                     if (err) throw err;
                     console.log('file deleted');
                 });
@@ -283,11 +318,26 @@ exports.admin_border_update_post= function(req, res, next) {
         for(let i=0;i<req.files.length;i++) {
             newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
                 picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size});
-            sharp('./uploads/pic/'+req.files[i].filename).resize(630).toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
-                if(err)
-                    console.log(err);
-                else
-                    console.log(info);
+            sharp('./uploads/pic/'+req.files[i].filename).metadata().then(function(metadata){
+                return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
+            }).then(function(data){
+                sharp('./uploads/pic/'+req.files[i].filename).resize(630).toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
+                    if(err)
+                        console.log(err);
+                    else
+                    {
+                        console.log(info);
+                        sharp('./uploads/pic/'+req.files[i].filename)
+                            .composite([{ input:data, gravity: 'center'}])
+                            .toFile('./uploads/pic_watermark/'+req.files[i].filename,(err, info) => {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    console.log('COMPOSITE written');
+                                }
+                            });
+                    }
+                });
             });
         }
         newBorder.uploadId=req.user.lastName+" "+req.user.firstName;
