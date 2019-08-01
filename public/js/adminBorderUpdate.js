@@ -29,14 +29,13 @@ function removeImage(val,val2){
     });
 }
 
-/*$(function() {
-    var $input = $("#price");
+$(function() {
+    var $input = $("#priceString");
     $input.on('keyup', function() {
         // 입력 값 알아내기
         var _this = this;
-        numberFormat(_this)
+        numberFormat(_this);
     })
-
 });
 
 // 콤마 찍기
@@ -53,4 +52,4 @@ function uncomma(str) {
 
 function numberFormat(obj) {
     obj.value = comma(uncomma(obj.value));
-}*/
+}

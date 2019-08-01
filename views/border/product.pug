@@ -233,7 +233,7 @@ html
                                 .more(style='height: 134px; background-color: #3a3e42;')
                                     div
                                         if(border.is_selling)
-                                            a.buy_title(style='width: 28px; font-size: 1.7em; color: white;')=border.price + "￦"
+                                            a.buy_title(style='width: 28px; font-size: 1.7em; color: white;')=border.price_string + "￦"
                                         else
                                             a(style='width: 28px; height: 100%; font-size: 1.5em; color: white;') 미판매
                                     div(style='margin-top:10px;')
@@ -250,7 +250,7 @@ html
                         div(style='display: table-cell !important; width:100%; vertical-align: middle;')
                             div(style='word-wrap: break-word !important; box-sizing: border-box; word-break: break-all; border-spacing: 0px !important; font-size: 14px;')
                                 if(border.is_selling)
-                                    a.buy_title=border.price+'￦'
+                                    a.buy_title=border.price_string+'￦'
                                 else
                                     a.buy_title2="미판매"
                         #mobile_left(style='display: table-cell !important; vertical-align: middle !important; word-break: keep-all;')

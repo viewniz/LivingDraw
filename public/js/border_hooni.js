@@ -24,18 +24,5 @@ $(document).ready(function () {
             $('#pageleft').addClass('displaynone'); // 없애기
         }
     }
-
-    /*금액 ,찍기*/
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    var buy_price = $('.buy_title').text().split('￦');
-    for (var start = 0; start < buy_price.length; start++) {
-        var new_buy_price = buy_price[start];
-        var new_price = numberWithCommas(new_buy_price);
-        var buy_title = "#buy_title"+start;
-        $(buy_title).text(new_price + '￦');
-    }
 });
 

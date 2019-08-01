@@ -118,6 +118,8 @@ exports.admin_border_upload_post= function(req, res, next) {
     newBorder.width=req.body.width;
     newBorder.depth=req.body.depth;
     newBorder.price=req.body.price;
+    newBorder.price_string=req.body.priceString;
+    console.log(req.body.price);
     let keywords=req.body.keywords.split(',');
     for(let i=0;i<keywords.length;i++)
     {
@@ -304,7 +306,10 @@ exports.admin_border_update_post= function(req, res, next) {
         newBorder.height=req.body.height;
         newBorder.width=req.body.width;
         newBorder.depth=req.body.depth;
-        newBorder.price=req.body.price;
+        newBorder.price=req.body.priceString.replace(/[^\d]+/g, '');
+        newBorder.price_string=req.body.priceString;
+        console.log(req.body.price);
+
         let keywords=req.body.keywords.split(',');
         for(let i=0;i<keywords.length;i++)
         {
