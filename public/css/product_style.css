@@ -172,9 +172,8 @@ p.lead {
 #paintdetail {
     margin-left: 0;
     margin-right: 0;
-    border: 1px solid #e7e7e7;
-    margin-top: 50px;
-    margin-bottom: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     display: none;
 }
 
@@ -743,4 +742,8 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     color: #989898 !important;
 }
 
+.author_note_value {
+
+    font-family: 'Noto Serif KR', serif;
+}
 /*---author_note----*/

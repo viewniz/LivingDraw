@@ -118,6 +118,8 @@ exports.admin_border_upload_post= function(req, res, next) {
     newBorder.width=req.body.width;
     newBorder.depth=req.body.depth;
     newBorder.price=req.body.price;
+    newBorder.price_string=req.body.priceString;
+    console.log(req.body.price);
     let keywords=req.body.keywords.split(',');
     for(let i=0;i<keywords.length;i++)
     {
@@ -248,9 +250,9 @@ exports.admin_border_update_remove_image= function(req, res, next) {
                 console.log('Some other error: ', err.code);
             }
         });
-        fs.stat(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, function(err, stat) {
+        fs.stat(spliceResult[0].picDestination+'_watermark/'+spliceResult[0].picFilename, function(err, stat) {
             if(err == null) {
-                fs.unlink(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, function(err) {
+                fs.unlink(spliceResult[0].picDestination+'_watermark/'+spliceResult[0].picFilename, function(err) {
                     if (err) throw err;
                     console.log('file deleted');
                 });
@@ -271,9 +273,11 @@ exports.admin_border_update_post= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
         let newBorder=new Border();
-        newBorder.submit_date=moment().format('YYYY-MM-DD HH:mm:ss');
+        newBorder.submit_date=result.submit_date;
         newBorder._id=req.body.id;
         newBorder.is_selling=result.is_selling;
+        newBorder.view=result.view;
+        newBorder.like=result.like;
         newBorder.firstName=req.body.firstName;
         newBorder.lastName=req.body.lastName;
         newBorder.firstNameE=req.body.firstNameE;
@@ -304,7 +308,10 @@ exports.admin_border_update_post= function(req, res, next) {
         newBorder.height=req.body.height;
         newBorder.width=req.body.width;
         newBorder.depth=req.body.depth;
-        newBorder.price=req.body.price;
+        newBorder.price=req.body.priceString.replace(/[^\d]+/g, '');
+        newBorder.price_string=req.body.priceString;
+        console.log(req.body.price);
+
         let keywords=req.body.keywords.split(',');
         for(let i=0;i<keywords.length;i++)
         {

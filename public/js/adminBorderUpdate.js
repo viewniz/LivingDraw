@@ -29,14 +29,13 @@ function removeImage(val,val2){
     });
 }
 
-/*$(function() {
-    var $input = $("#price");
+$(function() {
+    var $input = $("#priceString");
     $input.on('keyup', function() {
         // 입력 값 알아내기
         var _this = this;
-        numberFormat(_this)
+        numberFormat(_this);
     })
-
 });
 
 // 콤마 찍기
@@ -53,4 +52,18 @@ function uncomma(str) {
 
 function numberFormat(obj) {
     obj.value = comma(uncomma(obj.value));
-}*/
+}
+
+function appendYear($select){
+
+    var date = new Date();
+    var year = date.getFullYear();
+    var idx = 0;
+    for(var i=year-50; i<=year; i++){
+        $select.prepend("<option value='"+i+"'>"+i+"</option>");
+        idx++;
+    }
+    $select.find("option:eq(0)").prop("selected", true); // 현재년도 선택
+}
+
+appendYear($("#year"));

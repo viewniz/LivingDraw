@@ -258,9 +258,9 @@ html(lang='en')
                                                             //Jangji
                                                             option(value="Ha", selected=(border.material.indexOf("Ha")!==-1)) 한지
                                                             //Hanji
-                                                            option(value="Th", selected=(border.material.indexOf("Ha")!==-1)) 3합지
+                                                            option(value="Th", selected=(border.material.indexOf("Th")!==-1)) 3합지
                                                             //Hanji
-                                                            option(value="To", selected=(border.material.indexOf("Ha")!==-1)) 2합지
+                                                            option(value="To", selected=(border.material.indexOf("To")!==-1)) 2합지
                                                             //Hanji
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 크기(cm)
@@ -276,10 +276,14 @@ html(lang='en')
                                                         label.control-label.float-right 두께
                                                     .col-md-2.col-sm-2.col-xs-8
                                                         input.form-control(type='text', placeholder='Depth', name="depth", value=border.depth)
+                                                //.form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 작품 제작년도
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        select#year.select.select2_single.form-control(tabindex='-1', name='productionYear')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 가격
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        input#price.form-control(type='text', placeholder='Price', name='price', value=border.price)
+                                                        input#priceString.form-control(type='text', placeholder='Price', name='priceString', value=border.price_string)
                                                 .control-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 키워드
                                                     .col-md-9.col-sm-9.col-xs-12
