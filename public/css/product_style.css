@@ -627,6 +627,11 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     font-size: 1.5em;
 }
 
+.buy_title2{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.5em;
+}
+
 .mobile_buy_title{
     font-family: 'Nanum Myeongjo', serif;
     font-size: 1.5em;
