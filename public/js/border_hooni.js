@@ -31,7 +31,7 @@ $(document).ready(function () {
     }
 
     var buy_price = $('.buy_title').text().split('￦');
-    for (var start = 0; start < buy_price.length; start++) {
+    for (var start = 0; start < 9; start++) {
         var new_buy_price = buy_price[start];
         var new_price = numberWithCommas(new_buy_price);
         var buy_title = "#buy_title"+start;
