@@ -275,6 +275,22 @@ input[type=search]:focus {border-color: #efb04e;}
   display: none;
 }
 
+/*.navbar-light .navbar-nav .nav-link {*/
+/*  color: red;*/
+/*}*/
 
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus {
+  color: red; /* <—– change your color here*/
+  background-color: transparent;
+}
 
+/*현재페이지 검정색*/
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: rgba(0,0,0,.5);
+}
+.pre_nav_color{
+  color: black !important;
+}
 

@@ -4,6 +4,18 @@ jQuery(document).ready(function(){
 	var click_action = true;
 	var click_toggle = true;
 
+	/*페이지 색깔 바꾸기*/
+	var curPage = document.URL;
+	var pre_value = curPage.split('/');
+	// alert(pre_value[3]);
+	pre_value = pre_value[3];
+	if(pre_value === ''){
+		$('.mainpage').addClass('pre_nav_color')
+	}
+	else if(pre_value === "border"){
+		$('.borderpage').addClass('pre_nav_color')
+	}
+
 	jQuery('#paintstory').on('click', function(event) {    
 		if( vareiety_icon_attr === true){    
 			jQuery('#paintdetail').toggle('show');
@@ -51,8 +63,6 @@ jQuery(document).ready(function(){
 
 	$('#modal_button').click(function(e) {
 		var selectfunction = $('#select_image').attr('src'); ///로컬일때
-		// var selectfunction = "('"+"https://livingdraw.co.kr/"+$('#select_image').attr('src')+"')"; /// livingdraw
-
 		$('.change_fullscreen_img').attr("src",selectfunction);
 		e.preventDefault();
 	});
@@ -120,9 +130,6 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	// 시작과 동시에 선언될 익명 선언식 함수를 사용한다.
-	// 익명 선언식 함수를 사용한 이유는
-	// doubleFlag 변수를 전역으로 사용하는것을 피하기 위해서다.
 
 	let mobile_toggle_icon = false;
 
@@ -143,7 +150,5 @@ jQuery(document).ready(function(){
 		}
 
 	});
-
-
 
 });
