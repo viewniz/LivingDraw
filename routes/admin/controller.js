@@ -250,9 +250,9 @@ exports.admin_border_update_remove_image= function(req, res, next) {
                 console.log('Some other error: ', err.code);
             }
         });
-        fs.stat(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, function(err, stat) {
+        fs.stat(spliceResult[0].picDestination+'_watermark/'+spliceResult[0].picFilename, function(err, stat) {
             if(err == null) {
-                fs.unlink(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, function(err) {
+                fs.unlink(spliceResult[0].picDestination+'_watermark/'+spliceResult[0].picFilename, function(err) {
                     if (err) throw err;
                     console.log('file deleted');
                 });
