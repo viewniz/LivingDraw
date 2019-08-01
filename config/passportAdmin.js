@@ -77,6 +77,21 @@ module.exports = function(passport) {
             passReqToCallback: true
         },
         function (req, id, password, done) {
+            const idCheck = /^[a-z0-9]+[a-z0-9]{6,24}$/g;
+            const subCheck1 = '$ne';
+            const subCheck2 = '$lt';
+            const subCheck3 = '$gt';
+            const subCheck4 = '$lte';
+            const subCheck5 = '$gte';
+            if(!idCheck.test(id) || !(id.indexOf(subCheck1)===-1) || !(id.indexOf(subCheck2)===-1) || !(id.indexOf(subCheck3)===-1) || !(id.indexOf(subCheck4)===-1) || !(id.indexOf(subCheck5)===-1))
+            {
+                return done(null, false, {error: '아이디 에러reg'});
+            }
+            const pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,24}$/;
+            if(!pwCheck.test(password) || !(password.indexOf(subCheck1)===-1) || !(password.indexOf(subCheck2)===-1) || !(password.indexOf(subCheck3)===-1) || !(password.indexOf(subCheck4)===-1) || !(password.indexOf(subCheck5)===-1))
+            {
+                return done(null, false, {error: '패스워드 에러reg'});
+            }
             AdminUser.findOne({id: id}, function (err, admin) {
                 if (err)
                     return done(err);
