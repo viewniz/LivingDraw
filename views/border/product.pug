@@ -59,24 +59,16 @@ html
                         hr#shadow
                         // MARKETING LINE
                         // FEATURED PRODUCTS
-                        div(style='text-align: center; z-index: -1;')
-                            p#paintstory(type='button', style='display: inline-block; border:none;')
-                                | 작품 상세 설명
-                                a#vareiety_icon.icono-caretDown(style=' height: 30px;')
-                        //#paintdetail.articles-grid.row
-                        //    // ITEM
-                        //    .col-12.col-md-6.col-lg-6.col-xl-6
-                        //        p.lead.text-center.text-primary(style='margin-bottom: 0;')=border.description
-                        //        hr
-                        //        p
-                        //            ="Keywords : "
-                        //            a(style='color: #6c757d;')
-                        //                -for(var i=0;i<border.keyWords.length;i++)
-                        //                    if(!(i===(border.keyWords.length-1)))
-                        //                        =border.keyWords[i]+', '
-                        //                    else
-                        //                        =border.keyWords[i]
-                        //        p
+                        if(border.description)
+                            div(style='text-align: center; z-index: -1;')
+                                p#paintstory(type='button', style='display: inline-block; border:none;')
+                                    | 작품 상세 설명
+                                    a#vareiety_icon.icono-caretDown(style=' height: 30px;')
+                            #paintdetail.articles-grid.row
+                                // ITEM
+                                .col-12.col-md-6.col-lg-6.col-xl-6
+                                    p.lead.text-center.text-primary(style='margin-bottom: 0;white-space:pre-line;')=border.description
+                                br
                         //        p
                         //            ="Subject : "
                         //            a(style='color: #6c757d;')
