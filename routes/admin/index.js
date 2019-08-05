@@ -42,6 +42,16 @@ let Logo_storage=multer.diskStorage({
     }
 });
 let uploadLogo=multer({storage:Logo_storage});
+let ogImage_storage=multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null,'./uploads/'+file.fieldname);
+    },
+    filename: function (req, file, cb) {
+        let ext=file.mimetype.split('/')[1];
+        cb(null,'ogImage.'+ext);
+    }
+});
+let uploadOgImage=multer({storage:ogImage_storage});
 /* GET users listing. */
 
 router.get('/', controller.admin_login_check_yes, controller.admin_main);
@@ -49,6 +59,7 @@ router.get('/member/submit', controller.admin_login_check_yes, controller.admin_
 router.get('/member', controller.admin_login_check_yes, controller.admin_member);
 router.get('/login', controller.admin_login);
 router.get('/border', controller.admin_login_check_yes, controller.admin_border);
+router.get('/site/openGraphImage', controller.admin_login_check_yes, controller.admin_site_ogImage);
 router.get('/site/banner', controller.admin_login_check_yes, controller.admin_site_banner);
 router.get('/site/box', controller.admin_login_check_yes, controller.admin_site_box);
 router.get('/site/logo', controller.admin_login_check_yes, controller.admin_site_logo);
@@ -66,6 +77,7 @@ router.post('/member/delete', controller.admin_login_check_yes, controller.admin
 router.post('/site/banner', controller.admin_login_check_yes,uploadBanner.single('banner'), controller.admin_site_banner_post);
 router.post('/site/box', controller.admin_login_check_yes,uploadBox.single('box'), controller.admin_site_box_post);
 router.post('/site/logo', controller.admin_login_check_yes,uploadLogo.single('logo'), controller.admin_site_logo_post);
+router.post('/site/openGraphImage', controller.admin_login_check_yes,uploadOgImage.single('ogImage'), controller.admin_site_ogImage_post);
 
 router.post('/login', controller.admin_login_post);
 

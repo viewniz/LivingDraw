@@ -14,6 +14,7 @@ let Admin = require('../../models/adminUser');
 let Banner = require('../../models/banner');
 let Box = require('../../models/box');
 let Logo = require('../../models/logo');
+let ogImage = require('../../models/ogImage');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -84,6 +85,9 @@ exports.admin_site_box= function(req, res, next) {
 exports.admin_site_logo= function(req, res, next) {
     res.render('admin/site_manage_logo',{user:req.user});
 };
+exports.admin_site_ogImage= function(req, res, next) {
+    res.render('admin/site_manage_ogImage',{user:req.user});
+};
 exports.admin_border_upload_post= function(req, res, next) {
     let newBorder=new Border();
     newBorder.submit_date=moment().format('YYYY-MM-DD HH:mm:ss');
@@ -140,6 +144,7 @@ exports.admin_border_upload_post= function(req, res, next) {
                     console.log(info);
                     sharp('./uploads/pic/'+req.files[i].filename)
                         .composite([{ input:data, gravity: 'center'}])
+                        .jpeg( { quality: 100 } )
                         .toFile('./uploads/pic_watermark/'+req.files[i].filename,(err, info) => {
                             if (err) {
                                 console.log(err);
@@ -336,6 +341,7 @@ exports.admin_border_update_post= function(req, res, next) {
                         console.log(info);
                         sharp('./uploads/pic/'+req.files[i].filename)
                             .composite([{ input:data, gravity: 'center'}])
+                            .jpeg( { quality: 100 } )
                             .toFile('./uploads/pic_watermark/'+req.files[i].filename,(err, info) => {
                                 if (err) {
                                     console.log(err);
@@ -388,7 +394,47 @@ exports.admin_delete_post= function(req, res, next) {
         });
     });
 };
-
+exports.admin_site_ogImage_post= function(req, res, next) {
+    ogImage.findOne({},function(err, result){
+        if(result)
+        {
+            ogImage.remove({},function (err, result) {
+                if (err) throw err;
+                let newOgImage=new ogImage();
+                newOgImage.uploadId=req.user.id;
+                newOgImage.image.picOriginalName = req.file.originalname;
+                newOgImage.image.picEncoding = req.file.encoding;
+                newOgImage.image.picMimetype = req.file.mimetype;
+                newOgImage.image.picDestination = req.file.destination;
+                newOgImage.image.picFilename = req.file.filename;
+                newOgImage.image.picPath = req.file.path;
+                newOgImage.image.picSize = req.file.size;
+                newOgImage.save(function (err) {
+                    if (err)
+                        throw err;
+                    res.redirect("/admin/site/openGraphImage");
+                });
+            });
+        }
+        else
+        {
+            let newOgImage=new ogImage();
+            newOgImage.uploadId=req.user.id;
+            newOgImage.image.picOriginalName = req.file.originalname;
+            newOgImage.image.picEncoding = req.file.encoding;
+            newOgImage.image.picMimetype = req.file.mimetype;
+            newOgImage.image.picDestination = req.file.destination;
+            newOgImage.image.picFilename = req.file.filename;
+            newOgImage.image.picPath = req.file.path;
+            newOgImage.image.picSize = req.file.size;
+            newOgImage.save(function (err) {
+                if (err)
+                    throw err;
+                res.redirect("/admin/site/openGraphImage");
+            });
+        }
+    });
+};
 exports.admin_site_banner_post= function(req, res, next) {
     Banner.findOne({},function(err, result){
         if(result)
