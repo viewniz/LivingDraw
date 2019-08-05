@@ -1,0 +1,108 @@
+doctype html
+html(lang='en')
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        // Meta, title, CSS, favicons, etc.
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='robots', content='noindex,nofollow')
+
+        title 오픈그래프 이미지 등록
+        // Bootstrap
+        link(href='/vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+        // Font Awesome
+        link(href='/vendors/font-awesome/css/font-awesome.min.css', rel='stylesheet')
+        // NProgress
+        link(href='/vendors/nprogress/nprogress.css', rel='stylesheet')
+        // Dropzone.js
+        link(href='/vendors/dropzone/dist/min/dropzone.min.css', rel='stylesheet')
+        // Custom Theme Style
+        link(href='/build/css/custom.min.css', rel='stylesheet')
+        link(href='/css/adminBorderUpdate.css', rel='stylesheet')
+    body.nav-md
+        .container.body
+            .main_container
+                include components/admin_side_nav_bar
+                    // page content
+                .right_col(role='main')
+                    div
+                        .page-title
+                            .title_left
+                                h3 ogImage
+                            .title_right
+                                .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
+                                    .input-group
+                                        input.form-control(type='text', placeholder='Search for...')
+                                        span.input-group-btn
+                                            button.btn.btn-default(type='button') Go!
+                        .clearfix
+                        .row
+                            .col-md-12.col-xs-12
+                                .x_panel
+                                    .x_title
+                                        h2
+                                            | 오픈그래프 이미지
+                                        ul.nav.navbar-right.panel_toolbox
+                                            li
+                                                a.collapse-link
+                                                    i.fa.fa-chevron-up
+                                            li.dropdown
+                                                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                                    i.fa.fa-wrench
+                                                ul.dropdown-menu(role='menu')
+                                                    li
+                                                        a(href='#') Settings 1
+                                                    li
+                                                        a(href='#') Settings 2
+                                            li
+                                                a.close-link
+                                                    i.fa.fa-close
+                                        .clearfix
+                                    .x_content
+                                        form.form-group(action='/admin/site/openGraphImage', method="post", enctype="multipart/form-data")
+                                            .form-horizontal.form-label-left.input_mask
+                                                .form-group
+                                                    label.control-label.col-md-3.col-sm-3.col-xs-12 ogImage 사진
+                                                    .col-md-9.col-sm-9.col-xs-12
+                                                        input.form-control(type='file', placeholder='사진 1', name="ogImage")
+                                                        .img_wrap(style='display:none;')
+                                                            img(src='#', alt='your image')
+                                                .ln_solid
+                                                .form-group
+                                                    .col-md-9.col-sm-9.col-xs-12.col-md-offset-9
+                                                        button.btn.btn-primary(type='button', onclick='location.href = "../"') Back
+                                                        button#submit-all.btn.btn-success(type='submit') Submit
+                                                .ln_solid
+                                        br
+                                        br
+                                        br
+                                        br
+
+                // /page content
+                // footer content
+                footer
+                    .pull-right
+                        | Gentelella - Bootstrap Admin Template by
+                        a(href='https://colorlib.com') Colorlib
+                    .clearfix
+                // /footer content
+                // jQuery
+                script(src='/vendors/jquery/dist/jquery.min.js')
+                // Bootstrap
+                script(src='/vendors/bootstrap/dist/js/bootstrap.min.js')
+                // FastClick
+                script(src='/vendors/fastclick/lib/fastclick.js')
+                // Nprogress
+                script(src='/vendors/nprogress/nprogress.js')
+                // jQuery Tags Input
+                script(src='/vendors/jquery.tagsinput/src/jquery.tagsinput.js')
+                // Switchery
+                script(src='/vendors/switchery/dist/switchery.min.js')
+                // Select2
+                script(src='/vendors/select2/dist/js/select2.full.min.js')
+                // Autosize
+                script(src='/vendors/autosize/dist/autosize.min.js')
+                // Custom Theme Scripts
+                script(src='/build/js/custom.min.js')
+                script(src='/js/adminBorderUpdate.js')
