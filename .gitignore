@@ -9,6 +9,8 @@
 /uploads/pic_300/
 /uploads/pic_watermark/
 /uploads/watermark/
+/uploads/
+/uploads/ogImage/
 /node_modules/sharp/
 /bin/www
 # Created by https://www.gitignore.io/api/node,webstorm
