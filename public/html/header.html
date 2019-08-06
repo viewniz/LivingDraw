@@ -22,7 +22,7 @@
             crossorigin="anonymous"></script>
     <!-- Plugins -->
     <link rel="stylesheet" href="../css/newheader.css"/>
-    <script src="../js/hooni.js"></script>
+    <script src="../js/nav_js.js"></script>
 </head>
 <body>
 <header>
@@ -32,11 +32,29 @@
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <nav>
         <ul>
+            <li>
+                <h1 class="logo only_mobile" style=" text-align: center;">
+                    <img src="../../uploads/logo/logoImage.png" style="height:50px;">
+                </h1>
+            </li>
+            <li class="only_mobile">
+                <div class="input-group mb-3">
+                    <input class="form-control" type="text" placeholder="" aria-label=""
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fa fa-search"></i>
+                    </span>
+                    </div>
+                </div>
+            </li>
             <li><a href="#">Home</a></li>
             <li><a href="#">Shop</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">About</a></li>
+            <label for="nav-toggle" class="btn_close only_mobile"><span></span>X</label>
         </ul>
+
     </nav>
     <div class="icon_box">
         <ul class="search_icon"><i class="fa fa-search" id="mobile_searchbutton"></i><i class="fa fa-heart"
@@ -46,6 +64,7 @@
     <label for="nav-toggle" class="nav-toggle-label">
         <span></span>
     </label>
+    <div id="nav_boundary_id"></div>
 </header>
 </body>
 </html>
