@@ -33,7 +33,7 @@ exports.user_confirm_certificate = function (req, res, next) {
                 else
                 {
                     user.isCertificate=true;
-                    User.findOneAndUpdate({_id:req.body.id}, user, function (err, result) {
+                    User.findOneAndUpdate({_id:user._id}, user, function (err, result) {
                         if (err) {
                             console.error('UpdateOne Error ', err);
                         }
