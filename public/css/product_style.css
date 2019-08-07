@@ -501,7 +501,7 @@ h4, h3, h2 {
     }
 }
 
-#total_card p, a, button{
+#total_card p, a, button {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -569,35 +569,31 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 }
 
 
-
-
-
-
 /*modal*/
 
-#full_modal{
-    margin:0;
+#full_modal {
+    margin: 0;
 }
 
-#full_size{
+#full_size {
     max-width: none;
     margin: 0;
     vertical-align: top;
 }
 
-#myFullsizeModal{
+#myFullsizeModal {
     padding: 0px;
     padding-right: 0px !important;
     background-color: white;
 }
 
-#fullscreen_img img{
+#fullscreen_img img {
     width: 100%;
     height: 100%;
 
 }
 
-.modal-header{
+.modal-header {
     border-bottom: none !important;
 }
 
@@ -613,36 +609,44 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     border-radius: 0;
 }
 
-.modal-content{
-    border:none;
+.modal-content {
+    border: none;
+}
+
+@media screen and (max-width: 860px) {
+    #modal_button{
+        display: none;
+    }
 }
 
 /*modal*/
 
 /*mobile*/
 
-.buy_title{
+.buy_title {
     font-family: 'Nanum Myeongjo', serif;
     font-size: 1.5em;
 }
 
-.buy_title2{
+.buy_title2 {
     font-family: 'Nanum Myeongjo', serif;
     font-size: 1.5em;
 }
 
-.mobile_buy_title{
+.mobile_buy_title {
     font-family: 'Nanum Myeongjo', serif;
     font-size: 1.5em;
 }
-.buy_price{
+
+.buy_price {
     font-family: 'Nanum Myeongjo', serif;
     font-size: 1.3em;
     margin-left: 40%;
 }
 
-#mobile_button_left{
-    height: 40px; width: 100px !important;
+#mobile_button_left {
+    height: 40px;
+    width: 100px !important;
     font-weight: 600;
     background-color: #fff;
     border: #eee 1px solid;
@@ -650,25 +654,27 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     font-size: 0.65em;
 }
 
-#mobile_button_right{
+#mobile_button_right {
     font-weight: 600;
-    height: 40px; width: 60px !important;
+    height: 40px;
+    width: 60px !important;
     padding: 5px;
     background-color: #f8b62b;
     font-size: 0.65em;
     border: none;
 }
 
-.mobile_padding_LR{
+.mobile_padding_LR {
     padding-left: 24px;
     padding-right: 24px;
 }
 
 @media (max-width: 320px) {
-    .buy_title{
+    .buy_title {
         font-size: 1.35em;
     }
-    .mobile_padding_LR{
+
+    .mobile_padding_LR {
         padding-right: 20px;
         padding-left: 20px;
     }
@@ -676,15 +682,15 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 
 /*author_note*/
 
-#author_note{
-    border: 1px  solid #eee;
+#author_note {
+    border: 1px solid #eee;
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 1rem;
     margin-bottom: 55px;
 }
 
-.author_note_header{
+.author_note_header {
 
     border-bottom: 1px solid #eee;
     margin-left: -15px;
@@ -693,37 +699,37 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     padding-top: 10px;
 }
 
-.note_title{
+.note_title {
     padding-left: 15px;
     font-size: 1.5em;
 }
 
-.note_title_sub{
+.note_title_sub {
     padding-left: 15px;
 }
 
-.note_author_name{
+.note_author_name {
     padding: 10px 15px 10px 15px;
 }
 
-.note_author_name a{
+.note_author_name a {
     font-size: 1.2em;
     text-transform: capitalize;
 }
 
-.note_product_detail{
+.note_product_detail {
     padding: 0px 15px 10px 15px;
     font-size: 1.0em;
 }
 
-.author_note_body{
+.author_note_body {
     background-color: #fafafa;
     margin-left: -15px;
     margin-right: -15px;
 
 }
 
-.note_footer{
+.note_footer {
     padding: 0px 15px 10px 15px;
     margin-left: -15px;
     margin-right: -15px;
@@ -731,13 +737,13 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     font-size: 1.0em;
 }
 
-.note_footer hr{
+.note_footer hr {
     margin-top: 0px;
     margin-bottom: 10px;
     color: #eee;
 }
 
-.note_footer .note_author_keword{
+.note_footer .note_author_keword {
     font-size: 13px;
     color: #989898 !important;
 }
@@ -746,4 +752,11 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 
     font-family: 'Noto Serif KR', serif;
 }
+
 /*---author_note----*/
+
+/*product_Header*/
+
+.pb-5{
+    padding-top: 121px !important;
+}

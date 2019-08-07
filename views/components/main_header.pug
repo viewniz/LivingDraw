@@ -1,39 +1,36 @@
-header.target-hover(style="" )
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light
-        a.navbar-brand(href='/')
-            img(src='/logo/logoImage.png', style='')
-        button#mobile_toggle_icon.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse
-            ul.navbar-nav.mr-auto
-                li.nav-item.active
-                    a.nav-link.mainpage(href='/') MAIN
-                li.nav-item
-                    a.nav-link.borderpage(href='/border/') Paints
-                //li.nav-item
-                    a.nav-link(href='#') Intro
-            ul#searchbar_1.right-menu.ml-auto
-                //
-                  <li><i class="fa fa-facebook"></i></li>
-                  <li><i class="fa fa-instagram"></i></li>
-                // <li><i class="fa fa-pinterest"></i></li>
-                li
-                    .input-group.mb-3
-                        input.form-control(type='text', placeholder='', aria-label='', aria-describedby='basic-addon2')
-                        .input-group-append
-                            span#basic-addon1.input-group-text
-                                i.fa.fa-search
-        ul#searchbar_2.right-menu.ml-auto.non_display(style='')
+header.mainheader
+    h1.logo
+        a(href='/')
+            img(src='/logo/logoImage.png', style='height:50px;')
+    input#nav-toggle.nav-toggle(type='checkbox')
+    nav
+        ul
             li
+                h1.logo.only_mobile(style=' text-align: center;')
+                    a(href='/')
+                        img(src='/logo/logoImage.png', style='height:50px;')
+            li.only_mobile
                 .input-group.mb-3
                     input.form-control(type='text', placeholder='', aria-label='', aria-describedby='basic-addon2')
-                    i.fa.fa-times
                     .input-group-append
-                        span#basic-addon2.input-group-text
-                            i.fa.fa-search
-            //li(style='margin-top:0;')
-            //    i.fa.fa-times
+                        span#basic-addon1.input-group-text(style="padding: 0px 8px 0px 8px;")
+                            i.flaticon-search.icons(style="margin:0;")
+            li
+                a.mainpage(href='/') 회사소개
+            li
+                a.borderpage(href='/border') 작품보기
             //li
+            //    a(href='#') Blog
+            //li
+            //    a(href='#') About
+            label.btn_close.only_mobile(for='nav-toggle')
+                span
+                | X
+    .icon_box
         ul.search_icon
-            i#mobile_searchbutton.fa.fa-search
-            i#mobile_heartbutton.fa.fa-heart
+            i.flaticon-search-1.icons
+            i.flaticon-picture-2.icons
+            //i#mobile_heartbutton.flaticon-like-1.icons
+    label.nav-toggle-label(for='nav-toggle')
+        span
+    #nav_boundary_id

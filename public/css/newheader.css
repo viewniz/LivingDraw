@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+@import url('https://fonts.googleapis.com/css?family=Catamaran|Noto+Sans+KR&display=swap');
 
 /*:root {*/
 /*    --header-background: rgba(100, 125, 170, 0.85);*/
@@ -10,17 +10,9 @@
     box-sizing: border-box;
 }
 
-body {
-    height: 100vh;
-    margin: 0;
-    background: #333;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-}
-
 /* Nav Styles */
 
-header {
+.mainheader {
     background: #ffffff;
     text-align: center;
     position: fixed;
@@ -30,12 +22,20 @@ header {
     -moz-user-select: none; /* Firefox all */
     -ms-user-select: none; /* IE 10+ */
     user-select: none; /* Likely future */
+    box-shadow: 0 1px 8px rgba(0,0,0,0.1), 0 1px 8px rgba(0,0,0,0.03);
+    transition: top 0.0ms ease-in-out;
+    height: 73px;
 }
+.nav-up { top: -73px;
+    box-shadow: unset;
+/* 헤더 높이와 같게 */}
 
+/**/
 
 .logo {
     color: rgba(255, 255, 255, .8);
     margin-top: 10px;
+    cursor: pointer;
 }
 
 
@@ -48,13 +48,12 @@ nav {
     background: #ffffff;
     transform: scale(1, 0);
     transform-origin: top;
-    transition: transform 400ms ease-in-out;
+    /*transition: transform 400ms ease-in-out;*/
 }
 
 /* notorigin */
 nav{
-    min-width: 100%;
-    max-width: 400px;
+    max-width: 80%;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -62,7 +61,7 @@ nav{
     /* top layer */
     z-index: 9999;
     padding: 30px 20px 30px 20px;
-    opacity: 0.95;
+    opacity: 1;
 }
 
 nav ul {
@@ -76,9 +75,16 @@ nav li {
     margin-left: 1em;
 }
 
+nav li a{
+    /*font-weight: 700;*/
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
 nav a {
     color: rgb(0, 0, 0);
-    text-decoration: none;
+    text-decoration: unset;
     font-size: 1.1rem;
     text-transform: uppercase;
     opacity: 0;
@@ -87,6 +93,8 @@ nav a {
 
 nav a:hover {
     color: black;
+    text-underline: none;
+    text-decoration: unset;
 }
 
 .nav-toggle {
@@ -141,15 +149,18 @@ nav a:hover {
 
 .nav-toggle:checked ~ nav a {
     opacity: 1;
-    transition: opacity 250ms ease-in-out 250ms;
+    transition: opacity 200ms ease-in-out 200ms;
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 960px) {
+    .nav_boundary{
+        display: none;
+    }
     .nav-toggle-label {
         display: none;
     }
 
-    header {
+    .mainheader {
         display: grid;
         grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
     }
@@ -184,7 +195,7 @@ nav a:hover {
         content: "";
         display: block;
         height: 5px;
-        background: rgba(50, 180, 230, .5);
+        background: #f8b62b;
         position: absolute;
         top: -.7em;
         left: 0;
@@ -214,12 +225,14 @@ nav a:hover {
     margin: 0;
 }
 
-.icon_box ul i {
-    font-size: 1.1rem;
-    margin-right: 1.1rem;
+.icons{
+    font-size: 1.2rem;
+    margin-right: 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 960px) {
     .icon_box {
         position: absolute;
         right: 0;
@@ -229,4 +242,86 @@ nav a:hover {
         display: flex;
         align-items: center;
     }
+
+    .flaticon-search-1{
+        display: none;
+    }
+}
+
+/*nav_boundary*/
+
+.nav_boundary{
+    display: flex;
+    position: absolute;
+    background-color: rgba(34,34,34,0.75);
+    min-width: 100%;
+    min-height: 99999px;
+    bottom:0;
+    z-index: 9998;
+    top: 0;
+    touch-action: none;
+    overflow: hidden;
+}
+
+@media screen and (min-width:960px){
+    .nav_boundary{
+        display: none;
+    }
+}
+
+.btn_close{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 25px 20px;
+    font-size: 2.0rem;
+    margin: 0;
+    transition: opacity 250ms ease-in-out 250ms;
+    opacity: 1;
+    cursor: pointer;
+
+}
+
+.non_display{
+    display: none;
+}
+
+/*searchbar*/
+
+.form-control{
+    border-radius: 0;
+
+}
+
+.search_img{
+    width: 17.5px;
+    height: 17.5px;
+    cursor: pointer;
+}
+
+
+.input-group-text{
+    border-radius: 0;
+    background-color: unset;
+}
+
+/*mobile_side_nav*/
+@media screen and (min-width: 960px) {
+    .only_mobile{
+        display: none;
+    }
+
+}
+
+/*scroll_hidden*/
+.layer-open{
+
+    overflow:hidden; // 팝업열었을때 addClass로 속성추가 후 스크롤막기위한 css
+
+}
+
+/*change_page*/
+.pre_nav_color{
+    color: black !important;
+    font-weight: bold;
 }
