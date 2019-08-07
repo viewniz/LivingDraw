@@ -1,12 +1,4 @@
 $(document).ready(function () {
-    var jbOffset = $('.target-hover').offset();
-    $(window).scroll(function () {
-        if ($(document).scrollTop() > jbOffset.top) {
-            $('.target-hover').addClass('jbFixed');
-        } else {
-            $('.target-hover').removeClass('jbFixed');
-        }
-    });
 
     var curPage = document.URL;
     // var pre_value = curPage.indexOf("/");
@@ -25,4 +17,6 @@ $(document).ready(function () {
         }
     }
 });
+
+
 

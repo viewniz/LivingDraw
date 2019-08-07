@@ -10,15 +10,6 @@
     box-sizing: border-box;
 }
 
-
-/*body {*/
-/*    height: 100vh;*/
-/*    margin: 0;*/
-/*    background: #333;*/
-/*    */
-/*    font-weight: 400;*/
-/*}*/
-
 /* Nav Styles */
 
 .mainheader {
@@ -32,17 +23,19 @@
     -ms-user-select: none; /* IE 10+ */
     user-select: none; /* Likely future */
     box-shadow: 0 1px 8px rgba(0,0,0,0.1), 0 1px 8px rgba(0,0,0,0.03);
+    transition: top 0.0ms ease-in-out;
+    height: 73px;
 }
+.nav-up { top: -73px;
+    box-shadow: unset;
+/* 헤더 높이와 같게 */}
 
-/*@media screen and (max-width: 960px) {*/
-/*    header{*/
-/*        position: fixed;*/
-/*    }*/
-/*}*/
+/**/
 
 .logo {
     color: rgba(255, 255, 255, .8);
     margin-top: 10px;
+    cursor: pointer;
 }
 
 
@@ -325,4 +318,10 @@ nav a:hover {
 
     overflow:hidden; // 팝업열었을때 addClass로 속성추가 후 스크롤막기위한 css
 
+}
+
+/*change_page*/
+.pre_nav_color{
+    color: black !important;
+    font-weight: bold;
 }

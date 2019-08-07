@@ -1,12 +1,14 @@
 header.mainheader
     h1.logo
-        img(src='/logo/logoImage.png', style='height:50px;')
+        a(href='/')
+            img(src='/logo/logoImage.png', style='height:50px;')
     input#nav-toggle.nav-toggle(type='checkbox')
     nav
         ul
             li
                 h1.logo.only_mobile(style=' text-align: center;')
-                    img(src='/logo/logoImage.png', style='height:50px;')
+                    a(href='/')
+                        img(src='/logo/logoImage.png', style='height:50px;')
             li.only_mobile
                 .input-group.mb-3
                     input.form-control(type='text', placeholder='', aria-label='', aria-describedby='basic-addon2')
@@ -14,9 +16,9 @@ header.mainheader
                         span#basic-addon1.input-group-text(style="padding: 0px 8px 0px 8px;")
                             i.flaticon-search.icons(style="margin:0;")
             li
-                a(href='/') 회사소개
+                a.mainpage(href='/') 회사소개
             li
-                a(href='#') 작품보기
+                a.borderpage(href='/border') 작품보기
             //li
             //    a(href='#') Blog
             //li
