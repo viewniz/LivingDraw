@@ -1,34 +1,51 @@
-let crypto = require('crypto');
+const crypto = require('crypto');
 const LocalStrategy = require('passport-local').Strategy;
 
-const AdminUser = require('../models/adminUser');
+const User = require('../models/user');
+const Confirm = require('./userConfirm');
 const moment = require("moment");
 
 module.exports = function(passport) {
-    passport.serializeUser(function (admin, done) {
-        done(null, admin._id);
+    passport.serializeUser(function (user, done) {
+        done(null, user._id);
     });
     passport.deserializeUser(function (id, done) {
-        AdminUser.findById(id, (err, admin) => {
-            done(null, admin); // 여기의 user가 req.user가 됨
+        User.findById(id, (err, user) => {
+            done(null, user); // 여기의 user가 req.user가 됨
         });
     });
 
-    passport.use('adminSignUp', new LocalStrategy({
-            usernameField: 'id',
+    passport.use('signUp', new LocalStrategy({
+            usernameField: 'email',
             passwordField: 'password',
             passReqToCallback: true
         },
         function (req, id, password, done) {
-            AdminUser.findOne({id: id}, function (err, adminAlready) {
+            if(!id)
+            {
+                return done(null,false,{message:'아이디를 입력하세요'});
+            }
+            if(!password)
+            {
+                return done(null,false,{message:'비밀번호를 입력하세요'});
+            }
+            if(!req.body.firstName)
+            {
+                return done(null,false,{message:'이름을 입력하세요'});
+            }
+            if(!req.body.lastName)
+            {
+                return done(null,false,{message:'성을 입력하세요'});
+            }
+            User.findOne({id: id}, function (err, Already) {
                 if (err) return done(err);
-                if (adminAlready) {
-                    return done(null, false, {error: '존재하는 아이디입니다.'});
+                if (Already) {
+                    return done(null, false, {message: '존재하는 아이디입니다.'});
                 } else {
-                    let admin = new AdminUser();
-                    admin.firstName = req.body.firstName;
-                    admin.lastName = req.body.lastName;
-                    admin.id = id;
+                    let user = new User();
+                    user.firstName = req.body.firstName;
+                    user.lastName = req.body.lastName;
+                    user.id = id;
                     //let hashed = admin.generateHash(password);
                     crypto.randomBytes(32, function(err, buffer){
                         //32bit 길이의 random byte 생성
@@ -45,19 +62,13 @@ module.exports = function(passport) {
                                 }
                                 else
                                 {
-                                    admin.password = (hashed.toString('base64'));
-                                    admin.key = buffer.toString('base64');
-                                    admin.imageFace.picOriginalName = req.file.originalname;
-                                    admin.imageFace.picEncoding = req.file.encoding;
-                                    admin.imageFace.picMimetype = req.file.mimetype;
-                                    admin.imageFace.picDestination = req.file.destination;
-                                    admin.imageFace.picFilename = req.file.filename;
-                                    admin.imageFace.picPath = req.file.path;
-                                    admin.imageFace.picSize = req.file.size;
-                                    admin.save(function (err) {
+                                    user.password = (hashed.toString('base64'));
+                                    user.key = buffer.toString('base64');
+                                    Confirm(id,req.body.lastName+req.body.firstName);
+                                    user.save(function (err) {
                                         if (err)
                                             throw err;
-                                        return done(null, false, {error: 'clear'});
+                                        return done(null, false, {message: 'clear'});
                                     });
                                 }
                             });
@@ -68,7 +79,7 @@ module.exports = function(passport) {
             });
         }
     ));
-    passport.use('adminLogin', new LocalStrategy({
+    passport.use('login', new LocalStrategy({
             usernameField: 'id',
             passwordField: 'password',
             session: true, // 세션에 저장 여부
@@ -90,19 +101,21 @@ module.exports = function(passport) {
             {
                 return done(null, false, {error: '패스워드 에러reg'});
             }
-            AdminUser.findOne({id: id}, function (err, admin) {
+            User.findOne({id: id}, function (err, user) {
                 if (err)
                     return done(err);
-                if (!admin)
+                if (!user)
                     return done(null, false, {error: '아이디 에러'});
-                crypto.pbkdf2(password, admin.key, 130495, 64, 'sha512', (err, hashed) => {
-                    if(!(hashed.toString('base64') === admin.password))
+                if (user.isCertificate)
+                    return done(null, false, {error: '이메일 인증 에러'});
+                crypto.pbkdf2(password, user.key, 130495, 64, 'sha512', (err, hashed) => {
+                    if(!(hashed.toString('base64') === user.password))
                         return done(null, false, {error: '패스워드 에러'});
                     else
                     {
                         const ip = req.headers['x-forwarded-for'] ||  req.connection.remoteAddress;
-                        AdminUser.update({id:id},{$set:{last_login:moment().format('YYYY-MM-DD HH:mm:ss'),last_login_ip:ip}},function(){});
-                        return done(null, admin);
+                        User.update({id:id},{$set:{last_login:moment().format('YYYY-MM-DD HH:mm:ss'),last_login_ip:ip}},function(){});
+                        return done(null, user);
                     }
                 });
             });

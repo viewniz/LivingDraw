@@ -11,6 +11,7 @@ var passport = require('passport');
 
 let indexRouter = require('./routes/index/index');
 let usersRouter = require('./routes/users');
+let userRouter = require('./routes/user/index');
 let goodsRouter = require('./routes/goods/index');
 let borderRouter = require('./routes/border/index');
 let adminRouter = require('./routes/admin/index');
@@ -18,6 +19,7 @@ let adminRouter = require('./routes/admin/index');
 let app = express();
 
 require('./config/passportAdmin')(passport);
+require('./config/passportUser')(passport);
 
 mongoose.connect('mongodb://localhost/LivingDraw');
 mongoose.Promise = global.Promise;
@@ -50,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 app.use('/', indexRouter);
 app.use('/goods', goodsRouter);
 app.use('/users', usersRouter);
+app.use('/user', userRouter);
 app.use('/border', borderRouter);
 app.use('/admin', adminRouter);
 
