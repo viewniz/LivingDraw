@@ -36,7 +36,8 @@ exports.admin_login_check_yes=function(req,res,next) {         //구매자 등�
 exports.admin_main= function(req, res, next) {
     res.render('admin/index',{user:req.user});
 };
-exports.admin_submit= function(req, res, next) {sha
+exports.admin_submit= function(req, res, next) {
+    res.render('admin/submit');
 };
 exports.admin_login= function(req, res, next) {
     res.render('admin/login');
