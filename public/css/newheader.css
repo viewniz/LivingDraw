@@ -77,9 +77,11 @@ nav li {
 
 nav li a{
     /*font-weight: 700;*/
-    font-family: 'Nanum Gothic', sans-serif;
-    font-size: 1.1rem;
+    /*font-family: 'Nanum Gothic', sans-serif;*/
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.15rem;
     font-weight: 500;
+    color: #222222;
 }
 
 nav a {
@@ -92,7 +94,7 @@ nav a {
 }
 
 nav a:hover {
-    color: black;
+    color: #222222;
     text-underline: none;
     text-decoration: unset;
 }
