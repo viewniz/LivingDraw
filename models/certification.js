@@ -9,7 +9,6 @@ const Schema = mongoose.Schema;
 const certificate = new Schema({
     email: {type: String, required: true},
     token: {type: String, required: true},
-    iv: {type: String, required: true},
     timer: {type: String}
 });
 
