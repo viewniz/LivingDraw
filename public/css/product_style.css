@@ -747,3 +747,8 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     font-family: 'Noto Serif KR', serif;
 }
 /*---author_note----*/
+
+/*product_Header*/
+.mainheader{
+    display: fixed;
+}

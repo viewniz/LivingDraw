@@ -20,15 +20,17 @@ html
         meta(property="og:description" content="주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!")
         meta(property="og:image" content="https://www.livingdraw.co.kr/ogImage/ogImage.png")
         link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
-        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
-        link(rel='stylesheet', href='../css/nav_style.css')
+        link(rel='stylesheet', href='/css/font/flaticon.css')
+        link(rel='stylesheet', href='/css/newheader.css')
         link(rel='stylesheet', href='../css/border_style.css')
+        link(rel='stylesheet', href='/css/font/flaticon.css')
         link(href='https://fonts.googleapis.com/css?family=Open+Sans|Playfair+Display|Raleway&display=swap', rel='stylesheet')
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
         script(src='../js/border_hooni.js')
         script(src='../js/hooni.js')
+        script(src='../js/nav_js.js')
         script.
             var para = document.location.href.split("?");
         // Plugins
@@ -36,14 +38,14 @@ html
         script.
         include ../components/main_header
 
-        header.container_header(style='')
+        header.container_header(style='padding-top:73px;')
             .header_second(style='')
-                p(style='') Great Artist's Works!
-                #dropdown_sort.dropdown(style='float: right; padding-top: 11px;')
+                p(style='padding:0;') Great Artist's Works!
+                #dropdown_sort.dropdown(style='right:0;')
                     //button#left_button.btn.btn-outline-primary(type='button') 적용
                     button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
                         | 정렬 기준
-                    .dropdown-menu
+                    #dropdown_sort_position.dropdown-menu
                         a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=high'") 가격 높은 순
                         a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=low'") 가격 낮은 순
                         a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=new'") 최신 순
@@ -52,7 +54,7 @@ html
             button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', style='float: right;')
                 | 정렬 기준
             //button.btn.btn-outline-primary(type='button', style='float: right;') 적용
-            .dropdown-menu
+            #dropdown_sort2_position.dropdown-menu
                 a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=high'") 가격 높은 순
                 a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=low'") 가격 낮은 순
                 a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=new'") 최신 순
