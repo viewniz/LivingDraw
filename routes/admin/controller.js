@@ -37,7 +37,7 @@ exports.admin_main= function(req, res, next) {
     res.render('admin/index',{user:req.user});
 };
 exports.admin_submit= function(req, res, next) {
-    res.render('admin/submit');
+    res.render('admin/submit',{user:req.user});
 };
 exports.admin_login= function(req, res, next) {
     res.render('admin/login');
