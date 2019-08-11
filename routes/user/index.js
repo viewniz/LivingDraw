@@ -19,8 +19,10 @@ let uploadPicture=multer({storage:Picture_storage});
 router.get('/submit', controller.user_submit);
 router.get('/login',controller.user_login);
 router.get('/confirm_certificate/:id',controller.user_confirm_certificate);
-//router.get('/product/:id', controller.product_detail);
+
+/*POST*/
 
 router.post('/submit',controller.user_submit_post);
-
+router.post('/login',controller.user_login_post);
+router.post('/logout',controller.user_logout_post);
 module.exports = router;

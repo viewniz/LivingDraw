@@ -21,14 +21,14 @@ exports.user_confirm_certificate = function (req, res, next) {
     Cert.findOne({token:token},function (err, cert) {
         if(!cert)
         {
-            res.render('./user/login'); //만료된 인증 링크
+            res.render('./user/certificate',{result:'tokenError'}); //만료된 인증 링크==토큰 못 찾음
         }
         else
         {
-            User.findOne({id:cert.email},function (err,user) {
+            User.findOne({email:cert.email},function (err,user) {
                 if(!user)
                 {
-                    res.render('./user/login'); //유저 못 찾음. cert db error
+                    res.render('./user/certificate',{result:'userError'}); //유저 못 찾음.
                 }
                 else
                 {
@@ -37,7 +37,11 @@ exports.user_confirm_certificate = function (req, res, next) {
                         if (err) {
                             console.error('UpdateOne Error ', err);
                         }
-                        res.render('./user/certificate');
+                        else
+                        {
+                            Cert.remove({token:token},function(err,result){});
+                            res.render('./user/certificate',{result:'complete'});
+                        }
                     });
                 }
             })
@@ -50,4 +54,20 @@ exports.user_submit_post = function (req, res, next) {
         if (err) { res.send(err); return next(err); }
         else{ res.send(info.message); }
     })(req, res, next);
+};
+
+exports.user_login_post= function(req, res, next) {
+    passport.authenticate('login', function(err, user, info) {
+        if (err) {res.send(err); return next(err); }
+        if (!user) {res.send(info.message); return}
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            res.send('clear');
+        });
+    })(req, res, next);
+};
+
+exports.user_logout_post= function(req, res){
+    req.logout();
+    res.send('clear');
 };

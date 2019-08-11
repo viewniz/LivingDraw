@@ -21,11 +21,13 @@ html
         |
         link(rel='stylesheet', href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css')
         |
-        link(rel='stylesheet', href='../css/login_css.css')
+        link(rel='stylesheet', href='/css/login_css.css')
         |
         link(href='https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap', rel='stylesheet')
         // Plugins
-        script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+        script(src='/js/userLogin.js')
     body
         .container
             .row.text-center.mb-5.mt-5
@@ -43,19 +45,23 @@ html
                             form
                                 .form-row
                                     .form-group.col-md-12
-                                        input#id.form-control(name='id', placeholder='ID', type='text')
+                                        input#id.form-control(name='email', placeholder='Email', type='email')
                                     |
                                     .form-group.col-md-12
-                                        input#pass.form-control(type='pass', placeholder='Password', name='password')
+                                        input#pass.form-control(type='password', placeholder='Password', name='password')
                                 |
                                 .form-row.loginbutton
-                                    button.btn.btn-danger.btn-block(type='button') 로그인
+                                    button.btn.btn-danger.btn-block(type='button', onclick='loginPost(this.form)') 로그인
                         |
                         .logi-forgot.text-right.mt-2
                             a(href='#') Reset Password
+                        .register-form.mt-4
+                            .register_check
+                                p.check
                         |
                         hr
                         |
                         .register-form.mt-4
                             .registerbox
-                                button.btn.btn-outline-warning.registerbutton(type='button') 회원가입
+                                a(href='/user/submit', style="text-decoration:none")
+                                    button.btn.btn-outline-warning.registerbutton(type='button') 회원가입

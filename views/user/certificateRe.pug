@@ -41,16 +41,10 @@ html
                         .login-form.mt-4
                             .form-row
                                 .form-group.col-md-12
-                                    if(result==='complete')
-                                        p 이메일 인증 완료!
-                                    else if(result==='userError')
-                                        p 회원가입 오류입니다. 다시 가입해주세요.
-                                    else
-                                        p 만료된 링크입니다. 로그인해서 인증메일을 다시 받아주세요.
-                                |
+                                    p 메일 인증이 안된 계정입니다.
                                 .form-group.col-md-12
                                     a(href='/user/login', style="text-decoration:none")
-                                        button.btn.btn-danger.btn-block(type='button') 로그인
+                                        button.btn.btn-danger.btn-block(type='button') 인증 메일 재발송
                                 .form-group.col-md-12
                                     a(href='/', style="text-decoration:none")
                                         button.btn.btn-outline-warning.registerbutton(type='button') 홈으로

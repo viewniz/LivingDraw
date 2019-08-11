@@ -7,7 +7,7 @@ moment.tz.setDefault("Asia/Seoul");
 let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
-    id:{type:String},
+    email:{type:String},
     password:{type:String},
     key:{type:String},
     firstName:{type:String},
