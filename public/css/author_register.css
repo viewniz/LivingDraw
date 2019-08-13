@@ -1,0 +1,164 @@
+body {
+    background-color: #f3f3f3;
+}
+
+body p {
+    font-family: 'Noto Sans KR', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+
+/*container*/
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/*Main_box*/
+.row {
+    margin: 0;
+}
+
+.center_main {
+    /*border:1px red solid;*/
+    display: flex;
+    background-color: white;
+    min-height: 500px;
+    margin: 0;
+    padding: 60px 120px 80px 120px;
+    text-align: center;
+    position: relative;
+}
+
+/*process_bar*/
+.process_bar {
+    display: block;
+    height: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #f3f3f3;
+    overflow: hidden;
+    position: relative;
+}
+
+.pre_stage {
+    margin: 0;
+    position: absolute;
+    background-color: #00A000;
+    width: 100%;
+    left: -100%;
+    transform: translateX(123.333px);
+}
+
+
+/*main*/
+.title {
+    width: 100%;
+    margin-bottom: 5%;
+
+}
+
+.title p {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.alarm p {
+    font-size: 1.0rem;
+    color: #00AEEF;
+    font-weight: normal;
+}
+
+
+.author_register_form {
+    width: 100%;
+}
+
+.first_name {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.last_name {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.last_name p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+
+
+}
+
+.first_name p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.form-row {
+    margin: 0;
+}
+
+.nameform {
+    border-radius: unset;
+}
+
+.author_privacy {
+    margin-bottom: 5%;
+}
+
+/*phone_number*/
+.author_phone_register{
+    margin-bottom: 30px;
+}
+#phone_number {
+    margin-right: 5px;
+    border-radius: unset;
+    width: 60%;
+}
+
+#phone_number_box {
+    background-color: #f8b62b;
+    border-color: #f8b62b;
+    border-radius: unset;
+}
+
+/*next_button*/
+
+.next {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    overflow: hidden;
+}
+
+.next_button{
+    border-radius: unset;
+    background-color: #2f8cba !important;
+    border-color: #2f8cba !important;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: inline-block;
+    position: relative;
+
+}
+
+#hidden_next{
+    transform: translateX(100%);
+    transition: transform .3s cubic-bezier(.86,0,.07,1),
+                background-color .2s ease-in-out;
+}
+
+.open_next{
+    transition: opacity .3s cubic-bezier(.86,0,.07,1) .1s;
+}
+
+

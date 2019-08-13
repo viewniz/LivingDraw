@@ -1,16 +1,18 @@
 jQuery(document).ready(function () {
 
     $('.nav-toggle-label').on({
-        'click': function () {
+        'click': function scrolloff() {
             $('#nav_boundary_id').addClass('nav_boundary');
-            $("body").addClass('layer-open'); //overflow:hidden 추가
+            $("body").addClass('layer-open').on('scroll touchmove mousewheel', function(e){
+                e.preventDefault();
+            }); //overflow:hidden 추가
         }
     });
 
     $('.btn_close').on({
-        'click': function () {
+        'click': function scrollOn() {
             $('#nav_boundary_id').removeClass('nav_boundary');
-            $("body").removeClass('layer-open'); //overflow:hidden 추가
+            $("body").removeClass('layer-open').off('scroll touchmove mousewheel'); //overflow:hidden 추가
         }
     });
 

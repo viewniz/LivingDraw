@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리빙드로우</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/font/flaticon.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo:700|Noto+Sans+KR&display=swap"
+          rel="stylesheet">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../css/font/flaticon.css">
+    <link rel="stylesheet" href="../css/font2/flaticon.css">
+    <link rel="stylesheet" href="../css/author_register.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
+    <script src="../js/author_register.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5"></div>
+    <div class="row mt-5 center_main">
+        <div class="author_register_form">
+            <div class="process_bar">
+                <div class="process_bar pre_stage"></div>
+            </div>
+            <form>
+                <div class="form-row author_privacy">
+                    <div class="title">
+                        <p>작가 등록</p>
+                    </div>
+                    <div class="title alarm">
+                        <p>성과 이름은 영어로 채워주시기 바랍니다.</p>
+                    </div>
+                    <div class="last_name"><p>LastName(성)</p>
+                        <input class="form-control name-form nameform"
+                               id="lastname" name="lastName"
+                               placeholder="성" type="text">
+                    </div>
+                    <div class="first_name"><p>FirstName(이름)</p>
+                        <input class="form-control name-form nameform"
+                               id="firstname" name="lastName"
+                               placeholder="이름" type="text">
+                    </div>
+                </div>
+                <div class="form-row author_phone_register">
+                    <div class="title">
+                        <p>휴대폰 인증</p>
+                    </div>
+                    <div class="last_name">
+                        <p>PhoneNumber(휴대전화)</p>
+                        <input class="form-control number-form"
+                               id="phone_number" name="PhoneNumber"
+                               placeholder="휴대전화번호" type="text">
+                        <button class="btn btn-danger" id="phone_number_box" type="button">인증
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="next">
+            <button class="btn btn-danger next_button" id="hidden_next" type="button">
+                <span class="open_next">다음단계</span>
+            </button>
+            <button class="btn btn-danger next_button" id="none_hidden_next" type="button">
+                <i class="flaticon-keyboard-right-arrow-button"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

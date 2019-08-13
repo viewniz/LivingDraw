@@ -327,3 +327,9 @@ nav a:hover {
     color: black !important;
     font-weight: bold;
 }
+
+#pc_searchbar{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}

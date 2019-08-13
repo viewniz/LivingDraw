@@ -66,49 +66,6 @@ function submitPost(data){
         }
     });
 }
-function submitPostSocial(data){
-    let item = {lastName:data.lastName.value,firstName:data.firstName.value};
-    //jQuery.ajaxSettings.traditional=true;
-    if(!item.lastName)
-    {
-        $('.check').text('성을 입력하세요.');
-        $('#lastname').focus();
-        return false;
-    }
-    if(!item.firstName)
-    {
-        $('.check').text('이름을 입력하세요.');
-        $('#firstname').focus();
-        return false;
-    }
-    if(checkRegName(item.lastName)===1)
-    {
-        $('.check').text('성은 한글만 입력이 가능합니다.');
-        $('#lastname').focus();
-        return false;
-    }
-    if(checkRegName(item.firstName)===1)
-    {
-        $('.check').text('이름은 한글만 입력이 가능합니다.');
-        $('#firstname').focus();
-        return false;
-    }
-    $.ajax({
-        method: "POST",
-        type: "POST",
-        url: "/user/auth/social",
-        data: item,
-        success: function (data) {
-            if (data === "clear") {
-                location.replace('/border');
-                return true;
-            }else {
-                $('.check').text(data);
-                return false;
-            }
-        }
-    });
-}
 function checkRegSubmit(id,password)
 {
     const idCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;

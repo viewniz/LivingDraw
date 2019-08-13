@@ -34,11 +34,7 @@ function loginPost(data){
             if (data === "clear") {
                 location.replace('/border');
                 return true;
-            } else if( data === "메일 인증 실패")
-            {
-                location.replace('/user/re_mailing');
-            }
-            else {
+            }else {
                 $('.check').text(data);
                 return false;
             }
