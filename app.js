@@ -6,8 +6,9 @@ let logger = require('morgan');
 let mongoose    = require('mongoose');
 let bodyParser = require('body-parser');
 var session=require('express-session');
-var flash = require('connect-flash');
+const flash = require('connect-flash');
 var passport = require('passport');
+let passportAdmin = require('passport');
 
 let indexRouter = require('./routes/index/index');
 let usersRouter = require('./routes/users');
@@ -16,10 +17,12 @@ let goodsRouter = require('./routes/goods/index');
 let borderRouter = require('./routes/border/index');
 let adminRouter = require('./routes/admin/index');
 
+const secretKey = require('./config/SecretKey').sessionKey;
+
 let app = express();
 
-require('./config/passportAdmin')(passport);
 require('./config/passportUser')(passport);
+require('./config/passportAdmin')(passportAdmin);
 
 mongoose.connect('mongodb://localhost/LivingDraw');
 mongoose.Promise = global.Promise;
@@ -29,7 +32,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(session({
-  secret: '비밀코드',
+  secret: secretKey,
   resave: true,
   saveUninitialized: true
 })); // 세션 활성화
@@ -40,6 +43,9 @@ app.use(flash());
 // passport 초기화
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passportAdmin.initialize());
+app.use(passportAdmin.session());
+
 
 app.use(logger('dev'));
 app.use(express.json());

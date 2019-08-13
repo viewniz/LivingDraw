@@ -7,11 +7,13 @@ moment.tz.setDefault("Asia/Seoul");
 let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
-    id:{type:String},
+    email:{type:String},
     password:{type:String},
     key:{type:String},
     firstName:{type:String},
     lastName:{type:String},
+    firstNameE:{type:String},
+    lastNameE:{type:String},
     submit_date:{type: String, default: moment().format('YYYY-MM-DD HH:mm:ss')},
     last_login:String,
     last_login_ip:String,
@@ -27,7 +29,8 @@ let UserSchema = new Schema({
         picSize:{type:String}           //파일 크기 byte 단위
     },
     isSeller:{type: Boolean, default:false},
-    isStudent:{type: Boolean, default:false},
+    provider:{type: String, default:'local'},
+    socialID:String,
 });
 
 

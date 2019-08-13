@@ -1,6 +1,5 @@
 let express = require('express');
 let bodyParser = require('body-parser');
-let multer=require('multer');
 let fs = require('fs');
 let passport = require('passport');
 const sharp = require('sharp');
@@ -25,6 +24,7 @@ exports.admin_login_check_yes=function(req,res,next) {         //구매자 등�
     }
     else if(!req.user.isAdmin)
     {
+        req.logout();
         res.redirect('/admin/login');
     }
     else

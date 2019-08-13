@@ -3,15 +3,13 @@ html
     head
         meta(charset='UTF-8')
         |
-        title Livig Draw
-        |
-        meta(charset='utf-8')
-        |
-        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-        |
-        meta(name='description', content='')
-        |
-        meta(name='author', content='')
+        title 메일인증
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(name='description' content='미대생들의 온라인 갤러리, 주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!')
+        meta(name='author' content='Gil Se-hyeon')
+        meta(property="og:title" content="미대생들의 온라인 갤러리 리빙드로우")
+        meta(property="og:description" content="주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!")
+        meta(property="og:image" content="https://www.livingdraw.co.kr/ogImage/ogImage.png")
         |
         link(rel='icon', href='favicon.ico')
         |
@@ -23,7 +21,7 @@ html
         |
         link(rel='stylesheet', href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css')
         |
-        link(rel='stylesheet', href='../css/login_css.css')
+        link(rel='stylesheet', href='/css/login_css.css')
         |
         link(href='https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap', rel='stylesheet')
         // Plugins
@@ -36,16 +34,24 @@ html
                 .card
                     .card-body
                         .login-img
-                            img(src='/logo/logoImage.png', style='height:50px;')
+                            a(href='/', style="text-decoration:none")
+                                img(src='/logo/logoImage.png', style='height:50px;')
                         |
                         .login-title
                             // <h4>Log In</h4>
-                        |
                         .login-form.mt-4
-                            p 이메일 인증 완료!
-                        .login-form.mt-4
-                            .form-row.loginbutton
-                                button.btn.btn-danger.btn-block(type='button') 로그인 페이지로
-                        |
-                        hr
-                        |
+                            .form-row
+                                .form-group.col-md-12
+                                    if(result==='complete')
+                                        p 이메일 인증 완료!
+                                    else if(result==='userError')
+                                        p 회원가입 오류입니다. 다시 가입해주세요.
+                                    else
+                                        p 만료된 링크입니다. 로그인해서 인증메일을 다시 받아주세요.
+                                |
+                                .form-group.col-md-12
+                                    a(href='/user/login', style="text-decoration:none")
+                                        button.btn.btn-danger.btn-block(type='button') 로그인
+                                .form-group.col-md-12
+                                    a(href='/', style="text-decoration:none")
+                                        button.btn.btn-outline-warning.registerbutton(type='button') 홈으로
