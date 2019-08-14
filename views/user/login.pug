@@ -36,7 +36,7 @@ html
                 .card
                     .card-body
                         .login-img
-                            a(href='/', style="text-decoration:none")
+                            a(href='/', style='text-decoration:none')
                                 img(src='/logo/logoImage.png', style='height:50px;')
                         |
                         .login-title
@@ -52,29 +52,36 @@ html
                                         input#pass.form-control(type='password', placeholder='Password', name='password')
                                 |
                                 .form-row.loginbutton
-                                    button.btn.btn-danger.btn-block(type='button', onclick='loginPost(this.form)') 로그인
+                                    button.btn.btn-danger.btn-block(type='button', onclick='loginPost(this.form)')
+                                        | 로그인
                         |
                         .logi-forgot.text-right.mt-2
                             a(href='#') Reset Password
+                        |
                         .register-form.mt-4
                             .register_check
-                                if(error)
-                                    p.check=error.message
-                                else
-                                    p.check
+                                p.check
+                        |
+                        .register-form.mt-4
+                            .registerbox
+                                a(href='/user/submit', style='text-decoration:none')
+                                    button.btn.btn-outline-warning.registerbutton(type='button') 회원가입
                         |
                         hr
                         |
-                        .register-form.mt-4
-                            .registerbox
-                                a(href='/user/submit', style="text-decoration:none")
-                                    button.btn.btn-outline-warning.registerbutton(type='button') 회원가입
-                            .registerbox
-                                a(href='/user/auth/google', style="text-decoration:none")
-                                    button.btn.btn-outline-warning.registerbutton(type='button') 구글로그인
-                            .registerbox
-                                a(href='/user/auth/kakao', style="text-decoration:none")
-                                    button.btn.btn-outline-warning.registerbutton(type='button') 카카오로그인
-                            .registerbox
-                                a(href='/user/auth/naver', style="text-decoration:none")
-                                    button.btn.btn-outline-warning.registerbutton(type='button') 네이버로그인
+                        .register-form.mt-4.diffrents_login
+                            .social-login-title
+                                p 소셜 회원가입 및 로그인
+                            |
+                            ul.icons
+                                li
+                                    a(href='/user/auth/google')
+                                        img.icon.google(src='../images/google_icon.jpg')
+                                |
+                                li
+                                    a(href='/user/auth/kakao')
+                                        img.icon.kakao(src='../images/kakao_icon.png')
+                                |
+                                li
+                                    a(href='/user/auth/naver')
+                                        img.icon.naver(src='../images/naver_icon.png')

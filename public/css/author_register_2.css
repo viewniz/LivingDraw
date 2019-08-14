@@ -1,0 +1,21 @@
+
+.upload_image{
+
+}
+
+.image_border{
+    width: 260px;
+    height: 260px;
+    border: 2px dashed #ccc;
+    margin: 25px auto 0;
+    padding: 5px;
+    margin-bottom: 15px;
+    transition: border-color .2s cubic-bezier(.455,.03,.515,.955);
+    transform-origin: center top;
+    position: relative;
+}
+
+#image_section{
+    width: 100%;
+    font-size: 5.0rem;
+}

@@ -65,3 +65,36 @@
         padding: 1.5rem;
     }
 }
+
+/*login_form*/
+.social-login-title p{
+    font-family: 'Nanum Gothic', sans-serif;
+    color: #9aa2ab;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.icons{
+    display: inline-block;
+    text-align: center;
+    padding-left: 0;
+}
+
+.icon{
+    width: 53px !important;
+}
+
+.kakao , .naver{
+    border-radius: 100%;
+}
+
+ul.icons li {
+    display: inline-block;
+    text-align: center;
+    padding-left: 0;
+    margin-right: 0.85rem;
+}
+
+.icon .label {
+    display: none;
+}
