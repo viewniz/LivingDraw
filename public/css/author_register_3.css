@@ -48,12 +48,17 @@ body p {
     position: absolute;
     background-color: #00A000;
     width: 100%;
-    left: -33%;
+    left: 0%;
     /*transform: translateX(123.333px);*/
 }
 
 
 /*main*/
+
+.author_register_form {
+    width: 100%;
+}
+
 .title {
     width: 100%;
     margin-bottom: 2.5%;
@@ -67,55 +72,30 @@ body p {
     margin: 0;
 }
 
+.alarm{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
 .alarm p {
-    font-size: 1.0rem;
+    font-size: 1.15rem;
     color: #00AEEF;
     font-weight: normal;
 }
 
 
-.author_register_form {
+.logoImgbox{
     width: 100%;
+    text-align: center;
 }
 
-.Image_alarm p{
-    font-size: 0.8rem;
-}
 
-/*image_upload*/
-
-.image_border{
-    width: 260px;
-    height: 260px;
-    border: 2px dashed #ccc;
-    margin: 25px auto 0;
-    padding: 5px;
-    margin-bottom: 15px;
-    transition: border-color .2s cubic-bezier(.455,.03,.515,.955);
-    transform-origin: center top;
-    position: relative;
-}
-
-#image_section{
-    width: 100%;
-    font-size: 5.0rem;
-}
-
-.image_upload_button{
-    background-color:#2f8cba !important;
-    border: none;
-    border-radius: unset;
-}
-
-#btn-upload{
-    font-weight: bold;
-    font-size: 1.1rem;
-    font-family: 'Roboto', sans-serif;
+.logoImg{
+    width: 125px;
 }
 
 
 /*page_common*/
-
 
 .next_button{
     border-radius: unset;

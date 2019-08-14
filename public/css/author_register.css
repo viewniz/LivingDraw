@@ -48,8 +48,8 @@ body p {
     position: absolute;
     background-color: #00A000;
     width: 100%;
-    left: -100%;
-    transform: translateX(123.333px);
+    left: -66%;
+    /*transform: translateX(123.333px);*/
 }
 
 
