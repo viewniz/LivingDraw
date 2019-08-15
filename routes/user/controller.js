@@ -206,3 +206,15 @@ async function checkRegName(name)
     }
     return 2;
 }
+
+exports.author_register = function (req, res, next) {
+    res.render('./user/author_register');
+};
+
+exports.author_register_2 = function (req, res, next) {
+    res.render('./user/author_register_2');
+};
+
+exports.author_register_3 = function (req, res, next) {
+    res.render('./user/author_register_3');
+};

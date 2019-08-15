@@ -1,0 +1,59 @@
+doctype html
+head
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-144472686-1')
+    script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-144472686-1');
+    meta(charset='UTF-8')
+    title 리빙드로우
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description' content='미대생들의 온라인 갤러리, 주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!')
+    meta(name='author' content='Gil Se-hyeon')
+    meta(property="og:title" content="미대생들의 온라인 갤러리 리빙드로우")
+    meta(property="og:description" content="주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!")
+    meta(property="og:image" content="https://www.livingdraw.co.kr/ogImage/ogImage.png")
+    link(rel='icon' href='favicon.ico')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://icono-49d6.kxcdn.com/icono.min.css')
+    link(rel='stylesheet', href='/css/newheader.css')
+    link(rel='stylesheet', href='/css/author_register_3.css')
+    link(rel='stylesheet', href='/css/font/flaticon.css')
+    link(rel='stylesheet', href='/css/font2/flaticon.css')
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+    script(src='/js/author_register.js')
+    body
+        .container
+            .row.mt-5
+            |
+            .row.mt-5.center_main
+                .author_register_form
+                    .process_bar
+                        .process_bar.pre_stage
+                    |
+                    .form-row.author_privacy
+                        .title
+                            p 리빙드로우와 함께할 작가님을 환영합니다!
+                        |
+                        .alarm(style='text-align: center; width: 100%;')
+                            p 작가 등록 신청이 완료되었습니다.
+                            |
+                            p 신청 승인은 1~2일 소요됩니다.
+                        |
+                        .logoImgbox
+                            img.logoImg(src='/logo/logoImage.png')
+                |
+                a(href='/')
+                    .next
+                        button#hidden_next.btn.btn-primary.next_button(type='button')
+                            span.open_next 홈으로
+                        |
+                        button#none_hidden_next.btn.btn-primary.next_button(type='button')
+                            i.flaticon-keyboard-right-arrow-button

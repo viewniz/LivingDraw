@@ -1,5 +1,6 @@
 body {
     background-color: #f3f3f3;
+    line-height: unset;
 }
 
 body p {
@@ -9,10 +10,17 @@ body p {
 }
 
 
+
 /*container*/
 @media (min-width: 992px) {
     .container {
         max-width: 960px;
+    }
+}
+
+@media (max-width: 576px){
+    .container{
+        padding: 0;
     }
 }
 
@@ -30,6 +38,18 @@ body p {
     padding: 60px 120px 80px 120px;
     text-align: center;
     position: relative;
+}
+
+@media (max-width: 768px){
+    .center_main{
+        padding: 40px 40px 60px 40px;
+    }
+}
+
+@media (max-width: 576px){
+    .center_main{
+        padding: 20px 20px 40px 20px;
+    }
 }
 
 /*process_bar*/
@@ -93,8 +113,6 @@ body p {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     width: 100%;
-
-
 }
 
 .first_name p {
@@ -115,11 +133,47 @@ body p {
     margin-bottom: 5%;
 }
 
+@media (max-width: 576px){
+
+    input[type="text"] {
+        margin : 0 auto;
+        width: 60%;
+    }
+
+    .last_name{
+        display: block;
+    }
+
+    .first_name{
+        display: block;
+    }
+
+}
+
 /*phone_number*/
 .author_phone_register{
     margin-bottom: 30px;
 }
-#phone_number {
+
+.phone_number{
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.phone_number p{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.phone_number_bord{
+    display: flex;
+    width: 100%;
+}
+
+
+#phone_number_input {
     margin-right: 5px;
     border-radius: unset;
     width: 60%;
@@ -129,6 +183,23 @@ body p {
     background-color: #f8b62b;
     border-color: #f8b62b;
     border-radius: unset;
+}
+
+@media (max-width: 576px){
+
+    .phone_number{
+        display: block;
+    }
+    #phone_number_input{
+        margin-right: 1px;
+    }
+    .phone_number_bord{
+        text-align: center;
+    }
+    #phone_number_box{
+        margin-right: auto;
+    }
+
 }
 
 /*next_button*/
