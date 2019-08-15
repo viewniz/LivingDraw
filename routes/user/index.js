@@ -29,6 +29,7 @@ router.get('/auth/naver/callback',controller.naver_login_callback);
 router.get('/auth/social',controller.social_add_name);
 router.get('/logout',controller.user_logout);
 router.get('/re_mailing',controller.user_re_mailing);
+router.get('/submit/end',controller.user_submit_end);
 /*POST*/
 
 router.post('/submit',controller.user_submit_post);
