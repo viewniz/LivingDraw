@@ -9,6 +9,11 @@ body p {
     font-weight: 500;
 }
 
+@media (max-width: 576px){
+    body{
+        background-color: #ffffff;
+    }
+}
 
 
 /*container*/
@@ -220,6 +225,10 @@ body p {
     display: inline-block;
     position: relative;
 
+}
+
+.fa-angle-right{
+    font-size: 35px;
 }
 
 #hidden_next{

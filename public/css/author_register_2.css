@@ -9,6 +9,12 @@ body p {
     font-weight: 500;
 }
 
+@media (max-width: 576px){
+    body{
+        background-color: #ffffff;
+    }
+}
+
 
 /*container*/
 @media (min-width: 992px) {
@@ -162,6 +168,9 @@ body p {
     overflow: hidden;
 }
 
+.fa-angle-right{
+    font-size: 35px;
+}
 
 #hidden_next{
     transform: translateX(100%);
@@ -180,6 +189,10 @@ body p {
     left: 0;
     bottom: 20px;
     overflow: hidden;
+}
+
+.fa-angle-left{
+    font-size: 35px;
 }
 
 #hidden_pre_next{
