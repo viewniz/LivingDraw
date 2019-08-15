@@ -3,7 +3,7 @@ html
     head
         meta(charset='UTF-8')
         |
-        title 회원가입
+        title 메일인증
         meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
         meta(name='description' content='미대생들의 온라인 갤러리, 주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!')
         meta(name='author' content='Gil Se-hyeon')
@@ -21,14 +21,12 @@ html
         |
         link(rel='stylesheet', href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css')
         |
-        link(rel='stylesheet', href='/css/register.css')
+        link(rel='stylesheet', href='/css/login_css.css')
         |
-        link(href='https://fonts.googleapis.com/css?family=Gamja+Flower|Nanum+Gothic|Noto+Sans+KR&display=swap', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap', rel='stylesheet')
         // Plugins
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         script(src='https://code.jquery.com/jquery-3.4.1.min.js')
-        //script(src='/vendors/jquery/dist/jquery.min.js')
-        script(src='/js/userSubmit.js')
     body
         .container
             .row.text-center.mb-5.mt-5
@@ -42,22 +40,10 @@ html
                         |
                         .login-title
                             // <h4>Log In</h4>
-                        |
                         .login-form.mt-4
-                            form
-                                .form-row
-                                    .form-group.col-md-12
-                                        p.check 추가 정보 입력
-                                    .form-group.col-md-12.name-group-form
-                                        input#lastname.form-control.name-form(name='lastName', placeholder='성', type='text')
-                                        |
-                                        input#firstname.form-control.name-form(name='firstName', placeholder='이름', type='text')
-                                |
-                                .form-row.loginbutton
-                                    button.btn.btn-danger.btn-block(type='button', onclick='submitPostSocial(this.form)') 회원가입
-                        |
-                        hr
-                        |
-                        .register-form.mt-4
-                            .register_check
-                                p.check
+                            .form-row
+                                .form-group.col-md-12
+                                    p.check 회원 가입을 축하합니다. 가입시 입력한 메일로 이메일 인증 링크를 보냈으니 인증 해 주시기 바랍니다.
+                                .form-group.col-md-12
+                                    a(href='/', style="text-decoration:none")
+                                        button.btn.btn-outline-warning.registerbutton(type='button') 홈으로

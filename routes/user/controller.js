@@ -14,6 +14,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 exports.user_submit = function (req, res, next) {
     res.render('./user/submit');
 };
+
+exports.user_submit_end = function (req, res, next) {
+    res.render('./user/submitEnd');
+};
+
 exports.user_login = function (req, res, next) {
     let redirectUrl = req.query.redirectUrl;
 

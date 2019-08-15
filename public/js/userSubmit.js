@@ -57,7 +57,7 @@ function submitPost(data){
         data: item,
         success: function (data) {
             if (data === "clear") {
-                location.replace('/user/login');
+                location.replace('/user/submit/end');
                 return true;
             }else {
                 $('.check').text(data);

@@ -88,11 +88,17 @@
     border-radius: 100%;
 }
 
+
+
 ul.icons li {
     display: inline-block;
     text-align: center;
     padding-left: 0;
     margin-right: 0.85rem;
+}
+
+.naver_li{
+    margin-right: unset !important;
 }
 
 .icon .label {
