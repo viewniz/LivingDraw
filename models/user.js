@@ -30,6 +30,8 @@ let UserSchema = new Schema({
     },
     isSeller:{type: Boolean, default:false},
     provider:{type: String, default:'local'},
+    phoneNumber:{type: String},
+    isPhoneCert:{type: Boolean, default:false},
     socialID:String,
 });
 

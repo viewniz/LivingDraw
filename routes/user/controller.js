@@ -2,12 +2,21 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let passport = require('passport');
 const Confirm = require('../../config/userConfirm');
+const crypto = require('crypto');
+const cryptoJS = require('crypto-js');
+let moment = require('moment');
+require('moment-timezone');
+const request=require('request');
+
+moment.tz.setDefault("Asia/Seoul");
 
 let app = express();
 
+const PhoneCert = require('../../models/phoneCertificate');
 const Cert = require('../../models/certification');
 const User = require('../../models/user');
 
+const secretKey = require('../../config/SecretKey');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -223,3 +232,148 @@ exports.author_register_2 = function (req, res, next) {
 exports.author_register_3 = function (req, res, next) {
     res.render('./user/author_register_3');
 };
+
+exports.user_submit_smsVerification_post_ncpV2 = async function (req, res, next) {
+    const phoneNumber = req.body.phoneNumber;
+    let NCP_accessKey = secretKey.NCP_API_access_key;			// access key id (from portal or sub account)
+    let NCP_secretKey = secretKey.NCP_API_secret_key;           // secret key (from portal or sub account)
+    let NCP_serviceID = secretKey.SENS_service_ID;
+    let space = " ";				// one space
+    let newLine = "\n";				// new line
+    let method = "POST";				// method
+    let url = `https://sens.apigw.ntruss.com/sms/v2/services/${NCP_serviceID}/messages`;	// url (include query string)
+    let url2 = `/sms/v2/services/${NCP_serviceID}/messages`;
+    let timestamp = Date.now().toString();			// current timestamp (epoch)
+    let message = [];
+    let hmac=crypto.createHmac('sha256',NCP_secretKey);
+
+    message.push(method);
+    message.push(space);
+    message.push(url2);
+    message.push(newLine);
+    message.push(timestamp);
+    message.push(newLine);
+    message.push(NCP_accessKey);
+    let signature = hmac.update(message.join('')).digest('base64');
+
+    let number = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+
+    PhoneCert.find({phoneNumber:phoneNumber}, function (err, cert) {
+        if (cert)
+            PhoneCert.deleteMany({email:req.user.email,phoneNumber: phoneNumber}, function (err, result) {});
+        User.update({email: req.user.email}, {
+            phoneNumber: phoneNumber.toString(),
+        }, function () {
+            req.user.phoneNumber=phoneNumber.toString();
+            let newPhoneCert = new PhoneCert();
+            newPhoneCert.email = req.user.email;
+            newPhoneCert.phoneNumber = phoneNumber.toString();
+            newPhoneCert.token = number;
+            newPhoneCert.save(function (err,result) {
+                if(err) console.log(err);
+                request({
+                    method: method,
+                    json: true,
+                    uri: url,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'x-ncp-iam-access-key' : NCP_accessKey,
+                        'x-ncp-apigw-timestamp': timestamp,
+                        'x-ncp-apigw-signature-v2': signature.toString()
+                    },
+                    body: {
+                        "type":"SMS",
+                        "contentType":"COMM",
+                        "countryCode":"82",
+                        "from":"01027602021",
+                        "content":`리빙드로우 인증번호 ${number}입니다.`,
+                        "messages":[
+                            {
+                                "to":`${phoneNumber}`,
+                            }
+                        ]
+                    }
+                },function (err, res, html) {
+                    if(err) console.log(err);
+                });
+                res.send('clear');
+            });
+        });
+    });
+};
+
+exports.user_submit_smsVerification_post_ncpV1 = async function (req, res, next) {
+    const phoneNumber = req.body.phoneNumber;
+    let method = "POST";				// method
+    let url = `https://api-sens.ncloud.com/v1/sms/services/${secretKey.SENS_service_ID}/messages`;	// url (include query string)
+    let NCP_accessKey = secretKey.NCP_API_access_key;			// access key id (from portal or sub account)
+
+    let token = await makeCertNumber(phoneNumber, req);
+    await request({
+        method: method,
+        json: true,
+        uri: url,
+        headers: {
+            'Content-Type': 'application/json',
+            'X-NCP-auth-key': NCP_accessKey,
+            'X-NCP-service-secret': secretKey.SENS_service_secret_key,
+        },
+        body: {
+            "type": "SMS",
+            "contentType": "COMM",
+            "countryCode": "82",
+            "from": "01027602021",
+            "to": [`${phoneNumber}`],
+            "content": `리빙드로우 인증번호 ${token}입니다.`,
+        }
+    }, function (err, res, html) {
+        if (err) console.log(err);
+        console.log(html);
+    });
+
+    res.send('clear');
+};
+
+async function makeCertNumber(phone, req) {
+
+    let number = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+
+    await PhoneCert.find({phoneNumber:phone}, async function (err, cert) {
+        if (cert)
+            await PhoneCert.deleteMany({email:req.user.email,phoneNumber: phone}, function (err, result) {});
+        await User.update({email: req.user.email}, {
+            phoneNumber: phone.toString(),
+        }, async function () {
+            req.user.phoneNumber=phone.toString();
+            let newPhoneCert = new PhoneCert();
+            newPhoneCert.email = req.user.email;
+            newPhoneCert.phoneNumber = phone.toString();
+            newPhoneCert.token = number;
+            await newPhoneCert.save(async function (err,result) {
+                if(err) console.log(err);
+                return number;
+            });
+        });
+    })
+}
+
+exports.user_submit_smsVerification_post = function (req, res, next) {
+    const token = req.body.token;
+    const phoneNumber = req.user.phoneNumber;
+    PhoneCert.findOne({token:token,phoneNumber:phoneNumber},function(err, cert){
+       if(!cert){
+           res.send("token error");
+           return;
+       }
+        User.update({email: req.user.email}, {
+            isPhoneCert: true,
+        }, function (err, result) {
+            if(err)
+                return;
+            req.user.isPhoneCert = true;
+            PhoneCert.remove({token:token,phoneNumber:phoneNumber},function(){});
+            res.send("clear");
+        });
+    });
+};
+

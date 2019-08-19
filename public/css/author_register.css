@@ -166,7 +166,19 @@ body p {
     margin-bottom: 20px;
 }
 
+.cert_token{
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+}
+
 .phone_number p{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+.cert_token p{
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     width: 100%;
@@ -189,19 +201,42 @@ body p {
     border-color: #f8b62b;
     border-radius: unset;
 }
+#token_number_input {
+    margin-right: 5px;
+    border-radius: unset;
+    width: 60%;
+}
+
+#token_number_box {
+    background-color: #f8b62b;
+    border-color: #f8b62b;
+    border-radius: unset;
+}
 
 @media (max-width: 576px){
 
     .phone_number{
         display: block;
     }
+    .cert_token{
+        display: block;
+    }
     #phone_number_input{
+        margin-right: 1px;
+    }
+    #token_number_input{
         margin-right: 1px;
     }
     .phone_number_bord{
         text-align: center;
     }
+    .phone_number_bord{
+        text-align: center;
+    }
     #phone_number_box{
+        margin-right: auto;
+    }
+    #token_number_box{
         margin-right: auto;
     }
 
