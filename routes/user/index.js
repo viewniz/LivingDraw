@@ -29,14 +29,11 @@ router.get('/auth/naver/callback',controller.naver_login_callback);
 router.get('/auth/social',controller.social_add_name);
 router.get('/logout',controller.user_logout);
 router.get('/re_mailing',controller.user_re_mailing);
-<<<<<<< HEAD
 router.get('/author_register',controller.author_register);
 router.get('/author_register2',controller.author_register_2);
 router.get('/author_register3',controller.author_register_3);
-
-=======
 router.get('/submit/end',controller.user_submit_end);
->>>>>>> 553e51c57856d2525472d89540053780bf8567f7
+
 /*POST*/
 
 router.post('/submit',controller.user_submit_post);
