@@ -4,7 +4,7 @@ function readURL(input) {
         reader.onload = function(e) {
             $(input).next().children('img').attr('src', e.target.result);
             $(input).next().css('display','inline-block');
-        }
+        };
         reader.readAsDataURL(input.files[0]);
     }
 }

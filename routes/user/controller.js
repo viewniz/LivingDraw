@@ -3,7 +3,7 @@ let bodyParser = require('body-parser');
 let passport = require('passport');
 const Confirm = require('../../config/userConfirm');
 const crypto = require('crypto');
-const cryptoJS = require('crypto-js');
+let fs = require('fs');
 let moment = require('moment');
 require('moment-timezone');
 const request=require('request');
@@ -222,11 +222,32 @@ async function checkRegName(name)
 }
 
 exports.author_register = function (req, res, next) {
-    res.render('./user/author_register');
+    let lastNameE=null;
+    let firstNameE=null;
+    let phoneNumber=null;
+    if(req.user.lastNameE)
+    {
+        lastNameE = req.user.lastNameE;
+    }
+    if(req.user.firstNameE)
+    {
+        firstNameE = req.user.firstNameE;
+    }
+    if(req.user.phoneNumber)
+    {
+        phoneNumber = req.user.phoneNumber;
+    }
+
+    res.render('./user/author_register',{lastNameE:lastNameE,firstNameE:firstNameE,isPhoneCert:req.user.isPhoneCert,phoneNumber:phoneNumber});
 };
 
 exports.author_register_2 = function (req, res, next) {
-    res.render('./user/author_register_2');
+    let picFileName = null;
+    if(req.user.imageStudentIden)
+    {
+        picFileName = req.user.imageStudentIden.picFilename;
+    }
+    res.render('./user/author_register_2',{picFileName:picFileName});
 };
 
 exports.author_register_3 = function (req, res, next) {
@@ -377,3 +398,62 @@ exports.user_submit_smsVerification_post = function (req, res, next) {
     });
 };
 
+exports.user_submit_author_register_post = function (req, res, next) {
+    const firstNameE = req.body.firstNameE;
+    const lastNameE = req.body.lastNameE;
+    if(!firstNameE)
+    {
+        res.send("firstName is Null");
+        return;
+    }
+    if(!lastNameE)
+    {
+        res.send("lastName is Null");
+        return;
+    }
+    User.update({email: req.user.email}, {
+        firstNameE: firstNameE,
+        lastNameE: lastNameE
+    }, function (err, result) {
+        if(err)
+        {
+            console.log(err);
+            return;
+        }
+        req.user.firstNameE = firstNameE;
+        req.user.lastNameE = lastNameE;
+        res.send("clear");
+    });
+};
+
+exports.user_submit_author_upload_student_Iden_post = function (req, res, next) {
+    User.findOne({email:req.user.email},function (err, user) {
+        if(err) console.log(err);
+        fs.stat(user.imageStudentIden.picDestination+'/'+user.imageStudentIden.picFilename, function(err, stat) {
+            if(err == null) {
+                fs.unlink(user.imageStudentIden.picDestination+'/'+user.imageStudentIden.picFilename, function(err) {
+                    if (err) throw err;
+                    User.update({email:req.user.email},{imageStudentIden:{picOriginalName:req.file.originalname,picEncoding:req.file.encoding,picMimetype:req.file.mimetype,
+                            picDestination: req.file.destination,picFilename : req.file.filename,picPath : req.file.path,picSize : req.file.size}},function (err, result) {
+                        if(err) console.log(err);
+                        res.send("clear");
+                    })
+                });
+            } else {
+                User.update({email:req.user.email},{imageStudentIden:{picOriginalName:req.file.originalname,picEncoding:req.file.encoding,picMimetype:req.file.mimetype,
+                        picDestination: req.file.destination,picFilename : req.file.filename,picPath : req.file.path,picSize : req.file.size}},function (err, result) {
+                    if(err) console.log(err);
+                    res.send("clear");
+                });
+                console.log('Some other error: ', err.code);
+            }
+        });
+    });
+};
+
+exports.author_register_2_post = function (req, res, next) {
+    User.update({email:req.user.email},{isSignUpSeller: true},function (err, result) {
+        if(err) res.send("update failed");
+        res.send("clear");
+    });
+};

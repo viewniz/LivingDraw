@@ -25,13 +25,18 @@ head
     link(rel='stylesheet', href='/css/newheader.css')
     link(rel='stylesheet', href='/css/author_register.css')
     link(rel='stylesheet', href='/css/font/flaticon.css')
-
+    script.
+        let isPhoneCert = "#{isPhoneCert}";
+        let phoneNumber = "#{phoneNumber}";
+        let firstNameE = "#{firstNameE}";
+        let lastNameE = "#{lastNameE}";
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src='https://code.jquery.com/jquery-3.4.1.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
     script(src='/js/nav_js.js')
     script(src='/js/author_register.js')
+    script(src='/js/author_register_one.js')
 
     body
         script.
@@ -54,12 +59,12 @@ head
                             .last_name
                                 p LastName(성)
                                 |
-                                input#lastname.form-control.name-form.nameform(name='lastName', placeholder='성', type='text')
+                                input#lastNameE.form-control.name-form.nameform(name='lastNameE', placeholder='성', type='text')
                             |
                             .first_name
                                 p FirstName(이름)
                                 |
-                                input#firstname.form-control.name-form.nameform(name='lastName', placeholder='이름', type='text')
+                                input#firstNameE.form-control.name-form.nameform(name='firstNameE', placeholder='이름', type='text')
                         |
                         .form-row.author_phone_register
                             .title
@@ -75,10 +80,9 @@ head
                                         | 인증
                             .cert_token
                 |
-                a(href='author_register2')
-                    .next
-                        button#hidden_next.btn.btn-primary.next_button(type='button')
-                            span.open_next 다음단계
-                        |
-                        button#none_hidden_next.btn.btn-primary.next_button(type='button')
-                            i.fa.fa-angle-right
+                .next
+                    button#hidden_next.btn.btn-primary.next_button(type='button', onclick='saveAuthorOne(this.form)')
+                        span.open_next 다음단계
+                    |
+                    button#none_hidden_next.btn.btn-primary.next_button(type='button', onclick='saveAuthorOne(this.form)')
+                        i.fa.fa-angle-right

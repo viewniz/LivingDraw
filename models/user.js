@@ -33,6 +33,16 @@ let UserSchema = new Schema({
     phoneNumber:{type: String},
     isPhoneCert:{type: Boolean, default:false},
     socialID:String,
+    isSignUpSeller:{type: Boolean, default:false},
+    imageStudentIden:{
+        picOriginalName:{type:String}, //파일 기존 이름
+        picEncoding:{type:String},     //인코딩방법
+        picMimetype:{type:String},      //파일 형식
+        picDestination:{type:String},  //파일 경로
+        picFilename:{type:String},      //파일 이름
+        picPath:{type:String},          //파일 위치
+        picSize:{type:String}           //파일 크기 byte 단위
+    },
 });
 
 
