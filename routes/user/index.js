@@ -33,10 +33,6 @@ router.get('/author_register',controller.author_register);
 router.get('/author_register2',controller.author_register_2);
 router.get('/author_register3',controller.author_register_3);
 router.get('/submit/end',controller.user_submit_end);
-<<<<<<< HEAD
-
-=======
->>>>>>> 5e1995ff9eed5637bb6479ca50a676d3905cfdd9
 /*POST*/
 
 router.post('/submit/phoneVerification',controller.user_submit_smsVerification_post);
