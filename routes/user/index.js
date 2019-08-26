@@ -6,7 +6,7 @@ let multer=require('multer');
 
 let Picture_storage=multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null,'./uploads/'+file.fieldname);
+        cb(null,'./uploads/user/'+file.fieldname);
     },
     filename: function (req, file, cb) {
         cb(null,Date.now()+"!"+file.originalname);
@@ -35,8 +35,11 @@ router.get('/author_register3',controller.author_register_3);
 router.get('/submit/end',controller.user_submit_end);
 /*POST*/
 
+router.post('/submit/author_register2',controller.author_register_2_post);
+router.post('/submit/upload_stuiden',uploadPicture.single('student_Iden'),controller.user_submit_author_upload_student_Iden_post);
 router.post('/submit/phoneVerification',controller.user_submit_smsVerification_post);
 router.post('/submit/smsVerification',controller.user_submit_smsVerification_post_ncpV2);
+router.post('/submit/author_register',controller.user_submit_author_register_post);
 router.post('/submit',controller.user_submit_post);
 router.post('/login',controller.user_login_post);
 router.post('/re_mailing',controller.user_re_mailing_post);
