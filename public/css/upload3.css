@@ -9,3 +9,83 @@
 .Work_size{
     border-radius: unset;
 }
+
+/**/
+#price{
+    border-radius: unset;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.work_price_detail{
+    width: 100%;
+
+}
+
+.work_price_detail p{
+    font-size: 90%;
+}
+
+.real_gain p{
+    margin: 0;
+    margin-top: 8px;
+}
+
+/**/
+#keyword{
+    border-radius: unset;
+}
+
+#keyword{
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 0px;
+}
+
+.seleted_keyword{
+    display: inline-block;
+    width: 69%;
+    min-height: 40px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+#keyword_part{
+    background-color: #e7e7e7;
+    list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    padding-right: 0;
+    text-align: center;
+}
+
+#keyword_part li{
+    padding-left: 5px;
+    padding-right: 5px;
+    float: left;
+    display: inline-block;
+    margin: 2px;
+    margin-left: 0px;
+    padding: 6px;
+    line-height: 1.4em;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-radius: 0;
+    border: 1px solid transparent;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+[class^="flaticon-close"]:before, [class*=" flaticon-close"]:before{
+    font-size: 10px;
+
+}
+
+/**/
+.author_note{
+    border-radius: unset;
+}
