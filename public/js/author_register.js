@@ -23,12 +23,15 @@ jQuery(document).ready(function () {
 
     function readURL(input) {
         if (input.files && input.files[0]) {
+
+            let result=uploadImg();
+            if(result===false)
+                return;
             var reader = new FileReader();
             reader.onload = function (e) {
                 $('#image_section').attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
-            uploadImg();
         }
     }
 

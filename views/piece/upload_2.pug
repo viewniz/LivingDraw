@@ -21,6 +21,8 @@ html(lang="en")
         link(rel="stylesheet" href="../css/upload2.css")
         link(href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet")
         script(src="../js/upload2.js")
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://code.jquery.com/jquery-3.4.1.min.js')
         script(src="https://use.fontawesome.com/releases/v5.2.0/js/all.js")
     body
         .container
@@ -28,12 +30,12 @@ html(lang="en")
             .row.mt-5.center_main
                 .author_register_form
                     .process_bar
-                        .process_bar.pre_stage
+                        .process_bar.pre_stage(style="left:-50%;")
                     .form-row.author_privacy
                         .title
                             p 작품주제
                     form#form(runat="server")
-                        select.custom-select.custom-select-lg.mb-3.select_subject
+                        select.custom-select.custom-select-lg.mb-3.select_subject(name="subject")
                             option.subject_option(selected="") 주제선택
                             option.subject_option(value="1") 추상
                             option.subject_option(value="2") 풍경
@@ -47,7 +49,7 @@ html(lang="en")
                                 p 작품 스타일
                             .subtitle_category
                                 p 구매자가 작품을 찾는 데 도움이되는 스타일을 선택해주세요.
-                        select.custom-select.custom-select-lg.mb-3.select_style
+                        select.custom-select.custom-select-lg.mb-3.select_style(name="style")
                             option.style_option(selected="") 스타일선택
                             option.style_option(value="1") 인상주의
                             option.style_option(value="2") 순수미술
@@ -59,12 +61,12 @@ html(lang="en")
                             .title
                                 p 작품 명(한글)
                             .form-group.col-md-12
-                                input#paint_id.form-control(name="paint_id" placeholder="작품명" type="text")
+                                input#paint_id.form-control(name="title" placeholder="작품명" type="text")
                         .form-row.category.mt-5
                             .title
                                 p 작품 명(영어)
                             .form-group.col-md-12
-                                input#paint_id_en.form-control(name="paint_id" placeholder="작품명" type="text")
+                                input#paint_id_en.form-control(name="titleSub" placeholder="작품명" type="text")
                         .form-row.category.mt-5
                             .title
                                 p 재료
@@ -72,7 +74,7 @@ html(lang="en")
                                 p (다중선택)
                             .seleted_midumes
                                 ul#mediume_part.test
-                            select#mediume.custom-select.custom-select-lg.mb-3.select_style(name="sites-list" multiple="" style="overflow: scroll;")
+                            select#mediume.custom-select.custom-select-lg.mb-3.select_style(name="medium" multiple="" style="overflow: scroll;")
                                 option(value="mediume1") 유채
                                 option(value="mediume2") 아크릴
                                 option(value="mediume3") 수채
@@ -90,7 +92,7 @@ html(lang="en")
                                 p (다중선택)
                             .seleted_plate
                                 ul#plate_part.test
-                            select#plate.custom-select.custom-select-lg.mb-3.select_style(name="sites-list" multiple="" style="overflow: scroll;")
+                            select#plate.custom-select.custom-select-lg.mb-3.select_style(name="material" multiple="" style="overflow: scroll;")
                                 option(value="plate1") 캔버스
                                 option(value="plate2") 종이
                                 option(value="plate3") 나무
@@ -103,7 +105,7 @@ html(lang="en")
                                 option(value="plate10") 한지
                                 option(value="plate11") 3합지
                                 option(value="plate12") 2합지
-                    a(href="author_register.html")
+                    a(href="/piece/upload")
                         .pre_next
                             button#none_hidden_pre_next.btn.btn-primary.next_button(type="button")
                                 i.flaticon-keyboard-left-arrow-button

@@ -21,6 +21,7 @@ function uploadImg(){
         data: formData,
         success: function (data) {
             if (data === "clear") {
+                picFileName="clear";
                 return true;
             }else {
                 //$('.check').text(data);

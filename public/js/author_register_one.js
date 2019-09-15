@@ -24,7 +24,6 @@ jQuery(document).ready(function () {
 
 function phoneNumberCheck(data){
     let item = {phoneNumber:data.phoneNumber.value};
-    //jQuery.ajaxSettings.traditional=true;
 
     $.ajax({
         method: "POST",
@@ -33,14 +32,12 @@ function phoneNumberCheck(data){
         data: item,
         success: function (data) {
             if (data === "clear") {
-                //location.replace('/border');
                 $( '.cert_token' ).append( '<p>인증 번호</p><div class="phone_number_bord">' +
                     '<input id="token_number_input" class="form-control number-form" name="token" placeholder="인증번호" type="text">' +
                     '<button id="token_number_box" class="btn btn-primary" type="button" onclick="phoneCert(this.form)">인증하기</button></div>' );
                 $('#phone_number_box').text("다시받기");
                 return true;
             }else {
-                //$('.check').text(data);
                 alert("실 패");
                 return false;
             }
@@ -63,10 +60,8 @@ function phoneCert(data){
                 $('#phone_number_box').hide();
                 $('#token_number_box').attr("onclick","");
                 $('#token_number_box').text("인증완료");
-                certPhone = true;
                 return true;
             }else {
-                //$('.check').text(data);
                 alert("실 패");
                 return false;
             }
@@ -75,19 +70,28 @@ function phoneCert(data){
 }
 
 function saveAuthorOne(data){
-    if(isPhoneCert!=="true")
-    {
-        alert("?");
-        //$('#phone_number_input').focus();
-        //$('#token_number_input').focus();
-        return false;
-    }
     const firstNameE = $('#firstNameE').val();
     const lastNameE  = $('#lastNameE').val();
-    console.log(firstNameE);
     let item = {lastNameE:lastNameE, firstNameE:firstNameE};
-    //jQuery.ajaxSettings.traditional=true;
-
+    const regType = /^[A-Za-z+]{1,50}$/;
+    if(!regType.test(lastNameE))
+    {
+        alert('영문만 입력 가능합니다.성');
+        $('#lastNameE').focus();
+        return false;
+    }
+    if(!regType.test(firstNameE))
+    {
+        alert('영문만 입력 가능합니다.');
+        $('#firstNameE').focus();
+        return false;
+    }
+    /*if(isPhoneCert!=="true")
+    {
+        alert("휴대폰 인증을 해주세요.");
+        $('#phone_number_input').focus();
+        return false;
+    }*/
     $.ajax({
         method: "POST",
         type: "POST",
@@ -97,8 +101,13 @@ function saveAuthorOne(data){
             if (data === "clear") {
                 window.location.replace('/user/author_register2');
                 return true;
-            }else {
-                //$('.check').text(data);
+            }else if(data === "Error PhoneCert")
+            {
+                alert("휴대폰 인증을 해주세요.");
+                $('#phone_number_input').focus();
+                return false;
+            }
+            else {
                 alert("실 패");
                 return false;
             }

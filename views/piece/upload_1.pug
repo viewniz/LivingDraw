@@ -35,7 +35,7 @@ html(lang="en")
             .row.mt-5.center_main
                 .author_register_form
                     .process_bar
-                        .process_bar.pre_stage
+                        .process_bar.pre_stage(style="left:-75%;")
                     .form-row.author_privacy
                         .title
                             p 작품등록
@@ -51,12 +51,6 @@ html(lang="en")
                                     img#image_section(src='/pic/' + picFileName)
                                 else
                                     img#image_section(src='')
-                a(href="author_register.html")
-                    .pre_next
-                        button#none_hidden_pre_next.btn.btn-primary.next_button(type="button")
-                            i.flaticon-keyboard-left-arrow-button
-                        button#hidden_pre_next.btn.btn-primary.next_button(type="button")
-                            span.open_next 이전단계
                 .next
                     button#hidden_next.btn.btn-primary.next_button(type="button", onclick='saveUploadOne()')
                         span.open_next 다음단계
