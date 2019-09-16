@@ -92,6 +92,32 @@ function plusFun2(com) {
 
 }
 
+function uploadImg(){
+    let file = document.getElementById('imgInput');
+    let formData = new FormData();
 
+    if (!file.value) return; // 파일이 없는 경우 빠져나오기
+
+    formData.append('pic', file.files[0]);
+
+    $.ajax({
+        contentType: false,
+        processData: false,
+        method: "POST",
+        type: "POST",
+        url: "/piece/upload",
+        data: formData,
+        success: function (data) {
+            if (data === "clear") {
+                picFileName="clear";
+                return true;
+            }else {
+                //$('.check').text(data);
+                alert("실 패");
+                return false;
+            }
+        }
+    });
+}
 
 

@@ -59,12 +59,12 @@ head
                             .last_name
                                 p LastName(성)
                                 |
-                                input#lastNameE.form-control.name-form.nameform(name='lastNameE', placeholder='성', type='text')
+                                input#lastNameE.form-control.name-form.nameform(name='lastNameE', placeholder='영문 성', type='text', maxlength='50')
                             |
                             .first_name
                                 p FirstName(이름)
                                 |
-                                input#firstNameE.form-control.name-form.nameform(name='firstNameE', placeholder='이름', type='text')
+                                input#firstNameE.form-control.name-form.nameform(name='firstNameE', placeholder='영문 이름', type='text', maxlength='50')
                         |
                         .form-row.author_phone_register
                             .title
@@ -74,7 +74,7 @@ head
                                 p PhoneNumber(휴대전화)
                                 |
                                 .phone_number_bord
-                                    input#phone_number_input.form-control.number-form(name='phoneNumber', placeholder='휴대전화번호', type='text')
+                                    input#phone_number_input.form-control.number-form(name='phoneNumber', placeholder='전화번호 - 빼고 입력하세요', type='text', maxlength='11', onKeyup="this.value=this.value.replace(/[^0-9]/g,'');")
                                     |
                                     button#phone_number_box.btn.btn-primary(type='button', onclick='phoneNumberCheck(this.form)')
                                         | 인증

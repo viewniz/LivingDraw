@@ -15,6 +15,7 @@ let BorderSchema = new Schema({
         picPath:{type:String,required:true},          //파일 위치
         picSize:{type:String,required:true}           //파일 크기 byte 단위
     }],
+    email:String,
     firstName:String,
     lastName:String,
     firstNameE:String,
@@ -24,13 +25,13 @@ let BorderSchema = new Schema({
     category:String,
     subject:String,
     style:String,
-    medium:[{type:String,required: true}],
-    material:[{type:String,required: true}],
-    height:{type:Number,required: true},
-    width:{type:Number,required: true},
-    depth:{type:Number,required: true},
-    price:{type:Number,required: true},
-    price_string:{type:String,required: true},
+    medium:[{type:String}],
+    material:[{type:String}],
+    height:{type:Number},
+    width:{type:Number},
+    depth:{type:Number},
+    price:{type:Number},
+    price_string:{type:String},
     keyWords:[{type:String}],
     production_year:{tpye:Number},
     description:String,
@@ -42,4 +43,4 @@ let BorderSchema = new Schema({
     uploadId:String
 });
 
-module.exports = mongoose.model('border', BorderSchema);
+module.exports = mongoose.model('border_temp', BorderSchema);

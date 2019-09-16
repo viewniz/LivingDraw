@@ -49,10 +49,10 @@ head
                             p 학생증 업로드
                         |
                         .Image_alarm(style='text-align: center; width: 100%;')
-                            p 사진파일은 50MB 이하 JPG, JPEG로 등록해 주시기 바랍니다.
+                            p 사진파일은 20MB 이하 JPG, JPEG로 등록해 주시기 바랍니다.
                     |
                     form#form(runat='server', enctype="multipart/form-data", method="post")
-                        input#imgInput(type='file', style='display: none;', name='student_Iden')
+                        input#imgInput(type='file', style='display: none;', name='student_Iden', accept='image/jpeg, image/jpg')
                         |
                         button#btn-upload.btn.btn-primary.image_upload_button(type='button')
                             | + Image Upload

@@ -12,6 +12,22 @@ function uploadImg(){
 
     formData.append('student_Iden', file.files[0]);
 
+    const file_kind = file.value.lastIndexOf('.');
+    const file_name = file.value.substring(file_kind + 1, file.length).toLowerCase();
+    const file_size = file.files[0].size || file.files[0].fileSize;
+    const limit = 20000000;
+
+    let check_file_type=['jpg','jpeg'];
+
+    if(check_file_type.indexOf(file_name)===-1){
+        alert('이미지 파일만 선택할 수 있습니다.');
+        return false;
+    }
+    if(file_size>limit)
+    {
+        alert('50MB 이하의 파일만 선택할 수 있습니다.');
+        return false;
+    }
     $.ajax({
         contentType: false,
         processData: false,
@@ -23,7 +39,6 @@ function uploadImg(){
             if (data === "clear") {
                 return true;
             }else {
-                //$('.check').text(data);
                 alert("실 패");
                 return false;
             }
@@ -32,12 +47,6 @@ function uploadImg(){
 }
 
 function saveAuthorTwo(){
-    //jQuery.ajaxSettings.traditional=true;
-    if(!picFileName)
-    {
-        alert("학생증을 등록해 주세요.");
-        return false;
-    }
     $.ajax({
         method: "POST",
         type: "POST",
@@ -47,8 +56,7 @@ function saveAuthorTwo(){
                 window.location.replace('/user/author_register3');
                 return true;
             }else {
-                //$('.check').text(data);
-                alert("실 패");
+                alert("학생증을 등록 해 주세요");
                 return false;
             }
         }

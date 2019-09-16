@@ -46,6 +46,7 @@ exports.user_login = function (req, res, next) {
 };
 exports.user_confirm_certificate = function (req, res, next) {
     const token=req.params.id;
+    console.log(token);
     Cert.findOne({token:token},function (err, cert) {
         if(!cert)
         {
@@ -112,7 +113,11 @@ exports.user_login_post= function(req, res, next) {
         req.logIn(user, function(err) {
             if (err) { return next(err); }
             if (!user.isCertificate)
+            {
                 return res.send('메일 인증 실패');
+                //return res.redirect("/user/re_mailing");
+            }
+                //return res.send('메일 인증 실패');
             return res.send('clear');
         });
     })(req, res, next);
@@ -401,6 +406,17 @@ exports.user_submit_smsVerification_post = function (req, res, next) {
 exports.user_submit_author_register_post = function (req, res, next) {
     const firstNameE = req.body.firstNameE;
     const lastNameE = req.body.lastNameE;
+    const regType = /^[A-Za-z+]{1,50}$/;
+    if(!regType.test(lastNameE))
+    {
+        res.send("Error lastName");
+        return false;
+    }
+    if(!regType.test(firstNameE))
+    {
+        res.send("Error firstName");
+        return false;
+    }
     if(!firstNameE)
     {
         res.send("firstName is Null");
@@ -410,6 +426,11 @@ exports.user_submit_author_register_post = function (req, res, next) {
     {
         res.send("lastName is Null");
         return;
+    }
+    if(req.user.isPhoneCert!==true)
+    {
+        res.send("Error PhoneCert");
+        return false;
     }
     User.update({email: req.user.email}, {
         firstNameE: firstNameE,
@@ -427,20 +448,31 @@ exports.user_submit_author_register_post = function (req, res, next) {
 };
 
 exports.user_submit_author_upload_student_Iden_post = function (req, res, next) {
+    const limit = 20000000;
+    if(req.file.mimetype!=="image/jpeg"&&req.file.mimetype!=="image/jpg")
+    {
+        res.send("error type");
+        return false;
+    }
+    if(req.file.size>limit)
+    {
+        res.send("error size");
+        return false;
+    }
     User.findOne({email:req.user.email},function (err, user) {
         if(err) console.log(err);
         fs.stat(user.imageStudentIden.picDestination+'/'+user.imageStudentIden.picFilename, function(err, stat) {
             if(err == null) {
                 fs.unlink(user.imageStudentIden.picDestination+'/'+user.imageStudentIden.picFilename, function(err) {
                     if (err) throw err;
-                    User.update({email:req.user.email},{imageStudentIden:{picOriginalName:req.file.originalname,picEncoding:req.file.encoding,picMimetype:req.file.mimetype,
+                    User.updateOne({email:req.user.email},{imageStudentIden:{picOriginalName:req.file.originalname,picEncoding:req.file.encoding,picMimetype:req.file.mimetype,
                             picDestination: req.file.destination,picFilename : req.file.filename,picPath : req.file.path,picSize : req.file.size}},function (err, result) {
                         if(err) console.log(err);
                         res.send("clear");
                     })
                 });
             } else {
-                User.update({email:req.user.email},{imageStudentIden:{picOriginalName:req.file.originalname,picEncoding:req.file.encoding,picMimetype:req.file.mimetype,
+                User.updateOne({email:req.user.email},{imageStudentIden:{picOriginalName:req.file.originalname,picEncoding:req.file.encoding,picMimetype:req.file.mimetype,
                         picDestination: req.file.destination,picFilename : req.file.filename,picPath : req.file.path,picSize : req.file.size}},function (err, result) {
                     if(err) console.log(err);
                     res.send("clear");
@@ -452,7 +484,13 @@ exports.user_submit_author_upload_student_Iden_post = function (req, res, next) 
 };
 
 exports.author_register_2_post = function (req, res, next) {
-    User.update({email:req.user.email},{isSignUpSeller: true},function (err, result) {
+    if(!req.user.imageStudentIden.picOriginalName||req.user.isPhoneCert!==true)
+    {
+        res.send("fail");
+        return;
+    }
+    console.log(req.user.imageStudentIden);
+    User.updateOne({email:req.user.email},{isSignUpSeller: true},function (err, result) {
         if(err) res.send("update failed");
         res.send("clear");
     });
