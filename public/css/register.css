@@ -1,27 +1,27 @@
-.form-group{
+.form-group {
     border-radius: unset;
 }
 
-.form-control{
+.form-control {
     border-radius: unset;
 }
 
 
-.btn-danger{
+.btn-danger {
     background-color: #f8b62b !important;
     border-color: #f8b62b !important;
 }
 
-.btn{
+.btn {
     border-radius: unset;
 }
 
-.loginbutton{
+.loginbutton {
     padding: 0px 5px 0px 5px;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-.registerbutton{
+.registerbutton {
     width: 100%;
     font-weight: 500;
     color: #9aa2ab;
@@ -29,60 +29,63 @@
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-.registerbutton:hover{
+.registerbutton:hover {
 
     color: ghostwhite;
     background-color: #9aa2ab;
 }
 
-.registerbutton:active{
+.registerbutton:active {
     color: ghostwhite !important;
     background-color: #9aa2ab !important;
 }
 
-.card{
+.card {
     max-width: 443px;
     margin: auto;
     text-align: center;
 }
 
-.card-body{
+.card-body {
     padding: 5rem;
 }
 
-.card{
+.card {
     border-radius: unset;
 }
 
 
 @media (max-width: 576px) {
-    .card{
-        border:none;
+    .card {
+        border: none;
     }
+
     .card-body {
         padding: 1.5rem;
     }
 }
 
-.name-group-form{
+.name-group-form {
     display: inherit;
 }
 
-.name-form{
-    margin:0;
+.name-form {
+    margin: 0;
     width: 48%;
 }
 
-#lastname{
+#lastname {
     margin-right: 2%;
 }
 
-#firstname{
+#firstname {
     width: 50%;
 }
 
-.register_check p{
+.register_check p {
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.25rem;
     color: red;
 }
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리빙드로우</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    <link rel="stylesheet" type="text/css" href="../css/font/flaticon.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo:700|Noto+Sans+KR&display=swap"
+          rel="stylesheet">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../css/font/flaticon.css">
+    <link rel="stylesheet" href="../css/font2/flaticon.css">
+    <link rel="stylesheet" href="../css/author_register.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
+    <script src="../js/author_register.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="changemessage">메시지 뒤집기</button>
+</div>
+
+
+</body>
+
+<script>
+
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            message: "helloword",
+            seem: true
+        },
+        methods: {
+            changemessage() {
+                if (this.seem) {
+                    this.message = 'hiword';
+                    this.seem = false;
+                }else{
+                    this.message = 'helloword';
+                    this.seem = true;
+                }
+            }
+        }
+    })
+
+</script>
+
+</html>

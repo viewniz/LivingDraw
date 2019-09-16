@@ -1,29 +1,28 @@
 
-
-.form-group{
+.form-group {
     border-radius: unset;
 }
 
-.form-control{
+.form-control {
     border-radius: unset;
 }
 
 
-.btn-danger{
+.btn-danger {
     background-color: #f8b62b !important;
     border-color: #f8b62b !important;
 }
 
-.btn{
+.btn {
     border-radius: unset;
 }
 
-.loginbutton{
+.loginbutton {
     padding: 0px 5px 0px 5px;
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-.registerbutton{
+.registerbutton {
     width: 100%;
     font-weight: 500;
     color: #9aa2ab;
@@ -31,63 +30,63 @@
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-.registerbutton:hover{
+.registerbutton:hover {
 
     color: ghostwhite;
     background-color: #9aa2ab;
 }
 
-.registerbutton:active{
+.registerbutton:active {
     color: ghostwhite !important;
     background-color: #9aa2ab !important;
 }
 
-.card{
+.card {
     max-width: 443px;
     margin: auto;
     text-align: center;
 }
 
-.card-body{
+.card-body {
     padding: 5rem;
 }
 
-.card{
+.card {
     border-radius: unset;
 }
 
 
 @media (max-width: 576px) {
-    .card{
-        border:none;
+    .card {
+        border: none;
     }
+
     .card-body {
         padding: 1.5rem;
     }
 }
 
 /*login_form*/
-.social-login-title p{
+.social-login-title p {
     font-family: 'Nanum Gothic', sans-serif;
     color: #9aa2ab;
     font-weight: 600;
     font-size: 0.95rem;
 }
 
-.icons{
+.icons {
     display: inline-block;
     text-align: center;
     padding-left: 0;
 }
 
-.icon{
+.icon {
     width: 53px !important;
 }
 
-.kakao , .naver{
+.kakao, .naver {
     border-radius: 100%;
 }
-
 
 
 ul.icons li {
@@ -97,10 +96,17 @@ ul.icons li {
     margin-right: 0.85rem;
 }
 
-.naver_li{
+.naver_li {
     margin-right: unset !important;
 }
 
 .icon .label {
     display: none;
+}
+
+/*login_message*/
+
+.check {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 600;
 }

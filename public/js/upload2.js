@@ -1,6 +1,7 @@
 jQuery(document).ready(function () {
 
     window.onmousedown = function (e) {
+
         if (e.target.id === "mediume") {
             console.log("sibal");
             return;
@@ -9,19 +10,20 @@ jQuery(document).ready(function () {
         if (el.value === "mediume1" || el.value === "mediume2" || el.value === "mediume3" || el.value === "mediume4" || el.value === "mediume5" ||
             el.value === "mediume6" || el.value === "mediume7" || el.value === "mediume8" || el.value === "mediume9" || el.value === "mediume10") {
             if (el.tagName.toLowerCase() == 'option' && el.parentNode.hasAttribute('multiple')) {
-                e.preventDefault();
+
                 // save scroll state
-                var yeOldeScroll = el.scrollTop;
+                // var yeOldeScroll = el.scrollTop;
 
                 // toggle selection
                 if (el.hasAttribute('selected')) {
+                    e.preventDefault();
                     el.removeAttribute('selected');
                     removeFun(el.value);
-                    el.scrollTop = yeOldeScroll;
+                    // el.scrollTop = yeOldeScroll;
                     return
                 } else el.setAttribute('selected', '');
 
-                el.scrollTop = yeOldeScroll;
+                // el.scrollTop = yeOldeScroll;
                 var component = el;
                 plusFun(component);
 
@@ -35,17 +37,17 @@ jQuery(document).ready(function () {
             if (el.tagName.toLowerCase() == 'option' && el.parentNode.hasAttribute('multiple')) {
                 e.preventDefault();
                 // save scroll state
-                var yeOldeScroll = el.scrollTop;
+                // var yeOldeScroll = el.scrollTop;
 
                 // toggle selection
                 if (el.hasAttribute('selected')) {
                     el.removeAttribute('selected');
                     removeFun(el.value);
-                    el.scrollTop = yeOldeScroll;
+                    // el.scrollTop = yeOldeScroll;
                     return
                 } else el.setAttribute('selected', '');
 
-                el.scrollTop = yeOldeScroll;
+                // el.scrollTop = yeOldeScroll;
                 var component = el;
                 plusFun2(component);
 
