@@ -21,6 +21,7 @@ html(lang="en")
         link(rel="stylesheet" href="../css/upload2.css")
         link(href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet")
         script(src="../js/upload2.js")
+        script(src="../js/upload_two.js")
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         script(src='https://code.jquery.com/jquery-3.4.1.min.js')
         script(src="https://use.fontawesome.com/releases/v5.2.0/js/all.js")
@@ -34,7 +35,7 @@ html(lang="en")
                     .form-row.author_privacy
                         .title
                             p 작품주제
-                    form#form(runat="server")
+                    form#form(runat="server", name="two")
                         select.custom-select.custom-select-lg.mb-3.select_subject(name="subject")
                             option.subject_option(selected="") 주제선택
                             option.subject_option(value="1") 추상
@@ -74,7 +75,7 @@ html(lang="en")
                                 p (다중선택)
                             .seleted_midumes
                                 ul#mediume_part.test
-                            select#mediume.custom-select.custom-select-lg.mb-3.select_style(name="medium" multiple="" style="overflow: scroll;")
+                            select#mediume.custom-select.custom-select-lg.mb-3.select_style(name="medium" style="overflow: scroll;" multiple="multiple")
                                 option(value="mediume1") 유채
                                 option(value="mediume2") 아크릴
                                 option(value="mediume3") 수채
@@ -92,7 +93,7 @@ html(lang="en")
                                 p (다중선택)
                             .seleted_plate
                                 ul#plate_part.test
-                            select#plate.custom-select.custom-select-lg.mb-3.select_style(name="material" multiple="" style="overflow: scroll;")
+                            select#plate.custom-select.custom-select-lg.mb-3.select_style(name="material" style="overflow: scroll;" multiple="multiple")
                                 option(value="plate1") 캔버스
                                 option(value="plate2") 종이
                                 option(value="plate3") 나무
@@ -111,9 +112,8 @@ html(lang="en")
                                 i.flaticon-keyboard-left-arrow-button
                             button#hidden_pre_next.btn.btn-primary.next_button(type="button")
                                 span.open_next 이전단계
-                    a(href="author_register_3.html")
-                        .next
-                            button#hidden_next.btn.btn-primary.next_button(type="button")
-                                span.open_next 다음단계
-                            button#none_hidden_next.btn.btn-primary.next_button(type="button")
-                                i.flaticon-keyboard-right-arrow-button
+                    .next
+                        button#hidden_next.btn.btn-primary.next_button(type="button", onclick="uploadTwo(this.form)")
+                            span.open_next 다음단계
+                        button#none_hidden_next.btn.btn-primary.next_button(type="button", onclick="uploadTwo(this.form)")
+                            i.flaticon-keyboard-right-arrow-button

@@ -1,11 +1,10 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-let fs = require('fs');
-let passport = require('passport');
+const express = require('express');
+const bodyParser = require('body-parser');
+const fs = require('fs');
 const sharp = require('sharp');
-let app = express();
-let Border = require('../../models/border');
-let Border_temp = require('../../models/border_temp');
+const app = express();
+const Border_temp = require('../../models/border_temp');
+const Options = require('../../models/options');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -138,4 +137,75 @@ exports.upload_one_pic_temp = function (req, res, next) {
             });
         }
     });
+};
+
+exports.upload_two_post = function (req, res, next) {
+    const subject = req.body.subject;
+    const style = req.body.style;
+    const title = req.body.title;
+    const titleSub = req.body.titleSub;
+    const medium = req.body.medium.split(',');
+    const material = req.body.material.split(',');
+    Border_temp.findOne({email:req.user.email},function (err, temp) {
+        if(!temp)
+        {
+            res.send("empty temp");
+            return;
+        }
+        temp.subject = subject;
+        temp.style = style;
+        temp.title = title;
+        temp.titleSub = titleSub;
+        temp.medium = medium;
+        temp.material = material;
+        Border_temp.updateOne({email: req.user.email}, temp, function (err, result) {
+            if(err)
+            {
+                res.send(err);
+                return;
+            }
+            res.send("clear");
+        });
+    });
+};
+
+exports.optionUpdate = function (req, res, next) {
+    let newOptions1 = new Options();
+    let newOptions2 = new Options();
+    let newOptions3 = new Options();
+    let newOptions4 = new Options();
+    let newOptions5 = new Options();
+    let newOptions6 = new Options();
+
+    newOptions1.type = "style";
+    newOptions1.option = "Im";
+    newOptions1.value = "인상주의";
+    newOptions1.valueE = "Impressionism";
+    newOptions1.save();
+    newOptions2.type = "style";
+    newOptions2.option = "Fi";
+    newOptions2.value = "순수미술";
+    newOptions2.valueE = "Fine Art";
+    newOptions2.save();
+    newOptions3.type = "style";
+    newOptions3.option = "Ex";
+    newOptions3.value = "표현주의";
+    newOptions3.valueE = "Expressionism";
+    newOptions3.save();
+    newOptions4.type = "style";
+    newOptions4.option = "Ab";
+    newOptions4.value = "추상주의";
+    newOptions4.valueE = "Abstract";
+    newOptions4.save();
+    newOptions5.type = "style";
+    newOptions5.option = "Mo";
+    newOptions5.value = "모더니즘";
+    newOptions5.valueE = "Modern";
+    newOptions5.save();
+    newOptions6.type = "style";
+    newOptions6.option = "Re";
+    newOptions6.value = "현실주의";
+    newOptions6.valueE = "Realism";
+    newOptions6.save();
+    res.redirect("/border");
 };

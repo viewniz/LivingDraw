@@ -1,9 +1,3 @@
-/**
- * Created by Sehyeon on 2017-08-03.
- */
-/**
- * Created by Sehyeon on 2017-07-20.
- */
 let mongoose = require('mongoose');
 let moment = require('moment');
 require('moment-timezone');
