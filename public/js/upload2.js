@@ -7,56 +7,30 @@ jQuery(document).ready(function () {
             return;
         }
         var el = e.target;
-        if (el.value === "mediume1" || el.value === "mediume2" || el.value === "mediume3" || el.value === "mediume4" || el.value === "mediume5" ||
-            el.value === "mediume6" || el.value === "mediume7" || el.value === "mediume8" || el.value === "mediume9" || el.value === "mediume10") {
-            if (el.tagName.toLowerCase() == 'option' && el.parentNode.hasAttribute('multiple')) {
+        if (el.tagName.toLowerCase() == 'option' && el.parentNode.hasAttribute('multiple')) {
+            // save scroll state
+            // var yeOldeScroll = el.scrollTop;
 
-                // save scroll state
-                // var yeOldeScroll = el.scrollTop;
-
-                // toggle selection
-                if (el.hasAttribute('selected')) {
-                    e.preventDefault();
-                    el.removeAttribute('selected');
-                    removeFun(el.value);
-                    // el.scrollTop = yeOldeScroll;
-                    return
-                } else el.setAttribute('selected', '');
-
-                // el.scrollTop = yeOldeScroll;
-                var component = el;
-                plusFun(component);
-
-                // hack to correct buggy behavior
-                var select = el.parentNode.cloneNode(true);
-                el.parentNode.parentNode.replaceChild(select, el.parentNode);
-            }
-        } else if (el.value === "plate1" || el.value === "plate2" || el.value === "plate3" || el.value === "plate4" || el.value === "plate5" ||
-            el.value === "plate6" || el.value === "plate7" || el.value === "plate8" || el.value === "plate9" || el.value === "plate10" ||
-            el.value === "plate11" || el.value === "plate12") {
-            if (el.tagName.toLowerCase() == 'option' && el.parentNode.hasAttribute('multiple')) {
+            // toggle selection
+            if (el.hasAttribute('selected')) {
                 e.preventDefault();
-                // save scroll state
-                // var yeOldeScroll = el.scrollTop;
-
-                // toggle selection
-                if (el.hasAttribute('selected')) {
-                    el.removeAttribute('selected');
-                    removeFun(el.value);
-                    // el.scrollTop = yeOldeScroll;
-                    return
-                } else el.setAttribute('selected', '');
-
+                el.removeAttribute('selected');
+                removeFun(el.value);
                 // el.scrollTop = yeOldeScroll;
-                var component = el;
+                return
+            } else el.setAttribute('selected', '');
+
+            // el.scrollTop = yeOldeScroll;
+            var component = el;
+            if(el.parentNode.name==='medium')
+                plusFun(component);
+            else
                 plusFun2(component);
 
-                // hack to correct buggy behavior
-                var select = el.parentNode.cloneNode(true);
-                el.parentNode.parentNode.replaceChild(select, el.parentNode);
-            }
+            // hack to correct buggy behavior
+            var select = el.parentNode.cloneNode(true);
+            el.parentNode.parentNode.replaceChild(select, el.parentNode);
         }
-
     };
 
     function removeFun(com) {
@@ -91,33 +65,4 @@ function plusFun2(com) {
     document.getElementById('plate_part').appendChild(plusUl).className = com.value; //class명에 value값 삽입
 
 }
-
-function uploadImg(){
-    let file = document.getElementById('imgInput');
-    let formData = new FormData();
-
-    if (!file.value) return; // 파일이 없는 경우 빠져나오기
-
-    formData.append('pic', file.files[0]);
-
-    $.ajax({
-        contentType: false,
-        processData: false,
-        method: "POST",
-        type: "POST",
-        url: "/piece/upload",
-        data: formData,
-        success: function (data) {
-            if (data === "clear") {
-                picFileName="clear";
-                return true;
-            }else {
-                //$('.check').text(data);
-                alert("실 패");
-                return false;
-            }
-        }
-    });
-}
-
 

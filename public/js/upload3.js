@@ -5,7 +5,6 @@ jQuery(document).ready(function () {
         if (e.keyCode === 13) {
             plusel(el);
         }
-        ;
     });
 
     $('#keyword_part').on('click', 'li', function () {
@@ -16,6 +15,7 @@ jQuery(document).ready(function () {
 
 function plusel(com) {
     var plusUl = document.createElement('li');
+    plusUl.className = "keywordList";
     plusUl.innerHTML = com.value + "<i class='flaticon-close-button'></i>";
     document.getElementById('keyword_part').appendChild(plusUl);
     com.value = '';

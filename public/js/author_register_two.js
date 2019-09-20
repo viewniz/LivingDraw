@@ -25,7 +25,7 @@ function uploadImg(){
     }
     if(file_size>limit)
     {
-        alert('50MB 이하의 파일만 선택할 수 있습니다.');
+        alert('20MB 이하의 파일만 선택할 수 있습니다.');
         return false;
     }
     $.ajax({

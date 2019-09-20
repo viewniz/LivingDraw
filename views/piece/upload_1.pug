@@ -42,7 +42,7 @@ html(lang="en")
                         .Image_alarm(style="text-align: center; width: 100%;")
                             p 파일은 1200 x 1500 픽셀이상, 50MB 이하의 JPG, JPEG파일로 등록해 주시기 바랍니다.
                     form#form(runat="server", enctype="multipart/form-data", method="post")
-                        input#imgInput(type="file" style="display: none;", name='pic')
+                        input#imgInput(type="file" style="display: none;", name='pic', accept='image/jpeg, image/jpg')
                         button#btn-upload.btn.btn-primary.image_upload_button(type="button")
                             | + 작품등록
                         .upload_image

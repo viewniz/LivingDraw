@@ -1,26 +1,20 @@
-function uploadTwo() {
-    const frm = document.forms.two;
-    const subject = frm.subject.value;
-    const style = frm.style.value;
-    const title = frm.title.value;
-    const titleSub = frm.titleSub.value;
-    let medium = '';
-    let material = '';
+function uploadThree() {
+    const frm = document.forms.three;
+    const width = frm.width.value;
+    const height = frm.height.value;
+    const depth = frm.depth.value;
+    const price = frm.price.value;
+    const description = frm.description.value;
+
     const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣+]{1,50}$/;
     const regTypeE = /^[A-Za-z+]{1,50}$/;
-    for (let i = 0; i < frm.medium.length; i++) {
-        if (frm.medium.options[i].selected === true) {
-            medium+=frm.medium.options[i].value+',';
-        }
+
+    let keyWords = '';
+    for (let i = 0; i < document.getElementsByClassName("keywordList").length; i++) {
+        keyWords+=document.getElementsByClassName('keywordList')[i].innerText+',';
     }
-    medium=medium.substr(0,medium.length-1);
-    for (let i = 0; i < frm.material.length; i++) {
-        if (frm.material.options[i].selected === true) {
-            material+=frm.material.options[i].value+',';
-        }
-    }
-    material=material.substr(0,material.length-1);
-    if(subject==="주제선택" || !subject)
+    keyWords=keyWords.substr(0,keyWords.length-1);
+    /*if(subject==="주제선택" || !subject)
     {
         alert("주제를 입력하세요.");
         return false;
@@ -59,17 +53,17 @@ function uploadTwo() {
     {
         alert("종이를 입력하세요.");
         return false;
-    }
-    const item = {subject: subject, style: style, title: title, titleSub: titleSub, medium: medium, material: material};
+    }*/
+    const item = {width: width, height: height, depth: depth, price: price, description: description, keyWords: keyWords};
     $.ajax({
         method: "POST",
         type: "POST",
-        url: "/piece/upload2",
+        url: "/piece/upload3",
         data: item,
 
         success: function (data) {
             if (data === "clear") {
-                window.location.replace('/piece/upload3');
+                window.location.replace('/border');
                 return true;
             } else {
                 alert("실 패");

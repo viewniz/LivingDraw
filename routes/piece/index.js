@@ -23,6 +23,8 @@ router.get('/upload3', controller.upload_three);
 router.get('/options', controller.optionUpdate);
 
 router.post('/upload',uploadPicture.single('pic'), controller.upload_one_pic_temp);
+router.post('/upload1', controller.upload_one_post);
 router.post('/upload2', controller.upload_two_post);
+router.post('/upload3', controller.upload_three_post);
 
 module.exports = router;

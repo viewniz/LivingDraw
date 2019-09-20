@@ -22,13 +22,32 @@ exports.upload_one= function(req, res, next) {
     });
 };
 exports.upload_two= function(req, res, next) {
-    res.render('piece/upload_2');
+    Options.find({type:'subject'},function (err, subject) {
+        Options.find({type:'style'},function (err, style) {
+            Options.find({type:'medium'},function (err, medium) {
+                Options.find({type:'material'},function (err, material) {
+                    res.render('piece/upload_2',{subject:subject,style:style,medium:medium,material:material});
+                })
+            })
+        })
+    });
 };
 exports.upload_three= function(req, res, next) {
     res.render('piece/upload_3');
 };
 
 exports.upload_one_pic_temp = function (req, res, next) {
+    const limit = 50000000;
+    if(req.file.mimetype!=="image/jpeg"&&req.file.mimetype!=="image/jpg")
+    {
+        res.send("error type");
+        return false;
+    }
+    if(req.file.size>limit)
+    {
+        res.send("error size");
+        return false;
+    }
     Border_temp.findOne({email:req.user.email},function (err, temp) {
         if (err) console.log(err);
         if (!temp) {
@@ -139,6 +158,17 @@ exports.upload_one_pic_temp = function (req, res, next) {
     });
 };
 
+exports.upload_one_post = function (req, res, next) {
+    Border_temp.findOne({email:req.user.email},function (err, temp) {
+        if(!temp||!temp.image[0].picOriginalName)
+        {
+            res.send("fail");
+            return;
+        }
+        res.send("clear");
+    });
+};
+
 exports.upload_two_post = function (req, res, next) {
     const subject = req.body.subject;
     const style = req.body.style;
@@ -146,6 +176,66 @@ exports.upload_two_post = function (req, res, next) {
     const titleSub = req.body.titleSub;
     const medium = req.body.medium.split(',');
     const material = req.body.material.split(',');
+    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣+]{1,50}$/;
+    const regTypeE = /^[A-Za-z+]{1,50}$/;
+    const regTypeMe = /^[A-Za-z+]{2}$/;
+
+    if(subject==="주제선택" || !subject)
+    {
+        res.send("subject error");
+        return false;
+    }
+    if(style==="스타일선택" || !style)
+    {
+        res.send("style error");
+        return false;
+    }
+    if(title==="" || !title)
+    {
+        res.send("title error");
+        return false;
+    }
+    if(!regType.test(title))
+    {
+        res.send("title error");
+        return false;
+    }
+    if(titleSub==="" || !titleSub)
+    {
+        res.send("titleSub error");
+        return false;
+    }
+    if(!regTypeE.test(titleSub))
+    {
+        res.send("titleSub error");
+        return false;
+    }
+    if(!medium)
+    {
+        res.send("medium error");
+        return false;
+    }
+    for(let i=0;i<medium.length;i++)
+    {
+        if(!regTypeMe.test(medium[i]))
+        {
+            res.send("medium error");
+            return false;
+        }
+    }
+    if(!material)
+    {
+        res.send("material error");
+        return false;
+    }
+    for(let i=0;i<material.length;i++)
+    {
+        if(!regTypeMe.test(material[i]))
+        {
+            res.send("material error");
+            return false;
+        }
+    }
     Border_temp.findOne({email:req.user.email},function (err, temp) {
         if(!temp)
         {
@@ -169,6 +259,36 @@ exports.upload_two_post = function (req, res, next) {
     });
 };
 
+exports.upload_three_post = function (req, res, next) {
+    const width = req.body.width;
+    const height = req.body.height;
+    const depth = req.body.depth;
+    const price = req.body.price;
+    const description = req.body.description;
+    const keyWords = req.body.keyWords.split(',');
+    Border_temp.findOne({email:req.user.email},function (err, temp) {
+        if(!temp)
+        {
+            res.send("empty temp");
+            return;
+        }
+        temp.width = width;
+        temp.height = height;
+        temp.depth = depth;
+        temp.price = price;
+        temp.description = description;
+        temp.keyWords = keyWords;
+        Border_temp.updateOne({email: req.user.email}, temp, function (err, result) {
+            if(err)
+            {
+                res.send(err);
+                return;
+            }
+            res.send("clear");
+        });
+    });
+};
+
 exports.optionUpdate = function (req, res, next) {
     let newOptions1 = new Options();
     let newOptions2 = new Options();
@@ -176,36 +296,21 @@ exports.optionUpdate = function (req, res, next) {
     let newOptions4 = new Options();
     let newOptions5 = new Options();
     let newOptions6 = new Options();
-
-    newOptions1.type = "style";
-    newOptions1.option = "Im";
-    newOptions1.value = "인상주의";
-    newOptions1.valueE = "Impressionism";
-    newOptions1.save();
-    newOptions2.type = "style";
-    newOptions2.option = "Fi";
-    newOptions2.value = "순수미술";
-    newOptions2.valueE = "Fine Art";
-    newOptions2.save();
-    newOptions3.type = "style";
-    newOptions3.option = "Ex";
-    newOptions3.value = "표현주의";
-    newOptions3.valueE = "Expressionism";
-    newOptions3.save();
-    newOptions4.type = "style";
-    newOptions4.option = "Ab";
-    newOptions4.value = "추상주의";
-    newOptions4.valueE = "Abstract";
-    newOptions4.save();
-    newOptions5.type = "style";
-    newOptions5.option = "Mo";
-    newOptions5.value = "모더니즘";
-    newOptions5.valueE = "Modern";
+    newOptions5.type = "material";
+    newOptions5.option = "Wo";
+    newOptions5.value = "나무";
+    newOptions5.valueE = "Wood";
     newOptions5.save();
-    newOptions6.type = "style";
-    newOptions6.option = "Re";
-    newOptions6.value = "현실주의";
-    newOptions6.valueE = "Realism";
+    newOptions6.type = "material";
+    newOptions6.option = "Pa";
+    newOptions6.value = "종이";
+    newOptions6.valueE = "Paper";
     newOptions6.save();
+    /*
+    option(value="Pa") 종이
+    //Paper
+    option(value="Wo") 나무
+    //Wood*/
+
     res.redirect("/border");
 };

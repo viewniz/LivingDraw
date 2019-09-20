@@ -38,13 +38,8 @@ html(lang="en")
                     form#form(runat="server", name="two")
                         select.custom-select.custom-select-lg.mb-3.select_subject(name="subject")
                             option.subject_option(selected="") 주제선택
-                            option.subject_option(value="1") 추상
-                            option.subject_option(value="2") 풍경
-                            option.subject_option(value="3") 인물
-                            option.subject_option(value="4") 초상
-                            option.subject_option(value="5") 상상
-                            option.subject_option(value="6") 동물
-                            option.subject_option(value="7") 정물
+                            -for(let i=0;i<subject.length;i++)
+                                option.subject_option(value="" + subject[i].option + "")=subject[i].value
                         .form-row.category.mt-5
                             .title
                                 p 작품 스타일
@@ -52,12 +47,8 @@ html(lang="en")
                                 p 구매자가 작품을 찾는 데 도움이되는 스타일을 선택해주세요.
                         select.custom-select.custom-select-lg.mb-3.select_style(name="style")
                             option.style_option(selected="") 스타일선택
-                            option.style_option(value="1") 인상주의
-                            option.style_option(value="2") 순수미술
-                            option.style_option(value="3") 표현주의
-                            option.style_option(value="4") 추상주의
-                            option.style_option(value="5") 모더니즘
-                            option.style_option(value="6") 현실주의
+                            -for(let i=0;i<style.length;i++)
+                                option.style_option(value="" + style[i].option + "")=style[i].value
                         .form-row.category.mt-5
                             .title
                                 p 작품 명(한글)
@@ -76,6 +67,9 @@ html(lang="en")
                             .seleted_midumes
                                 ul#mediume_part.test
                             select#mediume.custom-select.custom-select-lg.mb-3.select_style(name="medium" style="overflow: scroll;" multiple="multiple")
+                                -for(let i=0;i<medium.length;i++)
+                                    option(value=""+medium[i].option+"")=medium[i].value
+                            //a
                                 option(value="mediume1") 유채
                                 option(value="mediume2") 아크릴
                                 option(value="mediume3") 수채
@@ -94,18 +88,8 @@ html(lang="en")
                             .seleted_plate
                                 ul#plate_part.test
                             select#plate.custom-select.custom-select-lg.mb-3.select_style(name="material" style="overflow: scroll;" multiple="multiple")
-                                option(value="plate1") 캔버스
-                                option(value="plate2") 종이
-                                option(value="plate3") 나무
-                                option(value="plate4") 카드보드
-                                option(value="plate5") 기타
-                                option(value="plate6") 부드러운 재질(뜨개실, 면, 옷감)
-                                option(value="plate7") 화선지
-                                option(value="plate8") 순지
-                                option(value="plate9") 장지
-                                option(value="plate10") 한지
-                                option(value="plate11") 3합지
-                                option(value="plate12") 2합지
+                                -for(let i=0;i<material.length;i++)
+                                    option(value="" + material[i].option + "")=material[i].value
                     a(href="/piece/upload")
                         .pre_next
                             button#none_hidden_pre_next.btn.btn-primary.next_button(type="button")

@@ -489,7 +489,6 @@ exports.author_register_2_post = function (req, res, next) {
         res.send("fail");
         return;
     }
-    console.log(req.user.imageStudentIden);
     User.updateOne({email:req.user.email},{isSignUpSeller: true},function (err, result) {
         if(err) res.send("update failed");
         res.send("clear");
