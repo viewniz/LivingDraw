@@ -38,32 +38,32 @@ html(lang="en")
                                 p 작품크기
                             .form-group.col-md-4.work_size_border
                                 p 가로
-                                input#width.form-control.Work_size(name="width" placeholder="가로(cm)" type="text")
+                                input#width.form-control.Work_size(name="width" placeholder="가로(cm)" type="text", maxlength='10', onKeyup="this.value=this.value.replace(/[^0-9]/g,'');")
                             .form-group.col-md-4.work_size_border
                                 p 세로
-                                input#height.form-control.Work_size(name="height" placeholder="세로(cm)" type="text")
+                                input#height.form-control.Work_size(name="height" placeholder="세로(cm)" type="text", maxlength='10', onKeyup="this.value=this.value.replace(/[^0-9]/g,'');")
                             .form-group.col-md-4.work_size_border
                                 p 두께
-                                input#depth.form-control.Work_size(name="depth" placeholder="두께(cm)" type="text")
+                                input#depth.form-control.Work_size(name="depth" placeholder="두께(cm)" type="text", maxlength='10', onKeyup="this.value=this.value.replace(/[^0-9]/g,'');")
                         .form-row.category.mt-5
                             .title.work_price
                                 p 작품가격
                             .form-group.col-md-6
-                                input#price.form-control.Wokr_price(name="price" placeholder="가격" type="text")
+                                input#price.form-control.Wokr_price(name="price" placeholder="가격" type="text", maxlength='20')
                             .form-group.col-md-6.real_gain
-                                p 실수령액 :
+                                p#realPrice 실수령액 :
                         .form-row.category.mt-5
                             .title.work_price
                                 p 키워드
                             .seleted_keyword
                                 ul#keyword_part.test
                             .form-group.col-md-12
-                                input#keyword.form-control.key_word(oninput="" name="keyword" placeholder="키워드" type="text")
+                                input#keyword.form-control.key_word(oninput="" name="keyword" placeholder="키워드" type="text", maxlength='50')
                         .form-row.category.mt-5
                             .title.work_price
                                 p 작가 노트&작품 설명
                             .form-group.col-md-12
-                                textarea.resizable_textarea.form-control.author_note(placeholder="Description" name="description")
+                                textarea#description.resizable_textarea.form-control.author_note(placeholder="Description" name="description")
                     a(href="/piece/upload2")
                         .pre_next
                             button#none_hidden_pre_next.btn.btn-primary.next_button(type="button")

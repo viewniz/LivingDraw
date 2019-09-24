@@ -6,8 +6,8 @@ function uploadTwo() {
     const titleSub = frm.titleSub.value;
     let medium = '';
     let material = '';
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣+]{1,50}$/;
-    const regTypeE = /^[A-Za-z+]{1,50}$/;
+    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9:,?!()+]{1,50}$/;
+    const regTypeE = /^[A-Za-z0-9:,+?!()]{1,50}$/;
     for (let i = 0; i < frm.medium.length; i++) {
         if (frm.medium.options[i].selected === true) {
             medium+=frm.medium.options[i].value+',';

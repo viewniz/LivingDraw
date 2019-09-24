@@ -3,6 +3,12 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const sharp = require('sharp');
 const app = express();
+let moment = require('moment');
+require('moment-timezone');
+
+moment.tz.setDefault("Asia/Seoul");
+
+const Border = require('../../models/border');
 const Border_temp = require('../../models/border_temp');
 const Options = require('../../models/options');
 
@@ -176,8 +182,8 @@ exports.upload_two_post = function (req, res, next) {
     const titleSub = req.body.titleSub;
     const medium = req.body.medium.split(',');
     const material = req.body.material.split(',');
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣+]{1,50}$/;
-    const regTypeE = /^[A-Za-z+]{1,50}$/;
+    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9:,?!()+]{1,50}$/;
+    const regTypeE = /^[A-Za-z0-9:,+?!()]{1,50}$/;
     const regTypeMe = /^[A-Za-z+]{2}$/;
 
     if(subject==="주제선택" || !subject)
@@ -263,28 +269,97 @@ exports.upload_three_post = function (req, res, next) {
     const width = req.body.width;
     const height = req.body.height;
     const depth = req.body.depth;
-    const price = req.body.price;
+    const price_string = req.body.price;
+    const price= price_string.replace(/[^\d]+/g, '');
     const description = req.body.description;
     const keyWords = req.body.keyWords.split(',');
+    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{0,1000}$/;
+    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{1,50}$/;
+    const regTypeN = /^[0-9+]{1,1000}$/;
+    const subCheck1 = '$ne';
+    const subCheck2 = '$lt';
+    const subCheck3 = '$gt';
+    const subCheck4 = '$lte';
+    const subCheck5 = '$gte';
+    if(!regTypeN.test(width))
+    {
+        res.send("width error");
+        return;
+    }
+    if(!regTypeN.test(height))
+    {
+        res.send("height error");
+        return;
+    }
+    if(!regTypeN.test(depth))
+    {
+        res.send("depth error");
+        return;
+    }
+    if(!regTypeN.test(price))
+    {
+        res.send("price error");
+        return;
+    }
+    if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
+        || !(description.indexOf(subCheck4)===-1) || !(description.indexOf(subCheck5)===-1))
+    {
+        res.send("description error");
+        return;
+    }
+    for (let keyword in keyWords){
+        if(!regTypeT.test(keyword) || !(keyword.indexOf(subCheck1)===-1) || !(keyword.indexOf(subCheck2)===-1)
+            || !(keyword.indexOf(subCheck3)===-1) || !(keyword.indexOf(subCheck4)===-1) || !(keyword.indexOf(subCheck5)===-1))
+        {
+            res.send("keyword error");
+            return;
+        }
+    }
     Border_temp.findOne({email:req.user.email},function (err, temp) {
+        if(err)
+        {
+            res.send(err);
+            return;
+        }
         if(!temp)
         {
             res.send("empty temp");
             return;
         }
-        temp.width = width;
-        temp.height = height;
-        temp.depth = depth;
-        temp.price = price;
-        temp.description = description;
-        temp.keyWords = keyWords;
-        Border_temp.updateOne({email: req.user.email}, temp, function (err, result) {
-            if(err)
+        let tempBorder = new Border();
+        tempBorder.medium = temp.medium;
+        tempBorder.material = temp.material;
+        tempBorder.title = temp.title;
+        tempBorder.titleSub = temp.titleSub;
+        tempBorder.subject = temp.subject;
+        tempBorder.style = temp.style;
+        tempBorder.image = temp.image;
+        tempBorder.width = width;
+        tempBorder.height = height;
+        tempBorder.depth = depth;
+        tempBorder.price = price;
+        tempBorder.price_string = price_string;
+        tempBorder.description = description;
+        tempBorder.keyWords = keyWords;
+        tempBorder.firstName = req.user.firstName;
+        tempBorder.firstNameE = req.user.firstNameE;
+        tempBorder.lastName = req.user.lastName;
+        tempBorder.lastNameE = req.user.lastNameE;
+        tempBorder.uploadId = req.user.email;
+        tempBorder.save(function (err) {
+            if (err)
             {
                 res.send(err);
                 return;
             }
-            res.send("clear");
+            Border_temp.remove({email: req.user.email}, function (err, result) {
+                if(err)
+                {
+                    res.send(err);
+                    return;
+                }
+                res.send("clear");
+            });
         });
     });
 };
