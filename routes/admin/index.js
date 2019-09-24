@@ -59,6 +59,7 @@ router.get('/member/submit', controller.admin_login_check_yes, controller.admin_
 router.get('/member', controller.admin_login_check_yes, controller.admin_member);
 router.get('/login', controller.admin_login);
 router.get('/border', controller.admin_login_check_yes, controller.admin_border);
+router.get('/user', controller.admin_login_check_yes, controller.admin_user);
 router.get('/site/openGraphImage', controller.admin_login_check_yes, controller.admin_site_ogImage);
 router.get('/site/banner', controller.admin_login_check_yes, controller.admin_site_banner);
 router.get('/site/box', controller.admin_login_check_yes, controller.admin_site_box);

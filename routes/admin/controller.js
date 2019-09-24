@@ -9,6 +9,7 @@ require('moment-timezone');
 let app = express();
 
 let Border = require('../../models/border');
+let User = require('../../models/user');
 let Admin = require('../../models/adminUser');
 let Banner = require('../../models/banner');
 let Box = require('../../models/box');
@@ -58,6 +59,12 @@ exports.admin_border= function(req, res, next) {
         if (err) console.log(err);
         console.log(req.user._id);
         res.render('admin/border', {border: border,user:req.user});
+    });
+};
+exports.admin_user= function(req, res, next) {
+    User.find(function (err, users) {
+        if (err) console.log(err);
+        res.render('admin/user', {users: users,user:req.user});
     });
 };
 exports.admin_border_upload= function(req, res, next) {
