@@ -60,10 +60,13 @@ router.get('/member', controller.admin_login_check_yes, controller.admin_member)
 router.get('/login', controller.admin_login);
 router.get('/border', controller.admin_login_check_yes, controller.admin_border);
 router.get('/user', controller.admin_login_check_yes, controller.admin_user);
+router.get('/user/permissionSeller', controller.admin_login_check_yes, controller.admin_user_permissionSeller);
 router.get('/site/openGraphImage', controller.admin_login_check_yes, controller.admin_site_ogImage);
 router.get('/site/banner', controller.admin_login_check_yes, controller.admin_site_banner);
 router.get('/site/box', controller.admin_login_check_yes, controller.admin_site_box);
 router.get('/site/logo', controller.admin_login_check_yes, controller.admin_site_logo);
+router.get('/site/option/submit', controller.admin_login_check_yes, controller.admin_site_option_submit);
+router.get('/site/option', controller.admin_login_check_yes, controller.admin_site_option);
 router.get('/border/upload', controller.admin_login_check_yes, controller.admin_border_upload);
 router.get('/border/update/:id', controller.admin_login_check_yes, controller.admin_border_update);
 router.get('/member/logout', controller.admin_login_check_yes, controller.admin_logout);
@@ -79,6 +82,9 @@ router.post('/site/banner', controller.admin_login_check_yes,uploadBanner.single
 router.post('/site/box', controller.admin_login_check_yes,uploadBox.single('box'), controller.admin_site_box_post);
 router.post('/site/logo', controller.admin_login_check_yes,uploadLogo.single('logo'), controller.admin_site_logo_post);
 router.post('/site/openGraphImage', controller.admin_login_check_yes,uploadOgImage.single('ogImage'), controller.admin_site_ogImage_post);
+router.post('/site/option/submit', controller.admin_login_check_yes, controller.admin_site_option_submit_post);
+router.post('/site/option', controller.admin_login_check_yes, controller.admin_site_option_post);
+router.post('/user/permissionSeller', controller.admin_login_check_yes, controller.admin_user_permissionSeller_post);
 
 router.post('/login', controller.admin_login_post);
 

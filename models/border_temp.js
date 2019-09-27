@@ -39,7 +39,7 @@ let BorderSchema = new Schema({
     submit_date:{ type: String, default: moment().format('YYYY-MM-DD HH:mm:ss')},
     view:{ type: Number, default: 0},
     like:{type: Number, default: 0},
-    is_selling:{type:Boolean, default: false},
+    is_selling:{type:Boolean, default: true},
     uploadId:String
 });
 

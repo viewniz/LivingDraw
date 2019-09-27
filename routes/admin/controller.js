@@ -15,6 +15,7 @@ let Banner = require('../../models/banner');
 let Box = require('../../models/box');
 let Logo = require('../../models/logo');
 let ogImage = require('../../models/ogImage');
+const Option = require('../../models/options');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -67,6 +68,33 @@ exports.admin_user= function(req, res, next) {
         res.render('admin/user', {users: users,user:req.user});
     });
 };
+exports.admin_user_permissionSeller= function(req, res, next) {
+    User.find({isSignUpSeller:true, isSeller:false},function (err, users) {
+        if (err) console.log(err);
+        res.render('admin/user_permissionSeller', {users: users,user:req.user});
+    });
+};
+exports.admin_user_permissionSeller_post= function(req, res, next) {
+    let userNum=req.body.id;
+    User.findOne({_id:userNum},function (err, user) {
+        if(err){
+            res.send(err);
+            return;
+        }
+        if(!user) {
+            res.send("not found user");
+            return;
+        }
+        User.updateOne({_id:userNum}, {$set:{isSeller:true}},function(err,result){
+            if(err){
+               res.send(err);
+               return;
+            }
+            res.send("clear");
+        });
+    });
+
+};
 exports.admin_border_upload= function(req, res, next) {
     res.render('admin/border_upload_form',{user:req.user});
 };
@@ -81,20 +109,74 @@ exports.admin_border_update= function(req, res, next) {
         }
         res.render('admin/border_update_form',{border:border,user:req.user});
     });
-
 };
 
 exports.admin_site_banner= function(req, res, next) {
     res.render('admin/site_manage_banner',{user:req.user});
 };
+
 exports.admin_site_box= function(req, res, next) {
     res.render('admin/site_manage_box',{user:req.user});
 };
+
 exports.admin_site_logo= function(req, res, next) {
     res.render('admin/site_manage_logo',{user:req.user});
 };
+
 exports.admin_site_ogImage= function(req, res, next) {
     res.render('admin/site_manage_ogImage',{user:req.user});
+};
+
+exports.admin_site_option_submit= function(req, res, next) {
+    res.render('admin/option_submit',{user:req.user});
+};
+
+exports.admin_site_option_submit_post= function(req, res, next) {
+    const type = req.body.type;
+    const option = req.body.option;
+    const value = req.body.value;
+    const valueE = req.body.valueE;
+    Option.findOne({type:type, option:option},function(err, result){
+        if(err)
+        {
+            res.send(err);
+            return;
+        }
+        if(result)
+        {
+            res.send("overlap error");
+            return;
+        }
+        let newOption = new Option();
+        newOption.type = type;
+        newOption.option = option;
+        newOption.value = value;
+        newOption.valueE = valueE;
+        newOption.save(function(err){
+            if(err)
+            {
+                res.send(err);
+                return;
+            }
+            res.send("clear");
+        });
+    });
+};
+exports.admin_site_option= function(req, res, next) {
+    Option.find(function(err, options){
+        res.render('admin/option',{options:options, user:req.user});
+    });
+};
+exports.admin_site_option_post= function(req, res, next) {
+    const id = req.body.id;
+    Option.remove({_id:id}, function(err, result){
+        if(err)
+        {
+            res.send(err);
+            return;
+        }
+        res.send("clear");
+    });
 };
 exports.admin_border_upload_post= function(req, res, next) {
     let newBorder=new Border();

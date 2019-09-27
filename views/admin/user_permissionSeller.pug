@@ -8,7 +8,7 @@ html(lang='en')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         meta(name='robots', content='noindex,nofollow')
 
-        title 유저 목록
+        title 판매자 신청자 목록
         // Bootstrap
         link(href='/vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
         // Font Awesome
@@ -45,7 +45,7 @@ html(lang='en')
                     .col-md-12.col-sm-12.col-xs-12
                         .x_panel
                             .x_title
-                                h2 유저 관리
+                                h2 판매자 신청자 목록
                                 ul.nav.navbar-right.panel_toolbox
                                     li
                                         a.collapse-link
@@ -74,8 +74,6 @@ html(lang='en')
                                             th 이메일
                                             th 가입경로
                                             th 메일인증
-                                            th 판매자 여부
-                                            th 판매자 신청 여부
                                             th 핸드폰번호
                                             th 가입일자
                                             th 관리자 여부
@@ -84,21 +82,13 @@ html(lang='en')
                                             tr
                                                 td
                                                 th
-                                                    //button.btn.btn-default(type='button', onclick="location.href='/admin/border/update/"+border[i]._id+"' ") 수정
-                                                    //button.btn.btn-default(type='button', onclick='deleteBorder("'+border[i]._id+'")') 삭제
+                                                    //button.btn.btn-default(type='button', onclick="location.href='/admin/user/update/"+users[i]._id+"' ") 승인
+                                                    button.btn.btn-default(type='button', onclick='permissionSeller("'+users[i]._id+'")') 승인
                                                 td= users[i].lastName + " " + users[i].firstName
                                                 td= users[i].lastNameE + " " + users[i].firstNameE
                                                 td= users[i].email
                                                 td= users[i].provider
                                                 if(users[i].isCertificate)
-                                                    td O
-                                                else
-                                                    td N
-                                                if(users[i].isSeller)
-                                                    td O
-                                                else
-                                                    td N
-                                                if(users[i].isSignUpSeller)
                                                     td O
                                                 else
                                                     td N
@@ -142,6 +132,6 @@ html(lang='en')
             script(src='/vendors/jszip/dist/jszip.min.js')
             script(src='vendors/pdfmake/build/pdfmake.min.js')
             script(src='/vendors/pdfmake/build/vfs_fonts.js')
-            script(src='/js/adminBorder.js')
+            script(src='/js/adminPermissionSeller.js')
             // Custom Theme Scripts
             script(src='/build/js/custom.min.js')
