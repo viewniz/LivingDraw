@@ -17,7 +17,6 @@ a {
 
 a:-webkit-any-link {
     cursor: pointer;
-    text-decoration: underline;
 }
 
 *{
@@ -169,6 +168,8 @@ a:-webkit-any-link {
     font-size: 13px;
 }
 
+
+
 @media (min-width: 992px) {
     .checkout_content {
         padding: 30px;
@@ -184,10 +185,31 @@ a:-webkit-any-link {
     }
 }
 
-@media (min-width: 767px) {
+@media (min-width: 576px){
+    .cart__item--limited-enabled .cart__item__pricing {
+        width: 60%;
+        margin-left: 36%;
+    }
+}
+
+@media (min-width: 768px){
+    .cart__item--limited-enabled .cart__item__pricing {
+        width: 60%;
+        margin-left: 35%;
+    }
+}
+
+@media (min-width: 992px) {
     .cart__item--limited-enabled .cart__item__pricing {
         width: 60%;
         margin-left: 34.5%;
+    }
+}
+
+@media (max-width: 576px){
+    .cart__item--limited-enabled .cart__item__pricing {
+        width: 91%;
+        margin-left: 7%;
     }
 }
 
