@@ -20,7 +20,7 @@ router.get('/', controller.index_main);
 router.get('/upload', controller.upload_one);
 router.get('/upload2', controller.upload_two);
 router.get('/upload3', controller.upload_three);
-router.get('/options', controller.optionUpdate);
+router.get('/admin', controller.admin_piece);
 
 router.post('/upload',uploadPicture.single('pic'), controller.upload_one_pic_temp);
 router.post('/upload1', controller.upload_one_post);

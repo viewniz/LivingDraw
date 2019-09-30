@@ -42,6 +42,10 @@ exports.upload_three= function(req, res, next) {
     res.render('piece/upload_3');
 };
 
+exports.admin_piece= function(req, res, next) {
+    res.render('piece/admin_piece');
+};
+
 exports.upload_one_pic_temp = function (req, res, next) {
     const limit = 50000000;
     if(req.file.mimetype!=="image/jpeg"&&req.file.mimetype!=="image/jpg")
@@ -364,28 +368,3 @@ exports.upload_three_post = function (req, res, next) {
     });
 };
 
-exports.optionUpdate = function (req, res, next) {
-    let newOptions1 = new Options();
-    let newOptions2 = new Options();
-    let newOptions3 = new Options();
-    let newOptions4 = new Options();
-    let newOptions5 = new Options();
-    let newOptions6 = new Options();
-    newOptions5.type = "material";
-    newOptions5.option = "Wo";
-    newOptions5.value = "나무";
-    newOptions5.valueE = "Wood";
-    newOptions5.save();
-    newOptions6.type = "material";
-    newOptions6.option = "Pa";
-    newOptions6.value = "종이";
-    newOptions6.valueE = "Paper";
-    newOptions6.save();
-    /*
-    option(value="Pa") 종이
-    //Paper
-    option(value="Wo") 나무
-    //Wood*/
-
-    res.redirect("/border");
-};
