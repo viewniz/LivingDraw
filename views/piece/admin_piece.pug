@@ -19,9 +19,11 @@ html(lang='en')
         link(rel='stylesheet', href='../css/font/flaticon.css')
         link(rel='stylesheet', href='../css/cart.css')
         link(href='https://fonts.googleapis.com/css?family=Catamaran&display=swap', rel='stylesheet')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         script(src='../js/author_register.js')
         script(src='https://use.fontawesome.com/releases/v5.2.0/js/all.js')
         script(src='/js/nav_js.js')
+        script(src='/js/adminPiece.js')
     body
         style.
             .mainheader {
@@ -37,48 +39,32 @@ html(lang='en')
                     .left_category
                         .checkout_content
                             h2 작품목록
-                            .cart__item.cart__item--original.cart__item--limited-enabled
-                                // <img class="cart__item__type-icon"
-                                // src="//d3t95n9c6zzriw.cloudfront.net/checkout/saatchiart_final_icon_only.png">>
-                                h4.cart__item__type-icon 1.
-                                a.cart__item__photo(href='https://www.saatchiart.com/art/Painting-Reality-Ideality-No-0306/416833/4147691/view')
-                                    img(src='../images/그곳.jpeg')
-                                .cart__item__details
-                                    .cart__item__details__row
-                                        .cart__item__details__left
-                                            .cart__item__title 그 곳(There)
-                                            .cart_item_author 김 은지(kim eun ji)
-                                            .cart_item_size 74.5 W * 33 H * 3 cm
-                                        .cart__item__details__right
-                                            a(href='') Remove
-                                .cart__item__pricing
-                                    div
-                                        div Painting
+                            - for(let i=0;i<border.length;i++)
+                                .cart__item.cart__item--original.cart__item--limited-enabled
+                                    // <img class="cart__item__type-icon"
+                                    // src="//d3t95n9c6zzriw.cloudfront.net/checkout/saatchiart_final_icon_only.png">>
+                                    h4.cart__item__type-icon=i + 1 + "."
+                                    a.cart__item__photo(href='/piece/update/'+border[i]._id)
+                                        img(src="/pic_300/"+ border[i].image[0].picFilename)
+                                    .cart__item__details
+                                        .cart__item__details__row
+                                            .cart__item__details__left
+                                                .cart__item__title=border[i].title + "(" + border[i].titleSub + ")"
+                                                .cart_item_author=border[i].lastName + border[i].firstName + "(" + border[i].firstNameE + " " + border[i].lastNameE + ")"
+                                                .cart_item_size=border[i].width + " W * " + border[i].height + " H * " + border[i].depth + " cm"
+                                            .cart__item__details__right
+                                                a(href='javascript:void(0);', onclick='removePiece("'+border[i]._id+'"); return false;') Remove
+                                    .cart__item__pricing
                                         div
-                                            span.cart_item_price 1,500,000
-                            .cart__item.cart__item--original.cart__item--limited-enabled
-                                h4.cart__item__type-icon 2.
-                                a.cart__item__photo(href='https://www.saatchiart.com/art/Painting-Reality-Ideality-No-0306/416833/4147691/view')
-                                    img(src='../images/그곳.jpeg')
-                                .cart__item__details
-                                    .cart__item__details__row
-                                        .cart__item__details__left
-                                            .cart__item__title 그 곳(There)
-                                            .cart_item_author 김 은지(kim eun ji)
-                                            .cart_item_size 74.5 W * 33 H * 3 cm
-                                        .cart__item__details__right
-                                            a(href='') Remove
-                                .cart__item__pricing
-                                    div
-                                        div Painting
-                                        div
-                                            span.cart_item_price 1,500,000
+                                            div
+                                            div
+                                                span.cart_item_price=border[i].price_string+" ￦"
                             .cart__total
                                 .cart__total__inner
                                     .cart__total__row
                                         div 등록작품수
                                         div
-                                            span 2개
+                                            span=border.length+"개"
                                     .cart__total_describe
                                         .cart__total_detail
                                             div *해당 게시물 선택시 수정이 가능합니다.

@@ -7,21 +7,21 @@ html(lang="en")
         meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
         meta(name="description" content="")
         meta(name="author" content="")
-        link(rel="icon" href="favicon.ico")
+        //link(rel="icon" href="favicon.ico")
         link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous")
         link(rel='stylesheet', href='/css/newheader.css')
         script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
         script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
-        link(rel="stylesheet" type="text/css" href="../css/font/flaticon.css")
+        link(rel="stylesheet" type="text/css" href="/css/font/flaticon.css")
         link(href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo:700|Noto+Sans+KR&display=swap" rel="stylesheet")
         // Plugins
-        link(rel="stylesheet" href="../css/font/flaticon.css")
-        link(rel="stylesheet" href="../css/author_register_2.css")
-        link(rel="stylesheet" href="../css/upload2.css")
+        link(rel="stylesheet" href="/css/font/flaticon.css")
+        link(rel="stylesheet" href="/css/author_register_2.css")
+        link(rel="stylesheet" href="/css/upload2.css")
         link(href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet")
-        script(src="../js/upload2.js")
-        script(src="../js/upload_two.js")
+        script(src="/js/upload2.js")
+        script(src="/js/update_two.js")
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
         script(src='https://code.jquery.com/jquery-3.4.1.min.js')
         script(src="https://use.fontawesome.com/releases/v5.2.0/js/all.js")
@@ -46,8 +46,8 @@ html(lang="en")
                         select.custom-select.custom-select-lg.mb-3.select_subject(name="subject")
                             option.subject_option(selected="") 주제선택
                             -for(let i=0;i<subject.length;i++)
-                                if(border.subject===subject[i].option)
-                                        option.subject_option(value="" + subject[i].option + "", selected)=subject[i].value
+                                if(border.subject === subject[i].option)
+                                    option.subject_option(value="" + subject[i].option + "", selected)=subject[i].value
                                 else
                                     option.subject_option(value="" + subject[i].option + "")=subject[i].value
                         .form-row.category.mt-5
@@ -87,10 +87,10 @@ html(lang="en")
                                 ul#mediume_part.test
                             select#mediume.custom-select.custom-select-lg.mb-3.select_style(name="medium" style="overflow: scroll;" multiple="multiple")
                                 -for(let i=0;i<medium.length;i++)
-                                    if(border.medium.indexOf(medium[i].option)!== -1)
-                                        option(value=""+medium[i].option+"", selected)=medium[i].value
+                                    if(border.medium.indexOf(medium[i].option) !== -1)
+                                        option(value="" + medium[i].option + "", selected)=medium[i].value
                                     else
-                                        option(value=""+medium[i].option+"")=medium[i].value
+                                        option(value="" + medium[i].option + "")=medium[i].value
                         .form-row.category.mt-5
                             .title
                                 p 판
@@ -100,18 +100,18 @@ html(lang="en")
                                 ul#plate_part.test
                             select#plate.custom-select.custom-select-lg.mb-3.select_style(name="material" style="overflow: scroll;" multiple="multiple")
                                 -for(let i=0;i<material.length;i++)
-                                    if(border.material.indexOf(material[i].option)!== -1)
+                                    if(border.material.indexOf(material[i].option) !== -1)
                                         option(value="" + material[i].option + "", selected)=material[i].value
                                     else
                                         option(value="" + material[i].option + "")=material[i].value
-                    a(href="/piece/upload")
+                    a(href='javascript:void(0);', onclick='beforePage(); return false;')
                         .pre_next
                             button#none_hidden_pre_next.btn.btn-primary.next_button(type="button")
                                 i.flaticon-keyboard-left-arrow-button
                             button#hidden_pre_next.btn.btn-primary.next_button(type="button")
                                 span.open_next 이전단계
                     .next
-                        button#hidden_next.btn.btn-primary.next_button(type="button", onclick="uploadTwo(this.form)")
+                        button#hidden_next.btn.btn-primary.next_button(type="button", onclick="updateTwo(this.form)")
                             span.open_next 다음단계
-                        button#none_hidden_next.btn.btn-primary.next_button(type="button", onclick="uploadTwo(this.form)")
+                        button#none_hidden_next.btn.btn-primary.next_button(type="button", onclick="updateTwo(this.form)")
                             i.flaticon-keyboard-right-arrow-button
