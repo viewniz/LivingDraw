@@ -28,8 +28,16 @@ exports.login_check = function(req,res,next){
 exports.login_check_reverse = function(req,res,next){
     if(req.user)
     {
-        const backURL=req.header('Referer') || '/border/1';
-        res.redirect(backURL);
+        if(req.user.isAdmin)
+        {
+            req.logout();
+            res.redirect('/user/login');
+        }
+        else
+        {
+            const backURL=req.header('Referer') || '/border/1';
+            res.redirect(backURL);
+        }
     }
     else
     {

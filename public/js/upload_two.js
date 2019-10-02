@@ -72,7 +72,7 @@ function uploadTwo() {
                 window.location.replace('/piece/upload3');
                 return true;
             } else {
-                alert("실 패");
+                alert(data);
                 return false;
             }
         }
