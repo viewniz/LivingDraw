@@ -15,10 +15,6 @@ const Options = require('../../models/options');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-exports.index_main= function(req, res, next) {
-    res.render('index/index');
-};
-
 exports.upload_one= function(req, res, next) {
     let picFileName = null;
     Border_temp.findOne({email:req.user.email},function (err, temp) {

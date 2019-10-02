@@ -39,7 +39,10 @@ exports.login_check_reverse = function(req,res,next){
 exports.seller_check = function(req,res,next){
     if(req.user.isSeller!==true)
     {
-        res.redirect('/user/author_register');
+        if(req.user.isSignUpSeller===true)
+            res.redirect('/user/author_register3');
+        else
+            res.redirect('/user/author_register');
     }
     else
     {

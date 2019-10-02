@@ -261,17 +261,18 @@ exports.author_register_3 = function (req, res, next) {
 
 exports.user_submit_smsVerification_post_ncpV2 = async function (req, res, next) {
     const phoneNumber = req.body.phoneNumber;
-    let NCP_accessKey = secretKey.NCP_API_access_key;			// access key id (from portal or sub account)
-    let NCP_secretKey = secretKey.NCP_API_secret_key;           // secret key (from portal or sub account)
-    let NCP_serviceID = secretKey.SENS_service_ID;
-    let space = " ";				// one space
-    let newLine = "\n";				// new line
-    let method = "POST";				// method
-    let url = `https://sens.apigw.ntruss.com/sms/v2/services/${NCP_serviceID}/messages`;	// url (include query string)
-    let url2 = `/sms/v2/services/${NCP_serviceID}/messages`;
-    let timestamp = Date.now().toString();			// current timestamp (epoch)
+    const NCP_accessKey = secretKey.NCP_API_access_key;			// access key id (from portal or sub account)
+    const NCP_secretKey = secretKey.NCP_API_secret_key;           // secret key (from portal or sub account)
+    const NCP_serviceID = secretKey.SENS_service_ID;
+    const myPhoneNumber = secretKey.myPhoneNumber;
+    const space = " ";				// one space
+    const newLine = "\n";				// new line
+    const method = "POST";				// method
+    const url = `https://sens.apigw.ntruss.com/sms/v2/services/${NCP_serviceID}/messages`;	// url (include query string)
+    const url2 = `/sms/v2/services/${NCP_serviceID}/messages`;
+    const timestamp = Date.now().toString();			// current timestamp (epoch)
     let message = [];
-    let hmac=crypto.createHmac('sha256',NCP_secretKey);
+    const hmac=crypto.createHmac('sha256',NCP_secretKey);
 
     message.push(method);
     message.push(space);
@@ -280,9 +281,9 @@ exports.user_submit_smsVerification_post_ncpV2 = async function (req, res, next)
     message.push(timestamp);
     message.push(newLine);
     message.push(NCP_accessKey);
-    let signature = hmac.update(message.join('')).digest('base64');
+    const signature = hmac.update(message.join('')).digest('base64');
 
-    let number = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+    const number = Math.floor(Math.random() * (999999 - 100000)) + 100000;
 
     PhoneCert.find({phoneNumber:phoneNumber}, function (err, cert) {
         if (cert)
@@ -311,7 +312,7 @@ exports.user_submit_smsVerification_post_ncpV2 = async function (req, res, next)
                         "type":"SMS",
                         "contentType":"COMM",
                         "countryCode":"82",
-                        "from":"01027602021",
+                        "from": myPhoneNumber,
                         "content":`리빙드로우 인증번호 ${number}입니다.`,
                         "messages":[
                             {
@@ -330,11 +331,12 @@ exports.user_submit_smsVerification_post_ncpV2 = async function (req, res, next)
 
 exports.user_submit_smsVerification_post_ncpV1 = async function (req, res, next) {
     const phoneNumber = req.body.phoneNumber;
-    let method = "POST";				// method
-    let url = `https://api-sens.ncloud.com/v1/sms/services/${secretKey.SENS_service_ID}/messages`;	// url (include query string)
-    let NCP_accessKey = secretKey.NCP_API_access_key;			// access key id (from portal or sub account)
+    const method = "POST";				// method
+    const url = `https://api-sens.ncloud.com/v1/sms/services/${secretKey.SENS_service_ID}/messages`;	// url (include query string)
+    const NCP_accessKey = secretKey.NCP_API_access_key;			// access key id (from portal or sub account)
+    const myPhoneNumber = secretKey.myPhoneNumber;
 
-    let token = await makeCertNumber(phoneNumber, req);
+    const token = await makeCertNumber(phoneNumber, req);
     await request({
         method: method,
         json: true,
@@ -348,7 +350,7 @@ exports.user_submit_smsVerification_post_ncpV1 = async function (req, res, next)
             "type": "SMS",
             "contentType": "COMM",
             "countryCode": "82",
-            "from": "01027602021",
+            "from": myPhoneNumber,
             "to": [`${phoneNumber}`],
             "content": `리빙드로우 인증번호 ${token}입니다.`,
         }
