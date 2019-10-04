@@ -1,22 +1,23 @@
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-let mongoose    = require('mongoose');
-let bodyParser = require('body-parser');
-var session=require('express-session');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose    = require('mongoose');
+const bodyParser = require('body-parser');
+const session=require('express-session');
 const flash = require('connect-flash');
-var passport = require('passport');
-let passportAdmin = require('passport');
+const passport = require('passport');
+const passportAdmin = require('passport');
 
-let indexRouter = require('./routes/index/index');
-let usersRouter = require('./routes/users');
-let userRouter = require('./routes/user/index');
-let goodsRouter = require('./routes/goods/index');
-let borderRouter = require('./routes/border/index');
-let adminRouter = require('./routes/admin/index');
-let pieceRouter = require('./routes/piece/index');
+const indexRouter = require('./routes/index/index');
+const usersRouter = require('./routes/users');
+const userRouter = require('./routes/user/index');
+const goodsRouter = require('./routes/goods/index');
+const borderRouter = require('./routes/border/index');
+const adminRouter = require('./routes/admin/index');
+const pieceRouter = require('./routes/piece/index');
+const paymentRouter = require('./routes/payment/index');
 
 const secretKey = require('./config/SecretKey').sessionKey;
 
@@ -63,7 +64,7 @@ app.use('/user', userRouter);
 app.use('/border', borderRouter);
 app.use('/admin', adminRouter);
 app.use('/piece', pieceRouter);
-
+app.use('/payment', paymentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
