@@ -1,3 +1,3 @@
-exports.goods_main= function(req, res, next) {
-    res.render('goods/goods');
+exports.products_main= function(req, res, next) {
+    res.render('products/products');
 };

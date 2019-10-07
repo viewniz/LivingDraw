@@ -5,8 +5,9 @@ const loginCheck=require('../../config/loginCheck');
 
 /* GET users listing. */
 
-router.get('/request', controller.payment_request);
+router.get('/test', controller.payment_request);
+router.get('/test/rest', controller.get_token_test);
 /*POST*/
 //router.post('/submit', loginCheck.login_check_reverse, controller.user_submit);
-
+router.post('/complete', controller.payments_complete_post);
 module.exports = router;

@@ -1,0 +1,57 @@
+doctype html
+html(lang='en')
+    head
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+        script(type='text/javascript', src='https://code.jquery.com/jquery-1.12.4.min.js')
+        script(type='text/javascript', src='https://cdn.iamport.kr/js/iamport.payment-1.1.5.js')
+        script.
+            const IMP = window.IMP; // 생략가능
+            IMP.init('imp44837693'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+            function test()
+            {
+                const pg = 'inicis';
+                const pay_method = 'card';
+                const merchant_uid = 'merchant_' + new Date().getTime();
+                const name = '주문명:결제테스트';
+                const amount = 10;
+                const buyer_email = 'gil9084@gmail.com';
+                const buyer_name = '길세현';
+                const buyer_tel = '010-2760-2021';
+                const buyer_addr = '서울특별시 강남구 삼성동';
+                const buyer_postcode = '123-456';
+                const item = {pg:pg,pay_method:pay_method,merchant_uid:merchant_uid,name:name,amount:amount,buyer_email:buyer_email,buyer_name:buyer_name,buyer_tel:buyer_tel,buyer_addr:buyer_addr,buyer_postcode:buyer_postcode};
+                IMP.request_pay(item, function (rsp) {
+                    if (rsp.success) {
+                        const sendData = {pg:pg,pay_method:pay_method,merchant_uid:merchant_uid,name:name,amount:amount,buyer_email:buyer_email,buyer_name:buyer_name,buyer_tel:buyer_tel,buyer_addr:buyer_addr,buyer_postcode:buyer_postcode,
+                        imp_uid:rsp.imp_uid,paid_amount:rsp.paid_amount,apply_num:rsp.apply_num,status:rsp.status,receipt_url:rsp.receipt_url};
+                        $.ajax({
+                            method: "POST",
+                            type: "POST",
+                            url: "/payments/complete",
+                            data: sendData,
+                            success: function (data) {
+                                if (data === "clear") {
+                                    var msg = '결제가 완료되었습니다.';
+                                    msg += '고유ID : ' + rsp.imp_uid;
+                                    msg += '상점 거래ID : ' + rsp.merchant_uid;
+                                    msg += '결제 금액 : ' + rsp.paid_amount;
+                                    msg += '카드 승인번호 : ' + rsp.apply_num;
+                                    alert(msg);
+                                }
+                                else{
+                                    var msg = '결제가 실패하였습니다.';
+                                    msg += '에러내용 : ' + data;
+                                    alert(msg);
+                                }
+                            }
+                        });
+                    } else {
+                        var msg = '결제에 실패하였습니다.';
+                        msg += '에러내용 : ' + rsp.error_msg;
+                        alert(msg);
+                    }
+                });
+            }
+    body
+        button(onclick="test()") 테스트

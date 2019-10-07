@@ -58,13 +58,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', indexRouter);
-app.use('/goods', goodsRouter);
+app.use('/products', goodsRouter);
 app.use('/users', usersRouter);
 app.use('/user', userRouter);
 app.use('/border', borderRouter);
 app.use('/admin', adminRouter);
 app.use('/piece', pieceRouter);
-app.use('/payment', paymentRouter);
+app.use('/payments', paymentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
