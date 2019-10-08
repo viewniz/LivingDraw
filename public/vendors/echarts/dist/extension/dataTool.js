@@ -368,7 +368,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *   this list of conditions and the following disclaimer in the documentation
 	 *   and/or other materials provided with the distribution.
 	 *
-	 * * The name Michael Bostock may not be used to endorse or promote products
+	 * * The name Michael Bostock may not be used to endorse or promote carts
 	 *   derived from this software without specific prior written permission.
 	 *
 	 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
