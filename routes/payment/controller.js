@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const moment = require('moment');
 require('moment-timezone');
-const request=require('request');
+const request=require('request-promise-native');
 const imp_authenticate=require('./imp_authenticate');
 
 moment.tz.setDefault("Asia/Seoul");
@@ -65,7 +65,55 @@ exports.payments_complete_post = function (req, res, next) {
 };
 
 
-exports.get_token_test = function (req, res, next) {
-    const aa = imp_authenticate();
-    console.log(aa);
+exports.get_token_test = async function (req, res, next) {
+    let a = await imp_authenticate();
+    console.log(a);
+    res.send(a.response.access_token);
+};
+
+exports.payments_test_get = async function (req, res, next) {
+    let a = await imp_authenticate();
+
+    let b= await Payments.findOne({imp_uid:'imp_080438021395'});
+    const imp_uid = b.imp_uid;
+    const access_token=a.response.access_token;
+    const method='GET';
+    const uri='https://api.iamport.kr/payments/'+imp_uid;
+    const result = await request({
+        method: method,
+        json: true,
+        uri: uri,
+        headers: {
+            Authorization: access_token,
+            'X-ImpTokenHeader': access_token
+        }
+    });
+    res.send(result);
+};
+
+exports.payments_cancel_test_post = async function (req, res, next) {
+    let a = await imp_authenticate();
+
+    let b= await Payments.findOne({imp_uid:'imp_080438021395'});
+    const imp_uid = b.imp_uid;
+    const merchant_uid = b.merchant_uid;
+    const reason = "test";
+    const access_token=a.response.access_token;
+    const method='POST';
+    const uri='https://api.iamport.kr/payments/cancel';
+    const result = await request({
+        method: method,
+        json: true,
+        uri: uri,
+        headers: {
+            Authorization: access_token,
+            'X-ImpTokenHeader': access_token
+        },
+        body: {
+            imp_uid: imp_uid,
+            merchant_uid: merchant_uid,
+            reason : reason
+        }
+    });
+    res.send(result);
 };
