@@ -18,7 +18,7 @@ const borderRouter = require('./routes/border/index');
 const adminRouter = require('./routes/admin/index');
 const pieceRouter = require('./routes/piece/index');
 const paymentRouter = require('./routes/payment/index');
-
+const exhibitionRouter = require('./routes/exhibition/index');
 const secretKey = require('./config/SecretKey').sessionKey;
 
 let app = express();
@@ -64,6 +64,7 @@ app.use('/border', borderRouter);
 app.use('/admin', adminRouter);
 app.use('/piece', pieceRouter);
 app.use('/payments', paymentRouter);
+app.use('/exhibition', exhibitionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
