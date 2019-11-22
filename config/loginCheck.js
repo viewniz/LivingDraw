@@ -13,12 +13,20 @@ app.use(bodyParser.urlencoded({extended: false}));
 exports.login_check = function(req,res,next){
     if(!req.user)
     {
-        res.redirect('/user/login');
+        req.session.returnTo = req.originalUrl;
+        req.session.save(function(err){
+            if(err) return next(err);
+            res.redirect('/user/login');
+        });
     }
     else if(req.user.isAdmin)
     {
-        req.logout();
-        res.redirect('/user/login');
+        req.session.returnTo = req.originalUrl;
+        req.session.save(function(err){
+            if(err) return next(err);
+            req.logout();
+            res.redirect('/user/login');
+        });
     }
     else
     {
@@ -30,8 +38,12 @@ exports.login_check_reverse = function(req,res,next){
     {
         if(req.user.isAdmin)
         {
-            req.logout();
-            res.redirect('/user/login');
+            req.session.returnTo = req.originalUrl;
+            req.session.save(function(err){
+                if(err) return next(err);
+                req.logout();
+                res.redirect('/user/login');
+            });
         }
         else
         {

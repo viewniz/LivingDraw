@@ -13,7 +13,7 @@ const passportAdmin = require('passport');
 const indexRouter = require('./routes/index/index');
 const usersRouter = require('./routes/users');
 const userRouter = require('./routes/user/index');
-const goodsRouter = require('./routes/goods/index');
+const cartsRouter = require('./routes/cart/index');
 const borderRouter = require('./routes/border/index');
 const adminRouter = require('./routes/admin/index');
 const pieceRouter = require('./routes/piece/index');
@@ -48,7 +48,6 @@ app.use(passport.session());
 app.use(passportAdmin.initialize());
 app.use(passportAdmin.session());
 
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -58,13 +57,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', indexRouter);
-app.use('/goods', goodsRouter);
+app.use('/carts', cartsRouter);
 app.use('/users', usersRouter);
 app.use('/user', userRouter);
 app.use('/border', borderRouter);
 app.use('/admin', adminRouter);
 app.use('/piece', pieceRouter);
-app.use('/payment', paymentRouter);
+app.use('/payments', paymentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

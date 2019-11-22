@@ -31,7 +31,12 @@ function loginPost(data){
         url: "/user/login",
         data: item,
         success: function (data) {
-            if (data === "clear") {
+            const result = data.split('-');
+            if(result.length>1&&result[0]==="clear"){
+                location.replace(result[1]);
+                return true;
+            }
+            if (result[0] === "clear") {
                 location.replace('/border');
                 return true;
             }else if(data === "메일 인증 실패"){

@@ -117,8 +117,14 @@ exports.user_login_post= function(req, res, next) {
                 return res.send('메일 인증 실패');
                 //return res.redirect("/user/re_mailing");
             }
-                //return res.send('메일 인증 실패');
-            return res.send('clear');
+            if(req.session.returnTo)
+            {
+                console.log(req.session.returnTo);
+                res.send('clear-'+req.session.returnTo);
+                delete req.session.returnTo;
+            }
+            else
+                return res.send('clear-');
         });
     })(req, res, next);
 };
@@ -142,8 +148,15 @@ exports.google_login_callback = function (req,res,next){
             req.flash('error',info);
             res.redirect('/user/login');
         }
-        else
-            res.redirect('/border');
+        else{
+            if(req.session.returnTo)
+            {
+                res.redirect(req.session.returnTo);
+                delete req.session.returnTo;
+            }
+            else
+                res.redirect('/border');
+        }
     })(req, res, next);
 };
 
@@ -179,7 +192,19 @@ exports.naver_login_callback = function (req,res,next){
 exports.social_add_name = function(req,res,next){
     if(!(req.user.firstName===undefined))
     {
-        res.redirect('/border');
+        if(req.session.returnTo)
+        {
+            res.redirect(req.session.returnTo);
+            req.session.returnTo=null;
+        }
+        else
+            if(req.session.returnTo)
+            {
+                res.redirect(req.session.returnTo);
+                delete req.session.returnTo;
+            }
+            else
+                res.redirect('/border');
     }
     else{
         res.render('./user/socialSubmitAddName');

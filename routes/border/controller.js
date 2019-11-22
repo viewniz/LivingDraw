@@ -5,6 +5,7 @@ var fs = require('fs');
 let app = express();
 
 let Border = require('../../models/border');
+const Options = require('../../models/options');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -220,6 +221,14 @@ exports.product_detail = function (req, res, next) {
     console.log(borderNum);
     Border.findOne({_id: borderNum}, function (err, border) {
         Border.updateOne({_id:borderNum}, { $inc: { view: 1} }, function (err, result) {});
-        res.render('border/product', {border: border});
+        Options.find({type:'subject'},function (err, subject) {
+            Options.find({type:'style'},function (err, style) {
+                Options.find({type:'medium'},function (err, medium) {
+                    Options.find({type:'material'},function (err, material) {
+                        res.render('border/product', {border: border,subject:subject,style:style,medium:medium,material:material});
+                    });
+                });
+            });
+        });
     });
 };
