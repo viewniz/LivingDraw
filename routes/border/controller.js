@@ -218,7 +218,6 @@ exports.border_main_second = function (req, res, next) {
 
 exports.product_detail = function (req, res, next) {
     let borderNum = req.params.id;
-    console.log(borderNum);
     Border.findOne({_id: borderNum}, function (err, border) {
         Border.updateOne({_id:borderNum}, { $inc: { view: 1} }, function (err, result) {});
         Options.find({type:'subject'},function (err, subject) {

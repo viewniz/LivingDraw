@@ -7,12 +7,10 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(name='description', content='')
     meta(name='author', content='')
-    link(rel='icon', href='favicon.ico')
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css', integrity='sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB', crossorigin='anonymous')
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
-    link(rel='stylesheet', type='text/css', href='/css_root/flaticon.css')
     // Plugins
     link(rel='stylesheet', href='../css/galleryView.css')
     link(rel='stylesheet', href='../css/newheader.css')
@@ -20,66 +18,95 @@ html(lang='en')
     link(href='https://fonts.googleapis.com/css?family=Catamaran&display=swap', rel='stylesheet')
     script(src='../js/nav_js.js')
     script(src='/js/hooni.js')
+    script(src='/js/exhibitionDetail.js')
     //- script(src='https://use.fontawesome.com/releases/v5.2.0/js/all.js')
   body
     include ../components/main_header
     .container(style='padding-top: 100px;')
       .mainDisplay
         .titleDisplay
-          | 류승주 개인전
+          = exhibition.title
         .imageDisplay
-          img(src='../images/mainImage.jpeg')
-        .imageDirect.col-md-8.offset-md-2
+          .imgWidth
+            img#mainPoster(src="/picPoster/" + exhibition.image[0].picFilename)
+        //.imageDirect.col-md-8.offset-md-2
           .next.pre_next
             button#none_hidden_pre_next.btn.btn-primary.next_button(type='button')
               i.flaticon-keyboard-left-arrow-button
           .next
             button#none_hidden_next.btn.btn-primary.next_button(type='button')
               i.flaticon-keyboard-right-arrow-button
-        .displaySlide.col-md-8.offset-md-2
-          .imageSlide
-            img(src='../images/mainImage.jpeg')
+        -for(let i=0;i<exhibition.image.length;i++)
+          if(i%6===0)
+            .displaySlide.col-md-8.offset-md-2
+              -for(let j=i;j<exhibition.image.length&&j<i+6;j++)
+                .imageSlide
+                  .tumble
+                    .centered
+                      if(exhibition.image[j].picWidth<exhibition.image[j].picHeight)
+                        .portrait
+                          img(id="poster"+j, src="/picPoster_300/" + exhibition.image[j].picFilename, onclick="changeImage(this)")
+                      else
+                        .landscape
+                          img(id="poster"+j, src="/picPoster_300/" + exhibition.image[j].picFilename, onclick="changeImage(this)")
       .displayPlan.col-md-8.offset-md-2.planGraph
         hr
         .displayplanrow
           .planleft.plandaysleft
             | 기간
           .planright
-            | 2019.11.01 ~
+            = exhibition.startDate + " ~ " + exhibition.endDate
           .planleft.planPlace
             | 장소
           .planright
-            | 충북 청주시 서원 사직대로 86
+            = exhibition.address
           .planleft.plandaysleft
             | 작가
           .planright
-            | 류승주
+            = exhibition.lastName + exhibition.firstName + " (" + exhibition.firstNameE + " " + exhibition.lastNameE + ")"
           .planleft.plandaysleft
             | 작품수
           .planright
-            | 20
+            = exhibition.numberOfThings
           .planleft.plandaysleft
             | 관람료
           .planright
-            | 무료
+            if(exhibition.price===0)
+              | 무료
+            else
+              = exhibition.price_string
           .planleft.plandaysleft
             | 주최 /후원
           .planright
-            | 리빙드로우, 본정
+            -for(let i=0;i<exhibition.host.length;i++)
+              if(i==exhibition.host.length-1)
+                =exhibition.host[i]
+              else
+                =exhibition.host[i] + ", "
         hr
       .detailDisplay
         h3.detailTitle
-          | <류승주 개인전>
-        p.detail
-          | 작가 본인의 이야기, 주로 자신의이야기를 그림으로 표현하는 작가
-      .detailMore
+          = "<" + exhibition.title +">"
+        p.detail(style='white-space:pre-line')
+          = exhibition.description
+      //.detailMore
         .more 더보기
         .tri
       .dpimageList
         .title
-          h4 전시이미지
-        .dpImageSlide.col-md-10.offset-md-1
-          .imageSlide
-            img(src='../images/dpImage1.jpeg')
-          .imageSlide
-            img(src='../images/dpImage2.jpeg')
+          h4 전시 작품
+        -for(let i=0;i<exhibition.imageExhibition.length;i++)
+          if(i%3===0)
+            .dpImageSlide.col-md-10.offset-md-1
+              -for(let j=i;j<exhibition.imageExhibition.length&&j<i+3;j++)
+                .imageSlide
+                  .tumble
+                    .centered
+                      if(exhibition.imageExhibition[j].picWidth<exhibition.imageExhibition[j].picHeight)
+                        .portrait
+                          img(src="/picExhibition/" + exhibition.imageExhibition[j].picFilename)
+                      else
+                        .landscape
+                          img(src="/picExhibition/" + exhibition.imageExhibition[j].picFilename)
+
+  include ../components/footer

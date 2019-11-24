@@ -1,20 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var controller=require('./controller');
-
-
-
-
-
-
-
-
-
+const express = require('express');
+const router = express.Router();
+const controller=require('./controller');
 
 /* GET users listing. */
 
 router.get('/', controller.exhibition_main);
-router.get('/detail', controller.exhibition_detail); //db연동해야합니당.
+router.get('/:id', controller.exhibition_detail);
 
 
 module.exports = router;

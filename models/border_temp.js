@@ -13,7 +13,9 @@ let BorderSchema = new Schema({
         picDestination:{type:String,required:true},  //파일 경로
         picFilename:{type:String,required:true},      //파일 이름
         picPath:{type:String,required:true},          //파일 위치
-        picSize:{type:String,required:true}           //파일 크기 byte 단위
+        picSize:{type:String,required:true},          //파일 크기 byte 단위
+        picWidth:{type:Number},
+        picHeight:{type:Number}
     }],
     email:String,
     firstName:String,

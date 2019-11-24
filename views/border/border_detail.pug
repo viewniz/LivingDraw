@@ -62,24 +62,24 @@ html
                 a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=new'") 최신 순
                 a.dropdown-item(href="javascript:void(0);" onclick="location.href=para[0]+'?sort=old'") 오래 된 순
         .container
-             #columns
+            #columns
                 - for(var i=0; i<border.length; i++)
-                  figure
-                      a(href="/border/product/"+border[i]._id)
-                        img(src="/pic_300/" + border[i].image[0].picFilename)
-                      .figure_detail(style='margin-top: 10px;')
-                        .figure_title
-                            a(style='font-size: 17px;')=border[i].title
-                        .figure_kind
-                            a(style='padding: 0; padding-left: 0;')
-                            a=border[i].width+' W * '+border[i].height+' H * '+border[i].depth+' cm'
-                        .figure_artist
-                            a(style='padding-right: 0px;')=border[i].lastName + border[i].firstName
-                            a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE+' '
-                            if(border[i].is_selling)
-                                a.buy_title(id="buy_title"+i)(style='float: right;')=border[i].price_string + "￦"
-                            else
-                                a(style='float: right;') 미판매
+                    figure
+                        a(href="/border/product/"+border[i]._id)
+                            img(src="/pic_300/" + border[i].image[0].picFilename)
+                        .figure_detail(style='margin-top: 10px;')
+                            .figure_title
+                                a(style='font-size: 17px;')=border[i].title
+                            .figure_kind
+                                a(style='padding: 0; padding-left: 0;')
+                                a=border[i].width+' W * '+border[i].height+' H * '+border[i].depth+' cm'
+                            .figure_artist
+                                a(style='padding-right: 0px;')=border[i].lastName + border[i].firstName
+                                a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE+' '
+                                if(border[i].is_selling)
+                                    a.buy_title(id="buy_title"+i)(style='float: right;')=border[i].price_string + "￦"
+                                else
+                                    a(style='float: right;') 미판매
 
         .container
             hr
@@ -95,7 +95,7 @@ html
                                     a.page-link(id='pageleft', href=pre_page - 1)
                                         i.fa.fa-angle-left(aria-hidden='true')
                                 - for(var i = startpage; i <= endpage; i++)
-                                  li.page-item
+                                li.page-item
                                     if(sort)
                                         a.page-link(id='pagenum'+i, href="/border/"+i+sort)=i
                                     else
@@ -104,7 +104,7 @@ html
                                 if(pre_page !== totalpage)
                                     if(sort)
                                         a.page-link(href=pre_page + 1 + sort)
-                                                i.fa.fa-angle-right(aria-hidden='true')
+                                            i.fa.fa-angle-right(aria-hidden='true')
                                     else
                                         a.page-link(href=pre_page + 1)
                                             i.fa.fa-angle-right(aria-hidden='true')

@@ -1,17 +1,22 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-var fs = require('fs');
-let app = express();
-let Border = require('../../models/border');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+const Exhibition = require('../../models/exhibition');
 
 exports.exhibition_main= function(req, res, next) {
-    res.render('exhibition/exhibition_main');
+    Exhibition.find({}, (err, exhibitions)=>{
+        if(err){
+            console.log(err);
+        }
+        res.render('exhibition/exhibition_main',{exhibitions:exhibitions});
+    });
 };
 
 exports.exhibition_detail= function(req, res, next) {
-    res.render('exhibition/exhibition_detail');
+    const exhibitionNum = req.params.id;
+    Exhibition.findOne({_id:exhibitionNum}, (err, exhibition) => {
+        if(err)
+        {
+            console.log(err);
+        }
+        res.render('exhibition/exhibition_detail',{exhibition:exhibition});
+    });
 };
 
