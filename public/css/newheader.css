@@ -10,6 +10,11 @@
     box-sizing: border-box;
 }
 
+a{
+    color: black;
+}
+
+
 /* Nav Styles */
 
 .mainheader {
@@ -26,9 +31,16 @@
     transition: top 0.0ms ease-in-out;
     height: 73px;
 }
+
+@media screen and (max-width: 960px){
+    .mainheader{
+        height: 48px;
+    }
+}
+
 .nav-up { top: -73px;
     box-shadow: unset;
-/* 헤더 높이와 같게 */}
+}
 
 /**/
 
@@ -36,6 +48,20 @@
     color: rgba(255, 255, 255, .8);
     margin-top: 10px;
     cursor: pointer;
+}
+
+.logo img{
+    height:50px;
+}
+
+@media screen and (max-width: 960px){
+    .logo{
+        margin-top: 0;
+    }
+
+    .logo img{
+        height: 48px;
+    }
 }
 
 
@@ -155,7 +181,7 @@ nav a:hover {
 }
 
 @media screen and (min-width: 960px) {
-    .nav_boundary{
+    #nav_boundary_id{
         display: none;
     }
     .nav-toggle-label {
@@ -318,7 +344,7 @@ nav a:hover {
 /*scroll_hidden*/
 .layer-open{
 
-    overflow:hidden; // 팝업열었을때 addClass로 속성추가 후 스크롤막기위한 css
+    overflow:hidden;
 
 }
 
@@ -326,4 +352,10 @@ nav a:hover {
 .pre_nav_color{
     color: black !important;
     font-weight: bold;
+}
+
+#pc_searchbar{
+    border-top: none;
+    border-right: none;
+    border-left: none;
 }

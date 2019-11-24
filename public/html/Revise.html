@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리빙드로우</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    <link rel="stylesheet" type="text/css" href="../css/font/flaticon.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo:700|Noto+Sans+KR&display=swap"
+          rel="stylesheet">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../css/font/flaticon.css">
+    <link rel="stylesheet" href="../css/font2/flaticon.css">
+    <link rel="stylesheet" href="../css/author_register.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app-5">
+    <h1>{{result}}</h1>
+    <form v-on:submit.prevent="onSubmitForm"> <!-- v-on: => @ -->
+        <input ref="answer" maxlength="4" v-model="value"/>
+        <button type="submit">입력</button>
+    </form>
+    <div>시도: {{tries.length}}</div>
+    <ul>
+        <li v-for="t in tries">
+            <div>{{t.try}}</div>
+            <div>{{t.result}}</div>
+            <div>{{t.strike}}</div>
+            <div>{{t.ball}}</div>
+        </li>
+    </ul>
+</div>
+</body>
+
+<script>
+    const getNumbers = () => {
+        const candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        const array = [];
+        for (let i = 0; i < 4; i++) {
+            const chosen = candidates.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
+            array.push(chosen);
+        }
+        return array;
+    };
+
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            answer: getNumbers(),
+            tries: [],
+            value: '',
+            result: {},
+        },
+        methods: {
+            onSubmitForm(e) {
+                // e.preventDefault(); // @submit.prevent
+                if (this.value === this.answer.join('')){
+                    this.tries.push({
+                        try: this.value,
+                        result: "성공",
+                    })
+                } else {
+                    let value = this.value.split('').map(v => parseInt(v));
+                    let jungbok = [0,0,0,0,0,0,0,0,0];
+                    let strike = 0;
+                    let ball = 0;
+
+                    for(let i=0; i<4; i++){
+                        jungbok[value[i]-1]++;
+                    }
+
+                    for(let i=0; i<9; i++){
+                        if(jungbok[i] > 1){
+                            this.tries.push({
+                                try: this.value,
+                                result: '중복있습니다.다시하세요',
+                            });
+                            return
+                        }
+                    }
+                    for(let i =0; i<4; i++){
+                        if(value[i] === this.answer[i]){
+                            strike++;
+                        }
+                        else if(this.answer.includes(value[i])){
+                            ball++;
+                        }
+                    }
+                    this.tries.push({
+                        try: this.value,
+                        result: '실패',
+                        strike: `${strike} 스트라이크`,
+                        ball: `${ball} 볼`,
+                    });
+                }
+                this.value = '';
+                this.$refs.answer.focus();
+            }
+        }
+    })
+</script>
+
+</html>

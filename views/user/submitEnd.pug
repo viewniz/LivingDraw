@@ -1,0 +1,49 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        |
+        title 메일인증
+        meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+        meta(name='description' content='미대생들의 온라인 갤러리, 주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!')
+        meta(name='author' content='Gil Se-hyeon')
+        meta(property="og:title" content="미대생들의 온라인 갤러리 리빙드로우")
+        meta(property="og:description" content="주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!")
+        meta(property="og:image" content="https://www.livingdraw.co.kr/ogImage/ogImage.png")
+        |
+        link(rel='icon', href='favicon.ico')
+        |
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+        |
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+        |
+        link(rel='stylesheet', href='https://icono-49d6.kxcdn.com/icono.min.css')
+        |
+        link(rel='stylesheet', href='https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css')
+        |
+        link(rel='stylesheet', href='/css/login_css.css')
+        |
+        link(href='https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap', rel='stylesheet')
+        // Plugins
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+    body
+        .container
+            .row.text-center.mb-5.mt-5
+            |
+            .row.text-center
+                .card
+                    .card-body
+                        .login-img
+                            a(href='/', style="text-decoration:none")
+                                img(src='/logo/logoImage.png', style='height:50px;')
+                        |
+                        .login-title
+                            // <h4>Log In</h4>
+                        .login-form.mt-4
+                            .form-row
+                                .form-group.col-md-12
+                                    p.check 회원 가입을 축하합니다. 가입시 입력한 메일로 이메일 인증 링크를 보냈으니 인증 해 주시기 바랍니다.
+                                .form-group.col-md-12
+                                    a(href='/', style="text-decoration:none")
+                                        button.btn.btn-outline-warning.registerbutton(type='button') 홈으로

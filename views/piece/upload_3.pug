@@ -1,0 +1,83 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title 리빙드로우
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(name="description" content="")
+        meta(name="author" content="")
+        link(rel="icon" href="favicon.ico")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous")
+        link(rel='stylesheet', href='/css/newheader.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+        link(rel="stylesheet" type="text/css" href="../css/font/flaticon.css")
+        link(href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo:700|Noto+Sans+KR&display=swap" rel="stylesheet")
+        // Plugins
+        linK(rel="stylesheet" href="../css/font/flaticon.css")
+        link(rel="stylesheet" href="../css/author_register_2.css")
+        link(rel="stylesheet" href="../css/upload3.css")
+        link(href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet")
+        script(src="../js/upload3.js")
+        script(src="../js/upload_three.js")
+        script(src="https://use.fontawesome.com/releases/v5.2.0/js/all.js")
+        script(src='/js/nav_js.js')
+    body
+        style.
+            .mainheader {
+                top: 0;
+            }
+        script.
+        include ../components/main_header
+        .container
+            .row.mt-5
+            .row.mt-5.center_main
+                .author_register_form
+                    .process_bar
+                        .process_bar.pre_stage(style='left:-25%;')
+                    form#form(runat="server", name='three')
+                        .form-row.work_form
+                            .title.work_size_title
+                                p 작품크기
+                            .form-group.col-md-4.work_size_border
+                                p 가로
+                                input#width.form-control.Work_size(name="width" placeholder="가로(cm)" type="text", maxlength='10', onKeyup="this.value=this.value.replace(/[^0-9]/g,'');")
+                            .form-group.col-md-4.work_size_border
+                                p 세로
+                                input#height.form-control.Work_size(name="height" placeholder="세로(cm)" type="text", maxlength='10', onKeyup="this.value=this.value.replace(/[^0-9]/g,'');")
+                            .form-group.col-md-4.work_size_border
+                                p 두께
+                                input#depth.form-control.Work_size(name="depth" placeholder="두께(cm)" type="text", maxlength='10', onKeyup="this.value=this.value.replace(/[^0-9]/g,'');")
+                        .form-row.category.mt-5
+                            .title.work_price
+                                p 작품가격
+                            .form-group.col-md-6
+                                input#price.form-control.Wokr_price(name="price" placeholder="가격" type="text", maxlength='20')
+                            .form-group.col-md-6.real_gain
+                                p#realPrice 실수령액 :
+                        .form-row.category.mt-5
+                            .title.work_price
+                                p 키워드
+                            .seleted_keyword
+                                ul#keyword_part.test
+                            .form-group.col-md-12
+                                input#keyword.form-control.key_word(oninput="" name="keyword" placeholder="키워드" type="text", maxlength='50')
+                        .form-row.category.mt-5
+                            .title.work_price
+                                p 작가 노트&작품 설명
+                            .form-group.col-md-12
+                                textarea#description.resizable_textarea.form-control.author_note(placeholder="Description" name="description")
+                    a(href="/piece/upload2")
+                        .pre_next
+                            button#none_hidden_pre_next.btn.btn-primary.next_button(type="button")
+                                i.flaticon-keyboard-left-arrow-button
+                            button#hidden_pre_next.btn.btn-primary.next_button(type="button")
+                                span.open_next 이전단계
+                    .next
+                        button#hidden_next.btn.btn-primary.next_button(type="button", onclick="uploadThree()")
+                            span.open_next 다음단계
+                        button#none_hidden_next.btn.btn-primary.next_button(type="button", onclick="uploadThree()")
+                            i.flaticon-keyboard-right-arrow-button

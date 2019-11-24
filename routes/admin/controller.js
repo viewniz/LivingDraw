@@ -1,20 +1,25 @@
 let express = require('express');
 let bodyParser = require('body-parser');
-let multer=require('multer');
 let fs = require('fs');
 let passport = require('passport');
 const sharp = require('sharp');
+const jo = require('jpeg-autorotate');
+const options = {quality: 85};
+
 let moment = require('moment');
 require('moment-timezone');
 
 let app = express();
 
 let Border = require('../../models/border');
+let User = require('../../models/user');
 let Admin = require('../../models/adminUser');
 let Banner = require('../../models/banner');
 let Box = require('../../models/box');
 let Logo = require('../../models/logo');
 let ogImage = require('../../models/ogImage');
+const Option = require('../../models/options');
+const Exhibition = require('../../models/exhibition');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -25,6 +30,7 @@ exports.admin_login_check_yes=function(req,res,next) {         //구매자 등�
     }
     else if(!req.user.isAdmin)
     {
+        req.logout();
         res.redirect('/admin/login');
     }
     else
@@ -60,6 +66,39 @@ exports.admin_border= function(req, res, next) {
         res.render('admin/border', {border: border,user:req.user});
     });
 };
+exports.admin_user= function(req, res, next) {
+    User.find(function (err, users) {
+        if (err) console.log(err);
+        res.render('admin/user', {users: users,user:req.user});
+    });
+};
+exports.admin_user_permissionSeller= function(req, res, next) {
+    User.find({isSignUpSeller:true, isSeller:false},function (err, users) {
+        if (err) console.log(err);
+        res.render('admin/user_permissionSeller', {users: users,user:req.user});
+    });
+};
+exports.admin_user_permissionSeller_post= function(req, res, next) {
+    let userNum=req.body.id;
+    User.findOne({_id:userNum},function (err, user) {
+        if(err){
+            res.send(err);
+            return;
+        }
+        if(!user) {
+            res.send("not found user");
+            return;
+        }
+        User.updateOne({_id:userNum}, {$set:{isSeller:true}},function(err,result){
+            if(err){
+                res.send(err);
+                return;
+            }
+            res.send("clear");
+        });
+    });
+
+};
 exports.admin_border_upload= function(req, res, next) {
     res.render('admin/border_upload_form',{user:req.user});
 };
@@ -74,22 +113,76 @@ exports.admin_border_update= function(req, res, next) {
         }
         res.render('admin/border_update_form',{border:border,user:req.user});
     });
-
 };
 
 exports.admin_site_banner= function(req, res, next) {
     res.render('admin/site_manage_banner',{user:req.user});
 };
+
 exports.admin_site_box= function(req, res, next) {
     res.render('admin/site_manage_box',{user:req.user});
 };
+
 exports.admin_site_logo= function(req, res, next) {
     res.render('admin/site_manage_logo',{user:req.user});
 };
+
 exports.admin_site_ogImage= function(req, res, next) {
     res.render('admin/site_manage_ogImage',{user:req.user});
 };
-exports.admin_border_upload_post= function(req, res, next) {
+
+exports.admin_site_option_submit= function(req, res, next) {
+    res.render('admin/option_submit',{user:req.user});
+};
+
+exports.admin_site_option_submit_post= function(req, res, next) {
+    const type = req.body.type;
+    const option = req.body.option;
+    const value = req.body.value;
+    const valueE = req.body.valueE;
+    Option.findOne({type:type, option:option},function(err, result){
+        if(err)
+        {
+            res.send(err);
+            return;
+        }
+        if(result)
+        {
+            res.send("overlap error");
+            return;
+        }
+        let newOption = new Option();
+        newOption.type = type;
+        newOption.option = option;
+        newOption.value = value;
+        newOption.valueE = valueE;
+        newOption.save(function(err){
+            if(err)
+            {
+                res.send(err);
+                return;
+            }
+            res.send("clear");
+        });
+    });
+};
+exports.admin_site_option= function(req, res, next) {
+    Option.find(function(err, options){
+        res.render('admin/option',{options:options, user:req.user});
+    });
+};
+exports.admin_site_option_post= function(req, res, next) {
+    const id = req.body.id;
+    Option.remove({_id:id}, function(err, result){
+        if(err)
+        {
+            res.send(err);
+            return;
+        }
+        res.send("clear");
+    });
+};
+exports.admin_border_upload_post= async function(req, res, next) {
     let newBorder=new Border();
     newBorder.submit_date=moment().format('YYYY-MM-DD HH:mm:ss');
     newBorder.firstName=req.body.firstName;
@@ -132,29 +225,34 @@ exports.admin_border_upload_post= function(req, res, next) {
     }
     newBorder.description=req.body.description;
     for(let i=0;i<req.files.length;i++) {
-        newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
-            picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size});
-        sharp('./uploads/pic/'+req.files[i].filename).metadata().then(function(metadata){
-            return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
-        }).then(function(data){
-            sharp('./uploads/pic/'+req.files[i].filename).resize(630).toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
-                if(err)
-                    console.log(err);
-                else
-                {
-                    console.log(info);
-                    sharp('./uploads/pic/'+req.files[i].filename)
-                        .composite([{ input:data, gravity: 'center'}])
-                        .jpeg( { quality: 100 } )
-                        .toFile('./uploads/pic_watermark/'+req.files[i].filename,(err, info) => {
-                            if (err) {
-                                console.log(err);
-                            } else {
-                                console.log('COMPOSITE written');
-                            }
-                        });
-                }
-            });
+        await sharp('./uploads/picRaw/'+req.files[i].filename).rotate().toFile('./uploads/pic/'+req.files[i].filename).then(
+            sharp('./uploads/picRaw/'+req.files[i].filename).metadata().then(function(metadata){
+                return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
+            }).then(function(data){
+                sharp('./uploads/picRaw/'+req.files[i].filename).resize(630).rotate().toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
+                    if(err)
+                        console.log(err);
+                    else
+                    {
+                        console.log(info);
+                        sharp('./uploads/picRaw/'+req.files[i].filename)
+                            .composite([{ input:data, gravity: 'center'}])
+                            .jpeg( { quality: 100 } ).rotate()
+                            .toFile('./uploads/pic_watermark/'+req.files[i].filename,(err, info) => {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    console.log('COMPOSITE written');
+                                }
+                            });
+                    }
+                });
+            })
+        );
+        await sharp('./uploads/picRaw/'+req.files[i].filename).metadata().then((metadata)=>{
+            newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
+                picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size,
+                picWidth:metadata.width, picHeight:metadata.height});
         });
     }
     newBorder.uploadId=req.user.lastName+" "+req.user.firstName;
@@ -236,9 +334,10 @@ exports.admin_border_update_remove_image= function(req, res, next) {
     Border.findOne({_id:req.body.id},function (err,result) {
         if (err) console.log(err);
         let spliceResult = result.image.splice(req.body.num, 1);
-        fs.stat(spliceResult[0].picDestination+'/'+spliceResult[0].picFilename, function(err, stat) {
+        const removeDestination="./uploads/pic";
+        fs.stat(removeDestination+'/'+spliceResult[0].picFilename, function(err, stat) {
             if(err == null) {
-                fs.unlink(spliceResult[0].picDestination+'/'+spliceResult[0].picFilename, function(err) {
+                fs.unlink(removeDestination+'/'+spliceResult[0].picFilename, function(err) {
                     if (err) throw err;
                     console.log('file deleted');
                 });
@@ -246,9 +345,9 @@ exports.admin_border_update_remove_image= function(req, res, next) {
                 console.log('Some other error: ', err.code);
             }
         });
-        fs.stat(spliceResult[0].picDestination+'_300/'+spliceResult[0].picFilename, function(err, stat) {
+        fs.stat(removeDestination+'_300/'+spliceResult[0].picFilename, function(err, stat) {
             if(err == null) {
-                fs.unlink(spliceResult[0].picDestination+'_300/'+spliceResult[0].picFilename, function(err) {
+                fs.unlink(removeDestination+'_300/'+spliceResult[0].picFilename, function(err) {
                     if (err) throw err;
                     console.log('file deleted');
                 });
@@ -256,9 +355,19 @@ exports.admin_border_update_remove_image= function(req, res, next) {
                 console.log('Some other error: ', err.code);
             }
         });
-        fs.stat(spliceResult[0].picDestination+'_watermark/'+spliceResult[0].picFilename, function(err, stat) {
+        fs.stat(removeDestination+'_watermark/'+spliceResult[0].picFilename, function(err, stat) {
             if(err == null) {
-                fs.unlink(spliceResult[0].picDestination+'_watermark/'+spliceResult[0].picFilename, function(err) {
+                fs.unlink(removeDestination+'_watermark/'+spliceResult[0].picFilename, function(err) {
+                    if (err) throw err;
+                    console.log('file deleted');
+                });
+            } else {
+                console.log('Some other error: ', err.code);
+            }
+        });
+        fs.stat(removeDestination+'Raw/'+spliceResult[0].picFilename, function(err, stat) {
+            if(err == null) {
+                fs.unlink(removeDestination+'Raw/'+spliceResult[0].picFilename, function(err) {
                     if (err) throw err;
                     console.log('file deleted');
                 });
@@ -275,8 +384,8 @@ exports.admin_border_update_remove_image= function(req, res, next) {
     });
 };
 
-exports.admin_border_update_post= function(req, res, next) {
-    Border.findOne({_id:req.body.id},function (err,result) {
+exports.admin_border_update_post= async function(req, res, next) {
+    Border.findOne({_id:req.body.id},async function (err,result) {
         if (err) console.log(err);
         let newBorder=new Border();
         newBorder.submit_date=result.submit_date;
@@ -329,29 +438,34 @@ exports.admin_border_update_post= function(req, res, next) {
             newBorder.image.push(result.image[i]);
         }
         for(let i=0;i<req.files.length;i++) {
-            newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
-                picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size});
-            sharp('./uploads/pic/'+req.files[i].filename).metadata().then(function(metadata){
-                return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
-            }).then(function(data){
-                sharp('./uploads/pic/'+req.files[i].filename).resize(630).toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
-                    if(err)
-                        console.log(err);
-                    else
-                    {
-                        console.log(info);
-                        sharp('./uploads/pic/'+req.files[i].filename)
-                            .composite([{ input:data, gravity: 'center'}])
-                            .jpeg( { quality: 100 } )
-                            .toFile('./uploads/pic_watermark/'+req.files[i].filename,(err, info) => {
-                                if (err) {
-                                    console.log(err);
-                                } else {
-                                    console.log('COMPOSITE written');
-                                }
-                            });
-                    }
-                });
+            await sharp('./uploads/picRaw/'+req.files[i].filename).rotate().toFile('./uploads/pic/'+req.files[i].filename).then(
+                sharp('./uploads/picRaw/'+req.files[i].filename).metadata().then(function(metadata){
+                    return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
+                }).then(function(data){
+                    sharp('./uploads/picRaw/'+req.files[i].filename).resize(630).rotate().toFile('./uploads/pic_300/'+req.files[i].filename,function(err, info){
+                        if(err)
+                            console.log(err);
+                        else
+                        {
+                            console.log(info);
+                            sharp('./uploads/picRaw/'+req.files[i].filename)
+                                .composite([{ input:data, gravity: 'center'}])
+                                .jpeg( { quality: 100 } ).rotate()
+                                .toFile('./uploads/pic_watermark/'+req.files[i].filename,(err, info) => {
+                                    if (err) {
+                                        console.log(err);
+                                    } else {
+                                        console.log('COMPOSITE written');
+                                    }
+                                });
+                        }
+                    });
+                })
+            );
+            await sharp('./uploads/picRaw/'+req.files[i].filename).metadata().then((metadata)=>{
+                newBorder.image.push({picOriginalName:req.files[i].originalname,picEncoding:req.files[i].encoding, picMimetype:req.files[i].mimetype, picDestination:req.files[i].destination,
+                    picFilename:req.files[i].filename, picPath:req.files[i].path, picSize:req.files[i].size,
+                picWidth:metadata.width, picHeight:metadata.height});
             });
         }
         newBorder.uploadId=req.user.lastName+" "+req.user.firstName;
@@ -559,5 +673,202 @@ exports.admin_site_logo_post= function(req, res, next) {
                 res.redirect("/admin/site/logo");
             });
         }
+    });
+};
+
+exports.admin_exhibition= (req,res,next)=>{
+    Exhibition.find({},(err,exhibition)=>{
+        if(err){
+            console.log(err);
+            return;
+        }
+        res.render('admin/exhibition', {exhibition: exhibition,user:req.user});
+    });
+};
+
+exports.admin_exhibition_upload= (req,res,next)=>{
+    res.render('admin/exhibition_upload_form', {user:req.user});
+};
+
+exports.admin_exhibition_upload_post= async (req,res,next)=>{
+    let newExhibition=new Exhibition();
+    newExhibition.submit_date=moment().format('YYYY-MM-DD HH:mm:ss');
+    newExhibition.firstName=req.body.firstName;
+    newExhibition.lastName=req.body.lastName;
+    newExhibition.firstNameE=req.body.firstNameE;
+    newExhibition.lastNameE=req.body.lastNameE;
+    newExhibition.title=req.body.title;
+    newExhibition.address=req.body.address;
+    newExhibition.startDate=req.body.startDate;
+    newExhibition.endDate=req.body.endDate;
+    newExhibition.numberOfThings=req.body.numberOfThings;
+    newExhibition.price=req.body.priceString.replace(/[^\d]+/g, '');
+    newExhibition.price_string=req.body.priceString;
+    newExhibition.description=req.body.description;
+    let host=req.body.host.split(',');
+    for(let i=0;i<host.length;i++)
+    {
+        newExhibition.host.push(host[i]);
+    }
+    const picPoster = req.files['picPoster[]'];
+    for(let i=0;i<picPoster.length;i++) {
+        await sharp('./uploads/picPosterRaw/'+picPoster[i].filename).rotate().toFile('./uploads/picPoster/'+picPoster[i].filename).then(
+            sharp('./uploads/picPosterRaw/'+picPoster[i].filename).metadata().then(function(metadata){
+                return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
+            }).then(function(data){
+                sharp('./uploads/picPosterRaw/'+picPoster[i].filename).resize(630).rotate().toFile('./uploads/picPoster_300/'+picPoster[i].filename,function(err, info){
+                    if(err)
+                        console.log(err);
+                    else
+                    {
+                        sharp('./uploads/picPosterRaw/'+picPoster[i].filename)
+                            .composite([{ input:data, gravity: 'center'}])
+                            .jpeg( { quality: 100 } ).rotate()
+                            .toFile('./uploads/picPoster_watermark/'+picPoster[i].filename,(err, info) => {
+                                if (err) {
+                                    console.log(err);
+                                }
+                            });
+                    }
+                });
+            })
+        );
+        await sharp('./uploads/picPoster/'+picPoster[i].filename).metadata().then(function(metadata){
+            newExhibition.image.push({picOriginalName:picPoster[i].originalname,picEncoding:picPoster[i].encoding, picMimetype:picPoster[i].mimetype, picDestination:picPoster[i].destination,
+                picFilename:picPoster[i].filename, picPath:picPoster[i].path, picSize:picPoster[i].size,
+                picWidth:metadata.width, picHeight:metadata.height});
+        });
+    }
+    const picExhibition = req.files['picExhibition[]'];
+    for(let i=0;i<picExhibition.length;i++) {
+        await sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).rotate().toFile('./uploads/picExhibition/'+picExhibition[i].filename).then(
+            sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).metadata().then(function(metadata){
+                return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).rotate().webp().toBuffer();
+            }).then(function(data){
+                sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).resize(630).rotate().toFile('./uploads/picExhibition_300/'+picExhibition[i].filename,function(err, info){
+                    if(err)
+                        console.log(err);
+                    else
+                    {
+                        sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename)
+                            .composite([{ input:data, gravity: 'center'}])
+                            .jpeg( { quality: 100 } ).rotate()
+                            .toFile('./uploads/picExhibition_watermark/'+picExhibition[i].filename,(err, info) => {
+                                if (err) {
+                                    console.log(err);
+                                }
+                            });
+                    }
+                });
+            })
+        );
+        await sharp('./uploads/picExhibition/'+picExhibition[i].filename).metadata().then(function(metadata){
+            newExhibition.imageExhibition.push({picOriginalName:picExhibition[i].originalname,picEncoding:picExhibition[i].encoding, picMimetype:picExhibition[i].mimetype, picDestination:picExhibition[i].destination,
+                picFilename:picExhibition[i].filename, picPath:picExhibition[i].path, picSize:picExhibition[i].size,
+                picWidth:metadata.width, picHeight:metadata.height});
+        });
+    }
+    newExhibition.uploadId=req.user.lastName+" "+req.user.firstName;
+    newExhibition.save(function (err) {
+        if (err)
+            throw err;
+        res.redirect('./upload');
+    });
+};
+exports.admin_exhibition_delete_post= async (req,res,next)=>{
+    Exhibition.findOne({_id:req.body.id},function (err,result) {
+        if (err) console.log(err);
+        const imageDestinationPoster = "./uploads/picPoster";
+        const imageDestinationExhibition = "./uploads/picExhibition";
+        for(let i=0;i<result.image.length;i++)
+        {
+            fs.stat(imageDestinationPoster+'/'+result.image[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(imageDestinationPoster+'/'+result.image[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+            fs.stat(imageDestinationPoster+'_300/'+result.image[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(imageDestinationPoster+'_300/'+result.image[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+            fs.stat(imageDestinationPoster+'_watermark/'+result.image[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(imageDestinationPoster+'_watermark/'+result.image[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+            fs.stat(imageDestinationPoster+'Raw/'+result.image[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(imageDestinationPoster+'Raw/'+result.image[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+        }
+        for(let i=0;i<result.imageExhibition.length;i++)
+        {
+            fs.stat(imageDestinationExhibition+'/'+result.imageExhibition[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(imageDestinationExhibition+'/'+result.imageExhibition[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+            fs.stat(imageDestinationExhibition+'_300/'+result.imageExhibition[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(imageDestinationExhibition+'_300/'+result.imageExhibition[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+            fs.stat(imageDestinationExhibition+'_watermark/'+result.imageExhibition[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(imageDestinationExhibition+'_watermark/'+result.imageExhibition[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+            fs.stat(imageDestinationExhibition+'Raw/'+result.imageExhibition[i].picFilename, function(err, stat) {
+                if(err == null) {
+                    fs.unlink(imageDestinationExhibition+'Raw/'+result.imageExhibition[i].picFilename, function(err) {
+                        if (err) throw err;
+                        console.log('file deleted');
+                    });
+                } else {
+                    console.log('Some other error: ', err.code);
+                }
+            });
+        }
+        Exhibition.remove({_id:req.body.id},function (err, result) {
+            if (err) return done(err);
+            res.send('clear');
+        });
     });
 };

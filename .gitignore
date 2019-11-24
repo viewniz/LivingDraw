@@ -1,5 +1,6 @@
 
 /config/mailer.js
+/config/SecretKey.js
 /.idea/workspace.xml
 /.idea/
 /uploads/adminFace/

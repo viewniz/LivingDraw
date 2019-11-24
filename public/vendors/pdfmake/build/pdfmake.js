@@ -13169,7 +13169,7 @@
 	        }
 	        index = offset + match.length;
 
-	        // The JS engine embedded in Adobe products requires returning the `match`
+	        // The JS engine embedded in Adobe carts requires returning the `match`
 	        // string in order to produce the correct `offset` value.
 	        return match;
 	      });

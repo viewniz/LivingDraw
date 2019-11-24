@@ -1,0 +1,80 @@
+doctype html
+head
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-144472686-1')
+    script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-144472686-1');
+    meta(charset='UTF-8')
+    title 리빙드로우
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description' content='미대생들의 온라인 갤러리, 주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!')
+    meta(name='author' content='Gil Se-hyeon')
+    meta(property="og:title" content="미대생들의 온라인 갤러리 리빙드로우")
+    meta(property="og:description" content="주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!")
+    meta(property="og:image" content="https://www.livingdraw.co.kr/ogImage/ogImage.png")
+    link(rel='icon' href='favicon.ico')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://icono-49d6.kxcdn.com/icono.min.css')
+    link(rel='stylesheet', href='/css/newheader.css')
+    link(rel='stylesheet', href='/css/author_register_2.css')
+    link(rel='stylesheet', href='/css/font/flaticon.css')
+    script.
+        let picFileName = "#{picFileName}";
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+    script(src='/js/nav_js.js')
+    script(src='/js/author_register.js')
+    script(src='/js/author_register_two.js')
+
+    body
+        script.
+        include ../components/main_header
+
+        .container(style="padding-top:60px;")
+            .row.mt-5.center_main
+                .author_register_form
+                    .process_bar
+                        .process_bar.pre_stage
+                    |
+                    .form-row.author_privacy
+                        .title
+                            p 학생증 업로드
+                        |
+                        .Image_alarm(style='text-align: center; width: 100%;')
+                            p 사진파일은 20MB 이하 JPG, JPEG로 등록해 주시기 바랍니다.
+                    |
+                    form#form(runat='server', enctype="multipart/form-data", method="post")
+                        input#imgInput(type='file', style='display: none;', name='student_Iden', accept='image/jpeg, image/jpg')
+                        |
+                        button#btn-upload.btn.btn-primary.image_upload_button(type='button')
+                            | + Image Upload
+                        |
+                        .upload_image
+                            .image_border
+                                if(picFileName)
+                                    img#image_section(src='/user/student_Iden/'+picFileName)
+                                else
+                                    img#image_section(src='')
+                |
+                a(href='author_register')
+                    .pre_next
+                        button#none_hidden_pre_next.btn.btn-primary.next_button(type='button')
+                            i.fa.fa-angle-left
+                        |
+                        button#hidden_pre_next.btn.btn-primary.next_button(type='button')
+                            span.open_next 이전단계
+                |
+                .next
+                    button#hidden_next.btn.btn-primary.next_button(type='button', onclick='saveAuthorTwo()')
+                        span.open_next 다음단계
+                    |
+                    button#none_hidden_next.btn.btn-primary.next_button(type='button', onclick='saveAuthorTwo()')
+                        i.fa.fa-angle-right

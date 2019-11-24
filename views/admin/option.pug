@@ -1,0 +1,120 @@
+doctype html
+html(lang='en')
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        // Meta, title, CSS, favicons, etc.
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='robots', content='noindex,nofollow')
+
+        title 옵션 목록
+        // Bootstrap
+        link(href='/vendors/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+        // Font Awesome
+        link(href='/vendors/font-awesome/css/font-awesome.min.css', rel='stylesheet')
+        // NProgress
+        link(href='/vendors/nprogress/nprogress.css', rel='stylesheet')
+        // Datatables
+        link(href='/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css', rel='stylesheet')
+        link(href='/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css', rel='stylesheet')
+        link(href='/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css', rel='stylesheet')
+        link(href='/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css', rel='stylesheet')
+        link(href='/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css', rel='stylesheet')
+        // Custom Theme Style
+        link(href='/build/css/custom.min.css', rel='stylesheet')
+        link(href='/css/adminBorder.css', rel='stylesheet')
+    body.nav-md
+        .container.body
+            .main_container
+                include components/admin_side_nav_bar
+            // page content
+            .right_col(role='main')
+                div
+                    .page-title
+                        .title_left
+                            h3
+                                | Option
+                        .title_right
+                            .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
+                                .input-group
+                                    input.form-control(type='text', placeholder='Search for...')
+                                    span.input-group-btn
+                                        button.btn.btn-default(type='button') Go!
+                    .clearfix
+                    .col-md-12.col-sm-12.col-xs-12
+                        .x_panel
+                            .x_title
+                                h2 옵션 관리
+                                ul.nav.navbar-right.panel_toolbox
+                                    li
+                                        a.collapse-link
+                                            i.fa.fa-chevron-up
+                                    li.dropdown
+                                        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                            i.fa.fa-wrench
+                                        ul.dropdown-menu(role='menu')
+                                            li
+                                                a(href='#') Settings 1
+                                            li
+                                                a(href='#') Settings 2
+                                    li
+                                        a.close-link
+                                            i.fa.fa-close
+                                .clearfix
+                            .x_content
+                                p.text-muted.font-13.m-b-30
+                                table#datatable-checkbox.table.table-striped.table-bordered.bulk_action
+                                    thead
+                                        tr
+                                            th
+                                            th CheckBox
+                                            th Type
+                                            th Value
+                                            th Value English
+                                            th Code
+                                    tbody
+                                        - for(var i=0;i<options.length;i++)
+                                            tr
+                                                td
+                                                th
+                                                    //button.btn.btn-default(type='button', onclick="location.href='/admin/border/update/"+border[i]._id+"' ") 수정
+                                                    button.btn.btn-default(type='button', onclick='optionDelete("'+options[i]._id+'")') 삭제
+                                                td= options[i].type
+                                                td= options[i].value
+                                                td= options[i].valueE
+                                                td= options[i].option
+                                //button.btn.btn-default(type='button', onclick="location.href='/admin/border/upload/'") 추가
+            // /page content
+            // footer content
+            footer
+                .pull-right
+                    | Gentelella - Bootstrap Admin Template by
+                    a(href='https://colorlib.com') Colorlib
+                .clearfix
+            // /footer content
+            // jQuery
+            script(src='/vendors/jquery/dist/jquery.min.js')
+            // Bootstrap
+            script(src='/vendors/bootstrap/dist/js/bootstrap.min.js')
+            // FastClick
+            script(src='/vendors/fastclick/lib/fastclick.js')
+            // Datatables
+            script(src='/vendors/datatables.net/js/jquery.dataTables.min.js')
+            script(src='/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')
+            script(src='/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')
+            script(src='/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')
+            script(src='/vendors/datatables.net-buttons/js/buttons.flash.min.js')
+            script(src='/vendors/datatables.net-buttons/js/buttons.html5.min.js')
+            script(src='/vendors/datatables.net-buttons/js/buttons.print.min.js')
+            script(src='/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')
+            script(src='/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')
+            script(src='/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')
+            script(src='/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')
+            script(src='/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')
+            script(src='/vendors/jszip/dist/jszip.min.js')
+            script(src='vendors/pdfmake/build/pdfmake.min.js')
+            script(src='/vendors/pdfmake/build/vfs_fonts.js')
+            script(src='/js/adminOption.js')
+            // Custom Theme Scripts
+            script(src='/build/js/custom.min.js')

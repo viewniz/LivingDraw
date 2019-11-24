@@ -1,0 +1,117 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title 리빙드로우
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(name="description" content="")
+        meta(name="author" content="")
+        //link(rel="icon" href="favicon.ico")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous")
+        link(rel='stylesheet', href='/css/newheader.css')
+        script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+        link(rel="stylesheet" type="text/css" href="/css/font/flaticon.css")
+        link(href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo:700|Noto+Sans+KR&display=swap" rel="stylesheet")
+        // Plugins
+        link(rel="stylesheet" href="/css/font/flaticon.css")
+        link(rel="stylesheet" href="/css/author_register_2.css")
+        link(rel="stylesheet" href="/css/upload2.css")
+        link(href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet")
+        script(src="/js/upload2.js")
+        script(src="/js/update_two.js")
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+        script(src="https://use.fontawesome.com/releases/v5.2.0/js/all.js")
+        script(src='/js/nav_js.js')
+    body
+        style.
+            .mainheader {
+                top: 0;
+            }
+        script.
+        include ../components/main_header
+        .container
+            .row.mt-5
+            .row.mt-5.center_main
+                .author_register_form
+                    .process_bar
+                        .process_bar.pre_stage(style="left:-50%;")
+                    .form-row.author_privacy
+                        .title
+                            p 작품주제
+                    form#form(runat="server", name="two")
+                        select.custom-select.custom-select-lg.mb-3.select_subject(name="subject")
+                            option.subject_option(selected="") 주제선택
+                            -for(let i=0;i<subject.length;i++)
+                                if(border.subject === subject[i].option)
+                                    option.subject_option(value="" + subject[i].option + "", selected)=subject[i].value
+                                else
+                                    option.subject_option(value="" + subject[i].option + "")=subject[i].value
+                        .form-row.category.mt-5
+                            .title
+                                p 작품 스타일
+                            .subtitle_category
+                                p 구매자가 작품을 찾는 데 도움이되는 스타일을 선택해주세요.
+                        select.custom-select.custom-select-lg.mb-3.select_style(name="style")
+                            option.style_option(selected="") 스타일선택
+                            -for(let i=0;i<style.length;i++)
+                                if(border.style === style[i].option)
+                                    option.style_option(value="" + style[i].option + "", selected)=style[i].value
+                                else
+                                    option.style_option(value="" + style[i].option + "")=style[i].value
+                        .form-row.category.mt-5
+                            .title
+                                p 작품 명(한글)
+                            .form-group.col-md-12
+                                if(border.title)
+                                    input#paint_id.form-control(name="title" placeholder="작품명" type="text" value=border.title)
+                                else
+                                    input#paint_id.form-control(name="title" placeholder="작품명" type="text")
+                        .form-row.category.mt-5
+                            .title
+                                p 작품 명(영어)
+                            .form-group.col-md-12
+                                if(border.titleSub)
+                                    input#paint_id_en.form-control(name="titleSub" placeholder="작품명" type="text" value=border.titleSub)
+                                else
+                                    input#paint_id_en.form-control(name="titleSub" placeholder="작품명" type="text")
+                        .form-row.category.mt-5
+                            .title
+                                p 재료
+                            .subtitle_category
+                                p (다중선택)
+                            .seleted_midumes
+                                ul#mediume_part.test
+                            select#mediume.custom-select.custom-select-lg.mb-3.select_style(name="medium" style="overflow: scroll;" multiple="multiple")
+                                -for(let i=0;i<medium.length;i++)
+                                    if(border.medium.indexOf(medium[i].option) !== -1)
+                                        option(value="" + medium[i].option + "", selected)=medium[i].value
+                                    else
+                                        option(value="" + medium[i].option + "")=medium[i].value
+                        .form-row.category.mt-5
+                            .title
+                                p 판
+                            .subtitle_category
+                                p (다중선택)
+                            .seleted_plate
+                                ul#plate_part.test
+                            select#plate.custom-select.custom-select-lg.mb-3.select_style(name="material" style="overflow: scroll;" multiple="multiple")
+                                -for(let i=0;i<material.length;i++)
+                                    if(border.material.indexOf(material[i].option) !== -1)
+                                        option(value="" + material[i].option + "", selected)=material[i].value
+                                    else
+                                        option(value="" + material[i].option + "")=material[i].value
+                    a(href='javascript:void(0);', onclick='beforePage(); return false;')
+                        .pre_next
+                            button#none_hidden_pre_next.btn.btn-primary.next_button(type="button")
+                                i.flaticon-keyboard-left-arrow-button
+                            button#hidden_pre_next.btn.btn-primary.next_button(type="button")
+                                span.open_next 이전단계
+                    .next
+                        button#hidden_next.btn.btn-primary.next_button(type="button", onclick="updateTwo(this.form)")
+                            span.open_next 다음단계
+                        button#none_hidden_next.btn.btn-primary.next_button(type="button", onclick="updateTwo(this.form)")
+                            i.flaticon-keyboard-right-arrow-button

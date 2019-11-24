@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리빙드로우</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/font/flaticon.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo:700|Noto+Sans+KR&display=swap"
+          rel="stylesheet">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../css/font/flaticon.css">
+    <link rel="stylesheet" href="../css/font2/flaticon.css">
+    <link rel="stylesheet" href="../css/author_register_2.css"/>
+    <link rel="stylesheet" href="../css/upload2.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
+    <script src="../js/upload4.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5"></div>
+    <div class="row mt-5 center_main">
+        <div class="author_register_form">
+            <div class="process_bar">
+                <div class="process_bar pre_stage"></div>
+            </div>
+            <div class="form-row author_privacy">
+                <div class="title">
+                    <p>작품주제</p>
+                </div>
+            </div>
+            <form id="form" runat="server">
+                <select class="custom-select custom-select-lg mb-3 select_subject">
+                    <option class="subject_option" selected>주제선택</option>
+                    <option class="subject_option" value="1">추상</option>
+                    <option class="subject_option" value="2">풍경</option>
+                    <option class="subject_option" value="3">인물</option>
+                    <option class="subject_option" value="4">초상</option>
+                    <option class="subject_option" value="5">상상</option>
+                    <option class="subject_option" value="6">동물</option>
+                    <option class="subject_option" value="7">정물</option>
+                </select>
+
+                <div class="form-row category mt-5">
+                    <div class="title">
+                        <p>작품 스타일</p>
+                    </div>
+                    <div class="subtitle_category">
+                        <p>구매자가 작품을 찾는 데 도움이되는 스타일을 선택해주세요.</p>
+                    </div>
+                </div>
+                <select class="custom-select custom-select-lg mb-3 select_style">
+                    <option class="style_option" selected>스타일선택</option>
+                    <option class="style_option" value="1">인상주의</option>
+                    <option class="style_option" value="2">순수미술</option>
+                    <option class="style_option" value="3">표현주의</option>
+                    <option class="style_option" value="4">추상주의</option>
+                    <option class="style_option" value="5">모더니즘</option>
+                    <option class="style_option" value="6">현실주의</option>
+                </select>
+                <div class="form-row category mt-5">
+                    <div class="title">
+                        <p>작품 명(한글)</p>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input id="paint_id" name="paint_id" placeholder="작품명" class="form-control"
+                               type="text">
+                    </div>
+                </div>
+                <div class="form-row category mt-5">
+                    <div class="title">
+                        <p>작품 명(영어)</p>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <input id="paint_id_en" name="paint_id" placeholder="작품명" class="form-control"
+                               type="text">
+                    </div>
+                </div>
+
+                <div class="form-row category mt-5">
+                    <div class="title">
+                        <p>재료</p>
+                    </div>
+                    <div class="subtitle_category">
+                        <p>(다중선택)</p>
+                    </div>
+                    <div class="seleted_midumes">
+                        <ul id="mediume_part" class="test">
+                        </ul>
+                    </div>
+                    <select id="mediume" class="custom-select custom-select-lg mb-3 select_style"
+                            name="sites-list" multiple="multiple" aria-expanded="false">
+                            <option value="mediume1">유채</option>
+                            <option value="mediume2">아크릴</option>
+                            <option value="mediume3">수채</option>
+                            <option value="mediume4">잉크</option>
+                            <option value="mediume5">패인트</option>
+                            <option value="mediume6">석고</option>
+                            <option value="mediume7">채색</option>
+                            <option value="mediume8">수묵담채</option>
+                            <option value="mediume9">먹</option>
+                            <option value="mediume10">숯</option>
+                    </select>
+                </div>
+
+                <div class="form-row category mt-5">
+                    <div class="title">
+                        <p>판</p>
+                    </div>
+                    <div class="subtitle_category">
+                        <p>(다중선택)</p>
+                    </div>
+                    <div class="seleted_plate">
+                        <ul id="plate_part" class="test">
+                        </ul>
+                    </div>
+                    <select id="plate" class="custom-select custom-select-lg mb-3 select_style"
+                            name="sites-list" multiple style="overflow: scroll;">
+                        <option value="plate1">캔버스</option>
+                        <option value="plate2">종이</option>
+                        <option value="plate3">나무</option>
+                        <option value="plate4">카드보드</option>
+                        <option value="plate5">기타</option>
+                        <option value="plate6">부드러운 재질(뜨개실, 면, 옷감)</option>
+                        <option value="plate7">화선지</option>
+                        <option value="plate8">순지</option>
+                        <option value="plate9">장지</option>
+                        <option value="plate10">한지</option>
+                        <option value="plate11">3합지</option>
+                        <option value="plate12">2합지</option>
+                    </select>
+                </div>
+
+            </form>
+            <a href="author_register.html">
+                <div class="pre_next">
+                    <button class="btn btn-primary next_button" id="none_hidden_pre_next" type="button">
+                        <i class="flaticon-keyboard-left-arrow-button"></i>
+                    </button>
+                    <button class="btn btn-primary next_button" id="hidden_pre_next" type="button">
+                        <span class="open_next">이전단계</span>
+                    </button>
+                </div>
+            </a>
+            <a href="author_register_3.html">
+                <div class="next">
+                    <button class="btn btn-primary next_button" id="hidden_next" type="button">
+                        <span class="open_next">다음단계</span>
+                    </button>
+                    <button class="btn btn-primary next_button" id="none_hidden_next" type="button">
+                        <i class="flaticon-keyboard-right-arrow-button"></i>
+                    </button>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

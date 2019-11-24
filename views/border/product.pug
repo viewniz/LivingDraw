@@ -22,7 +22,7 @@ html
         link(rel='stylesheet', href='/css/newheader.css')
         link(rel='stylesheet', href='/css/product_style.css')
         link(href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet")
-        <link href="https://fonts.googleapis.com/css?family=Lora|Nanum+Gothic+Coding|Nanum+Myeongjo&display=swap" rel="stylesheet">
+        link(href='https://fonts.googleapis.com/css?family=Lora|Nanum+Gothic+Coding|Nanum+Myeongjo&display=swap', rel='stylesheet')
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
         script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
@@ -52,10 +52,6 @@ html
                                             img#select_image.d-block.w-100(data-src='holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide', alt='First slide [800x400]', src="/pic/" + border.image[0].picFilename, data-holder-rendered='true')
                                             .middle(id='modal_button', data-toggle='modal', data-target='#myFullsizeModal')
                                                 .text Full Screen
-                                            //.middle2
-                                            //    .text
-                                            //        | Add to Like
-                                            //        img#add_like(src='/images/like4.png', style=' margin-left:5px; width: 20px; height: 20px;')
                         // / SLIDER
                         hr#shadow
                         // MARKETING LINE
@@ -70,47 +66,6 @@ html
                                 .col-12.col-md-6.col-lg-6.col-xl-6
                                     p.lead.text-center.text-primary.author_note_value(style="margin-bottom: 0;white-space:pre-line;")=border.description
                                 br
-                        //        p
-                        //            ="Subject : "
-                        //            a(style='color: #6c757d;')
-                        //                case border.subject
-                        //                    when 'Ab'
-                        //                        | 추상화
-                        //                    when 'La'
-                        //                        | 풍경화
-                        //                    when 'Pe'
-                        //                        | 인물화
-                        //                    when 'Po'
-                        //                        | 초상화
-                        //                    when 'Vi'
-                        //                        | 상상화
-                        //                    when 'An'
-                        //                        | 동물화
-                        //                    when 'St'
-                        //                        | 정물화
-                        //                    default
-                        //                        | error
-                        //        p
-                        //            ="Styles : "
-                        //            a(style='color: #6c757d;')
-                        //                case border.style
-                        //                    when 'Im'
-                        //                        td 인상주의
-                        //                    when 'Fi'
-                        //                        td 순수미술
-                        //                    when 'Ex'
-                        //                        td 표현주의
-                        //                    when 'Ab'
-                        //                        td 추상주의
-                        //                    when 'Mo'
-                        //                        td 모더니즘
-                        //                    when 'Re'
-                        //                        td 현실주의
-                        //                    default
-                        //                        td error
-                        //        p
-
-
                         #author_note.articles-grid.row
                             .col-12.col-md-6.col-lg-6.col-xl-6
                                 .author_note_header
@@ -129,70 +84,24 @@ html
                                         br
                                         a (
                                         a
-                                            - for(var j=0;j<border.material.length;j++)
-                                                case border.material[j]
-                                                    when 'Ca'
-                                                        | 캔버스
-                                                    when 'Pa'
-                                                        | 종이
-                                                    when 'Wo'
-                                                        | 나무
-                                                    when 'Cd'
-                                                        | 카드보드
-                                                    when 'Ot'
-                                                        | 기타
-                                                    when 'So'
-                                                        | 부드러운 재질(뜨개실, 면, 옷감)
-                                                    when 'Hw'
-                                                        | 화선지
-                                                    when 'Su'
-                                                        | 순지
-                                                    when 'Ja'
-                                                        | 장지
-                                                    when 'Ha'
-                                                        | 한지
-                                                    when 'Th'
-                                                        | 3합지
-                                                    when 'To'
-                                                        | 2합지
-                                                    default
-                                                        | error
-                                                if(border.material.length != j + 1)
-                                                    =", "
+                                            -let count=0;
+                                            -for(let i=0;i<material.length;i++)
+                                                if(border.material.indexOf(material[i].option) !== -1)
+                                                    =material[i].value
+                                                    -count++
+                                                    if(border.material.length != count)
+                                                        =", "
                                         a="에 "
                                         a
-                                            - for(var j=0;j<border.medium.length;j++)
-                                                case border.medium[j]
-                                                    when 'Oi'
-                                                        | 유채
-                                                    when 'Ac'
-                                                        | 아크릴
-                                                    when 'Wa'
-                                                        | 수채
-                                                    when 'In'
-                                                        | 잉크
-                                                    when 'Pa'
-                                                        | 페인트
-                                                    when 'Ge'
-                                                        | 석고
-                                                    when 'Co'
-                                                        | 채색
-                                                    when 'Ti'
-                                                        | 수묵담채
-                                                    when 'Mu'
-                                                        | 먹
-                                                    when 'Ch'
-                                                        | 숯
-                                                    default
-                                                        | error
-                                                if(border.medium.length != j + 1)
-                                                    =" 그리고 "
+                                            -count=0;
+                                            -for(let i=0;i<medium.length;i++)
+                                                if(border.medium.indexOf(medium[i].option) !== -1)
+                                                    =medium[i].value
+                                                    -count++
+                                                    if(border.medium.length != count)
+                                                        =" 그리고 "
                                         a )
                                         br
-                                        //a handmade korean paper
-                                        //a=" on "
-                                        //a fabric
-                                        //br
                                         a 2019
                                 .note_footer
                                     hr

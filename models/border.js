@@ -1,9 +1,3 @@
-/**
- * Created by Sehyeon on 2017-08-03.
- */
-/**
- * Created by Sehyeon on 2017-07-20.
- */
 let mongoose = require('mongoose');
 let moment = require('moment');
 require('moment-timezone');
@@ -19,7 +13,9 @@ let BorderSchema = new Schema({
         picDestination:{type:String,required:true},  //파일 경로
         picFilename:{type:String,required:true},      //파일 이름
         picPath:{type:String,required:true},          //파일 위치
-        picSize:{type:String,required:true}           //파일 크기 byte 단위
+        picSize:{type:String,required:true},           //파일 크기 byte 단위
+        picWidth:{type:Number},
+        picHeight:{type:Number}
     }],
     firstName:String,
     lastName:String,
@@ -44,7 +40,7 @@ let BorderSchema = new Schema({
     submit_date:{ type: String, default: moment().format('YYYY-MM-DD HH:mm:ss')},
     view:{ type: Number, default: 0},
     like:{type: Number, default: 0},
-    is_selling:{type:Boolean, default: false},
+    is_selling:{type:Boolean, default: true},
     uploadId:String
 });
 

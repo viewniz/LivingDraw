@@ -1,0 +1,62 @@
+.Galleryframe{
+    border: 1px solid #e7e7e7;
+    padding: 0px;
+    margin-right: 10px;
+}
+
+.Galleryframe_image{
+    height: auto;
+    cursor: pointer;
+}
+
+.grid-column{
+    display: grid;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-column-gap: 1%;
+}
+
+.detail{
+    padding: 10px;
+    padding-top: 0px;
+}
+
+.terminateday{
+    color: #f8b62b;
+
+    font-size: 0.9rem;
+}
+
+.Gallerytitle{
+    font-weight: bold;
+}
+
+.sub{
+    margin-top: 5px;
+}
+
+.tumble{
+    position: relative;
+    padding-top: 150%;
+    /* 1:1 ratio */
+    overflow: hidden;
+}
+.centered{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: translate(50%,50%);
+    -ms-transform: translate(50%,50%);
+    transform: translate(50%,50%);
+}
+.centered img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: auto;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}

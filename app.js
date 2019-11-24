@@ -1,25 +1,30 @@
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
-let mongoose    = require('mongoose');
-let bodyParser = require('body-parser');
-var session=require('express-session');
-var flash = require('connect-flash');
-var passport = require('passport');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose    = require('mongoose');
+const bodyParser = require('body-parser');
+const session=require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
+const passportAdmin = require('passport');
 
-let indexRouter = require('./routes/index/index');
-let usersRouter = require('./routes/users');
-let userRouter = require('./routes/user/index');
-let goodsRouter = require('./routes/goods/index');
-let borderRouter = require('./routes/border/index');
-let adminRouter = require('./routes/admin/index');
+const indexRouter = require('./routes/index/index');
+const usersRouter = require('./routes/users');
+const userRouter = require('./routes/user/index');
+const cartsRouter = require('./routes/cart/index');
+const borderRouter = require('./routes/border/index');
+const adminRouter = require('./routes/admin/index');
+const pieceRouter = require('./routes/piece/index');
+const paymentRouter = require('./routes/payment/index');
+const exhibitionRouter = require('./routes/exhibition/index');
+const secretKey = require('./config/SecretKey').sessionKey;
 
 let app = express();
 
-require('./config/passportAdmin')(passport);
 require('./config/passportUser')(passport);
+require('./config/passportAdmin')(passportAdmin);
 
 mongoose.connect('mongodb://localhost/LivingDraw');
 mongoose.Promise = global.Promise;
@@ -29,7 +34,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(session({
-  secret: '비밀코드',
+  secret: secretKey,
   resave: true,
   saveUninitialized: true
 })); // 세션 활성화
@@ -40,6 +45,8 @@ app.use(flash());
 // passport 초기화
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passportAdmin.initialize());
+app.use(passportAdmin.session());
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -50,11 +57,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', indexRouter);
-app.use('/goods', goodsRouter);
+app.use('/carts', cartsRouter);
 app.use('/users', usersRouter);
 app.use('/user', userRouter);
 app.use('/border', borderRouter);
 app.use('/admin', adminRouter);
+app.use('/piece', pieceRouter);
+app.use('/payments', paymentRouter);
+app.use('/exhibition', exhibitionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -25,7 +25,9 @@ html
         |
         link(href='https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap', rel='stylesheet')
         // Plugins
-        script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+        script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+        script(src='/js/reConfirmMailing.js')
     body
         .container
             .row.text-center.mb-5.mt-5
@@ -34,17 +36,17 @@ html
                 .card
                     .card-body
                         .login-img
-                            img(src='/logo/logoImage.png', style='height:50px;')
+                            a(href='/', style="text-decoration:none")
+                                img(src='/logo/logoImage.png', style='height:50px;')
                         |
                         .login-title
                             // <h4>Log In</h4>
                         .login-form.mt-4
                             .form-row
                                 .form-group.col-md-12
-                                    p 메일 인증이 안된 계정입니다.
+                                    p.check 메일 인증이 안된 계정입니다. 기존 메일을 확인하거나, 인증 메일을 재발송 받아주세요.
                                 .form-group.col-md-12
-                                    a(href='/user/login', style="text-decoration:none")
-                                        button.btn.btn-danger.btn-block(type='button') 인증 메일 재발송
+                                    button.btn.btn-danger.btn-block(type='button', onclick='reMailing()') 인증 메일 재발송
                                 .form-group.col-md-12
                                     a(href='/', style="text-decoration:none")
                                         button.btn.btn-outline-warning.registerbutton(type='button') 홈으로

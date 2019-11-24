@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리빙드로우</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="../css/font/flaticon.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo:700|Noto+Sans+KR&display=swap"
+          rel="stylesheet">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="../css/font/flaticon.css">
+    <link rel="stylesheet" href="../css/font2/flaticon.css">
+    <link rel="stylesheet" href="../css/author_register_2.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
+    <script src="../js/author_register.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5"></div>
+    <div class="row mt-5 center_main">
+        <div class="author_register_form">
+            <div class="process_bar">
+                <div class="process_bar pre_stage"></div>
+            </div>
+            <div class="form-row author_privacy">
+                <div class="title">
+                    <p>학생증 업로드</p>
+                </div>
+                <div class="Image_alarm" style="text-align: center; width: 100%;">
+                    <p>사진파일은 50MB 이하 JPG, JPEG로 등록해 주시기 바랍니다.</p>
+                </div>
+            </div>
+            <form id="form" runat="server">
+                <input type='file' id="imgInput" style="display: none;"/>
+                <button class="btn btn-primary image_upload_button" type="button" id="btn-upload">+ Image Upload
+                </button>
+                <div class="upload_image">
+                    <div class="image_border">
+                        <img id="image_section" src=''/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <a href="author_register.html">
+            <div class="pre_next">
+                <button class="btn btn-primary next_button" id="none_hidden_pre_next" type="button">
+                    <i class="flaticon-keyboard-left-arrow-button"></i>
+                </button>
+                <button class="btn btn-primary next_button" id="hidden_pre_next" type="button">
+                    <span class="open_next">이전단계</span>
+                </button>
+            </div>
+        </a>
+        <a href="author_register_3.html">
+            <div class="next">
+                <button class="btn btn-primary next_button" id="hidden_next" type="button">
+                    <span class="open_next">다음단계</span>
+                </button>
+                <button class="btn btn-primary next_button" id="none_hidden_next" type="button">
+                    <i class="flaticon-keyboard-right-arrow-button"></i>
+                </button>
+            </div>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
