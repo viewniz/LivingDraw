@@ -140,88 +140,26 @@ html(lang='en')
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 주제
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select.select2_single.form-control(tabindex='-1', name='subject')
-                                                            option(value="Ab") 추상
-                                                            //Abstract
-                                                            option(value="La") 풍경
-                                                            //Landscape
-                                                            option(value="Pe") 인물
-                                                            //People
-                                                            option(value="Po") 초상
-                                                            //Portrait
-                                                            option(value="Vi") 상상
-                                                            //Virtualization
-                                                            option(value="An") 동물
-                                                            //Animal
-                                                            option(value="St") 정물
-                                                            //Still life
+                                                            -for(let i=0;i<subject.length;i++)
+                                                                option.subject_option(value="" + subject[i].option + "")=subject[i].value
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 스타일
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select.select2_single.form-control(tabindex='-1', name='style')
-                                                            option(value="Im") 인상주의
-                                                            //Impressionism
-                                                            option(value="Fi") 순수미술
-                                                            //Fine Art
-                                                            option(value="Ex") 표현주의
-                                                            //Expressionism
-                                                            option(value="Ab") 추상주의
-                                                            //Abstract
-                                                            option(value="Mo") 모더니즘
-                                                            //Modern
-                                                            option(value="Re") 현실주의
-                                                            //Realism
+                                                            -for(let i=0;i<style.length;i++)
+                                                                option.style_option(value="" + style[i].option + "")=style[i].value
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 재료
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select2_multiple.form-control(multiple='multiple', name='medium')
-                                                            option(value="Oi") 유채
-                                                            //Oil
-                                                            option(value="Ac") 아크릴
-                                                            //Acrylic
-                                                            option(value="Wa") 수채
-                                                            //Watercolor
-                                                            option(value="In") 잉크
-                                                            //Ink
-                                                            option(value="Pa") 페인트
-                                                            //Paint
-                                                            option(value="Ge") 석고
-                                                            //Gesso
-                                                            option(value="Co") 채색
-                                                            //Coloring
-                                                            option(value="Ti") 수묵담채
-                                                            //Tin
-                                                            option(value="Mu") 먹
-                                                            //Muk
-                                                            option(value="Ch") 숯
-                                                            //Charcoal
+                                                            -for(let i=0;i<medium.length;i++)
+                                                                option(value="" + medium[i].option + "")=medium[i].value
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 판
                                                     .col-md-9.col-sm-9.col-xs-12
                                                         select.select2_multiple.form-control(multiple='multiple', name='material')
-                                                            option(value="Ca") 캔버스
-                                                            //Canvas
-                                                            option(value="Pa") 종이
-                                                            //Paper
-                                                            option(value="Wo") 나무
-                                                            //Wood
-                                                            option(value="Cd") 카드보드
-                                                            //Cardboard
-                                                            option(value="Ot") 기타
-                                                            //Other
-                                                            option(value="So") 부드러운 재질(뜨개실, 면, 옷감)
-                                                            //Soft (Yarn, Cotton, Fabric)
-                                                            option(value="Hw") 화선지
-                                                            //Hwaseonji
-                                                            option(value="Su") 순지
-                                                            //Sunji
-                                                            option(value="Ja") 장지
-                                                            //Jangji
-                                                            option(value="Ha") 한지
-                                                            //Hanji
-                                                            option(value="Th") 3합지
-                                                            //Three
-                                                            option(value="To") 2합지
-                                                            //Two
+                                                            -for(let i=0;i<material.length;i++)
+                                                                option(value="" + material[i].option + "")=material[i].value
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 크기(cm)
                                                     .col-md-1.col-sm-1.col-xs-4.text-right

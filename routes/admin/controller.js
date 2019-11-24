@@ -18,7 +18,7 @@ let Banner = require('../../models/banner');
 let Box = require('../../models/box');
 let Logo = require('../../models/logo');
 let ogImage = require('../../models/ogImage');
-const Option = require('../../models/options');
+const Options = require('../../models/options');
 const Exhibition = require('../../models/exhibition');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -100,19 +100,36 @@ exports.admin_user_permissionSeller_post= function(req, res, next) {
 
 };
 exports.admin_border_upload= function(req, res, next) {
-    res.render('admin/border_upload_form',{user:req.user});
+    Options.find({type:'subject'},function (err, subject) {
+        Options.find({type:'style'},function (err, style) {
+            Options.find({type:'medium'},function (err, medium) {
+                Options.find({type:'material'},function (err, material) {
+                    res.render('admin/border_upload_form', {user: req.user,subject:subject,style:style,medium:medium,material:material});
+                });
+            });
+        });
+    });
 };
 exports.admin_border_update= function(req, res, next) {
     let borderNum=req.params.id;
-    Border.findOne({_id:borderNum},function (err, border) {
-        if(err) console.log(err);
-        border.keyWord="";
-        for(let i=0;i<border.keyWords.length;i++)
-        {
-            border.keyWord+=border.keyWords[i]+",";
-        }
-        res.render('admin/border_update_form',{border:border,user:req.user});
+    Options.find({type:'subject'},function (err, subject) {
+        Options.find({type:'style'},function (err, style) {
+            Options.find({type:'medium'},function (err, medium) {
+                Options.find({type:'material'},function (err, material) {
+                    Border.findOne({_id:borderNum},function (err, border) {
+                        if(err) console.log(err);
+                        border.keyWord="";
+                        for(let i=0;i<border.keyWords.length;i++)
+                        {
+                            border.keyWord+=border.keyWords[i]+",";
+                        }
+                        res.render('admin/border_update_form',{border:border,user:req.user,subject:subject,style:style,medium:medium,material:material});
+                    });
+                });
+            });
+        });
     });
+
 };
 
 exports.admin_site_banner= function(req, res, next) {
