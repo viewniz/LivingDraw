@@ -11,6 +11,7 @@ html(lang='en')
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+    link(rel='stylesheet', type='text/css', href='/css_root/flaticon.css')
     // Plugins
     link(rel='stylesheet', href='../css/galleryView.css')
     link(rel='stylesheet', href='../css/newheader.css')
@@ -92,21 +93,22 @@ html(lang='en')
       //.detailMore
         .more 더보기
         .tri
-      .dpimageList
+      .dpimageList.col-sm-12
         .title
           h4 전시 작품
         -for(let i=0;i<exhibition.imageExhibition.length;i++)
           if(i%3===0)
-            .dpImageSlide.col-md-10.offset-md-1
+            .row
               -for(let j=i;j<exhibition.imageExhibition.length&&j<i+3;j++)
-                .imageSlide
-                  .tumble
-                    .centered
-                      if(exhibition.imageExhibition[j].picWidth<exhibition.imageExhibition[j].picHeight)
-                        .portrait
-                          img(src="/picExhibition/" + exhibition.imageExhibition[j].picFilename)
-                      else
-                        .landscape
-                          img(src="/picExhibition/" + exhibition.imageExhibition[j].picFilename)
+                .col-md-4.offset-md-0.col-sm-12(style="padding-bottom:15px;padding-top:15px;")
+                  .imageSlide
+                    .tumble
+                      .centered
+                        if(exhibition.imageExhibition[j].picWidth<exhibition.imageExhibition[j].picHeight)
+                          .portrait
+                            img(src="/picExhibition/" + exhibition.imageExhibition[j].picFilename)
+                        else
+                          .landscape
+                            img(src="/picExhibition/" + exhibition.imageExhibition[j].picFilename)
 
   include ../components/footer

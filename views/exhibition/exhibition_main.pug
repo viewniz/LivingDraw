@@ -24,21 +24,24 @@ html(lang='en')
     body
         include ../components/main_header
         .container(style='padding-top: 100px;')
-            .grid-column
-                if(exhibitions)
-                    -for(let i=0;i<exhibitions.length;i++)
-                        a(href="/exhibition/"+exhibitions[i]._id)
-                            .Galleryframe
-                                .Galleryframe_image
-                                    .tumble
-                                        .centered
-                                            img(src="/picPoster/" + exhibitions[i].image[0].picFilename)
-                                .detail
-                                    .terminateday.sub
-                                        =exhibitions[i].startDate + " ~ " + exhibitions[i].endDate
-                                    .Gallerytitle.sub
-                                        =exhibitions[i].title
-                                    .Galleryplace.sub
-                                        | 본정갤러리
+            if(exhibitions)
+                -for(let i=0;i<exhibitions.length;i++)
+                    if(i%3===0)
+                        .row
+                            -for(let j=i;j<exhibitions.length&&j<i+3;j++)
+                                .frame.col-md-4.col-xs-12
+                                    a(href="/exhibition/"+exhibitions[j]._id)
+                                        .Galleryframe
+                                            .Galleryframe_image
+                                                .tumble
+                                                    .centered
+                                                        img(src="/picPoster/" + exhibitions[j].image[0].picFilename)
+                                            .detail
+                                                .terminateday.sub
+                                                    =exhibitions[j].startDate + " ~ " + exhibitions[j].endDate
+                                                .Gallerytitle.sub
+                                                    =exhibitions[j].title
+                                                .Galleryplace.sub
+                                                    | 본정갤러리
 
     include ../components/footer
