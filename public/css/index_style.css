@@ -61,22 +61,6 @@ p.lead {
     padding: 10px;
 }
 
-.container {
-    text-align: center;
-}
-
-.container img {
-    margin-right: 0;
-    width: 100%;
-}
-
-@media (min-width: 992px) {
-    .container img {
-        width: 60%;
-        height: 60%;
-    }
-}
-
 /*headerfix*/
 .jbFixed {
     width: 100%;
@@ -109,8 +93,58 @@ p.lead {
 
 
 .banner {
-    padding-top: 66px;
+    padding-top: 65px;
+    background-image: url(../images/banner2.jpeg);
+    height: 360px;
+    background-repeat: round;
+    text-align: center;
 }
 
+.bannerComment{
+    padding-top: 50px;
+    font-size: 3.0rem;
+    color: #ffffff;
+    font-style: italic;
+    text-shadow: 1px 1px 1px black;
+    font-family: 'Baskervville', serif;
+}
 
-/*headerfix*/
+.bannerSubComment{
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: 500;
+    font-style: italic;
+}
+/*bannerEnd*/
+
+.mainContainer{
+    display: grid;
+    grid-template-columns: 30% 15%;
+    grid-column-gap: 55%;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.mainComment{
+    font-size: 1.5rem;
+}
+
+.mainSort{
+    border: 1px solid black;
+}
+
+.mainWorks{
+    display: grid;
+    grid-template-rows: repeat(4, 100px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "header header header"
+      "main . ."
+      "main . aside"
+      "footer footer footer";
+  }
+  header { grid-area: header;}
+  main   { grid-area: main;   }
+  aside  { grid-area: aside;  }
+  footer { grid-area: footer; }
