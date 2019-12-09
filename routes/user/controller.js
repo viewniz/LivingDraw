@@ -40,7 +40,7 @@ exports.user_login = function (req, res, next) {
     let error=req.flash('error')[0];
     if(error){
         res.render('./user/login',{error:error});
-        return
+        return;
     }
     res.render('./user/login');
 };

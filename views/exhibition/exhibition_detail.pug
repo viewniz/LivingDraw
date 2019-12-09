@@ -29,7 +29,8 @@ html(lang='en')
           = exhibition.title
         .imageDisplay
           .imgWidth
-            img#mainPoster(src="/picPoster/" + exhibition.image[0].picFilename)
+            if(exhibition.image[0])
+              img#mainPoster(src="/picPoster/" + exhibition.image[0].picFilename)
         //.imageDirect.col-md-8.offset-md-2
           .next.pre_next
             button#none_hidden_pre_next.btn.btn-primary.next_button(type='button')

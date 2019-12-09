@@ -157,7 +157,7 @@ exports.admin_site_option_submit_post= function(req, res, next) {
     const option = req.body.option;
     const value = req.body.value;
     const valueE = req.body.valueE;
-    Option.findOne({type:type, option:option},function(err, result){
+    Options.findOne({type:type, option:option},function(err, result){
         if(err)
         {
             res.send(err);
@@ -184,13 +184,13 @@ exports.admin_site_option_submit_post= function(req, res, next) {
     });
 };
 exports.admin_site_option= function(req, res, next) {
-    Option.find(function(err, options){
+    Options.find(function(err, options){
         res.render('admin/option',{options:options, user:req.user});
     });
 };
 exports.admin_site_option_post= function(req, res, next) {
     const id = req.body.id;
-    Option.remove({_id:id}, function(err, result){
+    Options.remove({_id:id}, function(err, result){
         if(err)
         {
             res.send(err);
@@ -728,62 +728,66 @@ exports.admin_exhibition_upload_post= async (req,res,next)=>{
         newExhibition.host.push(host[i]);
     }
     const picPoster = req.files['picPoster[]'];
-    for(let i=0;i<picPoster.length;i++) {
-        await sharp('./uploads/picPosterRaw/'+picPoster[i].filename).rotate().toFile('./uploads/picPoster/'+picPoster[i].filename).then(
-            sharp('./uploads/picPosterRaw/'+picPoster[i].filename).metadata().then(function(metadata){
-                return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
-            }).then(function(data){
-                sharp('./uploads/picPosterRaw/'+picPoster[i].filename).resize(630).rotate().toFile('./uploads/picPoster_300/'+picPoster[i].filename,function(err, info){
-                    if(err)
-                        console.log(err);
-                    else
-                    {
-                        sharp('./uploads/picPosterRaw/'+picPoster[i].filename)
-                            .composite([{ input:data, gravity: 'center'}])
-                            .jpeg( { quality: 100 } ).rotate()
-                            .toFile('./uploads/picPoster_watermark/'+picPoster[i].filename,(err, info) => {
-                                if (err) {
-                                    console.log(err);
-                                }
-                            });
-                    }
-                });
-            })
-        );
-        await sharp('./uploads/picPoster/'+picPoster[i].filename).metadata().then(function(metadata){
-            newExhibition.image.push({picOriginalName:picPoster[i].originalname,picEncoding:picPoster[i].encoding, picMimetype:picPoster[i].mimetype, picDestination:picPoster[i].destination,
-                picFilename:picPoster[i].filename, picPath:picPoster[i].path, picSize:picPoster[i].size,
-                picWidth:metadata.width, picHeight:metadata.height});
-        });
+    if(picPoster) {
+        for(let i=0;i<picPoster.length;i++) {
+            await sharp('./uploads/picPosterRaw/'+picPoster[i].filename).rotate().toFile('./uploads/picPoster/'+picPoster[i].filename).then(
+                sharp('./uploads/picPosterRaw/'+picPoster[i].filename).metadata().then(function(metadata){
+                    return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
+                }).then(function(data){
+                    sharp('./uploads/picPosterRaw/'+picPoster[i].filename).resize(630).rotate().toFile('./uploads/picPoster_300/'+picPoster[i].filename,function(err, info){
+                        if(err)
+                            console.log(err);
+                        else
+                        {
+                            sharp('./uploads/picPosterRaw/'+picPoster[i].filename)
+                                .composite([{ input:data, gravity: 'center'}])
+                                .jpeg( { quality: 100 } ).rotate()
+                                .toFile('./uploads/picPoster_watermark/'+picPoster[i].filename,(err, info) => {
+                                    if (err) {
+                                        console.log(err);
+                                    }
+                                });
+                        }
+                    });
+                })
+            );
+            await sharp('./uploads/picPoster/'+picPoster[i].filename).metadata().then(function(metadata){
+                newExhibition.image.push({picOriginalName:picPoster[i].originalname,picEncoding:picPoster[i].encoding, picMimetype:picPoster[i].mimetype, picDestination:picPoster[i].destination,
+                    picFilename:picPoster[i].filename, picPath:picPoster[i].path, picSize:picPoster[i].size,
+                    picWidth:metadata.width, picHeight:metadata.height});
+            });
+        }
     }
     const picExhibition = req.files['picExhibition[]'];
-    for(let i=0;i<picExhibition.length;i++) {
-        await sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).rotate().toFile('./uploads/picExhibition/'+picExhibition[i].filename).then(
-            sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).metadata().then(function(metadata){
-                return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).rotate().webp().toBuffer();
-            }).then(function(data){
-                sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).resize(630).rotate().toFile('./uploads/picExhibition_300/'+picExhibition[i].filename,function(err, info){
-                    if(err)
-                        console.log(err);
-                    else
-                    {
-                        sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename)
-                            .composite([{ input:data, gravity: 'center'}])
-                            .jpeg( { quality: 100 } ).rotate()
-                            .toFile('./uploads/picExhibition_watermark/'+picExhibition[i].filename,(err, info) => {
-                                if (err) {
-                                    console.log(err);
-                                }
-                            });
-                    }
-                });
-            })
-        );
-        await sharp('./uploads/picExhibition/'+picExhibition[i].filename).metadata().then(function(metadata){
-            newExhibition.imageExhibition.push({picOriginalName:picExhibition[i].originalname,picEncoding:picExhibition[i].encoding, picMimetype:picExhibition[i].mimetype, picDestination:picExhibition[i].destination,
-                picFilename:picExhibition[i].filename, picPath:picExhibition[i].path, picSize:picExhibition[i].size,
-                picWidth:metadata.width, picHeight:metadata.height});
-        });
+    if(picExhibition){
+        for(let i=0;i<picExhibition.length;i++) {
+            await sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).rotate().toFile('./uploads/picExhibition/'+picExhibition[i].filename).then(
+                sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).metadata().then(function(metadata){
+                    return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).rotate().webp().toBuffer();
+                }).then(function(data){
+                    sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).resize(630).rotate().toFile('./uploads/picExhibition_300/'+picExhibition[i].filename,function(err, info){
+                        if(err)
+                            console.log(err);
+                        else
+                        {
+                            sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename)
+                                .composite([{ input:data, gravity: 'center'}])
+                                .jpeg( { quality: 100 } ).rotate()
+                                .toFile('./uploads/picExhibition_watermark/'+picExhibition[i].filename,(err, info) => {
+                                    if (err) {
+                                        console.log(err);
+                                    }
+                                });
+                        }
+                    });
+                })
+            );
+            await sharp('./uploads/picExhibition/'+picExhibition[i].filename).metadata().then(function(metadata){
+                newExhibition.imageExhibition.push({picOriginalName:picExhibition[i].originalname,picEncoding:picExhibition[i].encoding, picMimetype:picExhibition[i].mimetype, picDestination:picExhibition[i].destination,
+                    picFilename:picExhibition[i].filename, picPath:picExhibition[i].path, picSize:picExhibition[i].size,
+                    picWidth:metadata.width, picHeight:metadata.height});
+            });
+        }
     }
     newExhibition.uploadId=req.user.lastName+" "+req.user.firstName;
     newExhibition.save(function (err) {

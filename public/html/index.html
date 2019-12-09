@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Livig Draw</title>
@@ -9,188 +10,141 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://demo.bootstraptor.com/starter-kit-pro/assets/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Baskervville|Nanum+Myeongjo&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <!-- Plugins -->
-    <link rel="stylesheet" href="../css/index_style.css"/>
-    <link rel="stylesheet" href="../css/footer.css"/>
-    <link rel="stylesheet" href="../css/nav_style.css"/>
-    <link rel="stylesheet" href="../css/footer_style.css"/>
+    <link rel="stylesheet" href="../css/index_style.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/newheader.css" />
+    <link rel="stylesheet" href="../css/footer_style.css" />
     <script src="../js/hooni.js"></script>
 </head>
 
 <body>
-<style type="text/css">
-
-</style>
-
-<header class="target-hover" style="font-family: 'Cabin', sans-serif;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="../images/logo.png" style=""></a>
-        <button id="mobile_toggle_icon" class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Paints</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Intro</a>
-                </li>
-            </ul>
-            <ul id="searchbar_1" class="right-menu ml-auto">
-                <!-- 					<li><i class="fa fa-facebook"></i></li>
-                                    <li><i class="fa fa-instagram"></i></li>
-                                    <li><i class="fa fa-pinterest"></i></li> -->
+    <header class="mainheader">
+        <div class="logo"><a href="/"><img src="/logo/logoImage.png" /></a></div>
+        <input class="nav-toggle" id="nav-toggle" type="checkbox" />
+        <nav>
+            <ul>
                 <li>
+                    <h1 class="logo only_mobile" style=" text-align: center"><a href="/"><img src="/logo/logoImage.png"
+                                style="height:50px" /></a></h1>
+                </li>
+                <li class="only_mobile">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label=""
-                               aria-describedby="basic-addon2">
-
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">Search</span>
-                        </div>
+                        <input class="form-control" type="text" placeholder="" aria-label=""
+                            aria-describedby="basic-addon2" />
+                        <div class="input-group-append"><span class="input-group-text" id="basic-addon1"
+                                style="padding: 0px 8px 0px 8px"><i class="flaticon-search icons"
+                                    style="margin:0"></i></span></div>
                     </div>
                 </li>
+                <li><a class="mainpage" href="/">회사소개</a></li>
+                <li><a class="borderpage" href="/border">작품보기</a></li>
+                <li><a class="exhibitionpage" href="/exhibition">전시회</a></li>
+                <!--li-->
+                <!--    a(href='#') Blog-->
+                <!--li-->
+                <!--    a(href='#') About-->
+                <label class="btn_close only_mobile" for="nav-toggle"><span></span>X</label>
+            </ul>
+        </nav>
+        <div class="icon_box">
+            <ul class="search_icon"><i class="flaticon-search-1 icons"></i><a href="/border"><i
+                        class="flaticon-picture-2 icons"></i></a>
+                <!--i#mobile_heartbutton.flaticon-like-1.icons-->
             </ul>
         </div>
-        <ul id="searchbar_2" class="right-menu ml-auto">
+        <label class="nav-toggle-label" for="nav-toggle"><span></span></label>
+        <div id="nav_boundary_id"></div>
+    </header>
 
-            <li>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="" aria-label=""
-                           aria-describedby="basic-addon2">
-                    <i class="fa fa-times"></i>
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">Search</span>
-                    </div>
-                </div>
-            </li>
-
-<!--            <li><i class="fa fa-times"></i>-->
-<!--            </li>-->
-
-        </ul>
-        <ul class="search_icon">
-            <i id="mobile_searchbutton" class="fa fa-search"></i>
-            <i id="mobile_heartbutton" class="fa fa-heart"></i>
-        </ul>
-    </nav>
-</header>
-
-<div class="banner">
-    <a><img src="images/image01.jpg" style="width: 100%;"></a>
-</div>
-
-<div class="container">
-    <div id="columns">
-        <figure>
-            <img src="http://via.placeholder.com/320x450/3F51B5/fff">
-        </figure>
-
-        <figure>
-            <img src="http://via.placeholder.com/320x700/3F51B5/fff">
-        </figure>
-
-        <figure>
-            <img src="http://via.placeholder.com/320x200/3F51B5/fff">
-        </figure>
-
-        <figure>
-            <img src="http://via.placeholder.com/320x100/3F51B5/fff">
-        </figure>
-
-        <figure>
-            <img src="http://via.placeholder.com/320x600/3F51B5/fff">
-        </figure>
-
-        <figure>
-            <img src="http://via.placeholder.com/320x450/3F51B5/fff">
-        </figure>
-
-        <figure>
-            <img src="http://via.placeholder.com/320x450/3F51B5/fff">
-        </figure>
-
-        <figure>
-            <img src="http://via.placeholder.com/320x450/3F51B5/fff">
-        </figure>
-
-        <figure>
-            <img src="http://via.placeholder.com/320x450/3F51B5/fff">
-        </figure>
+    <div class="banner">
+        <div class="bannerComment">
+            Early Works of Great artists
+        </div>
+        <div class="bannerSubComment">
+            "세상을 바꿀 위대한 작가의 작품을 팝니다"
+        </div>
     </div>
-</div>
 
-<!-- Footer -->
-
-<!-- Footer -->
-
-<footer class="page-footer font-small teal pt-4 footerhead">
     <div class="container">
-        <!-- Footer Text -->
-        <div class="container-fluid text-center text-md-left">
+        <div class="mainContainer">
+            <div class="mainComment">Great Artist's Works!</div>
+            <div class="mainSort"></div>
+        </div>
+        <div class="mainWorks">
+            <header class="headerItem">HEADER</header>
+            <main class="mainItem">MAIN</main>
+            <aside class="asideItem">ASIDE</aside>
+            <footer class="footerItem">FOOTER</footer>
+        </div>
+    </div>
 
-            <!-- Grid row -->
-            <div class="row">
+    <!-- Footer -->
 
-                <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
+    <!-- Footer -->
 
-                    <!-- Content -->
-                    <h5 class="text-uppercase font-weight-bold">About Us</h5>
-                    <a class="contact" style="font-size: 90%;">충청북도 청주시 서원구 내수동로114번길 63(사창동) 대경빌 101호</a>
+    <footer class="page-footer font-small teal pt-4 footerhead">
+        <div class="container">
+            <!-- Footer Text -->
+            <div class="container-fluid text-center text-md-left">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-6 mt-md-0 mt-3">
+
+                        <!-- Content -->
+                        <h5 class="text-uppercase font-weight-bold">About Us</h5>
+                        <a class="contact" style="font-size: 90%;">충청북도 청주시 서원구 내수동로114번길 63(사창동) 대경빌 101호</a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none pb-3">
+
+                    <!-- Grid column -->
+                    <div class="col-md-6 mb-md-0 mb-3 contact">
+
+                        <!-- Content -->
+                        <h5 class="text-uppercase font-weight-bold contact">Contact Us</h5>
+                        <a>대표자명 : 길세현</a><br>
+                        <a>대표번호 : 010 - 2760 - 2021</a><br>
+                        <a>대표메일 : </a><a href="http://Viewniz.official@gmail.com">Viewniz.official@gmail.com</a>
+                    </div>
+                    <!-- Grid column -->
 
                 </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-6 mb-md-0 mb-3 contact">
-
-                    <!-- Content -->
-                    <h5 class="text-uppercase font-weight-bold contact">Contact Us</h5>
-                    <a>대표자명 : 길세현</a><br>
-                    <a>대표번호 : 010 - 2760 - 2021</a><br>
-                    <a>대표메일 : </a><a href="http://Viewniz.official@gmail.com">Viewniz.official@gmail.com</a>
-                </div>
-                <!-- Grid column -->
+                <!-- Grid row -->
 
             </div>
-            <!-- Grid row -->
+            <!-- Footer Text -->
 
+            <!-- Copyright -->
+            <!--    <div class="footer-copyright text-center py-3 copyright">-->
+            <!--        <a>충청북도 청주시 서원구 내수동로114번길 63(사창동) 대경빌 101호</a>-->
+            <!--    </div>-->
+            <div class="footer-copyright text-center py-3 copyright">© 2018 Copyright:
+                <a href=""> ViewNiz</a>
+            </div>
+            <!-- Copyright -->
         </div>
-        <!-- Footer Text -->
+    </footer>
 
-        <!-- Copyright -->
-        <!--    <div class="footer-copyright text-center py-3 copyright">-->
-        <!--        <a>충청북도 청주시 서원구 내수동로114번길 63(사창동) 대경빌 101호</a>-->
-        <!--    </div>-->
-        <div class="footer-copyright text-center py-3 copyright">© 2018 Copyright:
-            <a href=""> ViewNiz</a>
-        </div>
-        <!-- Copyright -->
-    </div>
-</footer>
-
-<!-- Footer -->
+    <!-- Footer -->
 </body>
 
 </html>
