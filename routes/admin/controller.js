@@ -60,11 +60,23 @@ exports.admin_logout= function(req, res){
     res.redirect('/admin/login');
 };
 exports.admin_border= function(req, res, next) {
-    Border.find(function (err, border) {
+    Options.find({type:'subject'},function (err, subject) {
+        Options.find({type:'style'},function (err, style) {
+            Options.find({type:'medium'},function (err, medium) {
+                Options.find({type:'material'},function (err, material) {
+                    Border.find(function (err, border) {
+                        if(err) console.log(err);
+                        res.render('admin/border',{border:border,user:req.user,subject:subject,style:style,medium:medium,material:material});
+                    });
+                });
+            });
+        });
+    });
+    /*Border.find(function (err, border) {
         if (err) console.log(err);
         console.log(req.user._id);
         res.render('admin/border', {border: border,user:req.user});
-    });
+    });*/
 };
 exports.admin_user= function(req, res, next) {
     User.find(function (err, users) {
@@ -168,7 +180,7 @@ exports.admin_site_option_submit_post= function(req, res, next) {
             res.send("overlap error");
             return;
         }
-        let newOption = new Option();
+        let newOption = new Options();
         newOption.type = type;
         newOption.option = option;
         newOption.value = value;
