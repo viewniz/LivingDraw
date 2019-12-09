@@ -35,7 +35,8 @@ html(lang='en')
                                             .Galleryframe_image
                                                 .tumble
                                                     .centered
-                                                        img(src="/picPoster/" + exhibitions[j].image[0].picFilename)
+                                                        if(exhibitions[j].image[0])
+                                                            img(src="/picPoster/" + exhibitions[j].image[0].picFilename)
                                             .detail
                                                 .terminateday.sub
                                                     =exhibitions[j].startDate + " ~ " + exhibitions[j].endDate
