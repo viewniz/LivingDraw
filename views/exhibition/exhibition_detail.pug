@@ -107,9 +107,9 @@ html(lang='en')
                       .centered
                         if(exhibition.imageExhibition[j].picWidth<exhibition.imageExhibition[j].picHeight)
                           .portrait
-                            img(src="/picExhibition/" + exhibition.imageExhibition[j].picFilename)
+                            img(src="/picExhibition_300/" + exhibition.imageExhibition[j].picFilename)
                         else
                           .landscape
-                            img(src="/picExhibition/" + exhibition.imageExhibition[j].picFilename)
+                            img(src="/picExhibition_300/" + exhibition.imageExhibition[j].picFilename)
 
   include ../components/footer

@@ -741,7 +741,36 @@ exports.admin_exhibition_upload_post= async (req,res,next)=>{
     }
     const picPoster = req.files['picPoster[]'];
     if(picPoster) {
-        for(let i=0;i<picPoster.length;i++) {
+        for (const pic of picPoster) {
+            await sharp('./uploads/picPosterRaw/'+pic.filename).rotate().toFile('./uploads/picPoster/'+pic.filename).then(
+                sharp('./uploads/picPosterRaw/'+pic.filename).metadata().then(function(metadata){
+                    return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
+                }).then(function(data){
+                    sharp('./uploads/picPosterRaw/'+pic.filename).resize(630).rotate().toFile('./uploads/picPoster_300/'+pic.filename,function(err, info){
+                        if(err)
+                            console.log(err);
+                        else
+                        {
+                            sharp('./uploads/picPosterRaw/'+pic.filename)
+                                .composite([{ input:data, gravity: 'center'}])
+                                .jpeg( { quality: 100 } ).rotate()
+                                .toFile('./uploads/picPoster_watermark/'+pic.filename,(err, info) => {
+                                    if (err) {
+                                        console.log(err);
+                                    }
+                                });
+                        }
+                    });
+                })
+            );
+            await sharp('./uploads/picPoster/'+pic.filename).metadata().then(function(metadata){
+                newExhibition.image.push({picOriginalName:pic.originalname,picEncoding:pic.encoding, picMimetype:pic.mimetype, picDestination:pic.destination,
+                    picFilename:pic.filename, picPath:pic.path, picSize:pic.size,
+                    picWidth:metadata.width, picHeight:metadata.height});
+            });
+        }
+
+        /*for(let i=0;i<picPoster.length;i++) {
             await sharp('./uploads/picPosterRaw/'+picPoster[i].filename).rotate().toFile('./uploads/picPoster/'+picPoster[i].filename).then(
                 sharp('./uploads/picPosterRaw/'+picPoster[i].filename).metadata().then(function(metadata){
                     return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).webp().toBuffer();
@@ -768,11 +797,39 @@ exports.admin_exhibition_upload_post= async (req,res,next)=>{
                     picFilename:picPoster[i].filename, picPath:picPoster[i].path, picSize:picPoster[i].size,
                     picWidth:metadata.width, picHeight:metadata.height});
             });
-        }
+        }*/
     }
     const picExhibition = req.files['picExhibition[]'];
     if(picExhibition){
-        for(let i=0;i<picExhibition.length;i++) {
+        for (const pic of picExhibition) {
+            await sharp('./uploads/picExhibitionRaw/'+pic.filename).rotate().toFile('./uploads/picExhibition/'+pic.filename).then(
+                sharp('./uploads/picExhibitionRaw/'+pic.filename).metadata().then(function(metadata){
+                    return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).rotate().webp().toBuffer();
+                }).then(function(data){
+                    sharp('./uploads/picExhibitionRaw/'+pic.filename).resize(630).rotate().toFile('./uploads/picExhibition_300/'+pic.filename,function(err, info){
+                        if(err)
+                            console.log(err);
+                        else
+                        {
+                            sharp('./uploads/picExhibitionRaw/'+pic.filename)
+                                .composite([{ input:data, gravity: 'center'}])
+                                .jpeg( { quality: 100 } ).rotate()
+                                .toFile('./uploads/picExhibition_watermark/'+pic.filename,(err, info) => {
+                                    if (err) {
+                                        console.log(err);
+                                    }
+                                });
+                        }
+                    });
+                })
+            );
+            await sharp('./uploads/picExhibition/'+pic.filename).metadata().then(function(metadata){
+                newExhibition.imageExhibition.push({picOriginalName:pic.originalname,picEncoding:pic.encoding, picMimetype:pic.mimetype, picDestination:pic.destination,
+                    picFilename:pic.filename, picPath:pic.path, picSize:pic.size,
+                    picWidth:metadata.width, picHeight:metadata.height});
+            });
+        }
+        /*for(let i=0;i<picExhibition.length;i++) {
             await sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).rotate().toFile('./uploads/picExhibition/'+picExhibition[i].filename).then(
                 sharp('./uploads/picExhibitionRaw/'+picExhibition[i].filename).metadata().then(function(metadata){
                     return sharp('./uploads/watermark/watermarkImage.png').resize(Math.round(metadata.width/3)).rotate().webp().toBuffer();
@@ -799,7 +856,7 @@ exports.admin_exhibition_upload_post= async (req,res,next)=>{
                     picFilename:picExhibition[i].filename, picPath:picExhibition[i].path, picSize:picExhibition[i].size,
                     picWidth:metadata.width, picHeight:metadata.height});
             });
-        }
+        }*/
     }
     newExhibition.uploadId=req.user.lastName+" "+req.user.firstName;
     newExhibition.save(function (err) {
