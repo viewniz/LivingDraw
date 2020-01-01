@@ -222,7 +222,15 @@ exports.admin_border_upload_post= async function(req, res, next) {
     newBorder.titleSub=req.body.titleSub;
     newBorder.category=req.body.category;
     newBorder.subject=req.body.subject;
-    newBorder.style=req.body.style;
+    if(typeof(req.body.style)!=='string')
+    {
+        for(let i=0;i<req.body.style.length;i++)
+        {
+            newBorder.style.push(req.body.style[i]);
+        }
+    }
+    else
+        newBorder.style.push(req.body.style);
     if(typeof(req.body.medium)!=='string')
     {
         for(let i=0;i<req.body.medium.length;i++)
@@ -430,7 +438,15 @@ exports.admin_border_update_post= async function(req, res, next) {
         newBorder.titleSub=req.body.titleSub;
         newBorder.category=req.body.category;
         newBorder.subject=req.body.subject;
-        newBorder.style=req.body.style;
+        if(typeof(req.body.style)!=='string')
+        {
+            for(let i=0;i<req.body.style.length;i++)
+            {
+                newBorder.style.push(req.body.style[i]);
+            }
+        }
+        else
+            newBorder.style.push(req.body.style);
         if(typeof(req.body.medium)!=='string')
         {
             for(let i=0;i<req.body.medium.length;i++)

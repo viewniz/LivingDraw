@@ -145,9 +145,9 @@ html(lang='en')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 스타일
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        select.select.select2_single.form-control(tabindex='-1', name='style')
+                                                        select.select2_multiple.form-control(multiple='multiple', name='style')
                                                             -for(let i=0;i<style.length;i++)
-                                                                option.style_option(value="" + style[i].option + "")=style[i].value
+                                                                option(value="" + style[i].option + "")=style[i].value
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 재료
                                                     .col-md-9.col-sm-9.col-xs-12

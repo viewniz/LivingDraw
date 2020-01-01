@@ -192,7 +192,7 @@ exports.upload_one_post = function (req, res, next) {
 
 exports.upload_two_post = function (req, res, next) {
     const subject = req.body.subject;
-    const style = req.body.style;
+    const style = req.body.style.split(',');
     const title = req.body.title;
     const titleSub = req.body.titleSub;
     const medium = req.body.medium.split(',');
@@ -206,10 +206,18 @@ exports.upload_two_post = function (req, res, next) {
         res.send("subject error");
         return false;
     }
-    if(style==="스타일선택" || !style)
+    if(!style)
     {
         res.send("style error");
         return false;
+    }
+    for(let i=0;i<style.length;i++)
+    {
+        if(!regTypeMe.test(style[i]))
+        {
+            res.send("style error");
+            return false;
+        }
     }
     if(title==="" || !title)
     {
@@ -513,7 +521,7 @@ exports.update_one_post = function (req, res, next) {
 exports.update_two_post = function (req, res, next) {
     const id = req.params.id;
     const subject = req.body.subject;
-    const style = req.body.style;
+    const style = req.body.style.split(',');
     const title = req.body.title;
     const titleSub = req.body.titleSub;
     const medium = req.body.medium.split(',');
@@ -527,10 +535,18 @@ exports.update_two_post = function (req, res, next) {
         res.send("subject error");
         return false;
     }
-    if(style==="스타일선택" || !style)
+    if(!style)
     {
         res.send("style error");
         return false;
+    }
+    for(let i=0;i<style.length;i++)
+    {
+        if(!regTypeMe.test(style[i]))
+        {
+            res.send("style error");
+            return false;
+        }
     }
     if(title==="" || !title)
     {

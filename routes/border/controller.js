@@ -36,6 +36,7 @@ exports.border_main_second = function (req, res, next) {
         else {
             // console.log("pre" + pre_page);
             let skip_num = (pre_page - 1) * countlist_out;
+            let countpage = 10; //한 화면에 출력될 페이지 수
             switch (req.query.sort) {
                 case 'old':
                     Border.find({}).skip(skip_num).limit(countlist_out).sort( { "submit_date": 1 } ).exec(function (err, border) {
@@ -47,8 +48,6 @@ exports.border_main_second = function (req, res, next) {
                             if (totalcount % countlist > 0) {
                                 totalpage++;
                             }
-
-                            var countpage = 3; //한 화면에 출력될 페이지 수
                             var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
 
                             var endpage = parseInt(startpage + countpage - 1);
@@ -82,8 +81,6 @@ exports.border_main_second = function (req, res, next) {
                             if (totalcount % countlist > 0) {
                                 totalpage++;
                             }
-
-                            var countpage = 3; //한 화면에 출력될 페이지 수
                             var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
 
                             var endpage = parseInt(startpage + countpage - 1);
@@ -117,8 +114,6 @@ exports.border_main_second = function (req, res, next) {
                             if (totalcount % countlist > 0) {
                                 totalpage++;
                             }
-
-                            var countpage = 3; //한 화면에 출력될 페이지 수
                             var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
 
                             var endpage = parseInt(startpage + countpage - 1);
@@ -152,8 +147,6 @@ exports.border_main_second = function (req, res, next) {
                             if (totalcount % countlist > 0) {
                                 totalpage++;
                             }
-
-                            var countpage = 3; //한 화면에 출력될 페이지 수
                             var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
 
                             var endpage = parseInt(startpage + countpage - 1);
@@ -187,8 +180,6 @@ exports.border_main_second = function (req, res, next) {
                             if (totalcount % countlist > 0) {
                                 totalpage++;
                             }
-
-                            var countpage = 3; //한 화면에 출력될 페이지 수
                             var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
 
                             var endpage = parseInt(startpage + countpage - 1);

@@ -55,13 +55,14 @@ html(lang="en")
                                 p 작품 스타일
                             .subtitle_category
                                 p 구매자가 작품을 찾는 데 도움이되는 스타일을 선택해주세요.
-                        select.custom-select.custom-select-lg.mb-3.select_style(name="style")
-                            option.style_option(selected="") 스타일선택
-                            -for(let i=0;i<style.length;i++)
-                                if(border.style === style[i].option)
-                                    option.style_option(value="" + style[i].option + "", selected)=style[i].value
-                                else
-                                    option.style_option(value="" + style[i].option + "")=style[i].value
+                            .seleted_styles
+                                ul#style_part.test
+                            select#style.custom-select.custom-select-lg.mb-3.select_style(name="style" style="overflow: scroll;" multiple="multiple")
+                                -for(let i=0;i<style.length;i++)
+                                    if(border.style.indexOf(style[i].option) !== -1)
+                                        option(value="" + style[i].option + "", selected)=style[i].value
+                                    else
+                                        option(value="" + style[i].option + "")=style[i].value
                         .form-row.category.mt-5
                             .title
                                 p 작품 명(한글)

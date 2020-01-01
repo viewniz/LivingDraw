@@ -1,13 +1,19 @@
 function updateTwo() {
     const frm = document.forms.two;
     const subject = frm.subject.value;
-    const style = frm.style.value;
     const title = frm.title.value;
     const titleSub = frm.titleSub.value;
+    let style = '';
     let medium = '';
     let material = '';
     const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9:,?!()+]{1,50}$/;
     const regTypeE = /^[A-Za-z0-9:,+?!()]{1,50}$/;
+    for (let i = 0; i < frm.style.length; i++) {
+        if (frm.style.options[i].selected === true) {
+            style+=frm.style.options[i].value+',';
+        }
+    }
+    style=style.substr(0,style.length-1);
     for (let i = 0; i < frm.medium.length; i++) {
         if (frm.medium.options[i].selected === true) {
             medium+=frm.medium.options[i].value+',';
@@ -25,7 +31,7 @@ function updateTwo() {
         alert("주제를 입력하세요.");
         return false;
     }
-    if(style==="스타일선택" || !style)
+    if(style==='' || !style)
     {
         alert("스타일을 입력하세요.");
         return false;

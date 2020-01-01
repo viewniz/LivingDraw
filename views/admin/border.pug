@@ -119,10 +119,14 @@ html(lang='en')
                                                                     =subject[j].value
                                                 td
                                                     if(style)
-                                                        -for(var j=0;j<style.length;j++)
-                                                            case border[i].style
-                                                                when style[j].option
-                                                                    =style[j].value
+                                                        - for(var k=0;k<style.length;k++)
+                                                            - for(var j=0;j<border[i].style.length;j++)
+                                                                case border[i].style[j]
+                                                                    when style[k].option
+                                                                        =style[k].value
+                                                                        if(border[i].style.length != j + 1)
+                                                                            | ,
+                                                                            br
                                                 td
                                                     if(medium)
                                                         - for(var k=0;k<medium.length;k++)

@@ -1,7 +1,7 @@
 const Exhibition = require('../../models/exhibition');
 
 exports.exhibition_main= function(req, res, next) {
-    Exhibition.find({}, (err, exhibitions)=>{
+    Exhibition.find({}).sort( { "submit_date": -1 } ).exec((err, exhibitions)=>{
         if(err){
             console.log(err);
         }

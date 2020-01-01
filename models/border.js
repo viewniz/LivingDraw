@@ -25,7 +25,7 @@ let BorderSchema = new Schema({
     titleSub:String,
     category:String,
     subject:String,
-    style:String,
+    style:[{type:String}],
     medium:[{type:String,required: true}],
     material:[{type:String,required: true}],
     height:{type:Number,required: true},
