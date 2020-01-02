@@ -295,10 +295,11 @@ exports.upload_three_post = function (req, res, next) {
     const price_string = req.body.price;
     const price= price_string.replace(/[^\d]+/g, '');
     const production_year = req.body.production_year;
+    const size_option = req.body.size_option;
     const description = req.body.description;
     const keyWords = req.body.keyWords.split(',');
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{0,1000}$/;
-    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{1,50}$/;
+    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{0,1000}$/;
+    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{1,50}$/;
     const regTypeN = /^[0-9+]{1,1000}$/;
     const subCheck1 = '$ne';
     const subCheck2 = '$lt';
@@ -328,6 +329,12 @@ exports.upload_three_post = function (req, res, next) {
     if(!regTypeN.test(production_year))
     {
         res.send("production_year error");
+        return;
+    }
+    if(!regType.test(size_option) || !(size_option.indexOf(subCheck1)===-1) || !(size_option.indexOf(subCheck2)===-1) || !(size_option.indexOf(subCheck3)===-1)
+        || !(size_option.indexOf(subCheck4)===-1) || !(size_option.indexOf(subCheck5)===-1))
+    {
+        res.send("size_option error");
         return;
     }
     if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
@@ -366,6 +373,7 @@ exports.upload_three_post = function (req, res, next) {
         tempBorder.width = width;
         tempBorder.height = height;
         tempBorder.depth = depth;
+        tempBorder.size_option = size_option;
         tempBorder.price = price;
         tempBorder.price_string = price_string;
         tempBorder.production_year = production_year;
@@ -629,13 +637,14 @@ exports.update_three_post = function (req, res, next) {
     const width = req.body.width;
     const height = req.body.height;
     const depth = req.body.depth;
+    const size_option = req.body.size_option;
     const price_string = req.body.price;
     const production_year = req.body.production_year;
     const price= price_string.replace(/[^\d]+/g, '');
     const description = req.body.description;
     const keyWords = req.body.keyWords.split(',');
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{0,1000}$/;
-    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{1,50}$/;
+    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{0,1000}$/;
+    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{1,50}$/;
     const regTypeN = /^[0-9+]{1,1000}$/;
     const subCheck1 = '$ne';
     const subCheck2 = '$lt';
@@ -667,6 +676,12 @@ exports.update_three_post = function (req, res, next) {
         res.send("production_year error");
         return;
     }
+    if(!regType.test(size_option) || !(size_option.indexOf(subCheck1)===-1) || !(size_option.indexOf(subCheck2)===-1) || !(size_option.indexOf(subCheck3)===-1)
+        || !(size_option.indexOf(subCheck4)===-1) || !(size_option.indexOf(subCheck5)===-1))
+    {
+        res.send("size_option error");
+        return;
+    }
     if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
         || !(description.indexOf(subCheck4)===-1) || !(description.indexOf(subCheck5)===-1))
     {
@@ -695,6 +710,7 @@ exports.update_three_post = function (req, res, next) {
         border.width = width;
         border.height = height;
         border.depth = depth;
+        border.size_option = size_option;
         border.price = price;
         border.price_string = price_string;
         border.description = description;

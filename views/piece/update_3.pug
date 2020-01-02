@@ -58,6 +58,9 @@ html(lang="en")
                             .form-group.col-md-4.work_size_border
                                 p 두께
                                 input#depth.form-control.Work_size(name="depth" placeholder="두께(cm)" type="text", maxlength='10', onKeyup="this.value=this.value.replace(/[^0-9]/g,'');", value=border.depth)
+                            .form-group.col-md-12.work_size_border
+                                p 크기 옵션
+                                input#size_option.form-control.Work_size(name="size_option" placeholder="옵션 (ex : 육각형 캔버스)" type="text", value=border.size_option)
                         .form-row.category.mt-5
                             .title.work_price
                                 p 작품가격

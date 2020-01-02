@@ -76,10 +76,20 @@ html
                                         a=border.lastName + border.firstName+" "
                                         a=border.lastNameE + ' ' + border.firstNameE
                                     .note_product_detail
-                                        a=border.width
-                                        a=" W x "
-                                        a=border.height +" H x "
-                                        a=border.depth+" cm"
+                                        if(border.width)
+                                            a= border.width + ' W '
+                                        if(border.width && border.height)
+                                            a= '* '
+                                        if(border.height)
+                                            a= border.height + ' H '
+                                        if(border.depth && border.height)
+                                            a= '* '
+                                        if(border.depth)
+                                            a= border.depth
+                                        if(border.width || border.height || border.depth)
+                                            a= ' cm '
+                                        if(border.size_option)
+                                            a=border.size_option
                                         a
                                         br
                                         a (

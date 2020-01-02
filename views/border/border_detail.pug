@@ -75,7 +75,21 @@ html
                                 a(style='font-size: 17px;')=border[i].title
                             .figure_kind
                                 a(style='padding: 0; padding-left: 0;')
-                                a=border[i].width+' W * '+border[i].height+' H * '+border[i].depth+' cm'
+                                a
+                                    if(border[i].width)
+                                        = border[i].width + ' W '
+                                    if(border[i].width && border[i].height)
+                                        = '* '
+                                    if(border[i].height)
+                                        = border[i].height + ' H '
+                                    if(border[i].depth && border[i].height)
+                                        = '* '
+                                    if(border[i].depth)
+                                        = border[i].depth
+                                    if(border[i].width || border[i].height || border[i].depth)
+                                        = ' cm '
+                                    if(border[i].size_option)
+                                        =border[i].size_option
                             .figure_artist
                                 a(style='padding-right: 0px;')=border[i].lastName + border[i].firstName
                                 a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE+' '

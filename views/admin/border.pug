@@ -108,7 +108,21 @@ html(lang='en')
                                                         td 프린트
                                                     default
                                                         td error
-                                                td= border[i].width +" W * " + border[i].height +" H * " + border[i].depth + " cm"
+                                                td
+                                                    if(border[i].width)
+                                                        = border[i].width + ' W '
+                                                    if(border[i].width && border[i].height)
+                                                        = '* '
+                                                    if(border[i].height)
+                                                        = border[i].height + ' H '
+                                                    if(border[i].depth && border[i].height)
+                                                        = '* '
+                                                    if(border[i].depth)
+                                                        = border[i].depth
+                                                    if(border[i].width || border[i].height || border[i].depth)
+                                                        = ' cm '
+                                                    if(border[i].size_option)
+                                                        =border[i].size_option
                                                 td= border[i].price_string +"원"
                                                 td
                                                     if(subject)

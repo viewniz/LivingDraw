@@ -3,12 +3,12 @@ function updateThree() {
     const width = frm.width.value;
     const height = frm.height.value;
     const depth = frm.depth.value;
+    const size_option = frm.size_option.value;
     const price = frm.price.value;
     const production_year = frm.production_year.value;
     const description = frm.description.value;
-
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{0,1000}$/;
-    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{1,50}$/;
+    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{0,1000}$/;
+    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{1,50}$/;
     const regTypeN = /^[0-9+]{1,1000}$/;
     const regTypeP = /^[0-9,+]{1,1000}$/;
     const subCheck1 = '$ne';
@@ -46,6 +46,13 @@ function updateThree() {
         document.getElementById('production_year').focus();
         return false;
     }
+    if(!regType.test(size_option) || !(size_option.indexOf(subCheck1)===-1) || !(size_option.indexOf(subCheck2)===-1) || !(size_option.indexOf(subCheck3)===-1)
+        || !(size_option.indexOf(subCheck4)===-1) || !(size_option.indexOf(subCheck5)===-1))
+    {
+        alert("정당한 값을 입력하세요.");
+        document.getElementById('size_option').focus();
+        return false;
+    }
     if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
         || !(description.indexOf(subCheck4)===-1) || !(description.indexOf(subCheck5)===-1))
     {
@@ -67,7 +74,7 @@ function updateThree() {
     }
     keyWords=keyWords.substr(0,keyWords.length-1);
 
-    const item = {width: width, height: height, depth: depth, price: price, description: description, keyWords: keyWords, production_year: production_year};
+    const item = {width: width, height: height, depth: depth, price: price, description: description, keyWords: keyWords, production_year: production_year, size_option:size_option};
     const url = document.location.href.split("/");
     const id = url[url.length-1];
     $.ajax({

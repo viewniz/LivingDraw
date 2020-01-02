@@ -50,7 +50,17 @@ html(lang='en')
                                             .cart__item__details__left
                                                 .cart__item__title=border[i].title + "(" + border[i].titleSub + ")"
                                                 .cart_item_author=border[i].lastName + border[i].firstName + "(" + border[i].firstNameE + " " + border[i].lastNameE + ")"
-                                                .cart_item_size=border[i].width + " W * " + border[i].height + " H * " + border[i].depth + " cm"
+                                                .cart_item_size
+                                                    if(border[i].width)
+                                                        =border[i].width + " W "
+                                                    if(border[i].height)
+                                                        ="* "+ border[i].height + " H "
+                                                    if(border[i].depth)
+                                                        ="* " + border[i].depth
+                                                    =" cm "
+                                                    if(border[i].size_option)
+                                                        =border[i].size_option
+                                                //=border[i].width + " W * " + border[i].height + " H * " + border[i].depth + " cm " + border[i].size_option
                                             .cart__item__details__right
                                                 a(href='javascript:void(0);', onclick='removePiece("'+border[i]._id+'"); return false;') Remove
                                     .cart__item__pricing
