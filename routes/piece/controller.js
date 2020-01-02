@@ -294,6 +294,7 @@ exports.upload_three_post = function (req, res, next) {
     const depth = req.body.depth;
     const price_string = req.body.price;
     const price= price_string.replace(/[^\d]+/g, '');
+    const production_year = req.body.production_year;
     const description = req.body.description;
     const keyWords = req.body.keyWords.split(',');
     const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{0,1000}$/;
@@ -322,6 +323,11 @@ exports.upload_three_post = function (req, res, next) {
     if(!regTypeN.test(price))
     {
         res.send("price error");
+        return;
+    }
+    if(!regTypeN.test(production_year))
+    {
+        res.send("production_year error");
         return;
     }
     if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
@@ -362,6 +368,7 @@ exports.upload_three_post = function (req, res, next) {
         tempBorder.depth = depth;
         tempBorder.price = price;
         tempBorder.price_string = price_string;
+        tempBorder.production_year = production_year;
         tempBorder.description = description;
         tempBorder.keyWords = keyWords;
         tempBorder.firstName = req.user.firstName;
@@ -623,6 +630,7 @@ exports.update_three_post = function (req, res, next) {
     const height = req.body.height;
     const depth = req.body.depth;
     const price_string = req.body.price;
+    const production_year = req.body.production_year;
     const price= price_string.replace(/[^\d]+/g, '');
     const description = req.body.description;
     const keyWords = req.body.keyWords.split(',');
@@ -652,6 +660,11 @@ exports.update_three_post = function (req, res, next) {
     if(!regTypeN.test(price))
     {
         res.send("price error");
+        return;
+    }
+    if(!regTypeN.test(production_year))
+    {
+        res.send("production_year error");
         return;
     }
     if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
@@ -686,6 +699,7 @@ exports.update_three_post = function (req, res, next) {
         border.price_string = price_string;
         border.description = description;
         border.keyWords = keyWords;
+        border.production_year = production_year;
         Border.updateOne({_id:id}, border, function (err, result) {
             if(err)
             {

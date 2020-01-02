@@ -174,10 +174,10 @@ html(lang='en')
                                                         label.control-label.float-right 두께
                                                     .col-md-2.col-sm-2.col-xs-8
                                                         input.form-control(type='text', placeholder='Depth', name="depth")
-                                                //.form-group
+                                                .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 제작년도
                                                     .col-md-9.col-sm-9.col-xs-12
-                                                        select#year.select.select2_single.form-control(tabindex='-1', name='productionYear')
+                                                        select#year.select.select2_single.form-control(tabindex='-1', name='production_year')
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 가격
                                                     .col-md-9.col-sm-9.col-xs-12
@@ -231,3 +231,4 @@ html(lang='en')
                 // Custom Theme Scripts
                 script(src='/build/js/custom.min.js')
                 script(src='/js/adminBorderUpdate.js')
+                script(src='/js/yearSelector.js')

@@ -4,6 +4,7 @@ function updateThree() {
     const height = frm.height.value;
     const depth = frm.depth.value;
     const price = frm.price.value;
+    const production_year = frm.production_year.value;
     const description = frm.description.value;
 
     const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~+]{0,1000}$/;
@@ -39,6 +40,12 @@ function updateThree() {
         document.getElementById('price').focus();
         return false;
     }
+    if(!regTypeN.test(production_year))
+    {
+        alert("제작년도는 숫자만 입력 가능합니다.");
+        document.getElementById('production_year').focus();
+        return false;
+    }
     if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
         || !(description.indexOf(subCheck4)===-1) || !(description.indexOf(subCheck5)===-1))
     {
@@ -60,7 +67,7 @@ function updateThree() {
     }
     keyWords=keyWords.substr(0,keyWords.length-1);
 
-    const item = {width: width, height: height, depth: depth, price: price, description: description, keyWords: keyWords};
+    const item = {width: width, height: height, depth: depth, price: price, description: description, keyWords: keyWords, production_year: production_year};
     const url = document.location.href.split("/");
     const id = url[url.length-1];
     $.ajax({

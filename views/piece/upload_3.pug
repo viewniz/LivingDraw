@@ -25,6 +25,7 @@ html(lang="en")
         script(src="../js/upload_three.js")
         script(src="https://use.fontawesome.com/releases/v5.2.0/js/all.js")
         script(src='/js/nav_js.js')
+        script(src='/js/yearSelector.js')
     body
         style.
             .mainheader {
@@ -58,6 +59,11 @@ html(lang="en")
                                 input#price.form-control.Wokr_price(name="price" placeholder="가격" type="text", maxlength='20')
                             .form-group.col-md-6.real_gain
                                 p#realPrice 실수령액 :
+                        .form-row.category.mt-5
+                            .title.work_price
+                                p 제작년도
+                            .form-group.col-md-12
+                                select#year(name="production_year")
                         .form-row.category.mt-5
                             .title.work_price
                                 p 키워드

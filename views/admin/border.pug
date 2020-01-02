@@ -67,7 +67,6 @@ html(lang='en')
                                 table#datatable-checkbox.table.table-striped.table-bordered.bulk_action
                                     thead
                                         tr
-                                            th
                                             th CheckBox
                                             th 작가
                                             th 영문
@@ -80,6 +79,7 @@ html(lang='en')
                                             th 스타일
                                             th 재료
                                             th 판
+                                            th 제작년도
                                             th 키워드
                                             th 조회수
                                             th 좋아요
@@ -88,7 +88,6 @@ html(lang='en')
                                     tbody
                                         - for(var i=0;i<border.length;i++)
                                             tr
-                                                td
                                                 th
                                                     button.btn.btn-default(type='button', onclick="location.href='/admin/border/update/"+border[i]._id+"' ") 수정
                                                     button.btn.btn-default(type='button', onclick='deleteBorder("'+border[i]._id+'")') 삭제
@@ -147,6 +146,7 @@ html(lang='en')
                                                                         if(border[i].material.length!=j+1)
                                                                             |,
                                                                             br
+                                                td= border[i].production_year
                                                 td
                                                     - for(var j=0;j<border[i].keyWords.length;j++)
                                                         =border[i].keyWords[j]

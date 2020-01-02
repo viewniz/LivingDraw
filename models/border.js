@@ -34,7 +34,7 @@ let BorderSchema = new Schema({
     price:{type:Number,required: true},
     price_string:{type:String,required: true},
     keyWords:[{type:String}],
-    production_year:{tpye:Number},
+    production_year:{type:Number},
     description:String,
     deliveryHow:String,
     submit_date:{ type: String, default: moment().format('YYYY-MM-DD HH:mm:ss')},

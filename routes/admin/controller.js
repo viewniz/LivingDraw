@@ -222,6 +222,8 @@ exports.admin_border_upload_post= async function(req, res, next) {
     newBorder.titleSub=req.body.titleSub;
     newBorder.category=req.body.category;
     newBorder.subject=req.body.subject;
+    newBorder.production_year=req.body.production_year;
+
     if(typeof(req.body.style)!=='string')
     {
         for(let i=0;i<req.body.style.length;i++)
@@ -438,6 +440,8 @@ exports.admin_border_update_post= async function(req, res, next) {
         newBorder.titleSub=req.body.titleSub;
         newBorder.category=req.body.category;
         newBorder.subject=req.body.subject;
+        newBorder.production_year=req.body.production_year;
+        console.log(req.body.production_year);
         if(typeof(req.body.style)!=='string')
         {
             for(let i=0;i<req.body.style.length;i++)
