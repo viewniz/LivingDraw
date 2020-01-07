@@ -12,6 +12,8 @@ const Border = require('../../models/border');
 const Border_temp = require('../../models/border_temp');
 const Options = require('../../models/options');
 
+const regExpression = require('../../config/regExpression');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -197,9 +199,6 @@ exports.upload_two_post = function (req, res, next) {
     const titleSub = req.body.titleSub;
     const medium = req.body.medium.split(',');
     const material = req.body.material.split(',');
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9:,?!()+]{1,50}$/;
-    const regTypeE = /^[A-Za-z0-9:,+?!()]{1,50}$/;
-    const regTypeMe = /^[A-Za-z+]{2}$/;
 
     if(subject==="주제선택" || !subject)
     {
@@ -213,7 +212,7 @@ exports.upload_two_post = function (req, res, next) {
     }
     for(let i=0;i<style.length;i++)
     {
-        if(!regTypeMe.test(style[i]))
+        if(!regExpression.typeMe(style[i]))
         {
             res.send("style error");
             return false;
@@ -224,7 +223,7 @@ exports.upload_two_post = function (req, res, next) {
         res.send("title error");
         return false;
     }
-    if(!regType.test(title))
+    if(!regExpression(title))
     {
         res.send("title error");
         return false;
@@ -234,7 +233,7 @@ exports.upload_two_post = function (req, res, next) {
         res.send("titleSub error");
         return false;
     }
-    if(!regTypeE.test(titleSub))
+    if(!regExpression.typeEnglish(titleSub))
     {
         res.send("titleSub error");
         return false;
@@ -246,7 +245,7 @@ exports.upload_two_post = function (req, res, next) {
     }
     for(let i=0;i<medium.length;i++)
     {
-        if(!regTypeMe.test(medium[i]))
+        if(!regExpression.typeMe(medium[i]))
         {
             res.send("medium error");
             return false;
@@ -259,7 +258,7 @@ exports.upload_two_post = function (req, res, next) {
     }
     for(let i=0;i<material.length;i++)
     {
-        if(!regTypeMe.test(material[i]))
+        if(!regExpression.typeMe(material[i]))
         {
             res.send("material error");
             return false;
@@ -298,53 +297,50 @@ exports.upload_three_post = function (req, res, next) {
     const size_option = req.body.size_option;
     const description = req.body.description;
     const keyWords = req.body.keyWords.split(',');
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{0,1000}$/;
-    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{1,50}$/;
-    const regTypeN = /^[0-9+]{1,1000}$/;
     const subCheck1 = '$ne';
     const subCheck2 = '$lt';
     const subCheck3 = '$gt';
     const subCheck4 = '$lte';
     const subCheck5 = '$gte';
-    if(!regTypeN.test(width))
+    if(!regExpression.typeNumber(width))
     {
         res.send("width error");
         return;
     }
-    if(!regTypeN.test(height))
+    if(!regExpression.typeNumber(height))
     {
         res.send("height error");
         return;
     }
-    if(!regTypeN.test(depth))
+    if(!regExpression.typeNumber(depth))
     {
         res.send("depth error");
         return;
     }
-    if(!regTypeN.test(price))
+    if(!regExpression.typeNumber(price))
     {
         res.send("price error");
         return;
     }
-    if(!regTypeN.test(production_year))
+    if(!regExpression.typeNumber(production_year))
     {
         res.send("production_year error");
         return;
     }
-    if(!regType.test(size_option) || !(size_option.indexOf(subCheck1)===-1) || !(size_option.indexOf(subCheck2)===-1) || !(size_option.indexOf(subCheck3)===-1)
+    if(!regExpression(size_option) || !(size_option.indexOf(subCheck1)===-1) || !(size_option.indexOf(subCheck2)===-1) || !(size_option.indexOf(subCheck3)===-1)
         || !(size_option.indexOf(subCheck4)===-1) || !(size_option.indexOf(subCheck5)===-1))
     {
         res.send("size_option error");
         return;
     }
-    if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
+    if(!regExpression(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
         || !(description.indexOf(subCheck4)===-1) || !(description.indexOf(subCheck5)===-1))
     {
         res.send("description error");
         return;
     }
     for (let keyword in keyWords){
-        if(!regTypeT.test(keyword) || !(keyword.indexOf(subCheck1)===-1) || !(keyword.indexOf(subCheck2)===-1)
+        if(!regExpression.typeOneToFifty(keyword) || !(keyword.indexOf(subCheck1)===-1) || !(keyword.indexOf(subCheck2)===-1)
             || !(keyword.indexOf(subCheck3)===-1) || !(keyword.indexOf(subCheck4)===-1) || !(keyword.indexOf(subCheck5)===-1))
         {
             res.send("keyword error");
@@ -541,9 +537,6 @@ exports.update_two_post = function (req, res, next) {
     const titleSub = req.body.titleSub;
     const medium = req.body.medium.split(',');
     const material = req.body.material.split(',');
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣0-9:,?!()+]{1,50}$/;
-    const regTypeE = /^[A-Za-z0-9:,+?!()]{1,50}$/;
-    const regTypeMe = /^[A-Za-z+]{2}$/;
 
     if(subject==="주제선택" || !subject)
     {
@@ -557,7 +550,7 @@ exports.update_two_post = function (req, res, next) {
     }
     for(let i=0;i<style.length;i++)
     {
-        if(!regTypeMe.test(style[i]))
+        if(!regExpression.typeMe(style[i]))
         {
             res.send("style error");
             return false;
@@ -568,7 +561,7 @@ exports.update_two_post = function (req, res, next) {
         res.send("title error");
         return false;
     }
-    if(!regType.test(title))
+    if(!regExpression(title))
     {
         res.send("title error");
         return false;
@@ -578,7 +571,7 @@ exports.update_two_post = function (req, res, next) {
         res.send("titleSub error");
         return false;
     }
-    if(!regTypeE.test(titleSub))
+    if(!regExpression.typeEnglish(titleSub))
     {
         res.send("titleSub error");
         return false;
@@ -590,7 +583,7 @@ exports.update_two_post = function (req, res, next) {
     }
     for(let i=0;i<medium.length;i++)
     {
-        if(!regTypeMe.test(medium[i]))
+        if(!regExpression.typeMe(medium[i]))
         {
             res.send("medium error");
             return false;
@@ -603,7 +596,7 @@ exports.update_two_post = function (req, res, next) {
     }
     for(let i=0;i<material.length;i++)
     {
-        if(!regTypeMe.test(material[i]))
+        if(!regExpression.typeMe(material[i]))
         {
             res.send("material error");
             return false;
@@ -643,53 +636,50 @@ exports.update_three_post = function (req, res, next) {
     const price= price_string.replace(/[^\d]+/g, '');
     const description = req.body.description;
     const keyWords = req.body.keyWords.split(',');
-    const regType = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{0,1000}$/;
-    const regTypeT = /^[ㄱ-ㅎㅏ-ㅣ가-힣A-Za-z0-9!@#$%^&*().,?;:'"~ +]{1,50}$/;
-    const regTypeN = /^[0-9+]{1,1000}$/;
     const subCheck1 = '$ne';
     const subCheck2 = '$lt';
     const subCheck3 = '$gt';
     const subCheck4 = '$lte';
     const subCheck5 = '$gte';
-    if(!regTypeN.test(width))
+    if(!regExpression.typeNumber(width))
     {
         res.send("width error");
         return;
     }
-    if(!regTypeN.test(height))
+    if(!regExpression.typeNumber(height))
     {
         res.send("height error");
         return;
     }
-    if(!regTypeN.test(depth))
+    if(!regExpression.typeNumber(depth))
     {
         res.send("depth error");
         return;
     }
-    if(!regTypeN.test(price))
+    if(!regExpression.typeNumber(price))
     {
         res.send("price error");
         return;
     }
-    if(!regTypeN.test(production_year))
+    if(!regExpression.typeNumber(production_year))
     {
         res.send("production_year error");
         return;
     }
-    if(!regType.test(size_option) || !(size_option.indexOf(subCheck1)===-1) || !(size_option.indexOf(subCheck2)===-1) || !(size_option.indexOf(subCheck3)===-1)
+    if(!regExpression(size_option) || !(size_option.indexOf(subCheck1)===-1) || !(size_option.indexOf(subCheck2)===-1) || !(size_option.indexOf(subCheck3)===-1)
         || !(size_option.indexOf(subCheck4)===-1) || !(size_option.indexOf(subCheck5)===-1))
     {
         res.send("size_option error");
         return;
     }
-    if(!regType.test(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
+    if(!regExpression(description) || !(description.indexOf(subCheck1)===-1) || !(description.indexOf(subCheck2)===-1) || !(description.indexOf(subCheck3)===-1)
         || !(description.indexOf(subCheck4)===-1) || !(description.indexOf(subCheck5)===-1))
     {
         res.send("description error");
         return;
     }
     for (let keyword in keyWords){
-        if(!regTypeT.test(keyword) || !(keyword.indexOf(subCheck1)===-1) || !(keyword.indexOf(subCheck2)===-1)
+        if(!regExpression.typeOneToFifty(keyword) || !(keyword.indexOf(subCheck1)===-1) || !(keyword.indexOf(subCheck2)===-1)
             || !(keyword.indexOf(subCheck3)===-1) || !(keyword.indexOf(subCheck4)===-1) || !(keyword.indexOf(subCheck5)===-1))
         {
             res.send("keyword error");
