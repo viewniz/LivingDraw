@@ -1,8 +1,6 @@
 const fs = require('fs');
 const passport = require('passport');
 const sharp = require('sharp');
-const jo = require('jpeg-autorotate');
-const options = {quality: 85};
 
 const moment = require('moment');
 require('moment-timezone');
@@ -11,7 +9,6 @@ const Border = require('../../models/border');
 const User = require('../../models/user');
 const Admin = require('../../models/adminUser');
 const Options = require('../../models/options');
-const Exhibition = require('../../models/exhibition');
 
 exports.admin_login_check_yes=function(req,res,next) {         //구매자 등록페이지 들어갈 때 검사
     if(!req.user)

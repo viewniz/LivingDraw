@@ -68,6 +68,7 @@ html(lang='en')
                                     thead
                                         tr
                                             th CheckBox
+                                            th 등록일(수정)
                                             th 작가
                                             th 영문
                                             th 제목
@@ -89,8 +90,9 @@ html(lang='en')
                                         - for(var i=0;i<border.length;i++)
                                             tr
                                                 th
-                                                    button.btn.btn-default(type='button', onclick="location.href='/admin/border/update/"+border[i]._id+"' ") 수정
+                                                    button.btn.btn-default(type='button', onclick="location.href='/admin/border/"+border[i]._id+"' ") 수정
                                                     button.btn.btn-default(type='button', onclick='deleteBorder("'+border[i]._id+'")') 삭제
+                                                td= border[i].submit_date
                                                 td= border[i].lastName + " " + border[i].firstName
                                                 td= border[i].lastNameE + " " + border[i].firstNameE
                                                 td= border[i].title

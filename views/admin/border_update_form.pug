@@ -60,7 +60,7 @@ html(lang='en')
                                                     i.fa.fa-close
                                         .clearfix
                                     .x_content
-                                        form.form-group(action='../update', method="post", enctype="multipart/form-data")
+                                        form.form-group(action='/admin/border', method="POST", enctype="multipart/form-data")
                                             .form-horizontal.form-label-left.input_mask
                                                 .form-group
                                                     label.control-label.col-md-3.col-sm-3.col-xs-12 작품 사진
@@ -72,7 +72,7 @@ html(lang='en')
                                                                 img(src="/pic/"+border.image[0].picFilename)
                                                             button.btn.btn-primary(type='button', onclick='removeImage(0,"'+border._id+'")') 삭제
                                                         else
-                                                            input.form-control(type='file', placeholder='사진 1', name="pic")
+                                                            input.form-control(type='file', placeholder='사진 1', name="picRaw")
                                                             .img_wrap(style='display:none;')
                                                                 img(src='#', alt='your image')
                                                 .form-group
@@ -85,7 +85,7 @@ html(lang='en')
                                                                 img(src="/pic/" + border.image[1].picFilename)
                                                             button.btn.btn-primary(type='button', onclick='removeImage(1,"'+border._id+'")') 삭제
                                                         else
-                                                            input.form-control(type='file', placeholder='사진 2', name="pic")
+                                                            input.form-control(type='file', placeholder='사진 2', name="picRaw")
                                                             .img_wrap(style='display:none;')
                                                                 img(src='#', alt='your image')
                                                 .form-group
@@ -98,7 +98,7 @@ html(lang='en')
                                                                 img(src="/pic/" + border.image[2].picFilename)
                                                             button.btn.btn-primary(type='button', onclick='removeImage(2,"'+border._id+'")') 삭제
                                                         else
-                                                            input.form-control(type='file', placeholder='사진 3', name="pic")
+                                                            input.form-control(type='file', placeholder='사진 3', name="picRaw")
                                                             .img_wrap(style='display:none;')
                                                                 img(src='#', alt='your image')
                                                 .form-group
@@ -111,7 +111,7 @@ html(lang='en')
                                                                 img(src="/pic/" + border.image[3].picFilename)
                                                             button.btn.btn-primary(type='button', onclick='removeImage(3,"'+border._id+'")') 삭제
                                                         else
-                                                            input.form-control(type='file', placeholder='사진 4', name="pic")
+                                                            input.form-control(type='file', placeholder='사진 4', name="picRaw")
                                                             .img_wrap(style='display:none;')
                                                                 img(src='#', alt='your image')
                                                 .form-group
@@ -124,7 +124,7 @@ html(lang='en')
                                                                 img(src="/pic/" + border.image[4].picFilename)
                                                             button.btn.btn-primary(type='button', onclick='removeImage(4,"'+border._id+'")') 삭제
                                                         else
-                                                            input.form-control(type='file', placeholder='사진 5', name="pic")
+                                                            input.form-control(type='file', placeholder='사진 5', name="picRaw")
                                                             .img_wrap(style='display:none;')
                                                                 img(src='#', alt='your image')
                                                 .form-group
@@ -137,7 +137,7 @@ html(lang='en')
                                                                 img(src="/pic/" + border.image[5].picFilename)
                                                             button.btn.btn-primary(type='button', onclick='removeImage(5,"'+border._id+'")') 삭제
                                                         else
-                                                            input.form-control(type='file', placeholder='사진 6', name="pic")
+                                                            input.form-control(type='file', placeholder='사진 6', name="picRaw")
                                                             .img_wrap(style='display:none;')
                                                                 img(src='#', alt='your image')
                                                 .form-group

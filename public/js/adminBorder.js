@@ -2,9 +2,9 @@ function deleteBorder(val){
     let item = {id:val};
     jQuery.ajaxSettings.traditional=true;
     $.ajax({
-        method: "POST",
-        type: "POST",
-        url: "/admin/border/delete",
+        method: "DELETE",
+        type: "DELETE",
+        url: "/admin/border",
         data: item,
         success: function (data) {
             if (data === "clear") {
@@ -18,8 +18,8 @@ function isSellingChange(val){
     let item = {id:val};
     jQuery.ajaxSettings.traditional=true;
     $.ajax({
-        method: "POST",
-        type: "POST",
+        method: "PUT",
+        type: "PUT",
         url: "/admin/border/isSellingChange",
         data: item,
         success: function (data) {

@@ -17,14 +17,15 @@ function removeImage(val,val2){
     let item = {num:val,id:val2};
     jQuery.ajaxSettings.traditional=true;
     $.ajax({
-        method: "POST",
-        type: "POST",
-        url: "/admin/border/update/removeImage",
+        method: "DELETE",
+        type: "DELETE",
+        url: "/admin/border/removeImage",
         data: item,
         success: function (data) {
             if (data === "clear") {
-                location.reload();
+                return location.reload();
             }
+            alert("error");
         }
     });
 }
