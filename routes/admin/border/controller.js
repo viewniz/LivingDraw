@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const moment = require('moment');
 require('moment-timezone');
 
@@ -7,6 +5,7 @@ const Options = require('../../../models/options');
 const Border = require('../../../models/border');
 
 const imageEdit = require('../config/imageEdit');
+const imageRemove= require('../config/imageRemove');
 
 const border= async (req, res) => {
     const subject = await Options.find({type:'subject'},(err, result)=>{return result;});
@@ -120,39 +119,10 @@ const p_borderUpload= async (req, res) => {
 
 const d_borderDelete= (req, res) => {
     Border.findOne({_id:req.body.id}, (err,result) => {
-        if (err) console.log(err);
+        if (err) return console.log(err);
         for(let i=0;i<result.image.length;i++)
         {
-            fs.stat(result.image[i].picDestination+'/'+result.image[i].picFilename, err => {
-                if(err == null) {
-                    fs.unlink(result.image[i].picDestination+'/'+result.image[i].picFilename, err => {
-                        if (err) throw err;
-                        console.log('file deleted');
-                    });
-                } else {
-                    console.log('Some other error: ', err.code);
-                }
-            });
-            fs.stat(result.image[i].picDestination+'_300/'+result.image[i].picFilename, err => {
-                if(err == null) {
-                    fs.unlink(result.image[i].picDestination+'_300/'+result.image[i].picFilename, err => {
-                        if (err) throw err;
-                        console.log('file deleted');
-                    });
-                } else {
-                    console.log('Some other error: ', err.code);
-                }
-            });
-            fs.stat(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, err => {
-                if(err == null) {
-                    fs.unlink(result.image[i].picDestination+'_watermark/'+result.image[i].picFilename, err => {
-                        if (err) throw err;
-                        console.log('file deleted');
-                    });
-                } else {
-                    console.log('Some other error: ', err.code);
-                }
-            });
+            imageRemove('pic',result.image[i].picFilename);
         }
         Border.remove({_id:req.body.id}, err => {
             if (err) return done(err);
@@ -177,47 +147,7 @@ const d_borderUpdateRemoveImage= (req, res) => {
     Border.findOne({_id:req.body.id}, (err,result) => {
         if (err) console.log(err);
         let spliceResult = result.image.splice(req.body.num, 1);
-        const removeDestination="./uploads/pic";
-        fs.stat(removeDestination+'/'+spliceResult[0].picFilename, err => {
-            if(err == null) {
-                fs.unlink(removeDestination+'/'+spliceResult[0].picFilename, err => {
-                    if (err) throw err;
-                    console.log('file deleted');
-                });
-            } else {
-                console.log('Some other error: ', err.code);
-            }
-        });
-        fs.stat(removeDestination+'_300/'+spliceResult[0].picFilename, err => {
-            if(err == null) {
-                fs.unlink(removeDestination+'_300/'+spliceResult[0].picFilename, err => {
-                    if (err) throw err;
-                    console.log('file deleted');
-                });
-            } else {
-                console.log('Some other error: ', err.code);
-            }
-        });
-        fs.stat(removeDestination+'_watermark/'+spliceResult[0].picFilename, err => {
-            if(err == null) {
-                fs.unlink(removeDestination+'_watermark/'+spliceResult[0].picFilename, err => {
-                    if (err) throw err;
-                    console.log('file deleted');
-                });
-            } else {
-                console.log('Some other error: ', err.code);
-            }
-        });
-        fs.stat(removeDestination+'Raw/'+spliceResult[0].picFilename, err => {
-            if(err == null) {
-                fs.unlink(removeDestination+'Raw/'+spliceResult[0].picFilename, err => {
-                    if (err) throw err;
-                    console.log('file deleted');
-                });
-            } else {
-                console.log('Some other error: ', err.code);
-            }
-        });
+        imageRemove('pic',spliceResult[0].picFilename);
         Border.updateOne({ _id: req.body.id }, { $set: { image: result.image } }, err => {
             if (err) {
                 console.error('UpdateOne Error ', err);

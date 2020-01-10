@@ -3,7 +3,7 @@ html
     head
         // Global site tag (gtag.js) - Google Analytics
         script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-144472686-1')
-        script.
+        //script.
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
@@ -94,7 +94,7 @@ html
                                 a(style='padding-right: 0px;')=border[i].lastName + border[i].firstName
                                 a(style='padding-right: 0px;')=border[i].lastNameE + ' ' + border[i].firstNameE+' '
                                 if(border[i].is_selling)
-                                    a.buy_title(id="buy_title"+i)(style='float: right;')=border[i].price_string + "￦"
+                                    a.buy_title(id="buy_title"+i, style='float: right;')=border[i].price_string + "￦"
                                 else
                                     a(style='float: right;') 미판매
 

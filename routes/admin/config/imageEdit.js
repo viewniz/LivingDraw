@@ -1,11 +1,11 @@
 const sharp = require('sharp');
 
-const imageEdit = async (fileAddress, fileName) => {
-    const picRawAddress = './uploads/'+ fileAddress + 'Raw/' + fileName;
-    const picAddress = './uploads/'+fileAddress+'/' + fileName;
+const imageEdit = async (fileFieldName, fileName) => {
+    const picRawAddress = './uploads/'+ fileFieldName + 'Raw/' + fileName;
+    const picAddress = './uploads/'+fileFieldName+'/' + fileName;
     const watermarkAddress = './uploads/watermark/watermarkImage.png';
-    const picThumbAddress = './uploads/'+fileAddress+'_300/' + fileName;
-    const picWatermarkAddress = './uploads/'+fileAddress+'_watermark/' + fileName;
+    const picThumbAddress = './uploads/'+fileFieldName+'_300/' + fileName;
+    const picWatermarkAddress = './uploads/'+fileFieldName+'_watermark/' + fileName;
     return new Promise(async (resolve) => {
         await sharp(picRawAddress).rotate().toFile(picAddress).then(
             sharp(picRawAddress).metadata().then(metadata => {

@@ -1,8 +1,8 @@
 function permissionSeller(val){
     let item = {id:val};
     $.ajax({
-        method: "POST",
-        type: "POST",
+        method: "PUT",
+        type: "PUT",
         url: "/admin/user/permissionSeller",
         data: item,
         success: function (data) {
