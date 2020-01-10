@@ -1,11 +1,11 @@
-let express = require('express');
-let router = express.Router();
-let controller=require('./controller');
+const express = require('express');
+const router = express.Router();
+const controller=require('./controller');
 
 /* GET users listing. */
 
-router.get('/', controller.border_main);
-router.get('/:id',controller.border_main_second);
-router.get('/product/:id', controller.product_detail);
+router.get('/', controller.borderOutOfBounds);
+router.get('/:id',controller.borderMain);
+router.get('/product/:id', controller.productDetail);
 
 module.exports = router;

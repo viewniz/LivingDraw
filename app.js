@@ -11,7 +11,6 @@ const passport = require('passport');
 const passportAdmin = require('passport');
 
 const indexRouter = require('./routes/index/index');
-const usersRouter = require('./routes/users');
 const userRouter = require('./routes/user/index');
 const cartsRouter = require('./routes/cart/index');
 const borderRouter = require('./routes/border/index');
@@ -26,7 +25,7 @@ let app = express();
 require('./config/passportUser')(passport);
 require('./config/passportAdmin')(passportAdmin);
 
-mongoose.connect('mongodb://localhost/LivingDraw');
+mongoose.connect('mongodb://localhost/LivingDraw',{useNewUrlParser:true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
 
 // view engine setup
@@ -58,7 +57,6 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', indexRouter);
 app.use('/carts', cartsRouter);
-app.use('/users', usersRouter);
 app.use('/user', userRouter);
 app.use('/border', borderRouter);
 app.use('/admin', adminRouter);

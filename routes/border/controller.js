@@ -1,224 +1,90 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-var fs = require('fs');
-
-let app = express();
-
-let Border = require('../../models/border');
+const Border = require('../../models/border');
 const Options = require('../../models/options');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-
-exports.border_main = function (req, res, next) {
-    res.redirect('/border/1');
-};
-
-exports.border_main_second = function (req, res, next) {
-    let countlist_out = 10; //한 페이지에 출력될 게시물 수
-    let pa=req.params.id.split("?");
-    let pre_page = parseInt(pa[0]);
-    if (pre_page < 1) {
-        res.redirect('/border/1');
-    }
-    Border.count(function (err, remove) {
-        let removetotal = remove; //db총개수
-        // console.log(removetotal);
-        let removecountlist = countlist_out;  //한 페이지에 출력될 게시물 수
-        let totalremovelist = parseInt(removetotal / removecountlist); // 총 페이지 수
-        if (removetotal % removecountlist > 0) {
-            // console.log('please');
-            ++totalremovelist;
-        }
-        if (pre_page > totalremovelist) {
-            res.redirect('/border/' + totalremovelist);
-        }
-        else {
-            // console.log("pre" + pre_page);
-            let skip_num = (pre_page - 1) * countlist_out;
-            let countpage = 10; //한 화면에 출력될 페이지 수
-            switch (req.query.sort) {
-                case 'old':
-                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "submit_date": 1 } ).exec(function (err, border) {
-                        Border.count(function (err, totalcount_please) {
-
-                            var totalcount = totalcount_please; //db총 개수
-                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
-                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
-                            if (totalcount % countlist > 0) {
-                                totalpage++;
-                            }
-                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
-
-                            var endpage = parseInt(startpage + countpage - 1);
-
-                            //  페이지보정
-                            if (endpage > totalpage) {
-                                endpage = totalpage;
-                            }
-                            // console.log(totalpage);
-                            // pre_page = parseInt(pre_page);
-                            // console.log(pre_page);
-                            res.render('border/border_detail', {
-                                border: border,
-                                startpage: startpage,
-                                endpage: endpage,
-                                totalcount: totalcount,
-                                pre_page: pre_page,
-                                totalpage: totalpage,
-                                sort: '?sort='+req.query.sort
-                            });
-                        });
-                    });
-                    break;
-                case 'new':
-                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "submit_date": -1 } ).exec(function (err, border) {
-                        Border.count(function (err, totalcount_please) {
-
-                            var totalcount = totalcount_please; //db총 개수
-                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
-                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
-                            if (totalcount % countlist > 0) {
-                                totalpage++;
-                            }
-                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
-
-                            var endpage = parseInt(startpage + countpage - 1);
-
-                            //  페이지보정
-                            if (endpage > totalpage) {
-                                endpage = totalpage;
-                            }
-                            // console.log(totalpage);
-                            // pre_page = parseInt(pre_page);
-                            // console.log(pre_page);
-                            res.render('border/border_detail', {
-                                border: border,
-                                startpage: startpage,
-                                endpage: endpage,
-                                totalcount: totalcount,
-                                pre_page: pre_page,
-                                totalpage: totalpage,
-                                sort: '?sort='+req.query.sort
-                            });
-                        });
-                    });
-                    break;
-                case 'high':
-                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "price": -1 } ).exec(function (err, border) {
-                        Border.count(function (err, totalcount_please) {
-
-                            var totalcount = totalcount_please; //db총 개수
-                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
-                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
-                            if (totalcount % countlist > 0) {
-                                totalpage++;
-                            }
-                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
-
-                            var endpage = parseInt(startpage + countpage - 1);
-
-                            //  페이지보정
-                            if (endpage > totalpage) {
-                                endpage = totalpage;
-                            }
-                            // console.log(totalpage);
-                            // pre_page = parseInt(pre_page);
-                            // console.log(pre_page);
-                            res.render('border/border_detail', {
-                                border: border,
-                                startpage: startpage,
-                                endpage: endpage,
-                                totalcount: totalcount,
-                                pre_page: pre_page,
-                                totalpage: totalpage,
-                                sort: '?sort='+req.query.sort
-                            });
-                        });
-                    });
-                    break;
-                case 'low':
-                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "price": 1 } ).exec(function (err, border) {
-                        Border.count(function (err, totalcount_please) {
-
-                            var totalcount = totalcount_please; //db총 개수
-                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
-                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
-                            if (totalcount % countlist > 0) {
-                                totalpage++;
-                            }
-                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
-
-                            var endpage = parseInt(startpage + countpage - 1);
-
-                            //  페이지보정
-                            if (endpage > totalpage) {
-                                endpage = totalpage;
-                            }
-                            // console.log(totalpage);
-                            // pre_page = parseInt(pre_page);
-                            // console.log(pre_page);
-                            res.render('border/border_detail', {
-                                border: border,
-                                startpage: startpage,
-                                endpage: endpage,
-                                totalcount: totalcount,
-                                pre_page: pre_page,
-                                totalpage: totalpage,
-                                sort: '?sort='+req.query.sort
-                            });
-                        });
-                    });
-                    break;
-                default:
-                    Border.find({}).skip(skip_num).limit(countlist_out).sort( { "submit_date": -1 } ).exec(function (err, border) {
-                        Border.count(function (err, totalcount_please) {
-
-                            var totalcount = totalcount_please; //db총 개수
-                            var countlist = countlist_out; //한 페이지에 출력될 게시물 수
-                            var totalpage = parseInt(totalcount / countlist); //총 페이지 수
-                            if (totalcount % countlist > 0) {
-                                totalpage++;
-                            }
-                            var startpage = parseInt((pre_page - 1) / countpage) * countpage + 1; //start page 구하기
-
-                            var endpage = parseInt(startpage + countpage - 1);
-
-                            //  페이지보정
-                            if (endpage > totalpage) {
-                                endpage = totalpage;
-                            }
-                            // console.log(totalpage);
-                            // pre_page = parseInt(pre_page);
-                            // console.log(pre_page);
-                            res.render('border/border_detail', {
-                                border: border,
-                                startpage: startpage,
-                                endpage: endpage,
-                                totalcount: totalcount,
-                                pre_page: pre_page,
-                                totalpage: totalpage
-                            });
-                        });
-                    });
-                    break;
-            }
-        }
-    });
-};
-
-exports.product_detail = function (req, res, next) {
-    let borderNum = req.params.id;
-    Border.findOne({_id: borderNum}, function (err, border) {
-        Border.updateOne({_id:borderNum}, { $inc: { view: 1} }, function (err, result) {});
-        Options.find({type:'subject'},function (err, subject) {
-            Options.find({type:'style'},function (err, style) {
-                Options.find({type:'medium'},function (err, medium) {
-                    Options.find({type:'material'},function (err, material) {
-                        res.render('border/product', {border: border,subject:subject,style:style,medium:medium,material:material});
-                    });
-                });
-            });
+const borderSort = async (skipNum, listOut, sortBased, sortAD) => {
+    let sortingData = {};
+    sortingData[sortBased] = !sortAD ? -1 : parseInt(sortAD); //sortAD값 없으면 내림차순으로 정렬
+    return new Promise(async (resolve) => {
+        Border.find({}).skip(skipNum).limit(listOut).sort(sortingData).exec(function (err, border) {
+            if(err)
+                return resolve(err);
+            return resolve(border);
         });
     });
 };
+
+const borderOutOfBounds = (req, res) =>{
+    res.redirect('/border/1');
+};
+
+const borderMain = async (req, res) => {
+    const listOut = 10; //한 페이지에 출력될 게시물 수
+    const countPage = 10; //한 화면에 출력될 페이지 수
+    const prePage = parseInt(req.params.id);
+    if (prePage < 1) {
+        res.redirect('/border/1');
+    }
+    const borderTotal = await Border.countDocuments((err, result) => {
+        if(err) {
+            console.log(err);
+            return res.redirect('/');
+        }
+        return result;
+    });
+    const totalList = (borderTotal % listOut > 0) ?
+        parseInt(borderTotal / listOut) + 1 : parseInt(borderTotal / listOut); // 총 페이지 수
+    if (prePage > totalList) {
+        return res.redirect('/border/' + totalList);
+    }
+    const skipNum = (prePage - 1) * listOut;
+    const startPage = parseInt((prePage - 1) / countPage) * countPage + 1; //start page 구하기
+    const endPage = (startPage + countPage - 1) > totalList ? totalList : startPage + countPage - 1;
+    const sortQuery = req.query.sort; //get sort 값
+    let border;
+    switch (sortQuery) {
+        case 'old': //등록 오래된 순
+            border = await borderSort(skipNum,listOut,"submit_date",1);
+            break;
+        case 'new': //등록 최신 순
+            border = await borderSort(skipNum,listOut,"submit_date",-1);
+            break;
+        case 'high': //가격 비싼 순
+            border = await borderSort(skipNum,listOut,"price",-1);
+            break;
+        case 'low': // 가격 낮은 순
+            border = await borderSort(skipNum,listOut,"price",1);
+            break;
+        default: //기본 최신 순으로 해둠
+            border = await borderSort(skipNum,listOut,"submit_date",-1);
+            break;
+    }
+    res.render('border/border_detail', {
+        border: border,
+        startPage: startPage,
+        endPage: endPage,
+        borderTotal: borderTotal,
+        prePage: prePage,
+        totalList: totalList,
+        sort: '?sort=' + sortQuery
+    });
+};
+
+const productDetail = async (req, res) => {
+    const borderNum = req.params.id;
+    try{
+        const subject = await Options.find({type:'subject'},(err, result)=>{if(err) throw err; return result;});
+        const material = await Options.find({type:'material'},(err, result)=>{if(err) throw err; return result;});
+        const style = await Options.find({type:'style'},(err, result)=>{if(err) throw err; return result;});
+        const medium = await Options.find({type:'medium'},(err, result)=>{if(err) throw err; return result;});
+        Border.findOne({_id: borderNum}, function (err, border) {
+            Border.updateOne({_id:borderNum}, { $inc: { view: 1} }, function (err, result) {});
+            res.render('border/product', {border: border,subject:subject,style:style,medium:medium,material:material});
+        });
+    }catch(err){
+        res.redirect('/border/1');
+    }
+};
+
+module.exports.borderOutOfBounds = borderOutOfBounds;
+module.exports.borderMain = borderMain;
+module.exports.productDetail = productDetail;

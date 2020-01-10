@@ -106,24 +106,24 @@ html
                         ul.pagination
                             li.page-item
                                 if(sort)
-                                    a.page-link(id='pageleft', href=pre_page-1+sort)
+                                    a.page-link(id='pageleft', href=prePage-1+sort)
                                         i.fa.fa-angle-left(aria-hidden='true')
                                 else
-                                    a.page-link(id='pageleft', href=pre_page - 1)
+                                    a.page-link(id='pageleft', href=prePage - 1)
                                         i.fa.fa-angle-left(aria-hidden='true')
-                                - for(var i = startpage; i <= endpage; i++)
+                                - for(var i = startPage; i <= endPage; i++)
                                     li.page-item
                                         if(sort)
                                             a.page-link(id='pagenum'+i, href="/border/"+i+sort)=i
                                         else
                                             a.page-link(id='pagenum'+i, href="/border/"+i)=i
-                            li(id='pageright'+totalpage).page-item
-                                if(pre_page !== totalpage)
+                            li(id='pageright'+totalList).page-item
+                                if(prePage !== totalList)
                                     if(sort)
-                                        a.page-link(href=pre_page + 1 + sort)
+                                        a.page-link(href=prePage + 1 + sort)
                                             i.fa.fa-angle-right(aria-hidden='true')
                                     else
-                                        a.page-link(href=pre_page + 1)
+                                        a.page-link(href=prePage + 1)
                                             i.fa.fa-angle-right(aria-hidden='true')
                                 else
                                     a.page-link.displaynone
