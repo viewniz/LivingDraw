@@ -17,13 +17,14 @@ head
     meta(property="og:title" content="미대생들의 온라인 갤러리 리빙드로우")
     meta(property="og:description" content="주인을 찾지 못해 버려지는 작품들의 주인이 되어주세요!")
     meta(property="og:image" content="https://www.livingdraw.co.kr/ogImage/ogImage.png")
-    link(rel='icon' href='favicon.ico')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='https://icono-49d6.kxcdn.com/icono.min.css')
     link(rel='stylesheet', href='/css/newheader.css')
     link(rel='stylesheet', href='/css/index_style.css')
     link(rel='stylesheet', href='/css/font/flaticon.css')
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Baskervville|Nanum+Myeongjo&display=swap")
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
@@ -32,13 +33,76 @@ head
     script(src='/js/nav_js.js')
 // Plugins
 
-
-
 include ../components/main_header
 //.banner()
     a
         //img(src='/banner/bannerImage.jpeg' style='width: 100%;')
-.container(id='index_box')
-    img(src='/box/boxImage.jpeg')
+.banner
+    .bannerComment
+        | Early Works of Great artists
+    .bannerSubComment
+        | "세상을 바꿀 위대한 작가의 작품을 팝니다"
+.container
+    .mainContainer
+        .mainComment Great Artist's Works!
+    .mainWorks
+        .gallery
+            figure.gallery__item.gallery__item--1
+                img.gallery__img(src="/pic_300/" + border[0].image[0].picFilename, alt='Gallery image 1')
+                .gallery__text
+                    p.gallery__name=border[0].title
+                    p.gallery__price=border[0].price_string+'￦'
+                    a(href="/border/product/"+border[0]._id)
+                        button.gallery__item__button 작품보기
+            figure.gallery__item.gallery__item--2
+                img.gallery__img(src="/pic_300/" + border[1].image[0].picFilename, alt='Gallery image 2')
+                .gallery__text
+                    p.gallery__name=border[1].title
+                    p.gallery__price=border[1].price_string+'￦'
+                    a(href="/border/product/"+border[1]._id)
+                        button.gallery__item__button 작품보기
+            figure.gallery__item.gallery__item--3
+                img.gallery__img(src="/pic_300/" + border[2].image[0].picFilename, alt='Gallery image 3')
+                .gallery__text
+                    p.gallery__name=border[2].title
+                    p.gallery__price=border[2].price_string+'￦'
+                    a(href="/border/product/"+border[2]._id)
+                        button.gallery__item__button 작품보기
+            figure.gallery__item.gallery__item--4
+                img.gallery__img(src="/pic_300/" + border[3].image[0].picFilename, alt='Gallery image 4')
+                .gallery__text
+                    p.gallery__name=border[3].title
+                    p.gallery__price=border[3].price_string+'￦'
+                    a(href="/border/product/"+border[3]._id)
+                        button.gallery__item__button 작품보기
+            figure.gallery__item.gallery__item--5
+                img.gallery__img(src="/pic_300/" + border[4].image[0].picFilename, alt='Gallery image 5')
+                .gallery__text
+                    p.gallery__name=border[4].title
+                    p.gallery__price=border[4].price_string+'￦'
+                    a(href="/border/product/"+border[4]._id)
+                        button.gallery__item__button 작품보기
+            figure.gallery__item.gallery__item--6
+                img.gallery__img(src="/pic_300/" + border[5].image[0].picFilename, alt='Gallery image 6')
+                .gallery__text
+                    p.gallery__name=border[5].title
+                    p.gallery__price=border[5].price_string+'￦'
+                    a(href="/border/product/"+border[5]._id)
+                        button.gallery__item__button 작품보기
+            figure.gallery__item.gallery__item--7
+                img.gallery__img(src="/pic_300/" + border[6].image[0].picFilename, alt='Gallery image 7')
+                .gallery__text
+                    p.gallery__name=border[6].title
+                    p.gallery__price=border[6].price_string+'￦'
+                    a(href="/border/product/"+border[6]._id)
+                        button.gallery__item__button 작품보기
+            figure.gallery__item.gallery__item--8
+                img.gallery__img(src="/pic_300/" + border[7].image[0].picFilename, alt='Gallery image 7')
+                .gallery__text
+                    p.gallery__name=border[7].title
+                    p.gallery__price=border[7].price_string+'￦'
+                    a(href="/border/product/"+border[7]._id)
+                        button.gallery__item__button 작품보기
+
 // Footer
 include ../components/footer

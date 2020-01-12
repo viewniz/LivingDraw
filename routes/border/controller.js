@@ -5,7 +5,7 @@ const borderSort = async (skipNum, listOut, sortBased, sortAD) => {
     let sortingData = {};
     sortingData[sortBased] = !sortAD ? -1 : parseInt(sortAD); //sortAD값 없으면 내림차순으로 정렬
     return new Promise(async (resolve) => {
-        Border.find({}).skip(skipNum).limit(listOut).sort(sortingData).exec(function (err, border) {
+        Border.find({}).skip(skipNum).limit(listOut).sort(sortingData).exec( (err, border) => {
             if(err)
                 return resolve(err);
             return resolve(border);
