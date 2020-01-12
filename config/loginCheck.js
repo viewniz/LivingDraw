@@ -1,45 +1,29 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-let moment = require('moment');
+const moment = require('moment');
 require('moment-timezone');
 
 moment.tz.setDefault("Asia/Seoul");
 
-let app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-
-exports.login_check = function(req,res,next){
-    if(!req.user)
+const loginCheck = (req,res,next) => {
+    const user = req.user;
+    if(!user||user.isAdmin)
     {
         req.session.returnTo = req.originalUrl;
-        req.session.save(function(err){
-            if(err) return next(err);
-            res.redirect('/user/login');
-        });
-    }
-    else if(req.user.isAdmin)
-    {
-        req.session.returnTo = req.originalUrl;
-        req.session.save(function(err){
+        req.session.save(err => {
             if(err) return next(err);
             req.logout();
             res.redirect('/user/login');
         });
-    }
-    else
-    {
+    }else{
         return next();
     }
 };
-exports.login_check_reverse = function(req,res,next){
+const loginCheckReverse = (req,res,next) => {
     if(req.user)
     {
         if(req.user.isAdmin)
         {
             req.session.returnTo = req.originalUrl;
-            req.session.save(function(err){
+            req.session.save(err=>{
                 if(err) return next(err);
                 req.logout();
                 res.redirect('/user/login');
@@ -50,13 +34,11 @@ exports.login_check_reverse = function(req,res,next){
             const backURL=req.header('Referer') || '/border/1';
             res.redirect(backURL);
         }
-    }
-    else
-    {
+    }else{
         return next();
     }
 };
-exports.seller_check = function(req,res,next){
+const sellerCheck = (req,res,next) => {
     if(req.user.isSeller!==true)
     {
         if(req.user.isSignUpSeller===true)
@@ -69,7 +51,7 @@ exports.seller_check = function(req,res,next){
         return next();
     }
 };
-exports.seller_check_reverse = function(req,res,next){
+const sellerCheckReverse = (req,res,next) => {
     if(req.user.isSeller===true)
     {
         res.redirect('/border/1');
@@ -79,7 +61,7 @@ exports.seller_check_reverse = function(req,res,next){
         return next();
     }
 };
-exports.isPhoneCert_check = function(req,res,next){
+const isPhoneCertCheck = (req,res,next) => {
     if(req.user.isPhoneCert!==true)
     {
         res.redirect('/user/author_register');
@@ -89,7 +71,7 @@ exports.isPhoneCert_check = function(req,res,next){
         return next();
     }
 };
-exports.imageStudentIden_check = function(req,res,next){
+const imageStudentIdenCheck = (req,res,next) => {
     if(!req.user.imageStudentIden.picOriginalName)
     {
         res.redirect('/user/author_register2');
@@ -99,7 +81,7 @@ exports.imageStudentIden_check = function(req,res,next){
         return next();
     }
 };
-exports.isCertificate_check = function(req,res,next){
+const isCertificateCheck = (req,res,next) => {
     if(req.user.isCertificate!==true)
     {
         res.redirect('/user/re_mailing');
@@ -109,3 +91,11 @@ exports.isCertificate_check = function(req,res,next){
         return next();
     }
 };
+
+module.exports = loginCheck;
+module.exports.loginCheckReverse = loginCheckReverse;
+module.exports.sellerCheck = sellerCheck;
+module.exports.sellerCheckReverse = sellerCheckReverse;
+module.exports.isPhoneCertCheck = isPhoneCertCheck;
+module.exports.imageStudentIdenCheck = imageStudentIdenCheck;
+module.exports.isCertificateCheck = isCertificateCheck;

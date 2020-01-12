@@ -119,12 +119,12 @@ module.exports = function(passport) {
                         return done(null, false, {message: '패스워드 에러'});
                     else {
                         const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-                        User.update({email: email}, {
+                        User.updateOne({email: email}, {
                             $set: {
                                 last_login: moment().format('YYYY-MM-DD HH:mm:ss'),
                                 last_login_ip: ip
                             }
-                        }, function () {});
+                        }, () => {});
                         return done(null, user);
                     }
                 });

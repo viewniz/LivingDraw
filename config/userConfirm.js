@@ -5,7 +5,7 @@ require('moment-timezone');
 const mailer=require('./mailer');
 moment.tz.setDefault("Asia/Seoul");
 
-module.exports = function (email,name) {
+module.exports = async (email,name) => {
     let cert=new Certification();
     cert.email=email;
     const cipherKey=crypto.randomBytes(32);

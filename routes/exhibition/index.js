@@ -4,8 +4,7 @@ const controller=require('./controller');
 
 /* GET users listing. */
 
-router.get('/', controller.exhibition_main);
-router.get('/:id', controller.exhibition_detail);
-
+router.get('/', controller);
+router.get('/:id', controller.exhibitionDetail);
 
 module.exports = router;

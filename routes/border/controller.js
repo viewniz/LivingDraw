@@ -30,15 +30,15 @@ const borderMain = async (req, res) => {
             return res.redirect('/');
         }
         return result;
-    });
+    }); //총 게시물 수
     const totalList = (borderTotal % listOut > 0) ?
         parseInt(borderTotal / listOut) + 1 : parseInt(borderTotal / listOut); // 총 페이지 수
     if (prePage > totalList) {
         return res.redirect('/border/' + totalList);
     }
     const skipNum = (prePage - 1) * listOut;
-    const startPage = parseInt((prePage - 1) / countPage) * countPage + 1; //start page 구하기
-    const endPage = (startPage + countPage - 1) > totalList ? totalList : startPage + countPage - 1;
+    const startPage = parseInt((prePage - 1) / countPage) * countPage + 1; //프론트 표기 start page
+    const endPage = (startPage + countPage - 1) > totalList ? totalList : startPage + countPage - 1; //프론트 표기 end page
     const sortQuery = req.query.sort; //get sort 값
     let border;
     switch (sortQuery) {
@@ -76,8 +76,9 @@ const productDetail = async (req, res) => {
         const material = await Options.find({type:'material'},(err, result)=>{if(err) throw err; return result;});
         const style = await Options.find({type:'style'},(err, result)=>{if(err) throw err; return result;});
         const medium = await Options.find({type:'medium'},(err, result)=>{if(err) throw err; return result;});
-        Border.findOne({_id: borderNum}, function (err, border) {
-            Border.updateOne({_id:borderNum}, { $inc: { view: 1} }, function (err, result) {});
+        Border.findOne({_id: borderNum}, (err, border) => {
+            Border.updateOne({_id:borderNum}, { $inc: { view: 1} });
+            if(err) throw err;
             res.render('border/product', {border: border,subject:subject,style:style,medium:medium,material:material});
         });
     }catch(err){

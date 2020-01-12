@@ -1,52 +1,41 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 const controller=require('./controller');
+
 const loginCheck=require('../../config/loginCheck');
-let passport = require('passport');
-let multer=require('multer');
-
-let Picture_storage=multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null,'./uploads/user/'+file.fieldname);
-    },
-    filename: function (req, file, cb) {
-        cb(null,Date.now()+"!"+file.originalname);
-    }
-});
-
-let uploadPicture=multer({storage:Picture_storage});
+const pictureStorage = require('../../config/pictureStorage');
 
 /* GET users listing. */
+router.get('/submit', loginCheck.loginCheckReverse, controller.submit);
+router.get('/login', loginCheck.loginCheckReverse, controller.login);
+router.get('/confirm_certificate/:id',controller.confirmCertificate);
+router.get('/auth/google', loginCheck.loginCheckReverse, controller.googleLogin);
+router.get('/auth/google/callback',controller.googleLoginCallback);
+router.get('/auth/kakao', loginCheck.loginCheckReverse, controller.kakaoLogin);
+router.get('/auth/kakao/callback',controller.kakaoLoginCallback);
+router.get('/auth/naver', loginCheck.loginCheckReverse, controller.naverLogin);
+router.get('/auth/naver/callback',controller.naverLoginCallback);
+router.get('/auth/social',loginCheck,controller.socialAddName);
+router.get('/logout', loginCheck, controller.logout);
+router.get('/re_mailing',loginCheck,controller.reMailing);
+router.get('/author_register',loginCheck,loginCheck.isCertificateCheck,loginCheck.sellerCheckReverse,
+    controller.authorRegister);
+router.get('/author_register2',loginCheck,loginCheck.isCertificateCheck,loginCheck.sellerCheckReverse,
+    loginCheck.isPhoneCertCheck,controller.authorRegister2);
+router.get('/author_register3',loginCheck,loginCheck.isCertificateCheck,loginCheck.sellerCheckReverse,
+    loginCheck.isPhoneCertCheck,loginCheck.imageStudentIdenCheck,controller.authorRegister3);
+router.get('/submit/end', loginCheck.loginCheckReverse,controller.submitEnd);
 
-router.get('/submit', loginCheck.login_check_reverse, controller.user_submit);
-router.get('/login', loginCheck.login_check_reverse, controller.user_login);
-router.get('/confirm_certificate/:id',controller.user_confirm_certificate);
-router.get('/auth/google', loginCheck.login_check_reverse, controller.google_login);
-router.get('/auth/google/callback',controller.google_login_callback);
-router.get('/auth/kakao', loginCheck.login_check_reverse, controller.kakao_login);
-router.get('/auth/kakao/callback',controller.kakao_login_callback);
-router.get('/auth/naver', loginCheck.login_check_reverse, controller.naver_login);
-router.get('/auth/naver/callback',controller.naver_login_callback);
-router.get('/auth/social',loginCheck.login_check,controller.social_add_name);
-router.get('/logout', loginCheck.login_check, controller.user_logout);
-router.get('/re_mailing',loginCheck.login_check,controller.user_re_mailing);
-router.get('/author_register',loginCheck.login_check,loginCheck.isCertificate_check,loginCheck.seller_check_reverse
-    ,controller.author_register);
-router.get('/author_register2',loginCheck.login_check,loginCheck.isCertificate_check,loginCheck.seller_check_reverse
-    ,loginCheck.isPhoneCert_check,controller.author_register_2);
-router.get('/author_register3',loginCheck.login_check,loginCheck.isCertificate_check,loginCheck.seller_check_reverse
-    ,loginCheck.isPhoneCert_check,loginCheck.imageStudentIden_check,controller.author_register_3);
-router.get('/submit/end', loginCheck.login_check_reverse,controller.user_submit_end);
 /*POST*/
+router.post('/submit/author_register2', controller.p_authorRegister2);
+router.post('/submit/upload_stuiden', pictureStorage('student_Iden','./uploads/user/'), controller.p_submitAuthorUploadStudentIden);
+router.post('/submit/phoneVerification', controller.p_submitSmsVerification);
+router.post('/submit/smsVerification', controller.p_submitSmsVerificationNcpV2);
+router.post('/submit/author_register', controller.p_submitAuthorRegister);
+router.post('/submit', controller.p_submit);
+router.post('/login', controller.p_login);
+router.post('/re_mailing', controller.p_reMailing);
+router.post('/logout', controller.p_logout);
+router.post('/auth/social', controller.p_socialAddName);
 
-router.post('/submit/author_register2',controller.author_register_2_post);
-router.post('/submit/upload_stuiden',uploadPicture.single('student_Iden'),controller.user_submit_author_upload_student_Iden_post);
-router.post('/submit/phoneVerification',controller.user_submit_smsVerification_post);
-router.post('/submit/smsVerification',controller.user_submit_smsVerification_post_ncpV2);
-router.post('/submit/author_register',controller.user_submit_author_register_post);
-router.post('/submit',controller.user_submit_post);
-router.post('/login',controller.user_login_post);
-router.post('/re_mailing',controller.user_re_mailing_post);
-router.post('/logout',controller.user_logout_post);
-router.post('/auth/social',controller.social_add_name_post);
 module.exports = router;

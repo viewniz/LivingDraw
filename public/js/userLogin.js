@@ -32,11 +32,11 @@ function loginPost(data){
         data: item,
         success: function (data) {
             const result = data.split('-');
-            if(result.length>1&&result[0]==="clear"){
+            if(result[1]!==''&&result[1]!==null&&result[1]!==undefined&&result[0]==="clear"){
                 location.replace(result[1]);
                 return true;
             }
-            if (result[0] === "clear") {
+            if (result[0]==="clear") {
                 location.replace('/border');
                 return true;
             }else if(data === "메일 인증 실패"){

@@ -3,7 +3,7 @@ const moment = require('moment');
 require('moment-timezone');
 
 const imageEdit = require('../config/imageEdit');
-const imageRemove= require('../config/imageRemove');
+const imageRemove= require('../../../config/imageRemove');
 
 const exhibition = (req,res) => {
     Exhibition.find({}, (err,exhibition) => {

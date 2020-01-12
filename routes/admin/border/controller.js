@@ -5,7 +5,7 @@ const Options = require('../../../models/options');
 const Border = require('../../../models/border');
 
 const imageEdit = require('../config/imageEdit');
-const imageRemove= require('../config/imageRemove');
+const imageRemove= require('../../../config/imageRemove');
 
 const border= async (req, res) => {
     const subject = await Options.find({type:'subject'},(err, result)=>{return result;});

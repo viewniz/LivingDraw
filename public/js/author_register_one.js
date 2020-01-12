@@ -23,8 +23,7 @@ jQuery(document).ready(function () {
 
 
 function phoneNumberCheck(data){
-    let item = {phoneNumber:data.phoneNumber.value};
-
+    const item = {phoneNumber:data.phoneNumber.value};
     $.ajax({
         method: "POST",
         type: "POST",
@@ -38,7 +37,7 @@ function phoneNumberCheck(data){
                 $('#phone_number_box').text("다시받기");
                 return true;
             }else {
-                alert("실 패");
+                alert(data);
                 return false;
             }
         }
@@ -62,7 +61,7 @@ function phoneCert(data){
                 $('#token_number_box').text("인증완료");
                 return true;
             }else {
-                alert("실 패");
+                alert(data);
                 return false;
             }
         }
@@ -74,7 +73,7 @@ function saveAuthorOne(data){
     const lastNameE  = $('#lastNameE').val();
     let item = {lastNameE:lastNameE, firstNameE:firstNameE};
     const regType = /^[A-Za-z+]{1,50}$/;
-    if(!regType.test(lastNameE))
+    /*if(!regType.test(lastNameE))
     {
         alert('영문만 입력 가능합니다.성');
         $('#lastNameE').focus();
@@ -85,7 +84,7 @@ function saveAuthorOne(data){
         alert('영문만 입력 가능합니다.');
         $('#firstNameE').focus();
         return false;
-    }
+    }*/
     /*if(isPhoneCert!=="true")
     {
         alert("휴대폰 인증을 해주세요.");
@@ -108,7 +107,7 @@ function saveAuthorOne(data){
                 return false;
             }
             else {
-                alert("실 패");
+                alert(data);
                 return false;
             }
         }
