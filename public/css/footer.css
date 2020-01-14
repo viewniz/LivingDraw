@@ -212,11 +212,14 @@ dl dd {
 
 
 /* Footer */
+footer {
+	background-color: #272727;
+	color: #ffffff;
+}
 
 #footer {
 	padding-top: 1%;
 	border-top: 2px solid rgb(231, 231, 231);
-	background-color: white;
 	text-align: center;
 	margin-top: 50px;
 }
@@ -296,9 +299,11 @@ ul.icons li {
 	padding-left: 0;
 	padding-right: 1em;
 }
+
 .inner{
 	font-size: 0.8em;
 }
+
 ul.icons li a {
 	display: block;
 	border-radius: 100%;
@@ -306,4 +311,40 @@ ul.icons li a {
 	padding: 0.5em;
 	border: 1px solid #6c757d;
 	color: #6c757d;
+}
+
+.footer_container{
+	padding:2% 15% 2%;
+}
+
+.copyRight{
+	text-align: center;
+	font-size: 0.5em;
+}
+
+.copyRightBox{
+	padding-top:1em;
+	align-content: center;
+}
+
+.aboutUs{
+	padding-top: 3%;
+	font-size: 0.8em;
+}
+@media screen and (max-width: 980px) {
+	.footer_container{
+		padding:2% 10% 2%;
+	}
+}
+
+@media screen and (max-width: 736px) {
+	.footer_container{
+		padding:2% 5% 2%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.footer_container{
+		padding:2% 0% 2%;
+	}
 }
