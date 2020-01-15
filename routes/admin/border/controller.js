@@ -4,7 +4,7 @@ require('moment-timezone');
 const Options = require('../../../models/options');
 const Border = require('../../../models/border');
 
-const imageEdit = require('../config/imageEdit');
+const imageEdit = require('../../../config/imageEdit');
 const imageRemove= require('../../../config/imageRemove');
 
 const border= async (req, res) => {

@@ -71,8 +71,8 @@ function updateTwo() {
     const id = url[url.length-1];
 
     $.ajax({
-        method: "POST",
-        type: "POST",
+        method: "PUT",
+        type: "PUT",
         url: "/piece/update2/"+id,
         data: item,
 

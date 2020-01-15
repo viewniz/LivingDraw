@@ -1,10 +1,10 @@
-function removePiece(id){
+function deletePiece(id){
     const data = {id:id};
     $.ajax({
-        method: "POST",
-        type: "POST",
+        method: "DELETE",
+        type: "DELETE",
         data: data,
-        url: "/piece/remove",
+        url: "/piece",
         success: function (data) {
             if (data === "clear") {
                 window.location.reload();

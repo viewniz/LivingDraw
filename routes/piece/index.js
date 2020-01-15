@@ -2,39 +2,29 @@ const express = require('express');
 const router = express.Router();
 const controller=require('./controller');
 const loginCheck=require('../../config/loginCheck');
-const multer=require('multer');
+const pictureStorage = require('../../config/pictureStorage');
 
-let Picture_storage=multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null,'./uploads/'+file.fieldname);
-    },
-    filename: function (req, file, cb) {
-        cb(null,Date.now()+"!"+file.originalname);
-    }
-});
+//get
+router.get('/', loginCheck, loginCheck.sellerCheck, controller);
+router.get('/upload', loginCheck, loginCheck.sellerCheck, controller.upload1);
+router.get('/upload2', loginCheck, loginCheck.sellerCheck, controller.upload2);
+router.get('/upload3', loginCheck, loginCheck.sellerCheck, controller.upload3);
+router.get('/update/:id', loginCheck, loginCheck.sellerCheck, controller.update1);
+router.get('/update2/:id', loginCheck, loginCheck.sellerCheck, controller.update2);
+router.get('/update3/:id', loginCheck, loginCheck.sellerCheck, controller.update3);
 
-let uploadPicture=multer({storage:Picture_storage});
+//post
+router.post('/upload', loginCheck, loginCheck.sellerCheck, pictureStorage('picRaw', './uploads/'), controller.p_upload1PicTemp);
+router.post('/upload1', loginCheck, loginCheck.sellerCheck, controller.p_upload1);
+router.post('/upload2', loginCheck, loginCheck.sellerCheck, controller.p_upload2);
+router.post('/upload3', loginCheck, loginCheck.sellerCheck, controller.p_upload3);
 
-/* GET users listing. */
+//put
+router.put('/update1/:id', loginCheck, loginCheck.sellerCheck, controller.put_update1);
+router.put('/update2/:id', loginCheck, loginCheck.sellerCheck, controller.put_update2);
+router.put('/update3/:id', loginCheck, loginCheck.sellerCheck, controller.put_update3);
+router.put('/update/:id', loginCheck, loginCheck.sellerCheck, pictureStorage('picRaw','./uploads/'), controller.put_update1Pic);
 
-router.get('/upload', loginCheck, loginCheck.sellerCheck, controller.upload_one);
-router.get('/upload2', loginCheck, loginCheck.sellerCheck, controller.upload_two);
-router.get('/upload3', loginCheck, loginCheck.sellerCheck, controller.upload_three);
-router.get('/admin', loginCheck, loginCheck.sellerCheck, controller.admin_piece);
-router.get('/update/:id', loginCheck, loginCheck.sellerCheck, controller.update_one);
-router.get('/update2/:id', loginCheck, loginCheck.sellerCheck, controller.update_two);
-router.get('/update3/:id', loginCheck, loginCheck.sellerCheck, controller.update_three);
-
-
-
-router.post('/upload', loginCheck, loginCheck.sellerCheck, uploadPicture.single('pic'), controller.upload_one_pic_temp);
-router.post('/upload1', loginCheck, loginCheck.sellerCheck, controller.upload_one_post);
-router.post('/upload2', loginCheck, loginCheck.sellerCheck, controller.upload_two_post);
-router.post('/upload3', loginCheck, loginCheck.sellerCheck, controller.upload_three_post);
-router.post('/remove', loginCheck, loginCheck.sellerCheck, controller.admin_piece_remove_post);
-router.post('/update/:id', loginCheck, loginCheck.sellerCheck, uploadPicture.single('pic'), controller.update_one_pic);
-router.post('/update1/:id', loginCheck, loginCheck.sellerCheck, controller.update_one_post);
-router.post('/update2/:id', loginCheck, loginCheck.sellerCheck, controller.update_two_post);
-router.post('/update3/:id', loginCheck, loginCheck.sellerCheck, controller.update_three_post);
-
+//delete
+router.delete('/', loginCheck, loginCheck.sellerCheck, controller.d_piece);
 module.exports = router;

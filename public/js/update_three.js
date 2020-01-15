@@ -78,14 +78,14 @@ function updateThree() {
     const url = document.location.href.split("/");
     const id = url[url.length-1];
     $.ajax({
-        method: "POST",
-        type: "POST",
+        method: "PUT",
+        type: "PUT",
         url: "/piece/update3/"+id,
         data: item,
 
         success: function (data) {
             if (data === "clear") {
-                window.location.replace('/piece/admin');
+                window.location.replace('/piece');
                 return true;
             } else {
                 alert("실 패");

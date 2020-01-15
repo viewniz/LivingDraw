@@ -2,7 +2,7 @@ const Exhibition = require('../../../models/exhibition');
 const moment = require('moment');
 require('moment-timezone');
 
-const imageEdit = require('../config/imageEdit');
+const imageEdit = require('../../../config/imageEdit');
 const imageRemove= require('../../../config/imageRemove');
 
 const exhibition = (req,res) => {

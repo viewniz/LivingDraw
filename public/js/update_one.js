@@ -9,7 +9,7 @@ function updateImg(){
 
     if (!file.value) return; // 파일이 없는 경우 빠져나오기
 
-    formData.append('pic', file.files[0]);
+    formData.append('picRaw', file.files[0]);
 
     const file_kind = file.value.lastIndexOf('.');
     const file_name = file.value.substring(file_kind + 1, file.length).toLowerCase();
@@ -33,8 +33,8 @@ function updateImg(){
     $.ajax({
         contentType: false,
         processData: false,
-        method: "POST",
-        type: "POST",
+        method: "PUT",
+        type: "PUT",
         url: "/piece/update/"+id,
         data: formData,
         success: function (data) {
@@ -55,8 +55,8 @@ function saveUpdateOne(){
     const id = url[url.length-1];
 
     $.ajax({
-        method: "POST",
-        type: "POST",
+        method: "PUT",
+        type: "PUT",
         url: "/piece/update1/"+id,
         success: function (data) {
             if (data === "clear") {
