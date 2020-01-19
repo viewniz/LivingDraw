@@ -31,7 +31,7 @@ const loginCheckReverse = (req,res,next) => {
         }
         else
         {
-            const backURL=req.header('Referer') || '/border/1';
+            const backURL= '/border/1';
             res.redirect(backURL);
         }
     }else{

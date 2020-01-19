@@ -62,6 +62,7 @@ const p_upload1PicTemp = (req, res) => {
             {
                 imageRemove("pic", temp.image[i].picFilename,()=>{});
             }
+            await Border_temp.deleteOne({email:req.user.email},()=>{});
         }
         const pic = await imageEdit("pic",req.file.filename,()=>{});
         let border_temp = new Border_temp();
