@@ -29,14 +29,10 @@ head
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
     script(src='/js/hooni.js')
-    script(src='/js/index_hoon.js')
     script(src='/js/nav_js.js')
 // Plugins
 
 include ../components/main_header
-//.banner()
-    a
-        //img(src='/banner/bannerImage.jpeg' style='width: 100%;')
 .banner
     .bannerComment
         | Early Works of Great artists
@@ -48,7 +44,8 @@ include ../components/main_header
     .mainWorks
         .gallery
             figure.gallery__item.gallery__item--1
-                img.gallery__img(src="/pic_300/" + border[0].image[0].picFilename, alt='Gallery image 1')
+                if(border[0].image[0])
+                    img.gallery__img(src="/pic_300/" + border[0].image[0].picFilename, alt='Gallery image 1')
                 .gallery__blind
                 .gallery__text
                     p.gallery__name=border[0].title
@@ -56,7 +53,8 @@ include ../components/main_header
                     a(href="/border/product/"+border[0]._id)
                         button.gallery__item__button 작품보기
             figure.gallery__item.gallery__item--2
-                img.gallery__img(src="/pic_300/" + border[1].image[0].picFilename, alt='Gallery image 2')
+                if(border[1].image[0])
+                    img.gallery__img(src="/pic_300/" + border[1].image[0].picFilename, alt='Gallery image 2')
                 .gallery__blind
                 .gallery__text
                     p.gallery__name=border[1].title
@@ -64,7 +62,8 @@ include ../components/main_header
                     a(href="/border/product/"+border[1]._id)
                         button.gallery__item__button 작품보기
             figure.gallery__item.gallery__item--3
-                img.gallery__img(src="/pic_300/" + border[2].image[0].picFilename, alt='Gallery image 3')
+                if(border[2].image[0])
+                    img.gallery__img(src="/pic_300/" + border[2].image[0].picFilename, alt='Gallery image 3')
                 .gallery__blind
                 .gallery__text
                     p.gallery__name=border[2].title
@@ -72,7 +71,8 @@ include ../components/main_header
                     a(href="/border/product/"+border[2]._id)
                         button.gallery__item__button 작품보기
             figure.gallery__item.gallery__item--4
-                img.gallery__img(src="/pic_300/" + border[3].image[0].picFilename, alt='Gallery image 4')
+                if(border[3].image[0])
+                    img.gallery__img(src="/pic_300/" + border[3].image[0].picFilename, alt='Gallery image 4')
                 .gallery__blind
                 .gallery__text
                     p.gallery__name=border[3].title
@@ -80,7 +80,8 @@ include ../components/main_header
                     a(href="/border/product/"+border[3]._id)
                         button.gallery__item__button 작품보기
             figure.gallery__item.gallery__item--5
-                img.gallery__img(src="/pic_300/" + border[4].image[0].picFilename, alt='Gallery image 5')
+                if(border[4].image[0])
+                    img.gallery__img(src="/pic_300/" + border[4].image[0].picFilename, alt='Gallery image 5')
                 .gallery__blind
                 .gallery__text
                     p.gallery__name=border[4].title
@@ -88,7 +89,8 @@ include ../components/main_header
                     a(href="/border/product/"+border[4]._id)
                         button.gallery__item__button 작품보기
             figure.gallery__item.gallery__item--6
-                img.gallery__img(src="/pic_300/" + border[5].image[0].picFilename, alt='Gallery image 6')
+                if(border[5].image[0])
+                    img.gallery__img(src="/pic_300/" + border[5].image[0].picFilename, alt='Gallery image 6')
                 .gallery__blind
                 .gallery__text
                     p.gallery__name=border[5].title
@@ -96,7 +98,8 @@ include ../components/main_header
                     a(href="/border/product/"+border[5]._id)
                         button.gallery__item__button 작품보기
             figure.gallery__item.gallery__item--7
-                img.gallery__img(src="/pic_300/" + border[6].image[0].picFilename, alt='Gallery image 7')
+                if(border[6].image[0])
+                    img.gallery__img(src="/pic_300/" + border[6].image[0].picFilename, alt='Gallery image 7')
                 .gallery__blind
                 .gallery__text
                     p.gallery__name=border[6].title
@@ -104,7 +107,8 @@ include ../components/main_header
                     a(href="/border/product/"+border[6]._id)
                         button.gallery__item__button 작품보기
             figure.gallery__item.gallery__item--8
-                img.gallery__img(src="/pic_300/" + border[7].image[0].picFilename, alt='Gallery image 7')
+                if(border[7].image[0])
+                    img.gallery__img(src="/pic_300/" + border[7].image[0].picFilename, alt='Gallery image 7')
                 .gallery__blind
                 .gallery__text
                     p.gallery__name=border[7].title

@@ -1,0 +1,22 @@
+
+.container {
+    text-align: center;
+}
+
+.container img {
+    margin-right: 0;
+}
+
+@media (min-width: 992px) {
+    .container img {
+        width: 60%;
+        height: 60%;
+    }
+}
+
+@media (max-width: 991px) {
+    .container img {
+        width: 100%;
+        height: auto;
+    }
+}

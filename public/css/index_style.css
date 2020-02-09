@@ -263,7 +263,7 @@ p.lead {
 }
 
 .gallery__text {
-    z-index: 999;
+    z-index: 500;
     padding: 5px 10px;
     text-align: center;
     text-decoration-color: white;

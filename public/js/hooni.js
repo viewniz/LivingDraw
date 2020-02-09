@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
 	var pre_value = curPage.split('/');
 	// alert(pre_value[3]);
 	pre_value = pre_value[3];
-	if(pre_value === ''){
+	if(pre_value === 'about'){
 		$('.mainpage').addClass('pre_nav_color')
 	}
 	else if(pre_value === "border"){
