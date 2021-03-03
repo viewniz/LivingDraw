@@ -28,7 +28,7 @@
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "sharp": "^0.22.1",
