@@ -16,7 +16,7 @@
     "formidable": "^1.2.1",
     "http-errors": "~1.6.3",
     "jpeg-autorotate": "^5.0.2",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
     "mongoose": "^5.8.2",
